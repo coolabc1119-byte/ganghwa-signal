@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "2.2",
- "updated_at": "2026-11-09 22:10 KST",
+ "updated_at": "2026-11-09 22:16 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -40,7 +40,17 @@
    "2026-10-05~2026-11-03: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests"
   ],
   "tour_api_calls": 12,
-  "discovery": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
+  "discovery_chunks": [
+   "묶음1 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음1 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음1 시도3: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음2 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음2 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음2 시도3: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음3 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+   "묶음3 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
+  ],
+  "discovery": "RuntimeError: 발굴 키워드 데이터랩 응답 없음"
  },
  "mode": "partial",
  "store": {

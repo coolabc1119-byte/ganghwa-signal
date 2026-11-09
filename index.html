@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>강화 시그널</title>
-<meta name="description" content="선두리 만선꽃게랑낙지 — 이번 주 손님·재료·인력 준비 브리핑">
+<meta name="description" content="선두리 만선꽃게랑낙지 — 강화도 핫키워드·뉴스·방문자와 이번 주 손님·재료 준비 브리핑">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -138,6 +138,10 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .yg .h{font-size:11px;color:var(--faint);font-weight:600} .yg .h:not(:first-child){text-align:right}
 .yg .m{font-weight:600} .yg .m.we{color:var(--red)} .yg .n{text-align:right;font-family:var(--mono)}
 .rk{display:inline-block;font-size:10px;font-family:var(--sans);color:var(--sub);background:var(--soft2);border-radius:4px;padding:0 4px;margin-left:3px;vertical-align:1px} .rk.top{background:var(--hot-bg);color:var(--hot);font-weight:700}
+.more{display:block;width:100%;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink2);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.evg{display:grid;grid-template-columns:48px minmax(0,1fr) auto 40px;gap:0;font-size:13px}
+.evg>div{padding:8px 3px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evg .h{font-size:11px;color:var(--faint);font-weight:600} .evg .r{text-align:right} .evg .k{font-weight:600} .evg .k .tag{font-size:10px;margin-left:4px}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -160,9 +164,10 @@ details.how .srcs::before{content:'데이터 출처';display:block;font-weight:7
 .hero .eyebrow{font-size:12px;color:var(--sub);font-weight:600;letter-spacing:.04em;font-family:var(--mono)}
 .hero h1{font-size:21px;margin:4px 0 2px;letter-spacing:-.02em;line-height:1.35}
 .hero .meta{color:var(--sub);font-size:13px}
-.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:16px}
-@media(max-width:600px){.days{grid-template-columns:repeat(4,1fr)}}
-.day{border:1px solid var(--line);border-radius:12px;padding:10px 6px 8px;text-align:center;background:var(--card);position:relative}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:16px}
+@media(max-width:600px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:380px){.days{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.day{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;padding:10px 6px 8px;text-align:center;background:var(--card);position:relative}
 .day.today{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
 .day.we .d{color:var(--red)}
 .day .w{font-size:11px;color:var(--faint);font-family:var(--mono)} .day .d{font-size:14px;font-weight:700;margin:1px 0 6px}
@@ -174,7 +179,7 @@ details.how .srcs::before{content:'데이터 출처';display:block;font-weight:7
 .day .v{font-size:11px;color:var(--sub);margin-top:6px;font-family:var(--mono)}
 .day .tg{font-size:10px;color:var(--hot);margin-top:4px;min-height:12px;line-height:1.2}
 .day .cp{margin-top:6px;border-top:1px dashed var(--line);padding-top:5px;display:grid;gap:1px}
-.day .cp div{display:flex;justify-content:space-between;font-size:10.5px;font-family:var(--mono);padding:0 2px}
+.day .cp div{display:flex;justify-content:space-between;gap:2px;font-size:10px;font-family:var(--mono);padding:0 1px;white-space:nowrap} .day .cp div span{white-space:nowrap} .day .cp div span:first-child{overflow:hidden;text-overflow:ellipsis;letter-spacing:-.03em}
 .day .cp span:first-child{color:var(--faint);font-family:var(--sans)}
 .kpi .l{font-size:12px;color:var(--sub)} .kpi .v{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:6px 0 4px;font-family:var(--mono)}
 .kpi .dd{display:inline-block;margin-right:10px;font-size:12px;font-family:var(--mono)}
@@ -231,7 +236,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
 
   <div class="tabs"><div class="tablist">
     <button class="tab on" data-p="disc">핫키워드</button>
-    <button class="tab" data-p="news">뉴스</button>
+    <button class="tab" data-p="news">뉴스/방송</button>
     <button class="tab" data-p="brief">이번 주</button>
     <button class="tab" data-p="trend">메뉴 검색</button>
     <button class="tab" data-p="visit">방문자</button>
@@ -254,12 +259,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div id="ing"></div>
     </div>
 
-    <div class="grid g2">
-      <div class="card"><h2>인력</h2><div class="sub">평소 같은 요일보다 20% 이상 많거나 25% 이상 적은 날만</div><div id="bstaff"></div>
-        <h2 style="margin-top:18px">앞으로 30일 알림</h2><div class="sub">연휴 · 금어기·제철 · 방송 예정</div><div id="balerts"></div></div>
-      <div class="card"><h2>최근 강화 맛집 방송 <span class="chip">뉴스 자동 감지</span></h2><div class="sub">다른 가게 방송도 강화도 전체 메뉴 검색을 1~2일 끌어올림 — 방송 후 첫 주말은 1.3배로 준비</div><div id="bbc"></div>
-        <h2 style="margin-top:18px">최근 검색 급등 <span class="chip" id="c-ev"></span></h2><div class="sub" id="evSub"></div><div id="events"></div></div>
-    </div>
+    <div class="card"><h2>앞으로 30일 알림</h2><div class="sub">연휴 · 금어기·제철 시작 · 방송 예정</div><div id="balerts"></div></div>
   </section>
 
     <!-- 메뉴 검색 -->
@@ -330,12 +330,14 @@ tr.ref td{color:var(--sub);background:var(--soft)}
         <input type="search" id="q" placeholder="필터 검색 (예: 게, 칼국수, 카페)">
         <div class="seg" id="dfilter"><button data-f="all" class="on">전체</button><button data-f="food">먹거리</button><button data-f="place">장소·여행</button></div></div>
       <table id="volume"></table>
+      <button class="more" id="vmore" hidden></button>
     </div>
+    <div class="card"><h2>최근 검색 급등 <span class="chip" id="c-ev"></span></h2><div class="sub" id="evSub"></div><div id="events"></div></div>
   </section>
 
   <!-- 뉴스 -->
   <section class="panel" id="p-news">
-    <div class="card"><h2>강화 관련 뉴스 <span class="chip" id="c-news"></span></h2>
+    <div class="card"><h2>강화 뉴스·방송 <span class="chip" id="c-news"></span></h2>
       <div class="sub" id="newsSub"></div>
       <div class="controls"><div class="seg" id="nfilter"><button data-f="all" class="on">전체</button><button data-f="tv">📺 방송</button><button data-f="food">맛집·먹거리</button></div></div>
       <div id="newslist"></div></div>
@@ -349,7 +351,6 @@ tr.ref td{color:var(--sub);background:var(--soft)}
         <b>예상 방문자(명)</b> = 요일 기본값(최근 8주 같은 요일 중앙값, 연휴 제외) × 계절(작년 같은 시기 변화, 0.7~1.3) × 추세(최근 4주 ÷ 그 전 4주, ±10%) × 연휴(연휴=토요일, 전날=금요일) × 날씨(비·눈 예보 → 과거 실측 배율) × 방송(최근 10일 내 강화 맛집 방송 → 첫 주말 1.3배)<br>
         <b>날짜 카드 큰 %</b> = 예상 ÷ 평소 같은 요일(최근 8주 중앙값) − 1 → "평소 토요일보다 얼마나" · <b>아래 두 줄</b> = 지난달·작년 같은 달 같은 요일 실제 평균 대비<br>
         <b>재료 신호</b> = 이번 주말 예상 손님(평소 대비) + 검색 전주 ±15% 이상 변화 + 추위(최고 5℃↓, 탕·면) → 평소보다 10%↑ 더 받기 · 10%↓ 줄이기 · 금어기 = 냉동 운영<br>
-        <b>인력</b> = 평소 같은 요일보다 +20% 이상 → 홀 +1 (평일의 2.5배 이상이면 주방도 +1) · −25% 이하 → 줄여도 됨<br>
         <b>검색 횟수(회/일)</b> = 네이버 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수 → 추정치<br>
       </div></div>
   </section>
@@ -406,13 +407,13 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderBc(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWx(); renderVolume(); renderNews(); renderAbout();
+  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWx(); renderVolume(); renderNews(); renderAbout();
   attachHow();
-  document.getElementById('q').addEventListener('input',renderVolume);
+  document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
   bindSeg('vrange','r',v=>{state.vrange=+v;renderVisitors();}); bindSeg('vyoy','y',v=>{state.vyoy=v==='1';renderVisitors();});
-  bindSeg('dfilter','f',v=>{state.dfilter=v;renderVolume();});
-  bindSeg('dper','p',v=>{state.dper=v;renderVolume();});
+  bindSeg('dfilter','f',v=>{state.dfilter=v;state.vlimit=10;renderVolume();});
+  bindSeg('dper','p',v=>{state.dper=v;state.vlimit=10;renderVolume();});
   bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();});
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redrawAll);
 }
@@ -448,15 +449,8 @@ const HOW={
     '<b>추위 보정</b> = 7일 중 최고기온 5℃ 이하인 날이 있으면 탕·면 재료 × 1.08',
     '<b>판단</b> = 최종 배율 1.10 이상 「더 받기」 · 0.90 이하 「줄이기」 · 그 사이 「평소대로」 · 금어기 기간 「냉동 운영」'],
     s:['tour','dlab','ad','wx','cfg']},
-  bstaff:{f:[
-    '<b>인력 +</b> = 그날 예상이 평소 같은 요일보다 +20% 이상이거나 연휴 → 홀 +1 (평일의 2.5배 이상이면 주방 +1)',
-    '<b>인력 −</b> = 평소 같은 요일보다 −25% 이하',
-    '<b>알림</b> = 오늘부터 30일 안의 연휴, 금어기·제철 시작일, 직접 입력한 방송 예정일'],
-    s:['tour','wx','cfg']},
-  bbc:{f:[
-    '<b>방송 감지</b> = 뉴스 제목에 방송 프로그램명(생생정보·오늘N·생활의 달인·백반기행 등)과 음식 단어(맛집·꽃게·젓국·칼국수 등)가 함께 있으면 방송으로 기록',
-    '<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회', CNT],
-    s:['news','dlab','ad']},
+  balerts:{f:['<b>알림</b> = 오늘부터 30일 안의 연휴(토요일 수준 손님), 금어기·제철 시작일, 직접 입력한 방송 예정일'], s:['cfg']},
+  events:{f:['<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회','<b>대상</b> = 우리 메뉴 키워드 + 「강화도 맛집」 · 그날 연휴·방송·뉴스를 같이 표시', CNT], s:['dlab','ad','news','cfg']},
   ysum:{f:['<b>올해 하루 평균</b> = 올해 데이터가 있는 날 중 작년 같은 날짜(월·일)도 있는 날만 모아 평균','<b>증감</b> = 올해 평균 ÷ 작년 같은 날짜 평균 − 1','<b>흐름 판정</b> = 아래 「꾸준히 늘고 있나」 카드의 규칙'], s:['tour']},
   mchart:{f:['<b>월 하루 평균</b> = 그달 실제 외지인 합 ÷ 데이터가 있는 일수 (연휴 포함 실제값)','<b>순위</b> = 작년 12개월을 하루 평균 순으로 줄 세운 순서 (1~3위 강조)','<b>증감</b> = 올해 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1','<b>수집 중</b> = 그달 데이터가 '+MIN_DAYS+'일 미만이라 평균을 내지 않음'], s:['tour']},
   yweek:{f:['<b>작년 요일 평균</b> = 작년 1년 중 그 요일 실제값 평균 (연휴·연휴 전날 제외)','<b>배율</b> = 그 요일 평균 ÷ 작년 월~목 평균','<b>증감</b> = 올해 그 요일 평균 ÷ 작년 같은 기간(올해 데이터 첫날~마지막 날과 같은 월·일 범위) 그 요일 평균 − 1'], s:['tour','cfg']},
@@ -493,7 +487,7 @@ function renderBrief(){
   document.getElementById('bmeta').innerHTML=`<b>큰 %</b> = 그날 예상 손님 ÷ <b>평소 같은 요일</b>(최근 8주 보통 수준) · <b>아래 두 줄</b> = 같은 예상을 <b>지난달 같은 요일 평균</b>, <b>작년 같은 달 같은 요일 평균</b>(실제값)과 비교<br>평소 평일 <b class="mono">${fmt(b.weekday_base)}명</b> · 평소 토 <b class="mono">${fmt(b.weekday_median['토'])}명</b> · 강화군 외지인 기준`+(b.last_visitor_data?` · 방문자 실제값 ~${md(b.last_visitor_data)}`:'');
   const cp=(c,wd)=>{ if(!c) return ''; const r=(lab,x)=>{ const m=x&&x.ym?+x.ym.slice(5)+'월':''; if(!x||x.pct==null) return `<div><span>${lab}</span><span class="muted">–</span></div>`; const p=x.pct; return `<div title="${x.ym} ${wd}요일 평균 ${fmt(x.base)}명"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
     const lm=c.prev_month?.ym?+c.prev_month.ym.slice(5)+'월':'전월';
-    return `<div class="cp">${r('vs '+lm,c.prev_month)}${r('vs 작년',c.yoy_month)}</div>`; };
+    return `<div class="cp">${r('vs'+lm,c.prev_month)}${r('vs작년',c.yoy_month)}</div>`; };
   document.getElementById('bdays').innerHTML=b.days.map((d,i)=>{ const w=d.weather||{}; const we=d.wd==='토'||d.wd==='일';
     return `<div class="day ${i===0?'today':''} ${we?'we':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div>
       <div class="wx">${w.code!=null?`<b>${WXI(w.code)}</b>${w.tmax!=null?Math.round(w.tmax)+'°':''}${w.pop!=null&&w.pop>=30?` 비${w.pop}%`:''}`:''}</div>
@@ -518,17 +512,12 @@ function renderPrep(){
 }
 function renderStaffAlerts(){
   const b=D.brief;
-  document.getElementById('bstaff').innerHTML=b.staff.length? b.staff.map(s=>`<div class="stf"><b class="mono">${s.date.slice(5).replace('-','/')} ${s.wd}</b> — ${s.advice} <span class="muted">(${s.why})</span></div>`).join('') : '<div class="stf muted">이번 주는 평소 인원으로 충분</div>';
   document.getElementById('balerts').innerHTML=b.alerts.length? b.alerts.map(a=>`<div class="al"><span class="d">${a.date.slice(5).replace('-','/')} ${a.wd}</span><span>${a.text}</span></div>`).join('') : '<div class="al muted">30일 안에 연휴·금어기·방송 예정 없음</div>';
-}
-function renderBc(){
-  const a=D.brief?.broadcast_auto||[];
-  document.getElementById('bbc').innerHTML=a.length? a.slice(0,6).map(x=>`<div class="al"><span class="d">${x.date.slice(5).replace('-','/')}</span><span>📺 <b>${x.program}</b> · <a href="${x.link}" target="_blank" rel="noopener" style="color:var(--sub);text-decoration:none">${x.note.replace(/^'[^']+'\s*/,'')}</a></span></div>`).join('') : '<div class="al muted">감지된 방송 없음</div>';
 }
 function renderEvents(){
   const ev=(D.events||[]).filter(e=>D.meta.groups[Object.keys(D.meta.groups)[0]].includes(e.keyword)||e.keyword==='강화도 맛집').slice(0,8), r=D.meta;
-  document.getElementById('evSub').textContent=`하루 검색이 같은 요일 4주 평균의 ${r.spike_rule?.ratio||2}배 이상(${r.spike_rule?.min_value||100}회↑)인 날 · 우리 메뉴와 "강화도 맛집"만`;
-  document.getElementById('events').innerHTML=ev.length? ev.map(e=>`<div class="ev"><b class="mono">${e.date}</b> · ${e.keyword} — 평소 <span class="mono">${fmt(e.baseline)}회</span> → <b class="mono">${fmt(e.value)}회</b>${e.holiday?`<span class="tag">${e.holiday}</span>`:''}${e.broadcast?`<span class="tag">📺 ${e.broadcast.program}</span>`:''}${e.news&&e.news.length?`<div class="news">${e.news.slice(0,2).map(n=>`<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>`).join(' · ')}</div>`:''}</div>`).join('') : '<div class="empty">최근 급등 없음</div>';
+  document.getElementById('evSub').innerHTML=`하루 검색 횟수가 <b>같은 요일 직전 4주 평균의 ${r.spike_rule?.ratio||2}배 이상</b>이고 ${r.spike_rule?.min_value||100}회 이상인 날 · 평소 = 그 4주 평균 · 우리 메뉴와 "강화도 맛집"만 · 최근 8건`;
+  document.getElementById('events').innerHTML=ev.length? `<div class="evg"><div class="h">날짜</div><div class="h">메뉴</div><div class="h r">평소 → 그날</div><div class="h r">배</div>`+ev.map(e=>`<div class="mono">${md(e.date)}</div><div class="k">${short(e.keyword)}${e.holiday?`<span class="tag">${e.holiday}</span>`:''}${e.broadcast?`<span class="tag">📺</span>`:''}</div><div class="r mono">${fmt(e.baseline)}→<b>${fmt(e.value)}</b>회</div><div class="r mono up">×${(+e.ratio).toFixed(1)}</div>`).join('')+`</div>` : '<div class="empty">최근 급등 없음</div>';
 }
 
 /* ---------- 연간 분석 (방문자 탭) ---------- */
@@ -724,7 +713,8 @@ function renderVolume(){
   state._hdr={cur:{day:'어제 하루',week:'최근 7일',month:'최근 30일'}[state.dper], prev:{day:'지난주 '+(D.discovery_daily?.dates?.length?WD[dow(D.discovery_daily.dates.at(-1))]:''),week:'직전 7일',month:'직전 30일'}[state.dper]};
   const q=document.getElementById('q').value.trim(); let rows=all; if(q) rows=rows.filter(r=>r.keyword.includes(q));
   if(state.dfilter==='food') rows=rows.filter(r=>FOOD.test(r.keyword)); else if(state.dfilter==='place') rows=rows.filter(r=>PLACE.test(r.keyword)&&!FOOD.test(r.keyword));
-  rows=rows.slice(0,100); const max=Math.max(1,...rows.map(r=>r.cur||0));
+  const total=rows.length; const lim=state.vlimit||10; rows=rows.slice(0,lim); const max=Math.max(1,...rows.map(r=>r.cur||0));
+  const mb=document.getElementById('vmore'); if(total>lim){ mb.hidden=false; mb.textContent=`더보기 (${lim}/${total}위까지 보는 중)`; mb.onclick=()=>{state.vlimit=lim+20;renderVolume();}; } else if(lim>10){ mb.hidden=false; mb.textContent='접기 (상위 10개만)'; mb.onclick=()=>{state.vlimit=10;renderVolume();document.getElementById('p-disc').scrollIntoView({block:'start'});}; } else mb.hidden=true;
   const rk=r=>{ if(!r.prank) return '<span class="muted" style="font-size:10px">NEW</span>'; const d=r.prank-r.rank; return d===0?'<span class="muted">–</span>':`<span class="${d>0?'up':'down'}">${d>0?'▲':'▼'}${Math.abs(d)}</span>`; };
   document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)<small class="thd">${state._hdr.cur}</small></th><th class="n">증감<small class="thd">vs ${state._hdr.prev}</small></th><th class="n">순위<small class="thd">vs 이전</small></th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td class="kw" title="${r.keyword}">${r.keyword}${r.tracked?'<span class="tdot" title="추적 중"></span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
 }

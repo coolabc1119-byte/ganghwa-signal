@@ -167,7 +167,8 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
     end = datetime.now(KST).date() - timedelta(days=1)
     start = end - timedelta(days=days - 1)
     dates = ymd_list(start, end)
-    headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    # 메인 데이터랩과 같은 방식(네이버 클라우드 API 게이트웨이)
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
     series, errs = {}, []
     rows = [r for r in rows if r["keyword"].replace(" ", "") != "강화도맛집"]
     for i in range(0, len(rows), 4):
@@ -178,7 +179,7 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
         res, last = None, None
         for attempt in range(3):
             try:
-                res = http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", body)
+                res = http_json("https://naverapihub.apigw.ntruss.com/search-trend/v1/search", headers, "POST", body)
                 break
             except Exception as e:
                 last = e
@@ -191,26 +192,6 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
                 errs.append(f"묶음{i//4+1} 시도{attempt+1}: {type(e).__name__} {str(e)[:40]} {body_txt}")
                 time.sleep(1.5 * (attempt + 1))
         if res is None:
-            if i == 0 and "discovery_diag" not in ERRORS:
-                diag = {}
-                def _try(name, b):
-                    try:
-                        http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", b)
-                        diag[name] = "OK"
-                    except Exception as e:
-                        diag[name] = f"{getattr(e, 'code', '')} {str(e)[:40]}"
-                    time.sleep(0.5)
-                g0 = [{"groupName": "강화도 맛집", "keywords": ["강화도 맛집"]}]
-                _try("A_추적키워드_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
-                                        "keywordGroups": g0 + [{"groupName": "강화도 꽃게탕", "keywords": ["강화도 꽃게탕"]}]})
-                _try("B_발굴키워드1개_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
-                                          "keywordGroups": g0 + [{"groupName": chunk[0]["keyword"], "keywords": [chunk[0]["keyword"]]}]})
-                _try("C_앵커만_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date", "keywordGroups": g0})
-                _try("D_앵커만_2025시작", {"startDate": "2025-07-12", "endDate": end.isoformat(), "timeUnit": "date", "keywordGroups": g0})
-                _try("E_발굴키워드_ascii그룹명", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
-                                             "keywordGroups": [{"groupName": "k1", "keywords": [chunk[0]["keyword"]]}]})
-                diag["cid_len"] = len(cid); diag["csec_len"] = len(csec)
-                ERRORS["discovery_diag"] = diag
             continue
         for g in res.get("results", []):
             if g["title"] == "강화도 맛집":

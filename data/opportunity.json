@@ -4,62 +4,71 @@
   "monthly_search": 2920,
   "shops": 9,
   "per_shop": 324.4,
-  "mine": true
+  "mine": true,
+  "under10": false
  },
  {
   "menu": "순무",
   "monthly_search": 1630,
   "shops": 6,
   "per_shop": 271.7,
-  "mine": false
+  "mine": false,
+  "under10": false
  },
  {
   "menu": "꽃게탕",
   "monthly_search": 3940,
   "shops": 41,
   "per_shop": 96.1,
-  "mine": true
+  "mine": true,
+  "under10": false
  },
  {
   "menu": "장어",
   "monthly_search": 3640,
   "shops": 44,
   "per_shop": 82.7,
-  "mine": false
+  "mine": false,
+  "under10": false
  },
  {
   "menu": "카페",
   "monthly_search": 20530,
   "shops": 312,
   "per_shop": 65.8,
-  "mine": false
+  "mine": false,
+  "under10": false
  },
  {
   "menu": "밴댕이",
   "monthly_search": 1340,
   "shops": 28,
   "per_shop": 47.9,
-  "mine": false
+  "mine": false,
+  "under10": false
  },
  {
   "menu": "간장게장",
   "monthly_search": 1050,
   "shops": 23,
   "per_shop": 45.7,
-  "mine": true
- },
- {
-  "menu": "낙지",
-  "monthly_search": 0,
-  "shops": 37,
-  "per_shop": 0.0,
-  "mine": true
+  "mine": true,
+  "under10": false
  },
  {
   "menu": "연포탕",
-  "monthly_search": 0,
+  "monthly_search": 30,
   "shops": 12,
-  "per_shop": 0.0,
-  "mine": true
+  "per_shop": 2.5,
+  "mine": true,
+  "under10": false
+ },
+ {
+  "menu": "낙지",
+  "monthly_search": 40,
+  "shops": 37,
+  "per_shop": 1.1,
+  "mine": true,
+  "under10": false
  }
 ]

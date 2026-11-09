@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "3.2",
- "updated_at": "2026-11-10 07:34 KST",
+ "updated_at": "2026-11-10 07:43 KST",
  "range": [
   "2025-07-13",
   "2026-11-09"
@@ -31,7 +31,7 @@
   "DATA_GO_KR_KEY": 64
  },
  "errors": {
-  "tour_api_calls": 101
+  "tour_api_calls": 6
  },
  "mode": "live",
  "store": {

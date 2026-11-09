@@ -1,0 +1,78 @@
+[
+ {
+  "date": "2026-10-19",
+  "keyword": "강화도 젓국갈비",
+  "value": 50.7,
+  "baseline": 21.8,
+  "ratio": 2.32,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-10-19",
+    "title": "(샘플) 가을 꽃게 제철… 강화 어판장 시세 소폭 상승",
+    "link": "https://example.com/sample-2",
+    "query": "강화도 꽃게"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-18",
+  "keyword": "전등사 맛집",
+  "value": 71.9,
+  "baseline": 32.2,
+  "ratio": 2.23,
+  "broadcast": {
+   "date": "2026-10-18",
+   "program": "(샘플) 생생정보",
+   "note": "샘플 데이터용 예시 — 실제 방송 날짜를 여기에 기록하세요"
+  },
+  "news": [
+   {
+    "date": "2026-10-18",
+    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
+    "link": "https://example.com/sample-1",
+    "query": "강화도 방송"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-18",
+  "keyword": "강화도 젓국갈비",
+  "value": 70.8,
+  "baseline": 27.8,
+  "ratio": 2.55,
+  "broadcast": {
+   "date": "2026-10-18",
+   "program": "(샘플) 생생정보",
+   "note": "샘플 데이터용 예시 — 실제 방송 날짜를 여기에 기록하세요"
+  },
+  "news": [
+   {
+    "date": "2026-10-18",
+    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
+    "link": "https://example.com/sample-1",
+    "query": "강화도 방송"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-18",
+  "keyword": "강화 젓국갈비",
+  "value": 35.7,
+  "baseline": 13.8,
+  "ratio": 2.58,
+  "broadcast": {
+   "date": "2026-10-18",
+   "program": "(샘플) 생생정보",
+   "note": "샘플 데이터용 예시 — 실제 방송 날짜를 여기에 기록하세요"
+  },
+  "news": [
+   {
+    "date": "2026-10-18",
+    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
+    "link": "https://example.com/sample-1",
+    "query": "강화도 방송"
+   }
+  ]
+ }
+]

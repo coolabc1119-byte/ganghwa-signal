@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강화 시그널</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  color-scheme:light;
+  --page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+  --grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,.10);
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+  --good:#006300;--bad:#d03b3b;--warn-bg:#fff4d6;--warn-ink:#6b4a00;
+  --mine:#e8f1fc;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;
+    --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);
+    --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+    --good:#0ca30c;--bad:#e66767;--warn-bg:#3a2e08;--warn-ink:#f5d78a;--mine:#15243a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;
+  --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+  --good:#0ca30c;--bad:#e66767;--warn-bg:#3a2e08;--warn-ink:#f5d78a;--mine:#15243a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:6px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+h1 small{font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
+.meta{color:var(--ink2);font-size:13px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border)}
+.badge.sample{background:var(--warn-bg);color:var(--warn-ink)}
+.badge.live{background:#e4f5e4;color:var(--good)}
+.srcline{color:var(--ink2);font-size:13px;margin:4px 0 10px;padding:8px 12px;border-left:3px solid var(--s1);background:var(--surface);border-radius:0 8px 8px 0}
+.src{display:inline-block;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle;font-weight:500}
+.notice{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 14px;margin:12px 0 18px;font-size:13px}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.card h2{font-size:15px;margin:0 0 4px}
+.card .sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+.kpi .label{color:var(--ink2);font-size:12px}
+.kpi .val{font-size:30px;font-weight:600;line-height:1.15;margin:4px 0 2px}
+.kpi .delta{font-size:13px;color:var(--ink2)}
+.up{color:var(--good)} .down{color:var(--bad)} .muted{color:var(--muted)}
+.dd{display:inline-block;margin-right:10px;font-variant-numeric:tabular-nums}
+.row2{grid-template-columns:1fr 1fr}
+@media(max-width:860px){.row2{grid-template-columns:1fr}}
+.section{margin-top:18px}
+.controls{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{background:transparent;border:0;color:var(--ink2);padding:5px 11px;font:inherit;font-size:13px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--surface)}
+.chart{position:relative;height:320px}
+.chart.sm{height:220px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px}
+th.sortable{cursor:pointer} th.sortable.on{color:var(--ink)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.mine td{background:var(--mine)}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;border:1px solid var(--border);color:var(--ink2);margin-left:4px}
+.tag.mine{background:var(--mine);color:var(--s1);border-color:transparent}
+.bar{height:6px;border-radius:3px;background:var(--s1);display:inline-block;vertical-align:middle;margin-right:6px}
+input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);border-radius:8px;background:var(--surface);color:var(--ink);width:220px;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink2);margin-top:8px}
+.legend span i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.ev{border-left:3px solid var(--s2);padding:6px 10px;margin-bottom:8px;background:var(--page);border-radius:0 8px 8px 0}
+.ev b{font-weight:600}
+.ev .news{font-size:12px;color:var(--ink2);margin-top:3px}
+.ev .news a{color:var(--s1);text-decoration:none}
+.foot{margin-top:28px;color:var(--muted);font-size:12px;line-height:1.7}
+.empty{color:var(--muted);font-size:13px;padding:12px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>강화 시그널 <small id="ver"></small></h1>
+  <span class="badge" id="mode"></span>
+  <span class="meta" id="updated"></span>
+  <span class="meta" id="store"></span>
+</header>
+<div class="srcline">검색량은 모두 <b>네이버</b> 기준입니다 (구글 미포함). 추이·비교는 네이버 데이터랩 상대 검색량, 월 검색 횟수는 네이버 검색광고 키워드도구, 업체 수는 카카오맵, 방문자는 한국관광공사(통신사 데이터)입니다.</div>
+<div class="notice" id="notice" hidden></div>
+
+<div class="grid kpis" id="kpis"></div>
+
+<div class="section card">
+  <h2>키워드 일별 검색 추이 <span class="src">출처: 네이버 데이터랩</span></h2>
+  <div class="sub">상대 검색량(기간 내 최고점 = 100, 절대 횟수 아님) · 세로 점선 = 기록된 방송일 · 점선 그래프 = 1년 전 같은 요일</div>
+  <div class="controls">
+    <div class="seg" id="grpSeg"></div>
+    <div class="seg" id="rangeSeg">
+      <button data-r="30">30일</button><button data-r="90" class="on">90일</button><button data-r="120">120일</button>
+    </div>
+    <div class="seg" id="unitSeg">
+      <button data-u="d" class="on">일별</button><button data-u="w">주별</button>
+    </div>
+    <div class="seg" id="yoySeg"><button data-y="0" class="on">올해만</button><button data-y="1">전년 겹쳐보기</button></div>
+  </div>
+  <div class="chart"><canvas id="trend"></canvas></div>
+  <div class="legend" id="trendLegend"></div>
+</div>
+
+<div class="section grid row2">
+  <div class="card">
+    <h2>키워드별 비교 — 전주 · 전월 · 전년동월 <span class="src">출처: 네이버 데이터랩</span></h2>
+    <div class="sub">전주 = 최근 7일 vs 직전 7일 · 전월 = 최근 30일 vs 직전 30일 · 전년 = 최근 30일 vs 1년 전 같은 30일(요일 맞춤) · 파란 줄 = 우리 메뉴</div>
+    <table id="weekly"></table>
+  </div>
+  <div class="card">
+    <h2>수요 대비 경쟁이 적은 메뉴 <span class="src">네이버 검색광고 ÷ 카카오맵</span></h2>
+    <div class="sub">월 검색량 ÷ 강화도 안 업체 수 — 숫자가 클수록 "찾는 사람은 많은데 파는 집이 적은" 메뉴</div>
+    <table id="opp"></table>
+  </div>
+</div>
+
+<div class="section grid row2">
+  <div class="card">
+    <h2>강화군 일별 방문자 <span class="src">출처: 한국관광공사</span></h2>
+    <div class="sub" id="visSub">한국관광공사 관광빅데이터(통신사 기반), 외지인 기준</div>
+    <div class="chart sm"><canvas id="visitors"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>우리 가게 메뉴 검색 합계 <span class="src">출처: 네이버 데이터랩</span></h2>
+    <div class="sub">같은 기간 — 방문자 그래프와 나란히 보기 (척도가 달라 한 그래프에 겹치지 않음)</div>
+    <div class="chart sm"><canvas id="mine"></canvas></div>
+  </div>
+</div>
+
+<div class="section card">
+  <h2>급등 감지 이벤트 <span class="src">네이버 데이터랩 + 네이버 뉴스</span></h2>
+  <div class="sub" id="evSub"></div>
+  <div id="events"></div>
+</div>
+
+<div class="section card">
+  <h2>키워드 발굴 — 사람들이 실제로 치는 강화도 검색어 <span class="src">출처: 네이버 검색광고 키워드도구</span></h2>
+  <div class="sub">최근 한 달 네이버 PC+모바일 검색 횟수(절대값) · 파란 표시 = 현재 추적 중</div>
+  <div class="controls"><input type="search" id="q" placeholder="검색어 걸러보기 (예: 게, 낙지, 맛집)"></div>
+  <table id="volume"></table>
+</div>
+
+<div class="foot" id="foot"></div>
+</div>
+
+<script>
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const SER = () => [1,2,3,4,5,6,7,8].map(i => css('--s'+i));
+const fmt = n => n==null ? '–' : Math.round(n).toLocaleString('ko-KR');
+const pct = n => (n>0?'+':'') + n.toFixed(1) + '%';
+const md = d => { const [y,m,dd]=d.split('-'); return `${+m}/${+dd}`; };
+
+async function J(p){ const r = await fetch('data/'+p+'?v='+Date.now()); if(!r.ok) throw new Error(p); return r.json(); }
+
+let D = {};
+let state = { group: null, range: 90, unit: 'd', yoy: false };
+let charts = {};
+
+init().catch(e => { document.getElementById('notice').hidden=false; document.getElementById('notice').textContent='데이터를 불러오지 못했습니다: '+e.message+' — collect.py를 먼저 실행해 data/ 폴더를 만들어 주세요.'; });
+
+async function init(){
+  const names = ['meta','trend_daily','weekly_change','events','opportunity','volume_monthly','visitors','competitors','news_log','compare','monthly'];
+  const res = await Promise.all(names.map(n => J(n+'.json')));
+  names.forEach((n,i) => D[n]=res[i]);
+  const m = D.meta;
+  document.getElementById('ver').textContent = 'v'+m.version;
+  document.getElementById('updated').textContent = '업데이트 '+m.updated_at;
+  document.getElementById('store').textContent = '· '+m.store.name+' ('+m.store.address+')';
+  const mode = document.getElementById('mode');
+  mode.textContent = m.mode==='live' ? '실데이터' : m.mode==='partial' ? '일부 실데이터' : '샘플 데이터';
+  mode.className = 'badge '+(m.mode==='live'?'live':'sample');
+  if(m.mode!=='live'){
+    const n = document.getElementById('notice'); n.hidden=false;
+    const smp = Object.entries(m.sources).filter(([k,v])=>v==='sample').map(([k])=>({datalab:'네이버 데이터랩',keyword_tool:'네이버 검색광고 키워드도구',kakao_local:'카카오 로컬',tour_api:'관광공사 방문자',naver_news:'네이버 뉴스'})[k]).join(', ');
+    n.textContent = '⚠ 아직 샘플 데이터로 보여 주는 화면입니다 — '+smp+'. API 키를 연결하면 같은 화면이 실제 수치로 바뀝니다. 숫자의 의미를 해석하지 마세요.';
+  }
+  state.group = Object.keys(m.groups)[0];
+  renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
+  document.getElementById('foot').innerHTML = [D.trend_daily.note, D.volume_monthly.note, D.competitors.note, D.visitors.note].map(s=>'· '+s).join('<br>');
+  document.getElementById('q').addEventListener('input', renderVolume);
+  document.querySelectorAll('#rangeSeg button').forEach(b=>b.onclick=()=>{sel(b);state.range=+b.dataset.r;renderTrend();renderVisitors();renderMine();});
+  document.querySelectorAll('#yoySeg button').forEach(b=>b.onclick=()=>{sel(b);state.yoy=b.dataset.y==='1';renderTrend();});
+  document.querySelectorAll('#unitSeg button').forEach(b=>b.onclick=()=>{sel(b);state.unit=b.dataset.u;renderTrend();});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ()=>{renderTrend();renderVisitors();renderMine();});
+}
+function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b)); }
+
+const d3 = c => ['week','month','yoy'].map(k=>{const p=c[k].pct; const lab={week:'전주',month:'전월',yoy:'전년'}[k]; return p==null?`<span class="dd"><span class="muted">${lab} –</span></span>`:`<span class="dd ${p>=0?'up':'down'}">${lab} ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(1)}%</span>`;}).join('');
+function sumCmp(rows){ const o={}; for(const k of ['week','month','yoy']){ const cur=rows.reduce((a,r)=>a+r[k].cur,0), prev=rows.reduce((a,r)=>a+r[k].prev,0); o[k]={cur,prev,pct: prev>0?(cur-prev)/prev*100:null}; } return o; }
+function renderKPIs(){
+  const C = Object.fromEntries(D.compare.map(r=>[r.keyword,r]));
+  const anchor = C['강화도 맛집'] || D.compare[0];
+  const mineKws = D.meta.groups[Object.keys(D.meta.groups)[0]];
+  const mineC = sumCmp(mineKws.map(k=>C[k]).filter(Boolean));
+  const mt = mineC.week.cur;
+  const ev7 = D.events.filter(e => (new Date(D.trend_daily.dates.at(-1)) - new Date(e.date))/864e5 <= 7);
+  const v = D.visitors; const n = v.dates.length;
+  const vThis = v.visitor.slice(n-7).reduce((a,b)=>a+b,0)/7, vLast = v.visitor.slice(n-14,n-7).reduce((a,b)=>a+b,0)/7;
+  const tiles = [
+    {label:'"강화도 맛집" 검색 (최근 7일 평균, 네이버)', val:anchor.week.cur.toFixed(0), html:d3(anchor)},
+    {label:'우리 가게 메뉴 키워드 합계 (최근 7일, 네이버)', val:mt.toFixed(0), html:d3(mineC)},
+    {label:'최근 7일 급등 이벤트', val:ev7.length, note: ev7.length ? [...new Set(ev7.map(e=>e.keyword))].slice(0,3).join(', ') : '급등 없음'},
+    {label:'강화군 외지인 방문자 (최근 주 일평균)', val:fmt(vThis), d: vLast? (vThis-vLast)/vLast*100 : null, note:'마지막 집계 '+md(v.dates.at(-1))},
+  ];
+  document.getElementById('kpis').innerHTML = tiles.map(t=>`<div class="card kpi"><div class="label">${t.label}</div><div class="val">${t.val}</div><div class="delta">${t.html||''}${t.d!=null?`<span class="${t.d>=0?'up':'down'}">${t.d>=0?'▲':'▼'} ${pct(t.d)}</span> `:''}${t.note||''}</div></div>`).join('');
+}
+
+function buildGroupSeg(){
+  const seg = document.getElementById('grpSeg');
+  seg.innerHTML = Object.keys(D.meta.groups).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join('');
+  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();});
+}
+
+function sliceRange(dates, vals){
+  const n = dates.length, s = Math.max(0, n - state.range);
+  return [dates.slice(s), vals.map(v=>v.slice(s))];
+}
+function weekly(dates, series){
+  // 월요일 시작 주 단위 평균
+  const buckets = [], idx = {};
+  dates.forEach((d,i)=>{ const dt=new Date(d); const mon=new Date(dt); mon.setDate(dt.getDate()-((dt.getDay()+6)%7)); const k=mon.toISOString().slice(0,10); if(!(k in idx)){idx[k]=buckets.length;buckets.push({k,i:[]});} buckets[idx[k]].i.push(i); });
+  return [buckets.map(b=>b.k+'주'), series.map(v=>buckets.map(b=>b.i.reduce((a,i)=>a+v[i],0)/b.i.length))];
+}
+const bcPlugin = {
+  id:'bc', afterDraw(c){
+    const bc = D.meta.broadcast_log||[]; if(!bc.length) return;
+    const labels = c.data.labels, x = c.scales.x, {top,bottom} = c.chartArea, ctx = c.ctx;
+    bc.forEach(b=>{
+      let i = labels.indexOf(b.date);
+      if(i<0 && state.unit==='w'){ i = labels.findIndex((l,j)=> j<labels.length-1 && l.slice(0,10)<=b.date && labels[j+1].slice(0,10)>b.date); }
+      if(i<0) return;
+      const px = x.getPixelForValue(i);
+      ctx.save(); ctx.strokeStyle=css('--s2'); ctx.setLineDash([4,4]); ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(px,top); ctx.lineTo(px,bottom); ctx.stroke();
+      ctx.setLineDash([]); ctx.fillStyle=css('--s2'); ctx.font='11px system-ui';
+      const txt='📺 '+b.program, flip = px + ctx.measureText(txt).width + 8 > c.chartArea.right;
+      ctx.textAlign = flip ? 'right' : 'left';
+      ctx.fillText(txt, flip ? px-4 : px+4, top+12); ctx.restore();
+    });
+  }
+};
+function baseOpts(yTitle){
+  return { responsive:true, maintainAspectRatio:false, animation:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{display:false}, tooltip:{backgroundColor:css('--ink'),titleColor:css('--surface'),bodyColor:css('--surface'),padding:10,callbacks:{label:c=>' '+c.dataset.label+': '+(c.parsed.y>=1000?fmt(c.parsed.y):c.parsed.y.toFixed(1))}} },
+    scales:{ x:{grid:{display:false},border:{color:css('--axis')},ticks:{color:css('--muted'),maxTicksLimit:10,callback:(v,i,t)=>{const l=this_labels[i]||''; return l.length>=10? md(l.slice(0,10)) : l;}}},
+             y:{beginAtZero:true,grid:{color:css('--grid')},border:{display:false},ticks:{color:css('--muted'),callback:v=>v>=1000?fmt(v):v},title:{display:!!yTitle,text:yTitle,color:css('--muted'),font:{size:11}}} } };
+}
+let this_labels = [];
+function line(id, labels, datasets, yTitle, plugins=[]){
+  this_labels = labels;
+  if(charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id), { type:'line', data:{labels, datasets: datasets.map(d=>({borderWidth:2, ...d, pointRadius:0, pointHoverRadius:5, pointHoverBorderWidth:2, pointHoverBorderColor:css('--surface'), tension:.25, fill:false}))}, options: baseOpts(yTitle), plugins });
+}
+
+function renderTrend(){
+  const kws = D.meta.groups[state.group], S = SER();
+  const all = D.trend_daily.dates, N = all.length;
+  let [dates, vals] = sliceRange(all, kws.map(k=>D.trend_daily.series[k]||[]));
+  let ly = [];
+  if(state.yoy){ // 364일 전(52주) 구간 — 요일이 맞음
+    const s0 = Math.max(0, N - state.range) - 364;
+    ly = kws.map(k=>{ const v=D.trend_daily.series[k]||[]; return dates.map((_,i)=> s0+i>=0 ? v[s0+i] : null); });
+  }
+  let labels = dates;
+  if(state.unit==='w'){ const r = weekly(dates, vals.concat(ly)); labels=r[0]; vals=r[1].slice(0,kws.length); ly=r[1].slice(kws.length); }
+  const ds = kws.map((k,i)=>({label:k, data:vals[i], borderColor:S[i], backgroundColor:S[i]}));
+  if(state.yoy) kws.forEach((k,i)=>ds.push({label:k+' (1년 전)', data:ly[i], borderColor:S[i], backgroundColor:S[i], borderDash:[3,4], borderWidth:1.5, spanGaps:true}));
+  line('trend', labels, ds, '상대 검색량', [bcPlugin]);
+  document.getElementById('trendLegend').innerHTML = kws.map((k,i)=>`<span><i style="background:${S[i]}"></i>${k}</span>`).join('') + (state.yoy?`<span><i style="background:none;border-top:2px dashed var(--ink2);height:0;margin-top:5px"></i>1년 전 같은 요일</span>`:'') + `<span><i style="background:${S[1]};height:2px;margin-top:4px"></i>방송일</span>`;
+}
+function renderVisitors(){
+  const v = D.visitors; const [dates, vals] = sliceRange(v.dates, [v.visitor]);
+  line('visitors', dates, [{label:'외지인 방문자', data:vals[0], borderColor:css('--s1'), backgroundColor:css('--s1')}], '명', [bcPlugin]);
+}
+function renderMine(){
+  const kws = D.meta.groups[Object.keys(D.meta.groups)[0]];
+  const sum = D.trend_daily.dates.map((_,i)=>kws.reduce((a,k)=>a+(D.trend_daily.series[k]?.[i]||0),0));
+  // 방문자 데이터 기간에 맞춰 자름(비교 편하게)
+  const endIdx = D.trend_daily.dates.indexOf(D.visitors.dates.at(-1));
+  const dates = endIdx>0 ? D.trend_daily.dates.slice(0,endIdx+1) : D.trend_daily.dates;
+  const [d2, vals] = sliceRange(dates, [sum.slice(0,dates.length)]);
+  line('mine', d2, [{label:'우리 가게 메뉴 합계', data:vals[0], borderColor:css('--s3'), backgroundColor:css('--s3')}], '상대 검색량', [bcPlugin]);
+}
+
+let cmpSort = 'week';
+function renderWeekly(){
+  const mine = new Set(D.meta.groups[Object.keys(D.meta.groups)[0]]);
+  const rows = [...D.compare].sort((a,b)=>((b[cmpSort].pct??-1e9)-(a[cmpSort].pct??-1e9)));
+  const cell = p => p==null ? '<td class="num muted">–</td>' : `<td class="num ${p>=0?'up':'down'}">${pct(p)}</td>`;
+  const th = (k,l) => `<th class="num sortable ${cmpSort===k?'on':''}" data-k="${k}">${l}${cmpSort===k?' ▾':''}</th>`;
+  document.getElementById('weekly').innerHTML = `<tr><th>키워드</th><th class="num">최근 7일</th>${th('week','전주 대비')}${th('month','전월 대비')}${th('yoy','전년동월 대비')}</tr>` +
+    rows.map(r=>`<tr class="${mine.has(r.keyword)?'mine':''}"><td>${r.keyword}</td><td class="num">${r.week.cur.toFixed(0)}</td>${cell(r.week.pct)}${cell(r.month.pct)}${cell(r.yoy.pct)}</tr>`).join('');
+  document.querySelectorAll('#weekly th.sortable').forEach(h=>h.onclick=()=>{cmpSort=h.dataset.k;renderWeekly();});
+}
+function renderOpp(){
+  const o = D.opportunity; if(!o.length){document.getElementById('opp').innerHTML='<tr><td class="empty">검색광고·카카오 데이터가 둘 다 있어야 계산됩니다.</td></tr>';return;}
+  const max = Math.max(...o.map(r=>r.per_shop||0));
+  document.getElementById('opp').innerHTML = `<tr><th>메뉴</th><th class="num">월 검색</th><th class="num">업체 수</th><th class="num">업체당 검색</th></tr>` +
+    o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="num">${fmt(r.monthly_search)}</td><td class="num">${fmt(r.shops)}</td><td class="num"><span class="bar" style="width:${Math.round((r.per_shop||0)/max*60)}px"></span>${fmt(r.per_shop)}</td></tr>`).join('');
+}
+function renderEvents(){
+  const ev = D.events, r = D.meta;
+  document.getElementById('evSub').textContent = `같은 요일 4주 평균의 ${r.spike_rule?.ratio||1.8}배 이상 튄 날을 자동 표시 · 방송 기록(keywords.json)과 그날 뉴스를 함께 보여 줌`;
+  if(!ev.length){document.getElementById('events').innerHTML='<div class="empty">기간 내 급등 없음</div>';return;}
+  document.getElementById('events').innerHTML = ev.slice(0,20).map(e=>`<div class="ev"><b>${e.date}</b> · ${e.keyword} — 평소 ${e.baseline} → <b>${e.value}</b> (×${e.ratio})
+    ${e.broadcast?`<span class="tag">📺 ${e.broadcast.program}</span>`:''}
+    ${e.news&&e.news.length?`<div class="news">${e.news.map(n=>`<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>`).join(' · ')}</div>`:''}</div>`).join('');
+}
+function renderVolume(){
+  const q = document.getElementById('q').value.trim();
+  let rows = D.volume_monthly.rows; if(q) rows = rows.filter(r=>r.keyword.includes(q));
+  rows = rows.slice(0,60); const max = rows[0]?.total||1;
+  document.getElementById('volume').innerHTML = `<tr><th>키워드</th><th class="num">월 검색 합계</th><th class="num">PC</th><th class="num">모바일</th><th>경쟁</th></tr>` +
+    rows.map(r=>`<tr><td>${r.keyword}${r.tracked?'<span class="tag mine">추적 중</span>':''}</td><td class="num"><span class="bar" style="width:${Math.round(r.total/max*80)}px"></span>${fmt(r.total)}</td><td class="num">${fmt(r.pc)}</td><td class="num">${fmt(r.mobile)}</td><td>${r.comp||''}</td></tr>`).join('') + (rows.length?'' :'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
+}
+</script>
+</body>
+</html>

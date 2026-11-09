@@ -1,0 +1,41 @@
+{
+ "queries": {
+  "꽃게탕": {
+   "count": 41,
+   "samples": []
+  },
+  "간장게장": {
+   "count": 23,
+   "samples": []
+  },
+  "낙지": {
+   "count": 37,
+   "samples": []
+  },
+  "연포탕": {
+   "count": 12,
+   "samples": []
+  },
+  "젓국갈비": {
+   "count": 9,
+   "samples": []
+  },
+  "밴댕이": {
+   "count": 28,
+   "samples": []
+  },
+  "장어": {
+   "count": 44,
+   "samples": []
+  },
+  "순무": {
+   "count": 6,
+   "samples": []
+  },
+  "카페": {
+   "count": 312,
+   "samples": []
+  }
+ },
+ "note": "⚠ 샘플 데이터"
+}

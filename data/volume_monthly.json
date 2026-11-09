@@ -1,0 +1,309 @@
+{
+ "rows": [
+  {
+   "keyword": "강화도맛집",
+   "pc": 12005,
+   "mobile": 36195,
+   "total": 48200,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도가볼만한곳",
+   "pc": 10917,
+   "mobile": 30583,
+   "total": 41500,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도카페",
+   "pc": 8634,
+   "mobile": 23166,
+   "total": 31800,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도여행",
+   "pc": 4827,
+   "mobile": 17273,
+   "total": 22100,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도루지",
+   "pc": 4946,
+   "mobile": 14854,
+   "total": 19800,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도펜션",
+   "pc": 2493,
+   "mobile": 12907,
+   "total": 15400,
+   "comp": "중간",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도장어",
+   "pc": 2159,
+   "mobile": 7741,
+   "total": 9900,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도마니산",
+   "pc": 1812,
+   "mobile": 7588,
+   "total": 9400,
+   "comp": "낮음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도동막해수욕장",
+   "pc": 1384,
+   "mobile": 6816,
+   "total": 8200,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도꽃게탕",
+   "pc": 1858,
+   "mobile": 6242,
+   "total": 8100,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도보문사",
+   "pc": 1455,
+   "mobile": 6145,
+   "total": 7600,
+   "comp": "낮음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도당일치기",
+   "pc": 1774,
+   "mobile": 5426,
+   "total": 7200,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "전등사맛집",
+   "pc": 1489,
+   "mobile": 5311,
+   "total": 6800,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도인삼",
+   "pc": 1430,
+   "mobile": 4970,
+   "total": 6400,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도장어맛집",
+   "pc": 974,
+   "mobile": 4226,
+   "total": 5200,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도드라이브",
+   "pc": 1301,
+   "mobile": 3799,
+   "total": 5100,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도아이와가볼만한곳",
+   "pc": 791,
+   "mobile": 3809,
+   "total": 4600,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도밴댕이",
+   "pc": 723,
+   "mobile": 3577,
+   "total": 4300,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도낙지",
+   "pc": 1064,
+   "mobile": 3036,
+   "total": 4100,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도간장게장",
+   "pc": 752,
+   "mobile": 3148,
+   "total": 3900,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "석모도맛집",
+   "pc": 700,
+   "mobile": 3000,
+   "total": 3700,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도젓국갈비",
+   "pc": 571,
+   "mobile": 2729,
+   "total": 3300,
+   "comp": "중간",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도속노랑고구마",
+   "pc": 685,
+   "mobile": 2515,
+   "total": 3200,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도꽃게탕맛집",
+   "pc": 709,
+   "mobile": 2391,
+   "total": 3100,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도순무김치",
+   "pc": 596,
+   "mobile": 2304,
+   "total": 2900,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도회",
+   "pc": 623,
+   "mobile": 2177,
+   "total": 2800,
+   "comp": "낮음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도순무",
+   "pc": 514,
+   "mobile": 2086,
+   "total": 2600,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도칼국수",
+   "pc": 716,
+   "mobile": 1884,
+   "total": 2600,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도빵집",
+   "pc": 490,
+   "mobile": 1910,
+   "total": 2400,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도밴댕이맛집",
+   "pc": 474,
+   "mobile": 1826,
+   "total": 2300,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도조개구이",
+   "pc": 365,
+   "mobile": 1835,
+   "total": 2200,
+   "comp": "낮음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도한정식",
+   "pc": 529,
+   "mobile": 1571,
+   "total": 2100,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도밴댕이회무침",
+   "pc": 305,
+   "mobile": 1595,
+   "total": 1900,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도뷰맛집",
+   "pc": 351,
+   "mobile": 1449,
+   "total": 1800,
+   "comp": "높음",
+   "tracked": false
+  },
+  {
+   "keyword": "강화도연포탕",
+   "pc": 467,
+   "mobile": 1233,
+   "total": 1700,
+   "comp": "낮음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도섬쌀",
+   "pc": 254,
+   "mobile": 1246,
+   "total": 1500,
+   "comp": "중간",
+   "tracked": false
+  },
+  {
+   "keyword": "강화젓국갈비",
+   "pc": 263,
+   "mobile": 937,
+   "total": 1200,
+   "comp": "높음",
+   "tracked": true
+  },
+  {
+   "keyword": "강화도젓국갈비맛집",
+   "pc": 140,
+   "mobile": 760,
+   "total": 900,
+   "comp": "높음",
+   "tracked": false
+  }
+ ],
+ "note": "⚠ 샘플 데이터"
+}

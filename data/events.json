@@ -220,6 +220,26 @@
   "holiday": null
  },
  {
+  "date": "2026-09-01",
+  "keyword": "더스타스파펜션",
+  "value": 144.0,
+  "baseline": 60.0,
+  "ratio": 2.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-08-23",
+  "keyword": "더스타스파펜션",
+  "value": 192.0,
+  "baseline": 30.0,
+  "ratio": 6.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2026-08-17",
   "keyword": "강화도 칼국수",
   "value": 161.1,
@@ -258,6 +278,16 @@
   "broadcast": null,
   "news": [],
   "holiday": "광복절"
+ },
+ {
+  "date": "2026-08-03",
+  "keyword": "더스타스파펜션",
+  "value": 240.0,
+  "baseline": 30.0,
+  "ratio": 8.0,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-07-30",
@@ -335,6 +365,36 @@
   "value": 109.6,
   "baseline": 41.7,
   "ratio": 2.63,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-12",
+  "keyword": "더스타스파펜션",
+  "value": 288.0,
+  "baseline": 66.0,
+  "ratio": 4.36,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-06",
+  "keyword": "글로리바다펜션",
+  "value": 119.8,
+  "baseline": 13.9,
+  "ratio": 8.62,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-05",
+  "keyword": "더스타스파펜션",
+  "value": 120.0,
+  "baseline": 36.0,
+  "ratio": 3.33,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -1125,6 +1185,104 @@
   "holiday": null
  },
  {
+  "date": "2026-02-03",
+  "keyword": "더스타스파펜션",
+  "value": 120.0,
+  "baseline": 48.0,
+  "ratio": 2.5,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-03",
+  "keyword": "만선꽃게랑낙지",
+  "value": 180.5,
+  "baseline": 42.4,
+  "ratio": 4.26,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-02",
+  "keyword": "더스타스파펜션",
+  "value": 120.0,
+  "baseline": 36.0,
+  "ratio": 3.33,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-02",
+  "keyword": "만선꽃게랑낙지",
+  "value": 178.7,
+  "baseline": 38.7,
+  "ratio": 4.62,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-01",
+  "keyword": "만선꽃게랑낙지",
+  "value": 208.2,
+  "baseline": 52.5,
+  "ratio": 3.97,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-31",
+  "keyword": "만선꽃게랑낙지",
+  "value": 245.0,
+  "baseline": 47.0,
+  "ratio": 5.22,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-30",
+  "keyword": "만선꽃게랑낙지",
+  "value": 152.9,
+  "baseline": 36.8,
+  "ratio": 4.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-29",
+  "keyword": "만선꽃게랑낙지",
+  "value": 165.8,
+  "baseline": 31.3,
+  "ratio": 5.3,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-28",
+  "keyword": "만선꽃게랑낙지",
+  "value": 213.7,
+  "baseline": 43.3,
+  "ratio": 4.94,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-01-28",
+    "title": "[6·3 지방선거 나요나-인천 강화군수] 보수세 강한 지역… 내란 사건 재...",
+    "link": "https://www.kyeongin.com/article/1758337",
+    "query": "강화 젓국갈비",
+    "tv": null
+   }
+  ],
+  "holiday": null
+ },
+ {
   "date": "2026-01-27",
   "keyword": "강화도 장어",
   "value": 113.7,
@@ -1185,6 +1343,16 @@
   "holiday": null
  },
  {
+  "date": "2026-01-22",
+  "keyword": "더스타스파펜션",
+  "value": 120.0,
+  "baseline": 42.0,
+  "ratio": 2.86,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2026-01-11",
   "keyword": "강화도 젓국갈비",
   "value": 467.7,
@@ -1200,6 +1368,16 @@
   "value": 335.9,
   "baseline": 26.1,
   "ratio": 12.86,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-03",
+  "keyword": "더스타스파펜션",
+  "value": 120.0,
+  "baseline": 36.0,
+  "ratio": 3.33,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -1355,6 +1533,16 @@
   "holiday": null
  },
  {
+  "date": "2025-11-25",
+  "keyword": "만선꽃게랑낙지",
+  "value": 116.1,
+  "baseline": 54.8,
+  "ratio": 2.12,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2025-11-08",
   "keyword": "전등사 맛집",
   "value": 408.9,
@@ -1428,6 +1616,16 @@
   "value": 284.0,
   "baseline": 42.2,
   "ratio": 6.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-18",
+  "keyword": "만선꽃게랑낙지",
+  "value": 121.6,
+  "baseline": 58.0,
+  "ratio": 2.09,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -1608,6 +1806,16 @@
   "value": 358.5,
   "baseline": 123.2,
   "ratio": 2.91,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "더스타스파펜션",
+  "value": 144.0,
+  "baseline": 48.0,
+  "ratio": 3.0,
   "broadcast": null,
   "news": [],
   "holiday": "추석 연휴"
@@ -1913,6 +2121,16 @@
   "holiday": null
  },
  {
+  "date": "2025-09-25",
+  "keyword": "더스타스파펜션",
+  "value": 168.0,
+  "baseline": 54.0,
+  "ratio": 3.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2025-09-22",
   "keyword": "전등사 맛집",
   "value": 162.0,
@@ -1953,6 +2171,16 @@
   "holiday": null
  },
  {
+  "date": "2025-09-18",
+  "keyword": "더스타스파펜션",
+  "value": 216.0,
+  "baseline": 66.0,
+  "ratio": 3.27,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2025-09-17",
   "keyword": "전등사 맛집",
   "value": 132.4,
@@ -1968,6 +2196,16 @@
   "value": 150.1,
   "baseline": 63.0,
   "ratio": 2.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-14",
+  "keyword": "더스타스파펜션",
+  "value": 144.0,
+  "baseline": 36.0,
+  "ratio": 4.0,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -1998,6 +2236,16 @@
   "value": 184.0,
   "baseline": 16.8,
   "ratio": 10.94,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-09",
+  "keyword": "더스타스파펜션",
+  "value": 192.0,
+  "baseline": 72.0,
+  "ratio": 2.67,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -2273,6 +2521,26 @@
   "holiday": null
  },
  {
+  "date": "2025-08-21",
+  "keyword": "더스타스파펜션",
+  "value": 264.0,
+  "baseline": 78.0,
+  "ratio": 3.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-20",
+  "keyword": "더스타스파펜션",
+  "value": 264.0,
+  "baseline": 54.0,
+  "ratio": 4.89,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2025-08-16",
   "keyword": "강화도 간장게장",
   "value": 114.2,
@@ -2338,6 +2606,16 @@
   "value": 151.1,
   "baseline": 70.8,
   "ratio": 2.13,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-14",
+  "keyword": "더스타스파펜션",
+  "value": 168.0,
+  "baseline": 36.0,
+  "ratio": 4.67,
   "broadcast": null,
   "news": [],
   "holiday": null

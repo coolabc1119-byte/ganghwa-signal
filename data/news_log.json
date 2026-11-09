@@ -140,5 +140,40 @@
    "query": "전등사 맛집",
    "tv": null
   }
- ]
+ ],
+ "upcoming": [
+  {
+   "air": null,
+   "pub": "2026-11-04",
+   "program": "JTBC",
+   "title": "‘신의 구슬’ 하윤경 똘망똘망한 눈망울…호송대 길잡이 걸승 役 변신",
+   "link": "https://isplus.com/article/view/isp202611040167",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-04",
+   "program": "JTBC",
+   "title": "저잣거리 주모→호송대 길잡이...하윤경, JTBC '신의 구슬' 신스틸러 기...",
+   "link": "https://swtvnews.com/news/newsview.php?ncode=1065595462857832",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-05",
+   "program": "JTBC",
+   "title": "안보현·이성민·수현·하윤경이라니…‘신의 구슬’ 대본 리딩 현장",
+   "link": "https://isplus.com/article/view/isp202611050191",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-05",
+   "program": "JTBC",
+   "title": "연기 구멍이 뭐예요? 안보현·이성민→하윤경, '신의 구슬' 대본 리딩 현...",
+   "link": "http://www.osen.co.kr/article/G1112904767",
+   "ours": false
+  }
+ ],
+ "upcoming_checked": "2026-11-10 08:02"
 }

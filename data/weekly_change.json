@@ -1,5 +1,12 @@
 [
  {
+  "keyword": "글로리바다펜션",
+  "this_week": 5.8,
+  "last_week": 0.0,
+  "avg_4w": 8.0,
+  "change_pct": 100
+ },
+ {
   "keyword": "강화도 순무",
   "this_week": 75.7,
   "last_week": 58.8,
@@ -40,6 +47,20 @@
   "last_week": 1807.9,
   "avg_4w": 2042.5,
   "change_pct": 2.7
+ },
+ {
+  "keyword": "더스타스파펜션",
+  "this_week": 0.0,
+  "last_week": 0.0,
+  "avg_4w": 4.3,
+  "change_pct": 0
+ },
+ {
+  "keyword": "강화 보헤미안펜션",
+  "this_week": 0.0,
+  "last_week": 0.0,
+  "avg_4w": 0.0,
+  "change_pct": 0
  },
  {
   "keyword": "강화도 장어",
@@ -96,6 +117,20 @@
   "last_week": 99.4,
   "avg_4w": 112.1,
   "change_pct": -23.6
+ },
+ {
+  "keyword": "바다노을캠핑장",
+  "this_week": 23.2,
+  "last_week": 32.3,
+  "avg_4w": 32.8,
+  "change_pct": -28.3
+ },
+ {
+  "keyword": "만선꽃게랑낙지",
+  "this_week": 7.7,
+  "last_week": 12.6,
+  "avg_4w": 10.3,
+  "change_pct": -39.4
  },
  {
   "keyword": "강화도 드라이브",

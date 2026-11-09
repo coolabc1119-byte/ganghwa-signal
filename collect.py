@@ -168,12 +168,28 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
     start = end - timedelta(days=days - 1)
     dates = ymd_list(start, end)
     headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
-    series = {}
+    series, errs = {}, []
     for i in range(0, len(rows), 5):
         chunk = rows[i:i + 5]
         body = {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
                 "keywordGroups": [{"groupName": r["keyword"], "keywords": [r["keyword"]]} for r in chunk]}
-        res = http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", body)
+        res, last = None, None
+        for attempt in range(3):
+            try:
+                res = http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", body)
+                break
+            except Exception as e:
+                last = e
+                body_txt = ""
+                if hasattr(e, "read"):
+                    try:
+                        body_txt = e.read().decode("utf-8", "ignore")[:120]
+                    except Exception:
+                        pass
+                errs.append(f"묶음{i//5+1} 시도{attempt+1}: {type(e).__name__} {str(e)[:40]} {body_txt}")
+                time.sleep(1.5 * (attempt + 1))
+        if res is None:
+            continue
         for g in res.get("results", []):
             m = {d["period"]: d["ratio"] for d in g.get("data", [])}
             rel = [m.get(d, 0) for d in dates]
@@ -182,7 +198,9 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
             if rel30 > 0 and vol:
                 sc = vol / rel30
                 series[g["title"]] = [round(x * sc, 1) for x in rel]
-        time.sleep(0.3)
+        time.sleep(0.6)
+    if errs:
+        ERRORS["discovery_chunks"] = errs[:8]
     if not series:
         raise RuntimeError("발굴 키워드 데이터랩 응답 없음")
     return {"dates": dates, "series": series, "note": "검색광고 상위 키워드의 일별 추정 검색 횟수(회/일)", "live": True}

@@ -102,7 +102,11 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 td.kw{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-left:6px;vertical-align:2px}
 th,td{white-space:nowrap}
-@media(max-width:560px){.bar{display:none!important} table{font-size:12.5px} th,td{padding:8px 6px}}
+@media(max-width:560px){.bar{display:none!important} table{font-size:12px} th,td{padding:8px 4px} td.kw{max-width:calc(100vw - 250px)} small.thd{font-size:9px} #volume td:first-child,#volume th:first-child{padding-left:0;width:18px} #cmp td .base{font-size:10px} #cmp td.n{font-size:11.5px}  #cmp .base i{display:none} #cmp td:first-child{white-space:normal;word-break:keep-all}}
+.basis{display:grid;gap:4px;margin:0 0 12px;padding:10px 12px;border-radius:10px;background:var(--cold-bg);font-size:12.5px}
+.basis div{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.basis span{color:var(--sub)} .basis b{font-family:var(--mono);font-weight:600;color:var(--ink)}
+small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-family:var(--mono);letter-spacing:0;margin-top:1px}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -173,6 +177,7 @@ details.how .srcs::before{content:'데이터 출처';display:block;font-weight:7
 .daypick{display:flex;gap:6px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none} .daypick::-webkit-scrollbar{display:none}
 .dp{flex:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:10px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer;text-align:center;min-width:54px}
 .dp b{display:block;font-family:var(--mono);font-size:13px;color:var(--ink)} .dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+@media(max-width:560px){td.big small{display:none} #cmp th,#cmp td{padding:8px 4px}}
 td.big{font-family:var(--mono);font-size:15px;font-weight:600;text-align:right;white-space:nowrap} td.big small{font-size:11px;color:var(--faint);font-weight:400}
 td .base{display:block;font-size:11px;color:var(--faint);font-family:var(--mono)}
 tr.ref td{color:var(--sub);background:var(--soft)}
@@ -241,6 +246,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
     <div class="card"><h2>날짜별 비교 — 같은 요일끼리 <span class="chip" id="c-cmp"></span></h2>
       <div class="sub" id="cmpSub"></div>
       <div class="daypick" id="daypick"></div>
+      <div class="basis" id="cmpBasis"></div>
       <div style="overflow-x:auto"><table id="cmp"></table></div>
     </div>
     <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
@@ -273,8 +279,9 @@ tr.ref td{color:var(--sub);background:var(--soft)}
     <div class="card">
       <h2>핫키워드 — 강화도 검색어 순위 <span class="chip" id="c-disc"></span></h2>
       <div class="sub" id="discSub"></div>
+      <div class="basis" id="discBasis"></div>
       <div class="controls"><div class="seg" id="dper"><button data-p="day">어제</button><button data-p="week" class="on">최근 7일</button><button data-p="month">최근 30일</button></div>
-        <input type="search" id="q" placeholder="걸러보기 (예: 게, 칼국수, 카페)">
+        <input type="search" id="q" placeholder="필터 검색 (예: 게, 칼국수, 카페)">
         <div class="seg" id="dfilter"><button data-f="all" class="on">전체</button><button data-f="food">먹거리</button><button data-f="place">장소·여행</button></div></div>
       <table id="volume"></table>
     </div>
@@ -429,11 +436,11 @@ function renderBrief(){
   document.getElementById('bmeta').innerHTML=`<b>큰 %</b> = 그날 예상 손님 ÷ <b>평소 같은 요일</b>(최근 8주 보통 수준) · <b>아래 두 줄</b> = 같은 예상을 <b>지난달 같은 요일 평균</b>, <b>작년 같은 달 같은 요일 평균</b>(실제값)과 비교<br>평소 평일 <b class="mono">${fmt(b.weekday_base)}명</b> · 평소 토 <b class="mono">${fmt(b.weekday_median['토'])}명</b> · 강화군 외지인 기준`+(b.last_visitor_data?` · 방문자 실제값 ~${md(b.last_visitor_data)}`:'');
   const cp=(c,wd)=>{ if(!c) return ''; const r=(lab,x)=>{ const m=x&&x.ym?+x.ym.slice(5)+'월':''; if(!x||x.pct==null) return `<div><span>${lab}</span><span class="muted">–</span></div>`; const p=x.pct; return `<div title="${x.ym} ${wd}요일 평균 ${fmt(x.base)}명"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
     const lm=c.prev_month?.ym?+c.prev_month.ym.slice(5)+'월':'전월';
-    return `<div class="cp">${r(lm,c.prev_month)}${r('작년',c.yoy_month)}</div>`; };
+    return `<div class="cp">${r('vs '+lm,c.prev_month)}${r('vs 작년',c.yoy_month)}</div>`; };
   document.getElementById('bdays').innerHTML=b.days.map((d,i)=>{ const w=d.weather||{}; const we=d.wd==='토'||d.wd==='일';
     return `<div class="day ${i===0?'today':''} ${we?'we':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div>
       <div class="wx">${w.code!=null?`<b>${WXI(w.code)}</b>${w.tmax!=null?Math.round(w.tmax)+'°':''}${w.pop!=null&&w.pop>=30?` 비${w.pop}%`:''}`:''}</div>
-      <div class="pct-l">평소 대비</div>
+      <div class="pct-l">vs 평소 ${d.wd}</div>
       <div class="pct ${d.level}">${d.vs_weekday_pct>0?'+':''}${d.vs_weekday_pct}%</div>
       <div class="v">${fmt(d.est_visitors)}명${d.est_store!=null?` · 가게≈${fmt(d.est_store)}`:''}</div>
       ${cp(d.cmp,d.wd)}<div class="tg">${d.tags.join(', ')}</div></div>`; }).join('');
@@ -520,9 +527,10 @@ function renderCmp(){
   const kws=[...D.meta.groups[state.group]]; const ref='강화도 맛집'; if(!kws.includes(ref)) kws.push(ref);
   const tiny=new Set(D.compare.filter(r=>r.tiny).map(r=>r.keyword));
   const pc=(cur,base)=>base==null||!base.v?null:(cur-base.v)/base.v*100;
-  const cell=(p,base)=>p==null?`<td class="n muted">–</td>`:`<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%<span class="base">${fmt(base.v)}회</span></td>`;
-  document.getElementById('cmpSub').innerHTML=`<b>${state.cmpDay} (${WD[wd]})</b> 하루 네이버 검색 횟수(회, 추정) · 전주 = ${md(shift(state.cmpDay,-7))} · 전월 = ${+pm.slice(5)}월 ${WD[wd]}요일 평균 · 전년 = ${py.slice(0,4)}년 ${+py.slice(5)}월 ${WD[wd]}요일 평균`;
-  document.getElementById('cmp').innerHTML=`<tr><th>메뉴</th><th class="n">그날</th><th class="n">전주 ${WD[wd]}</th><th class="n">전월 ${WD[wd]}평균</th><th class="n">전년 ${WD[wd]}평균</th></tr>`+kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7]}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py); const isRef=k===ref&&!D.meta.groups[state.group].includes(ref);
+  const cell=(p,base)=>p==null?`<td class="n muted">–</td>`:`<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%<span class="base">${fmt(base.v)}<i>회</i></span></td>`;
+  document.getElementById('cmpBasis').innerHTML=`<div><span>그날</span><b>${md(state.cmpDay)}(${WD[wd]}) 하루 검색 횟수</b></div><div><span>전주 증감</span><b>vs ${md(shift(state.cmpDay,-7))}(${WD[wd]}) 하루</b></div><div><span>전월 증감</span><b>vs ${+pm.slice(5)}월 ${WD[wd]}요일 평균</b></div><div><span>전년 증감</span><b>vs ${py.slice(0,4)}년 ${+py.slice(5)}월 ${WD[wd]}요일 평균</b></div>`;
+  document.getElementById('cmpSub').innerHTML=`네이버 하루 검색 횟수(회, 추정) · 아래 날짜를 고르면 그날 기준으로 다시 계산`;
+  document.getElementById('cmp').innerHTML=`<tr><th>메뉴</th><th class="n">그날<small class="thd">${md(state.cmpDay)}</small></th><th class="n">전주<small class="thd">${md(shift(state.cmpDay,-7))}</small></th><th class="n">전월<small class="thd">${+pm.slice(5)}월</small></th><th class="n">전년<small class="thd">'${py.slice(2,4)}.${+py.slice(5)}월</small></th></tr>`+kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7]}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py); const isRef=k===ref&&!D.meta.groups[state.group].includes(ref);
     if(tiny.has(k)) return `<tr><td>${short(k)}<span class="tag">검색량 적음</span></td><td class="big muted">–</td><td class="n muted" colspan="3">너무 적어 비교 생략</td></tr>`;
     return `<tr class="${isRef?'ref':''}"><td>${isRef?k+'<span class="tag">기준</span>':short(k)}</td><td class="big">${cur==null?'–':fmt(cur)+'<small>회</small>'}</td>${cell(pc(cur,w),w)}${cell(pc(cur,m),m)}${cell(pc(cur,y),y)}</tr>`; }).join('');
 }
@@ -553,8 +561,8 @@ function renderWd(){
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}
   const row=(lab,k)=>{ const x=e[k]; if(!x) return ''; const p=(x.factor-1)*100; return `<tr><td>${lab}</td><td class="n ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</td><td class="n muted">${x.measured?x.n+'일 실측':'기본값(자료 부족)'}</td></tr>`; };
-  document.getElementById('wxeff').innerHTML=`<table><tr><th>날씨</th><th class="n">주말 손님</th><th class="n">근거</th></tr>${row('비 조금 (1~5mm)','we1')}${row('비 (5mm↑ 또는 60%↑)','we2')}${row('많은 비·눈 (20mm↑)','we3')}</table>
-    <table style="margin-top:10px"><tr><th>날씨</th><th class="n">평일 손님</th><th class="n">근거</th></tr>${row('비 조금','wd1')}${row('비','wd2')}${row('많은 비·눈','wd3')}</table>`;
+  document.getElementById('wxeff').innerHTML=`<table><tr><th>날씨</th><th class="n">주말 손님 증감<small class="thd">vs 같은 시기 비 안 온 주말</small></th><th class="n">근거</th></tr>${row('비 조금 (1~5mm)','we1')}${row('비 (5mm↑ 또는 60%↑)','we2')}${row('많은 비·눈 (20mm↑)','we3')}</table>
+    <table style="margin-top:10px"><tr><th>날씨</th><th class="n">평일 손님 증감<small class="thd">vs 같은 시기 비 안 온 평일</small></th><th class="n">근거</th></tr>${row('비 조금','wd1')}${row('비','wd2')}${row('많은 비·눈','wd3')}</table>`;
 }
 
 /* ================= 키워드 발굴 ================= */
@@ -572,12 +580,14 @@ function discRank(){
       else { cur=sum(v,n-7,n); prev=sum(v,n-14,n-7); }  // 최근 7일 vs 직전 7일
       rows.push({keyword:k,cur,prev,tracked:vol[k]?.tracked});
     }
-    lab = per==='day'? `${last} (${WD[dow(last)]}) 하루 검색 횟수(회)` : `${md(dd.dates[n-7])}~${md(last)} 7일 합계 검색 횟수(회)`;
-    prevLab = per==='day'? `지난주 같은 요일(${md(dd.dates[n-8])}) 대비` : `직전 7일(${md(dd.dates[n-14])}~${md(dd.dates[n-8])}) 대비`;
+    lab = per==='day'? `${md(last)}(${WD[dow(last)]}) 하루` : `${md(dd.dates[n-7])}~${md(last)} 7일 합계`;
+    prevLab = per==='day'? `${md(dd.dates[n-8])}(${WD[dow(dd.dates[n-8])]}) 하루 — 지난주 같은 요일` : `${md(dd.dates[n-14])}~${md(dd.dates[n-8])} 7일 합계 — 직전 7일`;
   } else {
     const n=dd?.dates?.length||0;
     rows=(D.volume_monthly?.rows||[]).map(r=>{ const v=dd?.series?.[r.keyword]; return {keyword:r.keyword,cur:r.total,prev:v&&n>=60?sum(v,n-60,n-30):null,tracked:r.tracked,under10:r.under10}; });
-    lab='최근 한 달 검색 횟수(회/월)'; prevLab='직전 30일 대비 (상위 60개만 계산)';
+    const last=dd?.dates?.[n-1];
+    lab = last? `${md(shift(last,-29))}~${md(last)} 30일 합계` : '최근 30일 합계';
+    prevLab = last? `${md(shift(last,-59))}~${md(shift(last,-30))} 30일 합계 — 직전 30일 (상위 60개만)` : '직전 30일';
   }
   // 이전 기간 순위
   const prevSorted=[...rows].filter(r=>r.prev!=null).sort((a,b)=>b.prev-a.prev); const prank=Object.fromEntries(prevSorted.map((r,i)=>[r.keyword,i+1]));
@@ -586,12 +596,15 @@ function discRank(){
 }
 function renderVolume(){
   const {rows:all,lab,prevLab}=discRank();
-  document.getElementById('discSub').innerHTML=`단위: <b>${lab}</b> · 증감 = ${prevLab} · ▲▼숫자 = 순위 변동 · 파란 점 = 메뉴 검색 탭에서 추적 중`;
+  document.getElementById('discSub').innerHTML=`네이버 검색 횟수(회) · 파란 점 = 메뉴 검색 탭에서 추적 중인 키워드`;
+  const [curP,prevP]=[lab,prevLab.split(' — ')[0]];
+  document.getElementById('discBasis').innerHTML=`<div><span>검색(회)</span><b>${lab}</b></div><div><span>증감 · 순위 비교 대상</span><b>${prevLab}</b></div>`;
+  state._hdr={cur:{day:'어제 하루',week:'최근 7일',month:'최근 30일'}[state.dper], prev:{day:'지난주 '+(D.discovery_daily?.dates?.length?WD[dow(D.discovery_daily.dates.at(-1))]:''),week:'직전 7일',month:'직전 30일'}[state.dper]};
   const q=document.getElementById('q').value.trim(); let rows=all; if(q) rows=rows.filter(r=>r.keyword.includes(q));
   if(state.dfilter==='food') rows=rows.filter(r=>FOOD.test(r.keyword)); else if(state.dfilter==='place') rows=rows.filter(r=>PLACE.test(r.keyword)&&!FOOD.test(r.keyword));
   rows=rows.slice(0,100); const max=Math.max(1,...rows.map(r=>r.cur||0));
   const rk=r=>{ if(!r.prank) return '<span class="muted" style="font-size:10px">NEW</span>'; const d=r.prank-r.rank; return d===0?'<span class="muted">–</span>':`<span class="${d>0?'up':'down'}">${d>0?'▲':'▼'}${Math.abs(d)}</span>`; };
-  document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)</th><th class="n">증감</th><th class="n">순위</th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td class="kw" title="${r.keyword}">${r.keyword}${r.tracked?'<span class="tdot" title="추적 중"></span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
+  document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)<small class="thd">${state._hdr.cur}</small></th><th class="n">증감<small class="thd">vs ${state._hdr.prev}</small></th><th class="n">순위<small class="thd">vs 이전</small></th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td class="kw" title="${r.keyword}">${r.keyword}${r.tracked?'<span class="tdot" title="추적 중"></span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
 }
 function renderNews(){ const it=(D.news_log?.items||[]).slice(0,30); document.getElementById('newslist').innerHTML=it.length? it.map(n=>`<div class="al"><span class="d">${n.date.slice(5).replace('-','/')}</span><span>${n.tv?'📺 ':''}<a href="${n.link}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink2)">${n.title}</a></span></div>`).join('') : '<div class="empty">뉴스 없음</div>'; }
 function renderAbout(){

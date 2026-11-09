@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "0.2",
- "updated_at": "2026-11-09 12:52 KST",
+ "updated_at": "2026-11-09 13:26 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -14,9 +14,9 @@
   "naver_news": "sample"
  },
  "keys_present": {
-  "NAVER_CLIENT_ID": true,
-  "NAVER_CLIENT_SECRET": false,
-  "NAVER_AD_API_KEY": true,
+  "NAVER_CLIENT_ID": false,
+  "NAVER_CLIENT_SECRET": true,
+  "NAVER_AD_API_KEY": false,
   "NAVER_AD_SECRET": false,
   "NAVER_AD_CUSTOMER_ID": false,
   "KAKAO_REST_KEY": false,

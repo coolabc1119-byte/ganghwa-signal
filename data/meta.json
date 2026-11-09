@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "0.2",
- "updated_at": "2026-11-09 13:35 KST",
+ "updated_at": "2026-11-09 13:36 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -22,9 +22,18 @@
   "KAKAO_REST_KEY": false,
   "DATA_GO_KR_KEY": false
  },
+ "key_lengths": {
+  "NAVER_CLIENT_ID": 20,
+  "NAVER_CLIENT_SECRET": 10,
+  "NAVER_AD_API_KEY": 0,
+  "NAVER_AD_SECRET": 0,
+  "NAVER_AD_CUSTOMER_ID": 7,
+  "KAKAO_REST_KEY": 0,
+  "DATA_GO_KR_KEY": 0
+ },
  "errors": {
-  "datalab": "HTTPError: HTTP Error 401: Unauthorized",
-  "naver_news": "HTTPError: HTTP Error 401: Unauthorized"
+  "datalab": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
+  "naver_news": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
  },
  "mode": "sample",
  "store": {

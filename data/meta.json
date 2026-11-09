@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "0.4",
- "updated_at": "2026-11-09 19:09 KST",
+ "updated_at": "2026-11-09 19:16 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -33,14 +33,14 @@
  },
  "errors": {
   "tour_api_chunks": [
+   "2026-11-04~2026-11-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-10-05~2026-11-03: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2026-07-07~2026-08-05: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2026-06-07~2026-07-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2026-05-08~2026-06-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
-   "2026-04-08~2026-05-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
-   "2026-03-09~2026-04-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
-   "2026-02-07~2026-03-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests"
+   "2026-04-08~2026-05-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests"
   ],
-  "tour_api_calls": 29
+  "tour_api_calls": 12
  },
  "mode": "partial",
  "store": {

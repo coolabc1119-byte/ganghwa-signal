@@ -2,7 +2,7 @@
  "generated": "2026-11-09",
  "sample": false,
  "last_visitor_data": "2026-10-10",
- "weather_live": true,
+ "weather_live": false,
  "trend_factor": 0.944,
  "weekday_median": {
   "월": 32387,
@@ -16,57 +16,57 @@
  "weekday_base": 32438,
  "weather_effect": {
   "we1": {
-   "factor": 0.953,
-   "n": 6,
+   "factor": 0.978,
+   "n": 10,
    "measured": true
   },
   "we2": {
-   "factor": 0.873,
-   "n": 8,
+   "factor": 0.92,
+   "n": 7,
    "measured": true
   },
   "we3": {
-   "factor": 0.854,
+   "factor": 0.903,
    "n": 7,
    "measured": true
   },
   "wd1": {
-   "factor": 0.89,
-   "n": 15,
+   "factor": 1.003,
+   "n": 21,
    "measured": true
   },
   "wd2": {
-   "factor": 0.874,
+   "factor": 0.993,
    "n": 15,
    "measured": true
   },
   "wd3": {
-   "factor": 0.767,
+   "factor": 1.011,
    "n": 16,
    "measured": true
   }
  },
  "capture_per_10k": null,
  "sales_days": 0,
- "summary": "토요일 평소보다 -18% (비 예보) · 일요일 평소보다 -10% (비 조금) · 줄이기: 꽃게, 칼국수 재료, 돼지갈비(젓국갈비), 낙지",
+ "summary": "토요일 평소보다 -13% (비 예보) · 일요일 평소 수준",
  "days": [
   {
    "date": "2026-11-09",
    "wd": "월",
-   "est_visitors": 30945,
-   "level": "normal",
-   "vs_weekday_pct": -4,
-   "x_weekday": 0.95,
+   "est_visitors": 35158,
+   "level": "busy",
+   "vs_weekday_pct": 9,
+   "x_weekday": 1.08,
    "tags": [
     "비 예보"
    ],
    "weather": {
-    "code": 2,
-    "text": "구름",
-    "tmax": 10.0,
-    "tmin": 2.9,
-    "rain": 0.0,
-    "pop": 94,
+    "code": 0,
+    "text": "맑음",
+    "tmax": 12.7,
+    "tmin": 4.7,
+    "rain": 0,
+    "pop": 60,
     "src": "forecast"
    },
    "cmp": {
@@ -79,48 +79,50 @@
     "yoy_month": {
      "base": 33614,
      "n": 1,
-     "pct": -7.9,
+     "pct": 4.6,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 1.157,
-   "weather_factor": 0.874
+   "weather_factor": 0.993
   },
   {
    "date": "2026-11-10",
    "wd": "화",
-   "est_visitors": 34906,
-   "level": "normal",
-   "vs_weekday_pct": 7,
-   "x_weekday": 1.08,
-   "tags": [],
+   "est_visitors": 35290,
+   "level": "busy",
+   "vs_weekday_pct": 8,
+   "x_weekday": 1.09,
+   "tags": [
+    "많은 비·눈"
+   ],
    "weather": {
-    "code": 1,
-    "text": "맑음",
-    "tmax": 9.8,
-    "tmin": 0.4,
-    "rain": 0.0,
-    "pop": 0,
+    "code": 63,
+    "text": "비",
+    "tmax": 12.2,
+    "tmin": 4.2,
+    "rain": 30,
+    "pop": 60,
     "src": "forecast"
    },
    "cmp": {
     "prev_month": {
      "base": 30832,
      "n": 1,
-     "pct": 13.2,
+     "pct": 14.5,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 33943,
      "n": 1,
-     "pct": 2.8,
+     "pct": 4.0,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 1.134,
-   "weather_factor": 1.0
+   "weather_factor": 1.011
   },
   {
    "date": "2026-11-11",
@@ -131,12 +133,12 @@
    "x_weekday": 1.05,
    "tags": [],
    "weather": {
-    "code": 3,
-    "text": "흐림",
-    "tmax": 14.0,
-    "tmin": 5.0,
-    "rain": 0.0,
-    "pop": 0,
+    "code": 0,
+    "text": "맑음",
+    "tmax": 13.1,
+    "tmin": 5.1,
+    "rain": 0,
+    "pop": 10,
     "src": "forecast"
    },
    "cmp": {
@@ -168,10 +170,10 @@
    "weather": {
     "code": 2,
     "text": "구름",
-    "tmax": 14.5,
-    "tmin": 4.9,
-    "rain": 0.1,
-    "pop": 0,
+    "tmax": 10.8,
+    "tmin": 2.8,
+    "rain": 0,
+    "pop": 20,
     "src": "forecast"
    },
    "cmp": {
@@ -195,25 +197,27 @@
   {
    "date": "2026-11-13",
    "wd": "금",
-   "est_visitors": 36475,
+   "est_visitors": 36220,
    "level": "normal",
    "vs_weekday_pct": -6,
    "x_weekday": 1.12,
-   "tags": [],
+   "tags": [
+    "비 예보"
+   ],
    "weather": {
-    "code": 45,
-    "text": "안개",
-    "tmax": 15.3,
-    "tmin": 5.7,
-    "rain": 0.0,
-    "pop": 4,
+    "code": 2,
+    "text": "구름",
+    "tmax": 13.6,
+    "tmin": 5.6,
+    "rain": 0,
+    "pop": 60,
     "src": "forecast"
    },
    "cmp": {
     "prev_month": {
      "base": 39784,
      "n": 1,
-     "pct": -8.3,
+     "pct": -9.0,
      "ym": "2026-10"
     },
     "yoy_month": {
@@ -225,91 +229,89 @@
    },
    "est_store": null,
    "seasonal": 1.0,
-   "weather_factor": 1.0
+   "weather_factor": 0.993
   },
   {
    "date": "2026-11-14",
    "wd": "토",
-   "est_visitors": 66492,
+   "est_visitors": 70071,
    "level": "normal",
-   "vs_weekday_pct": -18,
-   "x_weekday": 2.05,
+   "vs_weekday_pct": -13,
+   "x_weekday": 2.16,
    "tags": [
     "비 예보"
    ],
    "weather": {
-    "code": 55,
-    "text": "이슬비",
-    "tmax": 9.9,
-    "tmin": 6.6,
-    "rain": 6.0,
-    "pop": 76,
+    "code": 63,
+    "text": "비",
+    "tmax": 11.5,
+    "tmin": 3.5,
+    "rain": 12,
+    "pop": 60,
     "src": "forecast"
    },
    "cmp": {
     "prev_month": {
      "base": 102949,
      "n": 1,
-     "pct": -35.4,
+     "pct": -31.9,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 88504,
      "n": 1,
-     "pct": -24.9,
+     "pct": -20.8,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 1.0,
-   "weather_factor": 0.873
+   "weather_factor": 0.92
   },
   {
    "date": "2026-11-15",
    "wd": "일",
-   "est_visitors": 64034,
+   "est_visitors": 67192,
    "level": "normal",
-   "vs_weekday_pct": -10,
-   "x_weekday": 1.97,
-   "tags": [
-    "비 조금"
-   ],
+   "vs_weekday_pct": -6,
+   "x_weekday": 2.07,
+   "tags": [],
    "weather": {
-    "code": 53,
-    "text": "이슬비",
-    "tmax": 17.2,
-    "tmin": 5.0,
-    "rain": 3.3,
-    "pop": 55,
+    "code": 2,
+    "text": "구름",
+    "tmax": 11.3,
+    "tmin": 3.3,
+    "rain": 0,
+    "pop": 10,
     "src": "forecast"
    },
    "cmp": {
     "prev_month": {
      "base": 109907,
      "n": 1,
-     "pct": -41.7,
+     "pct": -38.9,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 83342,
      "n": 1,
-     "pct": -23.2,
+     "pct": -19.4,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 1.0,
-   "weather_factor": 0.953
+   "weather_factor": 1.0
   }
  ],
  "outlook": [
   {
    "start": "2026-11-09",
    "end": "2026-11-15",
-   "sat": 66492,
-   "sun": 64034,
-   "weekday": 35395,
-   "week_total": 308580,
+   "sat": 70071,
+   "sun": 67192,
+   "weekday": 36544,
+   "week_total": 319659,
    "last_year_total": null,
    "holidays": [],
    "weather_applied": true
@@ -355,11 +357,11 @@
     "꽃게탕",
     "간장게장"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.04,
+   "action": "keep",
+   "mult_weekend": 0.91,
+   "mult_weekday": 1.07,
    "reasons": [
-    "주말 손님 평소보다 -14%",
+    "주말 손님 평소보다 -9%",
     "검색 전월 대비 -35% (제철 끝물)"
    ],
    "note": "서해 꽃게 금어기 6/21~8/20(인천). 가을 수꽃게 9~11월, 봄 암꽃게 4~6월. 추석 전주 제수·선물 수요",
@@ -372,11 +374,11 @@
    "menus": [
     "칼국수"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.04,
+   "action": "keep",
+   "mult_weekend": 0.91,
+   "mult_weekday": 1.07,
    "reasons": [
-    "주말 손님 평소보다 -14%",
+    "주말 손님 평소보다 -9%",
     "검색 전월 대비 -32%"
    ],
    "note": "면·육수 재료. 추울수록 수요 ↑",
@@ -389,11 +391,11 @@
    "menus": [
     "젓국갈비"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.04,
+   "action": "keep",
+   "mult_weekend": 0.91,
+   "mult_weekday": 1.07,
    "reasons": [
-    "주말 손님 평소보다 -14%"
+    "주말 손님 평소보다 -9%"
    ],
    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
    "in_season": false,
@@ -406,11 +408,11 @@
     "연포탕",
     "낙지"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.04,
+   "action": "keep",
+   "mult_weekend": 0.91,
+   "mult_weekday": 1.07,
    "reasons": [
-    "주말 손님 평소보다 -14%",
+    "주말 손님 평소보다 -9%",
     "검색량 적어 손님 수만으로 판단"
    ],
    "note": "낙지 금어기 6/21~7/20(지역별 상이). 가을이 제철. 검색 유입은 거의 없어 꽃게 손님의 곁들임 메뉴로 봄",
@@ -421,8 +423,8 @@
  ],
  "staff": [],
  "alerts": [],
- "weekend_ratio": 0.86,
- "weekday_ratio": 1.042,
+ "weekend_ratio": 0.905,
+ "weekday_ratio": 1.07,
  "broadcast_recent": [],
  "broadcast_auto": [
   {

@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "2.2",
- "updated_at": "2026-11-09 22:32 KST",
+ "updated_at": "2026-11-09 22:36 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -12,7 +12,7 @@
   "discovery": "live",
   "tour_api": "live",
   "naver_news": "live",
-  "weather": "live"
+  "weather": "sample"
  },
  "keys_present": {
   "NAVER_CLIENT_ID": true,
@@ -33,15 +33,16 @@
  "errors": {
   "tour_api_chunks": [
    "2026-01-08~2026-02-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
-   "2025-12-09~2026-01-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2025-12-09~2026-01-07: 접속 실패 URLError: <urlopen error _ssl.c:994: The handshake operation timed out>",
    "2025-11-09~2025-12-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2025-10-10~2025-11-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2026-11-04~2026-11-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2026-10-05~2026-11-03: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests"
   ],
-  "tour_api_calls": 12
+  "tour_api_calls": 12,
+  "weather": "HTTPError: HTTP Error 503: Service Unavailable {\"reason\":\"The service is overloaded\",\"error\":true}"
  },
- "mode": "live",
+ "mode": "partial",
  "store": {
   "name": "선두리 만선꽃게랑낙지",
   "address": "인천 강화군 길상면 선두리",

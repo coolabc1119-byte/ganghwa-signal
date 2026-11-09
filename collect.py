@@ -422,7 +422,15 @@ def fetch_weather(start, end):
     # 예보: 최근 7일(과거 보정) + 앞 7일
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "daily": daily, "timezone": "Asia/Seoul",
                                 "past_days": 7, "forecast_days": 8})
-    res = http_json("https://api.open-meteo.com/v1/forecast?" + q, timeout=60)
+    res = None
+    for attempt in range(4):  # Open-Meteo가 가끔 503(과부하) → 재시도
+        try:
+            res = http_json("https://api.open-meteo.com/v1/forecast?" + q, timeout=60)
+            break
+        except Exception:
+            if attempt == 3:
+                raise
+            time.sleep(8 * (attempt + 1))
     d = res.get("daily", {})
     today = datetime.now(KST).date().isoformat()
     for i, day in enumerate(d.get("time", [])):
@@ -746,6 +754,14 @@ def main():
             ERRORS[name] = f"{type(e).__name__}: {str(e)[:120]} {body}".strip()
             res = None
         if res is None:
+            # 실패하면 샘플 대신 직전에 받은 실데이터를 그대로 사용 (가짜 수치가 예측에 섞이지 않게)
+            prev_file = {"keyword_tool": "volume_monthly.json", "datalab": "trend_daily_raw.json", "discovery": "discovery_daily.json",
+                         "tour_api": "visitors.json", "naver_news": "news_log.json", "weather": "weather.json"}.get(name)
+            prev_meta = load_existing("meta.json", {}).get("sources", {})
+            if prev_file and prev_meta.get(name) in ("live", "stale") and os.path.exists(os.path.join(DATA_DIR, prev_file)):
+                sources[name] = "stale"
+                log(f"{name}: 직전 실데이터 재사용")
+                return load_existing(prev_file, None)
             sources[name] = "sample"
             return sample_fn()
         sources[name] = "live"
@@ -760,6 +776,8 @@ def main():
     weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
     save("weather.json", weather)
 
+    if sources.get("datalab") == "live":
+        save("trend_daily_raw.json", trend)
     trend = to_counts(trend, volume)
     save("trend_daily.json", trend)
     save("volume_monthly.json", volume)
@@ -792,7 +810,7 @@ def main():
             "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
             "NAVER_AD_CUSTOMER_ID", "DATA_GO_KR_KEY")},
         "errors": ERRORS,
-        "mode": "live" if all(v == "live" for v in sources.values()) else "partial" if any(v == "live" for v in sources.values()) else "sample",
+        "mode": "live" if all(v in ("live", "stale") for v in sources.values()) else "partial" if any(v == "live" for v in sources.values()) else "sample",
         "store": cfg["store"], "groups": cfg["groups"], "broadcast_log": cfg["broadcast_log"],
     })
     log("완료: " + json.dumps(sources, ensure_ascii=False))

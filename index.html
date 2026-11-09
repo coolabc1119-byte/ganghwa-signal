@@ -339,10 +339,10 @@ async function init(){
   document.getElementById('freshnext').textContent='· 매일 07:30 자동 갱신';
   const S=m.sources, L={datalab:'네이버 검색',keyword_tool:'검색광고',tour_api:'방문자',naver_news:'뉴스',weather:'날씨'};
   const lastV=D.visitors?.dates?.at(-1), lastT=D.trend_daily?.dates?.at(-1);
-  document.getElementById('health').innerHTML=`<span class="src upd"><i class="${ageH>30?'err':ageH>26?'off':''}"></i><b>업데이트 ${upd.slice(5)}</b></span>`+Object.keys(L).map(k=>`<span class="src"><i class="${S[k]==='live'?'':'off'}"></i>${L[k]} <b>${S[k]==='live'?'실데이터':'샘플'}</b></span>`).join('')+`<span class="right">검색 ~${lastT?md(lastT):'–'} · 방문자 ~${lastV?md(lastV):'–'}</span>`;
-  const sampleSrc=Object.keys(L).filter(k=>S[k]!=='live');
+  document.getElementById('health').innerHTML=`<span class="src upd"><i class="${ageH>30?'err':ageH>26?'off':''}"></i><b>업데이트 ${upd.slice(5)}</b></span>`+Object.keys(L).map(k=>`<span class="src"><i class="${S[k]==='live'?'':S[k]==='stale'?'off':'err'}"></i>${L[k]} <b>${S[k]==='live'?'실데이터':S[k]==='stale'?'직전 실데이터':'샘플'}</b></span>`).join('')+`<span class="right">검색 ~${lastT?md(lastT):'–'} · 방문자 ~${lastV?md(lastV):'–'}</span>`;
+  const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
-  const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
+  const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
   chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-ol',['tour_api','weather']); chip('c-season',['tour_api']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로

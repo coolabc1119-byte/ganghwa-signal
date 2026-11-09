@@ -366,13 +366,13 @@ function renderBrief(){
   document.getElementById('bweek').textContent=`이번 주 준비 브리핑 · ${md(b.days[0].date)} ~ ${md(b.days[6].date)}`;
   document.getElementById('bsum').textContent=b.summary;
   document.getElementById('bmeta').innerHTML=`<b>큰 %</b> = 그날 예상 손님 ÷ <b>평소 같은 요일</b>(최근 8주 보통 수준) · <b>아래 두 줄</b> = 같은 예상을 <b>지난달 같은 요일 평균</b>, <b>작년 같은 달 같은 요일 평균</b>(실제값)과 비교<br>평소 평일 <b class="mono">${fmt(b.weekday_base)}명</b> · 평소 토 <b class="mono">${fmt(b.weekday_median['토'])}명</b> · 강화군 외지인 기준`+(b.last_visitor_data?` · 방문자 실제값 ~${md(b.last_visitor_data)}`:'');
-  const cp=(c,wd)=>{ if(!c) return ''; const r=(lab,x)=>{ const m=x&&x.ym?+x.ym.slice(5)+'월':''; if(!x||x.pct==null) return `<div><span>${lab}</span><span class="muted">집계 전</span></div>`; const p=x.pct; return `<div title="${x.ym} ${wd}요일 평균 ${fmt(x.base)}명"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
-    const lm=c.prev_month?.ym?+c.prev_month.ym.slice(5)+'월':'전월', ly=c.yoy_month?.ym?`작년 ${+c.yoy_month.ym.slice(5)}월`:'작년';
-    return `<div class="cp">${r(lm+' '+wd,c.prev_month)}${r(ly,c.yoy_month)}</div>`; };
+  const cp=(c,wd)=>{ if(!c) return ''; const r=(lab,x)=>{ const m=x&&x.ym?+x.ym.slice(5)+'월':''; if(!x||x.pct==null) return `<div><span>${lab}</span><span class="muted">–</span></div>`; const p=x.pct; return `<div title="${x.ym} ${wd}요일 평균 ${fmt(x.base)}명"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
+    const lm=c.prev_month?.ym?+c.prev_month.ym.slice(5)+'월':'전월';
+    return `<div class="cp">${r(lm,c.prev_month)}${r('작년',c.yoy_month)}</div>`; };
   document.getElementById('bdays').innerHTML=b.days.map((d,i)=>{ const w=d.weather||{}; const we=d.wd==='토'||d.wd==='일';
     return `<div class="day ${i===0?'today':''} ${we?'we':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div>
       <div class="wx">${w.code!=null?`<b>${WXI(w.code)}</b>${w.tmax!=null?Math.round(w.tmax)+'°':''}${w.pop!=null&&w.pop>=30?` 비${w.pop}%`:''}`:''}</div>
-      <div class="pct-l">평소 ${d.wd}요일 대비</div>
+      <div class="pct-l">평소 대비</div>
       <div class="pct ${d.level}">${d.vs_weekday_pct>0?'+':''}${d.vs_weekday_pct}%</div>
       <div class="v">${fmt(d.est_visitors)}명${d.est_store!=null?` · 가게≈${fmt(d.est_store)}`:''}</div>
       ${cp(d.cmp,d.wd)}<div class="tg">${d.tags.join(', ')}</div></div>`; }).join('');
@@ -382,8 +382,8 @@ function renderBrief(){
     `<b>명</b> = 강화군 전체 외지인 예상 인원(통신사 집계 기준) — 가게 손님 수가 아님. 매출 CSV를 넣으면 가게 기준이 추가됨`,
     `<b>날씨</b> = 예보에 비·눈이 있으면 과거 실측 배율 적용 (주말 비 ×${we.we2?.factor??'–'}, 많은 비·눈 ×${we.we3?.factor??'–'})`,
     `<b>예: 토 −12%</b> = 이번 토요일 예상 71,062명이 평소 토요일(최근 8주 보통 80,642명)보다 12% 적다는 뜻`,
-    `<b>10월 토 / 작년 11월</b> = 같은 예상을 지난달 토요일들 실제 평균, 작년 같은 달 토요일들 실제 평균과 비교 (연휴 제외)`,
-    `<b>집계 전</b> = 관광공사 방문자 실제값이 약 한 달 늦게 올라와 비교할 날이 아직 없음 — 매일 아침 자동으로 채워짐. 전주(지난주) 실제값은 이 지연 때문에 항상 비어 있어 뺐음`,
+    `<b>10월 / 작년</b> = 같은 예상을 지난달 같은 요일 실제 평균, 작년 같은 달 같은 요일 실제 평균과 비교 (연휴 제외). 예: 토요일 카드의 "10월 ▼31%" = 10월 토요일들 실제 평균보다 31% 적음`,
+    `<b>–</b> = 관광공사 방문자 실제값이 약 한 달 늦게 올라와 비교할 날이 아직 없음 — 매일 아침 자동으로 채워짐. 전주(지난주) 실제값은 이 지연 때문에 항상 비어 있어 뺐음`,
     `<b>색</b> = 평소 대비 −20%↓ 한산 · ±8% 평소 · +8%↑ 많음 · +20%↑ 매우 많음`
   ].map(x=>'<li>'+x+'</li>').join('');
 }

@@ -1,5 +1,23 @@
 [
  {
+  "keyword": "강화도 칼국수",
+  "week": {
+   "cur": 0.6,
+   "prev": 0.7,
+   "pct": -9.7
+  },
+  "month": {
+   "cur": 0.7,
+   "prev": 1.1,
+   "pct": -32.1
+  },
+  "yoy": {
+   "cur": 0.7,
+   "prev": 2.5,
+   "pct": -69.9
+  }
+ },
+ {
   "keyword": "강화도 꽃게탕",
   "week": {
    "cur": 0.9,
@@ -36,44 +54,6 @@
   }
  },
  {
-  "keyword": "강화도 낙지",
-  "tiny": true,
-  "week": {
-   "cur": 0.0,
-   "prev": 0.0,
-   "pct": null
-  },
-  "month": {
-   "cur": 0.005,
-   "prev": 0.157,
-   "pct": null
-  },
-  "yoy": {
-   "cur": 0.005,
-   "prev": 0.086,
-   "pct": null
-  }
- },
- {
-  "keyword": "강화도 연포탕",
-  "tiny": true,
-  "week": {
-   "cur": 0.0,
-   "prev": 0.0,
-   "pct": null
-  },
-  "month": {
-   "cur": 0.0,
-   "prev": 0.002,
-   "pct": null
-  },
-  "yoy": {
-   "cur": 0.0,
-   "prev": 0.0,
-   "pct": null
-  }
- },
- {
   "keyword": "강화도 젓국갈비",
   "week": {
    "cur": 0.7,
@@ -89,24 +69,6 @@
    "cur": 0.8,
    "prev": 0.7,
    "pct": 13.3
-  }
- },
- {
-  "keyword": "강화 젓국갈비",
-  "week": {
-   "cur": 0.2,
-   "prev": 0.2,
-   "pct": -20.2
-  },
-  "month": {
-   "cur": 0.2,
-   "prev": 0.3,
-   "pct": -19.3
-  },
-  "yoy": {
-   "cur": 0.2,
-   "prev": 0.4,
-   "pct": -34.1
   }
  },
  {

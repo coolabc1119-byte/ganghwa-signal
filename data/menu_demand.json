@@ -32,11 +32,20 @@
   "under10": false
  },
  {
-  "menu": "젓국갈비",
-  "monthly_search": 2920,
+  "menu": "칼국수",
+  "monthly_search": 3350,
   "keywords": [
-   "강화도젓국갈비",
-   "강화젓국갈비"
+   "강화도칼국수",
+   "강화도칼국수맛집"
+  ],
+  "mine": true,
+  "under10": false
+ },
+ {
+  "menu": "젓국갈비",
+  "monthly_search": 2210,
+  "keywords": [
+   "강화도젓국갈비"
   ],
   "mine": true,
   "under10": false
@@ -72,19 +81,15 @@
  },
  {
   "menu": "낙지",
-  "monthly_search": 40,
-  "keywords": [
-   "강화도낙지"
-  ],
+  "monthly_search": 0,
+  "keywords": [],
   "mine": true,
   "under10": false
  },
  {
   "menu": "연포탕",
-  "monthly_search": 30,
-  "keywords": [
-   "강화도연포탕"
-  ],
+  "monthly_search": 0,
+  "keywords": [],
   "mine": true,
   "under10": false
  }

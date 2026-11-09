@@ -42,20 +42,6 @@
   "change_pct": 2.7
  },
  {
-  "keyword": "강화도 낙지",
-  "this_week": 0.0,
-  "last_week": 0.0,
-  "avg_4w": 0.0,
-  "change_pct": 0
- },
- {
-  "keyword": "강화도 연포탕",
-  "this_week": 0.0,
-  "last_week": 0.0,
-  "avg_4w": 0.0,
-  "change_pct": 0
- },
- {
   "keyword": "강화도 장어",
   "this_week": 0.4,
   "last_week": 0.4,
@@ -84,6 +70,13 @@
   "change_pct": -7.9
  },
  {
+  "keyword": "강화도 칼국수",
+  "this_week": 0.6,
+  "last_week": 0.7,
+  "avg_4w": 0.8,
+  "change_pct": -9.7
+ },
+ {
   "keyword": "강화도 여행",
   "this_week": 1.2,
   "last_week": 1.4,
@@ -96,13 +89,6 @@
   "last_week": 0.2,
   "avg_4w": 0.2,
   "change_pct": -19.8
- },
- {
-  "keyword": "강화 젓국갈비",
-  "this_week": 0.2,
-  "last_week": 0.2,
-  "avg_4w": 0.3,
-  "change_pct": -20.2
  },
  {
   "keyword": "강화도 꽃게탕",

@@ -128,6 +128,16 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .ng .nd{font-family:var(--mono);font-size:12px;color:var(--ink2);font-weight:600;padding-top:1px} .ng .nl{min-width:0;display:grid;gap:6px} .ng .nd span{display:block;font-family:var(--sans);font-weight:400;color:var(--faint);font-size:11px}
 .ni{display:block;font-size:13.5px;line-height:1.45;color:var(--ink2);text-decoration:none;padding:2px 0;word-break:keep-all;overflow-wrap:anywhere} .ni:hover{color:var(--blue)}
 .tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
+.ys{display:grid;grid-template-columns:1fr 1fr;gap:10px} @media(max-width:560px){.ys{grid-template-columns:1fr}}
+.yc{background:var(--soft);border-radius:12px;padding:12px 14px} .yc .l{font-size:12px;color:var(--sub)} .yc .l span{display:block;font-size:11px;color:var(--faint)}
+.yc .v{font-family:var(--mono);font-size:28px;font-weight:700;margin:4px 0 2px;letter-spacing:-.02em} .yc .v.sm{font-family:var(--sans);font-size:22px}
+.yc .d{font-size:13px;font-family:var(--mono)} .yc .d .muted{font-family:var(--sans);font-size:12px}
+.cover{margin-top:10px;font-size:12px;color:var(--sub)} .cover b{font-family:var(--mono);color:var(--ink2)}
+.yg{display:grid;gap:0;font-size:13px} .yg4{grid-template-columns:44px minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr)}
+.yg>div{padding:7px 4px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.yg .h{font-size:11px;color:var(--faint);font-weight:600} .yg .h:not(:first-child){text-align:right}
+.yg .m{font-weight:600} .yg .m.we{color:var(--red)} .yg .n{text-align:right;font-family:var(--mono)}
+.rk{display:inline-block;font-size:10px;font-family:var(--sans);color:var(--sub);background:var(--soft2);border-radius:4px;padding:0 4px;margin-left:3px;vertical-align:1px} .rk.top{background:var(--hot-bg);color:var(--hot);font-weight:700}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -279,21 +289,35 @@ tr.ref td{color:var(--sub);background:var(--soft)}
   <!-- 방문자 -->
   <section class="panel" id="p-visit">
     <div class="card">
-      <h2>계절 흐름 — 월별 하루 평균 방문자 <span class="chip" id="c-season"></span></h2>
-      <div class="sub">단위: 명/일 · 연중 성수기·비수기 파악 · 작년(회색)과 올해(파랑) 같은 달 비교</div>
-      <div class="chart sm"><canvas id="mchart"></canvas></div>
+      <h2>올해 vs 작년 — 요약 <span class="chip" id="c-vis"></span></h2>
+      <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
+      <div id="ysum"></div>
     </div>
     <div class="card">
-      <h2>강화군 하루 외지인 방문자 <span class="chip" id="c-vis"></span></h2>
-      <div class="sub">단위: 명/일 · 한국관광공사(통신사 집계) · 약 한 달 늦게 올라옴 · 얇은 선 = 일별, 굵은 선 = 7일 평균 · 점 색 = 비 온 날</div>
+      <h2>월별 — 작년 실적과 올해 증감</h2>
+      <div class="sub" id="ymSub"></div>
+      <div class="chart sm"><canvas id="mchart"></canvas></div>
+      <div id="ymonth" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h2>요일별 — 작년 실적과 올해 증감</h2>
+      <div class="sub" id="ywSub"></div>
+      <div id="yweek"></div>
+    </div>
+    <div class="card">
+      <h2>꾸준히 늘고 있나 — 월별 전년 대비 증감</h2>
+      <div class="sub" id="ytSub"></div>
+      <div class="chart sm"><canvas id="ytrend"></canvas></div>
+      <div id="yverdict" style="margin-top:10px"></div>
+    </div>
+    <div class="card">
+      <h2>하루 방문자 흐름</h2>
+      <div class="sub">단위: 명/일 · 얇은 선 = 일별, 굵은 선 = 7일 평균 · 빨간 점 = 비 온 날(5mm↑) · 약 한 달 늦게 올라옴</div>
       <div class="controls"><div class="seg" id="vrange"><button data-r="90">3개월</button><button data-r="180" class="on">6개월</button><button data-r="9999">전체</button></div>
         <div class="seg" id="vyoy"><button data-y="0" class="on">올해</button><button data-y="1">작년 겹쳐보기</button></div></div>
       <div class="chart"><canvas id="visitors"></canvas></div>
     </div>
-    <div class="grid g2">
-      <div class="card"><h2>요일별 평소 방문자</h2><div class="sub">단위: 명/일 · 최근 8주 중앙값, 연휴 제외 · 막대 위 숫자 = 평일 대비 배율</div><div class="chart sm"><canvas id="wdchart"></canvas></div></div>
-      <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 평소 같은 요일 대비 배율 · 이 값이 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
-    </div>
+    <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
   </section>
 
   <!-- 키워드 발굴 -->
@@ -345,6 +369,7 @@ const dow=d=>new Date(d+'T00:00:00Z').getUTCDay();
 function avg(a){ a=a.filter(x=>x!=null); return a.length?a.reduce((x,y)=>x+y,0)/a.length:null; }
 function med(a){ a=a.filter(x=>x!=null).sort((x,y)=>x-y); return a.length?a[Math.floor(a.length/2)]:null; }
 async function J(p){ const r = await fetch('data/'+p+'?v='+Date.now()); if(!r.ok) throw new Error(p); return r.json(); }
+const MIN_DAYS=20;
 let D={}, charts={}, state={ group:null, range:180, yoy:false, vrange:180, vyoy:false, dfilter:'all', dper:'week', cmpDay:null };
 
 (function(){ try{ const t=localStorage.getItem('gs-theme'); if(t) document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -373,7 +398,7 @@ async function init(){
   const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
   const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
-  chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-season',['tour_api']); chip('c-wx',['tour_api','weather']);
+  chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로
   if(D.visitors?.dates?.length){ const v=D.visitors, by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); const out=[],vals=[]; let d=v.dates[0]; const end=v.dates.at(-1); while(d<=end){ out.push(d); vals.push(by[d]??null); d=shift(d,1); } D.visitors={...v,dates:out,visitor:vals}; }
@@ -381,7 +406,7 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderBc(); renderEvents(); renderMonthly(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWd(); renderWx(); renderVolume(); renderNews(); renderAbout();
+  renderBrief(); renderPrep(); renderStaffAlerts(); renderBc(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWx(); renderVolume(); renderNews(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',renderVolume);
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
@@ -393,7 +418,7 @@ async function init(){
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
 function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b)); }
-function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderWd(); renderMonthly(); }
+function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderMonthly(); renderYTrend(); }
 
 
 /* ================= 카드별 계산 방식 · 출처 ================= */
@@ -432,12 +457,14 @@ const HOW={
     '<b>방송 감지</b> = 뉴스 제목에 방송 프로그램명(생생정보·오늘N·생활의 달인·백반기행 등)과 음식 단어(맛집·꽃게·젓국·칼국수 등)가 함께 있으면 방송으로 기록',
     '<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회', CNT],
     s:['news','dlab','ad']},
-  mchart:{f:['<b>막대</b> = 그 달 하루 외지인 방문자 실제값의 평균 (그 달 7일 이상 있을 때만)'], s:['tour']},
+  ysum:{f:['<b>올해 하루 평균</b> = 올해 데이터가 있는 날 중 작년 같은 날짜(월·일)도 있는 날만 모아 평균','<b>증감</b> = 올해 평균 ÷ 작년 같은 날짜 평균 − 1','<b>흐름 판정</b> = 아래 「꾸준히 늘고 있나」 카드의 규칙'], s:['tour']},
+  mchart:{f:['<b>월 하루 평균</b> = 그달 실제 외지인 합 ÷ 데이터가 있는 일수 (연휴 포함 실제값)','<b>순위</b> = 작년 12개월을 하루 평균 순으로 줄 세운 순서 (1~3위 강조)','<b>증감</b> = 올해 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1','<b>수집 중</b> = 그달 데이터가 '+MIN_DAYS+'일 미만이라 평균을 내지 않음'], s:['tour']},
+  yweek:{f:['<b>작년 요일 평균</b> = 작년 1년 중 그 요일 실제값 평균 (연휴·연휴 전날 제외)','<b>배율</b> = 그 요일 평균 ÷ 작년 월~목 평균','<b>증감</b> = 올해 그 요일 평균 ÷ 작년 같은 기간(올해 데이터 첫날~마지막 날과 같은 월·일 범위) 그 요일 평균 − 1'], s:['tour','cfg']},
+  ytrend:{f:['<b>막대</b> = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 (두 해 모두 '+MIN_DAYS+'일 이상 있는 달)','<b>판정</b> = 비교 가능한 최근 12개월 중 증가한 달이 75% 이상 → 꾸준히 증가 · 25% 이하 → 꾸준히 감소 · 그 외 → 등락 반복','<b>연속</b> = 가장 최근 달부터 같은 방향(증가/감소)이 몇 달 이어졌나'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
   cmp:{f:[CNT,'<b>전주</b> = 7일 전 같은 요일 값','<b>전월 평균</b> = 지난달 같은 요일 값들의 평균','<b>전년 평균</b> = 작년 같은 달 같은 요일 값들의 평균','<b>증감</b> = 그날 ÷ 비교값 − 1'], s:['dlab','ad']},
   menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)'], s:['ad']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
-  wdchart:{f:[BASE,'<b>배율</b> = 각 요일 ÷ 월~목 중앙값'], s:['tour','cfg']},
   wxeff:{f:[
     '<b>비 단계</b> = 조금: 1~5mm 또는 강수확률 40~59% · 비: 5mm 이상 또는 60% 이상 · 많은 비·눈: 20mm 이상 또는 눈',
     '<b>비교 기준</b> = 그 비 온 날의 앞뒤 1~4주 같은 요일 중 <b>비 안 온 날</b> 실제 방문자의 중앙값 (연휴 제외) — 계절 차이가 섞이지 않도록 주변 날짜와만 비교',
@@ -504,12 +531,78 @@ function renderEvents(){
   document.getElementById('events').innerHTML=ev.length? ev.map(e=>`<div class="ev"><b class="mono">${e.date}</b> · ${e.keyword} — 평소 <span class="mono">${fmt(e.baseline)}회</span> → <b class="mono">${fmt(e.value)}회</b>${e.holiday?`<span class="tag">${e.holiday}</span>`:''}${e.broadcast?`<span class="tag">📺 ${e.broadcast.program}</span>`:''}${e.news&&e.news.length?`<div class="news">${e.news.slice(0,2).map(n=>`<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>`).join(' · ')}</div>`:''}</div>`).join('') : '<div class="empty">최근 급등 없음</div>';
 }
 
+/* ---------- 연간 분석 (방문자 탭) ---------- */
+function yearStats(){
+  const v=D.visitors; if(!v) return null;
+  const hol=new Set(Object.keys(D.meta.holidays||{}));
+  const by={}; v.dates.forEach((d,i)=>{ if(v.visitor[i]!=null) by[d]=v.visitor[i]; });
+  const ds=Object.keys(by).sort(); if(!ds.length) return null;
+  const last=ds.at(-1), Y=+last.slice(0,4), P=Y-1;
+  const mAvg=(y,m)=>{ const k=`${y}-${String(m).padStart(2,'0')}`; const xs=ds.filter(d=>d.startsWith(k)).map(d=>by[d]); return {avg:xs.length?avg(xs):null,n:xs.length,full:new Date(Date.UTC(y,m,0)).getUTCDate()}; };
+  // 올해 누적 vs 작년 같은 날짜(양쪽 다 있는 날만)
+  const pairs=ds.filter(d=>d.startsWith(String(Y))).map(d=>[d,by[d],by[`${P}${d.slice(4)}`]]).filter(x=>x[2]!=null);
+  return {by,ds,last,Y,P,hol,mAvg,pairs};
+}
+function renderYearSummary(){
+  const S=yearStats(); const el=document.getElementById('ysum'); if(!S){el.innerHTML='<div class="empty">데이터 없음</div>';return;}
+  const {pairs,Y,P,last}=S;
+  const cy=pairs.length?avg(pairs.map(x=>x[1])):null, py=pairs.length?avg(pairs.map(x=>x[2])):null, pct=cy&&py?(cy/py-1)*100:null;
+  const v=trendVerdict(S);
+  const months=new Set(S.ds.map(d=>d.slice(0,7))).size;
+  el.innerHTML=`<div class="ys">
+    <div class="yc"><div class="l">올해 하루 평균 <span>${Y}년, 작년과 겹치는 ${pairs.length}일</span></div><div class="v">${fmt(cy)}<small class="u">명</small></div>
+      <div class="d ${pct==null?'muted':pct>=0?'up':'down'}">${pct==null?'비교할 작년 데이터 수집 중':`${pct>=0?'▲':'▼'} ${Math.abs(pct).toFixed(1)}% <span class="muted">vs 작년 같은 날짜 ${fmt(py)}명</span>`}</div></div>
+    <div class="yc"><div class="l">흐름 판정 <span>월별 전년 대비 증감 기준</span></div><div class="v sm">${v.label}</div><div class="d muted">${v.detail}</div></div>
+  </div>
+  <div class="cover">수집된 데이터: <b>${S.ds[0]} ~ ${last}</b> 중 <b>${S.ds.length}일</b> (${months}개월) · 빈 기간은 매일 아침 자동으로 채워지는 중</div>`;
+}
+function trendVerdict(S){
+  const out=[]; const ms=[...new Set(S.ds.map(d=>d.slice(0,7)))].sort();
+  ms.forEach(k=>{ const y=+k.slice(0,4), m=+k.slice(5); const a=S.mAvg(y,m), b=S.mAvg(y-1,m); if(a.n>=MIN_DAYS&&b.n>=MIN_DAYS) out.push({k,pct:(a.avg/b.avg-1)*100}); });
+  const last12=out.slice(-12);
+  if(last12.length<3) return {label:'판정 대기',detail:`전년과 비교 가능한 달이 ${last12.length}개 — 3개월 이상 쌓이면 판정`,list:out};
+  const up=last12.filter(x=>x.pct>0).length, dn=last12.length-up;
+  let streak=0, dir=Math.sign(last12.at(-1).pct); for(let i=last12.length-1;i>=0&&Math.sign(last12[i].pct)===dir;i--) streak++;
+  const r=up/last12.length;
+  const label= r>=0.75?'꾸준히 증가 📈': r<=0.25?'꾸준히 감소 📉':'등락 반복 ↕';
+  return {label,detail:`비교 가능한 최근 ${last12.length}개월 중 ${up}개월 증가 · ${dn}개월 감소 · 최근 ${streak}개월 연속 ${dir>0?'증가':'감소'}`,list:out};
+}
 function renderMonthly(){
-  const v=D.visitors; if(!v) return; const by={}; v.dates.forEach((d,i)=>{ if(v.visitor[i]!=null) (by[d.slice(0,7)]||=[]).push(v.visitor[i]); });
-  const years=[...new Set(Object.keys(by).map(m=>m.slice(0,4)))].sort().slice(-2);
+  const S=yearStats(); if(!S) return; const {Y,P,mAvg}=S;
+  const rowsP=Array.from({length:12},(_,i)=>({m:i+1,...mAvg(P,i+1)})), rowsY=Array.from({length:12},(_,i)=>({m:i+1,...mAvg(Y,i+1)}));
+  const rankable=rowsP.filter(r=>r.n>=MIN_DAYS).sort((a,b)=>b.avg-a.avg); const rank=Object.fromEntries(rankable.map((r,i)=>[r.m,i+1]));
+  document.getElementById('ymSub').innerHTML=`단위: 그달 <b>하루 평균 외지인(명)</b> · 작년 = ${P}년 실제값 · 순위 = 작년 ${rankable.length===12?'12개월':`데이터가 있는 ${rankable.length}개월`} 중 몇 번째로 많았나${rankable.length<12?' (12개월이 다 차면 다시 매김)':''} · 증감 = 올해 그달 vs 작년 같은 달 · ${MIN_DAYS}일 미만인 달은 "수집 중"`;
   const labels=Array.from({length:12},(_,i)=>(i+1)+'월');
-  const ds=years.map((y,i)=>({label:y+'년',data:labels.map((_,mi)=>{const k=`${y}-${String(mi+1).padStart(2,'0')}`; return by[k]&&by[k].length>=7?Math.round(avg(by[k])):null;}),backgroundColor:i===years.length-1?css('--blue'):css('--wait'),borderRadius:4,maxBarThickness:26}));
-  mk('mchart','bar',labels,ds,{legend:true,unit:'명/일'});
+  mk('mchart','bar',labels,[{label:P+'년',data:rowsP.map(r=>r.n>=MIN_DAYS?Math.round(r.avg):null),backgroundColor:css('--wait'),borderRadius:4,maxBarThickness:22},{label:Y+'년',data:rowsY.map(r=>r.n>=MIN_DAYS?Math.round(r.avg):null),backgroundColor:css('--blue'),borderRadius:4,maxBarThickness:22}],{legend:true,unit:'명'});
+  const cell=(r)=> r.n>=MIN_DAYS? fmt(r.avg) : r.n? `<span class="muted">수집 중 ${r.n}일</span>` : '<span class="muted">–</span>';
+  document.getElementById('ymonth').innerHTML=`<div class="yg yg4"><div class="h">월</div><div class="h">${P}년 (순위${rankable.length<12?"/"+rankable.length:""})</div><div class="h">${Y}년</div><div class="h">증감</div>`+rowsP.map((r,i)=>{ const y=rowsY[i]; const p=r.n>=MIN_DAYS&&y.n>=MIN_DAYS?(y.avg/r.avg-1)*100:null; const top=rank[r.m]&&rank[r.m]<=3;
+    return `<div class="m">${r.m}월</div><div class="n">${cell(r)}${rank[r.m]?` <span class="rk ${top?'top':''}">${rank[r.m]}위</span>`:''}</div><div class="n">${cell(y)}</div><div class="n ${p==null?'muted':p>=0?'up':'down'}">${p==null?'–':`${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`}</div>`; }).join('')+`</div>`;
+}
+function renderWd(){
+  const S=yearStats(); if(!S) return; const {by,ds,Y,P,hol,last}=S;
+  const order=[1,2,3,4,5,6,0], name=['일','월','화','수','목','금','토'];
+  const fullP=ds.filter(d=>d.startsWith(String(P))&&!hol.has(d));
+  const pAvg=w=>{ const xs=fullP.filter(d=>dow(d)===w).map(d=>by[d]); return {avg:xs.length?avg(xs):null,n:xs.length}; };
+  // 올해 vs 작년 같은 날짜 범위(양쪽 다 있는 날, 연휴 제외)
+  const pr=ds.filter(d=>d.startsWith(String(Y))&&!hol.has(d)&&by[`${P}${d.slice(4)}`]!=null&&!hol.has(`${P}${d.slice(4)}`));
+  const yoy=w=>{ const a=pr.filter(d=>dow(d)===w); const b=a.map(d=>`${P}${d.slice(4)}`).filter(d=>dow(d)===w||true); if(!a.length) return null;
+    // 같은 날짜라도 요일이 달라지므로, 작년 쪽은 같은 기간의 같은 요일 평균을 씀
+    const lo=`${P}${a[0].slice(4)}`, hi=`${P}${a.at(-1).slice(4)}`; const pb=ds.filter(d=>d>=lo&&d<=hi&&dow(d)===w&&!hol.has(d)).map(d=>by[d]);
+    return pb.length? {pct:(avg(a.map(d=>by[d]))/avg(pb)-1)*100, cur:avg(a.map(d=>by[d])), n:a.length} : null; };
+  const base=avg([1,2,3,4].map(w=>pAvg(w).avg).filter(x=>x));
+  document.getElementById('ywSub').innerHTML=`단위: <b>하루 평균 외지인(명)</b>, 연휴 제외 · 작년 = ${P}년 실제값(${fullP.length}일) · 배율 = 작년 월~목 평균 대비 · 증감 = 올해 같은 요일 vs 작년 같은 기간 같은 요일`;
+  const maxA=Math.max(...order.map(w=>pAvg(w).avg||0));
+  document.getElementById('yweek').innerHTML=`<div class="yg yg4"><div class="h">요일</div><div class="h">${P}년 (배율)</div><div class="h">${Y}년</div><div class="h">증감</div>`+order.map(w=>{ const a=pAvg(w), y=yoy(w); const we=w===0||w===6;
+    return `<div class="m ${we?'we':''}">${name[w]}</div><div class="n">${a.avg?fmt(a.avg):'<span class="muted">–</span>'} ${a.avg&&base?`<span class="rk ${a.avg===maxA?'top':''}">${(a.avg/base).toFixed(1)}×</span>`:''}</div><div class="n">${y?fmt(y.cur):'<span class="muted">–</span>'}</div><div class="n ${!y?'muted':y.pct>=0?'up':'down'}">${!y?'–':`${y.pct>=0?'▲':'▼'}${Math.abs(y.pct).toFixed(0)}%`}</div>`; }).join('')+`</div>`;
+}
+function renderYTrend(){
+  const S=yearStats(); if(!S) return; const v=trendVerdict(S); const list=v.list;
+  document.getElementById('ytSub').innerHTML=`막대 = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 · 초록 = 증가, 빨강 = 감소 · 두 해 모두 ${MIN_DAYS}일 이상 있는 달만`;
+  const labels=list.map(x=>`${x.k.slice(2,4)}.${+x.k.slice(5)}월`);
+  if(charts.ytrend) charts.ytrend.destroy();
+  charts.ytrend=new Chart(document.getElementById('ytrend'),{type:'bar',data:{labels,datasets:[{data:list.map(x=>+x.pct.toFixed(1)),backgroundColor:list.map(x=>x.pct>=0?css('--ok'):css('--red')),borderRadius:4,maxBarThickness:28}]},
+    options:{...baseOpts({labels}),plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' 전년 같은 달 대비 '+(c.parsed.y>=0?'+':'')+c.parsed.y+'%'}}},scales:{x:{grid:{display:false},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},maxRotation:0,autoSkip:true}},y:{grid:{color:css('--line2')},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},callback:v=>v+'%'}}}}});
+  document.getElementById('yverdict').innerHTML=`<div class="basis"><div><span>판정</span><b>${v.label}</b></div><div><span>근거</span><b style="font-family:var(--sans);font-weight:500">${v.detail}</b></div><div><span>기준</span><b style="font-family:var(--sans);font-weight:500">최근 12개월 중 75% 이상 증가 = 꾸준히 증가 · 75% 이상 감소 = 꾸준히 감소 · 그 외 = 등락 반복</b></div></div>`;
 }
 
 /* ================= 차트 공통 (간결) ================= */
@@ -584,13 +677,6 @@ function renderVisitors(){
             {label:'7일 평균',data:ma,borderColor:css('--ink'),borderWidth:2.2,backgroundColor:css('--ink'),spanGaps:true,order:1}];
   if(state.vyoy){ const by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); ds.push({label:'작년 같은 요일',data:dates.map(d=>by[shift(d,-364)]??null),borderColor:css('--wait'),backgroundColor:css('--wait'),borderDash:[3,4],borderWidth:1.2,spanGaps:true,order:3}); }
   mk('visitors','line',dates,ds,{unit:'명',legend:true},[bcPlugin]);
-}
-function renderWd(){
-  const b=D.brief; const vals=['월','화','수','목','금','토','일'].map(w=>b.weekday_median[w]); const base=b.weekday_base||1;
-  const lbl={id:'lbl',afterDatasetsDraw(c){ const ctx=c.ctx; ctx.save(); ctx.font='600 11px '+css('--mono'); ctx.fillStyle=css('--sub'); ctx.textAlign='center'; c.getDatasetMeta(0).data.forEach((bar,i)=>{ const v=vals[i]; ctx.fillText((v/base).toFixed(1)+'×',bar.x,bar.y-6); }); ctx.restore(); }};
-  if(charts.wdchart) charts.wdchart.destroy();
-  charts.wdchart=new Chart(document.getElementById('wdchart'),{type:'bar',data:{labels:['월','화','수','목','금','토','일'],datasets:[{data:vals,backgroundColor:vals.map((x,i)=>i>=5?css('--red'):css('--blue')),borderRadius:5,maxBarThickness:40}]},
-    options:{...baseOpts({unit:'명'}),plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+fmt(c.parsed.y)+'명'}}},layout:{padding:{top:16}}},plugins:[lbl]});
 }
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}

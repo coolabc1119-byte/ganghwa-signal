@@ -249,12 +249,14 @@ def fetch_visitors(start, end):
     s0 = start
     seen_days = set()
     calls, chunk_errs = 0, []
+    t_start = time.time()
+    BUDGET = 180  # 관광공사는 해외 접속이 느림 — 3분 넘으면 받은 만큼만 쓰고 다음 실행에서 이어받음
     # 이 API에는 지역 필터가 없음 — 전국 시군구(하루 약 740행)를 받아 강화군만 골라냄.
     # 첫 실행(약 16개월 백필)은 300회 안팎 호출, 이후 매일은 10회 안팎.
-    while s0 <= end and calls < 450:
+    while s0 <= end and calls < 450 and time.time() - t_start < BUDGET:
         e0 = min(end, s0 + timedelta(days=29))
         page, total = 1, None
-        while calls < 450:
+        while calls < 450 and time.time() - t_start < BUDGET:
             params = {
                 "serviceKey": key, "numOfRows": 1000, "pageNo": page, "MobileOS": "ETC", "MobileApp": "ganghwasignal",
                 "startYmd": s0.strftime("%Y%m%d"), "endYmd": e0.strftime("%Y%m%d"), "_type": "json",
@@ -262,17 +264,17 @@ def fetch_visitors(start, end):
             calls += 1
             req = urllib.request.Request(base + "?" + urllib.parse.urlencode(params))
             txt, last_err = None, None
-            for attempt in range(4):  # 공공데이터포털은 해외(GitHub 서버)에서 접속이 느릴 때가 있어 재시도
+            for attempt in range(2):  # 공공데이터포털은 해외(GitHub 서버)에서 접속이 느릴 때가 있어 재시도
                 try:
-                    with urllib.request.urlopen(req, timeout=90) as r:
+                    with urllib.request.urlopen(req, timeout=30) as r:
                         txt = r.read().decode("utf-8", "ignore")
                     break
                 except Exception as e:
                     last_err = e
-                    time.sleep(5 * (attempt + 1))
+                    time.sleep(3)
             if txt is None:
                 chunk_errs.append(f"{s0}~{e0}: 접속 실패 {type(last_err).__name__}: {str(last_err)[:80]}")
-                if len(chunk_errs) >= 3 and not by_day:
+                if len(chunk_errs) >= 2 and not by_day:
                     raise RuntimeError("관광공사 서버 접속 반복 실패: " + str(last_err)[:120])
                 break
             if not raw_head:

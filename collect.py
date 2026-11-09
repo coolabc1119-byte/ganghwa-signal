@@ -320,6 +320,58 @@ def fetch_visitors(start, end):
 
 
 # ---------------------------------------------------------------------------
+# 4b) 날씨 — Open-Meteo (무료, 키 불필요). 강화군 길상면 기준. 과거 500일 + 앞으로 7일
+# ---------------------------------------------------------------------------
+GANGHWA_LAT, GANGHWA_LON = 37.63, 126.48  # 길상면 선두리 부근
+
+
+def fetch_weather(start, end):
+    daily = "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max"
+    out = {}
+    # 과거(archive): 어제까지
+    q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "start_date": start.isoformat(),
+                                "end_date": (datetime.now(KST).date() - timedelta(days=2)).isoformat(),
+                                "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum", "timezone": "Asia/Seoul"})
+    try:
+        res = http_json("https://archive-api.open-meteo.com/v1/archive?" + q, timeout=60)
+        d = res.get("daily", {})
+        for i, day in enumerate(d.get("time", [])):
+            out[day] = {"code": d["weathercode"][i], "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i],
+                        "rain": d["precipitation_sum"][i], "pop": None, "src": "past"}
+    except Exception as e:
+        ERRORS["weather_archive"] = f"{type(e).__name__}: {str(e)[:120]}"
+    # 예보: 최근 7일(과거 보정) + 앞 7일
+    q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "daily": daily, "timezone": "Asia/Seoul",
+                                "past_days": 7, "forecast_days": 8})
+    res = http_json("https://api.open-meteo.com/v1/forecast?" + q, timeout=60)
+    d = res.get("daily", {})
+    today = datetime.now(KST).date().isoformat()
+    for i, day in enumerate(d.get("time", [])):
+        out[day] = {"code": d["weathercode"][i], "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i],
+                    "rain": d["precipitation_sum"][i], "pop": (d.get("precipitation_probability_max") or [None] * 99)[i],
+                    "wind": (d.get("windspeed_10m_max") or [None] * 99)[i], "src": "forecast" if day >= today else "past"}
+    if not out:
+        raise RuntimeError("날씨 응답 비어 있음")
+    return {"days": out, "note": "Open-Meteo 일별 날씨 (강화군 길상면 기준). 과거는 관측 재분석, 앞 7일은 예보.", "live": True}
+
+
+def sample_weather(start, end):
+    rnd = random.Random(5)
+    out = {}
+    d = start
+    today = datetime.now(KST).date()
+    while d <= today + timedelta(days=7):
+        yd = d.timetuple().tm_yday
+        tmax = 4 + 24 * math.exp(-((yd - 210) / 95) ** 2) + rnd.uniform(-3, 3)
+        rain = rnd.choice([0, 0, 0, 0, 0.5, 3, 12, 30]) * (2 if 180 < yd < 240 else 1)
+        code = 0 if rain == 0 and rnd.random() < .6 else 2 if rain == 0 else 61 if rain < 10 else 63
+        out[d.isoformat()] = {"code": code, "tmax": round(tmax, 1), "tmin": round(tmax - 8, 1), "rain": rain,
+                              "pop": None if d < today else rnd.choice([10, 20, 30, 60, 80]), "src": "past" if d < today else "forecast"}
+        d += timedelta(days=1)
+    return {"days": out, "note": "⚠ 샘플 날씨", "live": False}
+
+
+# ---------------------------------------------------------------------------
 # 5) 네이버 뉴스 — 매일 로그 적재
 # ---------------------------------------------------------------------------
 def fetch_news_log(cfg):
@@ -624,6 +676,8 @@ def main():
     volume = run("keyword_tool", lambda: fetch_keyword_tool(cfg), lambda: sample_volume(cfg))
     visitors = run("tour_api", lambda: fetch_visitors(start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
+    weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
+    save("weather.json", weather)
 
     trend = to_counts(trend, volume)
     save("trend_daily.json", trend)
@@ -640,7 +694,7 @@ def main():
     save("menu_demand.json", menu_demand(volume, cfg))
     try:
         import brief
-        save("brief.json", brief.build(cfg, visitors, compare(trend, volume), news))
+        save("brief.json", brief.build(cfg, visitors, compare(trend, volume), news, weather))
     except Exception as e:
         log(f"brief 실패: {e}")
         ERRORS["brief"] = f"{type(e).__name__}: {str(e)[:200]}"

@@ -248,19 +248,18 @@ def fetch_visitors(start, end):
         start = max(start, date.fromisoformat(prev["dates"][-1]) - timedelta(days=14))
     s0 = start
     seen_days = set()
-    calls = 0
-    while s0 <= end:
-        e0 = min(end, s0 + timedelta(days=89))
-        page = 1
-        while True:
+    calls, chunk_errs = 0, []
+    # 이 API에는 지역 필터가 없음 — 전국 시군구(하루 약 740행)를 받아 강화군만 골라냄.
+    # 첫 실행(약 16개월 백필)은 300회 안팎 호출, 이후 매일은 10회 안팎.
+    while s0 <= end and calls < 450:
+        e0 = min(end, s0 + timedelta(days=29))
+        page, total = 1, None
+        while calls < 450:
             params = {
                 "serviceKey": key, "numOfRows": 1000, "pageNo": page, "MobileOS": "ETC", "MobileApp": "ganghwasignal",
                 "startYmd": s0.strftime("%Y%m%d"), "endYmd": e0.strftime("%Y%m%d"), "_type": "json",
-                "areaCd": GANGHWA_AREA_CD, "signguCd": GANGHWA_SIGNGU_CD,
             }
             calls += 1
-            if calls > 400:
-                raise RuntimeError("관광공사 호출이 400회를 넘어 중단 (일일 한도 보호)")
             req = urllib.request.Request(base + "?" + urllib.parse.urlencode(params))
             with urllib.request.urlopen(req, timeout=60) as r:
                 txt = r.read().decode("utf-8", "ignore")
@@ -269,16 +268,22 @@ def fetch_visitors(start, end):
             try:
                 res = json.loads(txt)
             except Exception:
-                raise RuntimeError("관광공사 응답이 JSON이 아님: " + txt[:200])
+                chunk_errs.append(f"{s0}~{e0}: JSON 아님 {txt[:120]}")
+                break
+            head = res.get("response", {}).get("header", {}) or {}
+            code = str(head.get("resultCode", res.get("resultCode", "")))
+            if code not in ("0000", "00", "0", ""):
+                chunk_errs.append(f"{s0}~{e0}: {code} {head.get('resultMsg', res.get('resultMsg', ''))}")
+                break
             body = res.get("response", {}).get("body", {})
             items = body.get("items") or {}
             items = items.get("item", []) if isinstance(items, dict) else []
             if isinstance(items, dict):
                 items = [items]
             for it in items:
-                code = str(it.get("signguCode", it.get("signguCd", "")))
+                code_ = str(it.get("signguCode", it.get("signguCd", "")))
                 name = str(it.get("signguNm", ""))
-                if code != GANGHWA_SIGNGU_CD and "강화" not in name:
+                if code_ != GANGHWA_SIGNGU_CD and "강화" not in name:
                     continue
                 d = str(it.get("baseYmd", ""))
                 if len(d) != 8:
@@ -294,10 +299,13 @@ def fetch_visitors(start, end):
             if page * 1000 >= total or not items:
                 break
             page += 1
-            time.sleep(0.2)
+            time.sleep(0.1)
         s0 = e0 + timedelta(days=1)
+    if chunk_errs:
+        ERRORS["tour_api_chunks"] = chunk_errs[:6]
+    ERRORS["tour_api_calls"] = calls
     if not by_day:
-        raise RuntimeError("관광공사 응답에 강화군 데이터 없음. 응답 앞부분: " + raw_head)
+        raise RuntimeError("관광공사 응답에 강화군 데이터 없음. 응답 앞부분: " + raw_head[:250])
     dates = sorted(by_day)
     return {
         "dates": dates,

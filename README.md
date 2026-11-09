@@ -1,4 +1,4 @@
-# 강화 시그널 v0.2 — 설치·운영 가이드
+# 강화 시그널 v1.0 — 설치·운영 가이드
 
 강화도 먹거리 검색 키워드(일별·주별), 사람들이 실제로 치는 연관 검색어, 메뉴별 경쟁 업체 수, 강화군 일별 방문자, 급등일 자동 감지를 한 화면에 보여 주는 대시보드입니다.
 Market Signal과 같은 구조(GitHub 저장소 + GitHub Actions 매일 수집 + Cloudflare Pages 호스팅)입니다.
@@ -9,6 +9,7 @@ Market Signal과 같은 구조(GitHub 저장소 + GitHub Actions 매일 수집 +
 |---|---|
 | `keywords.json` | **유일하게 직접 고치는 파일.** 추적 키워드, 경쟁 조회 메뉴, 방송 기록 |
 | `collect.py` | 매일 실행되는 수집기. API 키가 없으면 샘플 데이터 생성 |
+| `brief.py` | 주간 준비 브리핑(날짜별 손님 수준·재료·인력·알림) 계산 |
 | `index.html` | 대시보드 화면. `data/*.json`만 읽음 |
 | `data/` | 수집 결과(JSON). Actions가 매일 커밋 |
 | `.github/workflows/collect.yml` | 매일 07:30(KST) 자동 수집 |
@@ -20,7 +21,7 @@ python collect.py        # data/ 폴더 생성 (샘플)
 python -m http.server    # 브라우저에서 http://localhost:8000
 ```
 
-## 2단계 — API 키 4종 발급 (모두 무료, 각 5~10분)
+## 2단계 — API 키 3곳 발급 (모두 무료, 각 5~10분)
 
 ### ① 네이버 개발자센터 → 데이터랩 검색어 트렌드 + 뉴스 검색
 1. https://developers.naver.com → 로그인 → **Application → 애플리케이션 등록**
@@ -36,12 +37,6 @@ python -m http.server    # 브라우저에서 http://localhost:8000
 4. **CUSTOMER_ID**는 화면 우측 상단 계정명 옆 숫자 → `NAVER_AD_CUSTOMER_ID`
 - 처남이 "검색량 대비 경쟁업체" 판단에 쓴 바로 그 데이터입니다.
 
-### ③ 카카오 개발자 → 로컬(장소 검색) API
-1. https://developers.kakao.com → **내 애플리케이션 → 애플리케이션 추가**
-2. 앱 이름 `강화시그널`, 회사명 아무거나
-3. **앱 키 → REST API 키** → `KAKAO_REST_KEY`
-- 강화도 범위 안 "꽃게탕" 업체 수 같은 걸 셉니다.
-
 ### ④ 공공데이터포털 → 한국관광공사 관광빅데이터 (강화군 일별 방문자)
 1. https://www.data.go.kr → 회원가입 → 검색창에 **"한국관광공사_관광빅데이터 정보서비스"**
 2. 해당 API 페이지에서 **활용신청** (자동 승인, 1~2시간 뒤 사용 가능)
@@ -53,7 +48,7 @@ python -m http.server    # 브라우저에서 http://localhost:8000
 1. GitHub에 새 저장소 `ganghwa-signal` 생성 (Private 권장 — 키는 어차피 Secrets에만 들어감)
 2. 이 폴더 전체 업로드 (또는 `git init && git add . && git commit -m "v0.1" && git push`)
 3. 저장소 **Settings → Secrets and variables → Actions → New repository secret**
-   위 7개 키를 하나씩 등록 (`NAVER_CLIENT_ID` 등 이름 정확히)
+   위 6개 키를 하나씩 등록 (`NAVER_CLIENT_ID` 등 이름 정확히)
 4. **Actions 탭 → "강화 시그널 데이터 수집" → Run workflow** 로 첫 수집 실행
    → 성공하면 `data/meta.json`의 `mode`가 `"live"`로 바뀌고 화면의 노란 샘플 배너가 사라짐
 5. 이후 매일 07:30(KST) 자동 실행
@@ -75,7 +70,8 @@ python -m http.server    # 브라우저에서 http://localhost:8000
 ```
 - **방송이 나가면 여기에 날짜를 적으세요.** 그래프에 세로 점선으로 표시되고 급등 이벤트에 자동으로 붙습니다.
 - `groups` 안의 키워드는 그룹당 6개 이하가 보기 좋습니다. 데이터랩 특성상 **키워드를 바꾸면 과거 추이도 그 키워드 기준으로 다시 받아오므로** 자유롭게 바꿔도 됩니다.
-- `competitor_queries`에 메뉴를 추가하면 "수요 대비 경쟁" 표에 자동으로 들어갑니다.
+- `menu_queries`에 메뉴를 추가하면 "메뉴별 월 검색 수요" 표에 자동으로 들어갑니다.
+- `store.ingredients`에 재료·제철·금어기를, `holidays`에 연휴를 적어 두면 브리핑이 그대로 씁니다.
 - `spike_rule.ratio`(기본 1.8배)를 낮추면 급등이 더 자주 잡힙니다.
 
 ## 비교 지표 정의 (v0.2)
@@ -86,7 +82,6 @@ python -m http.server    # 브라우저에서 http://localhost:8000
 | 전월 대비 | 최근 30일 평균 ÷ 직전 30일 평균 | 네이버 데이터랩 |
 | 전년동월 대비 | 최근 30일 평균 ÷ 364일 전 같은 30일 평균(요일 맞춤) | 네이버 데이터랩 |
 | 월 검색 횟수(절대값) | 최근 한 달 PC+모바일 검색수 | 네이버 검색광고 키워드도구 |
-| 업체 수 | 강화도 범위 안 장소 검색 결과 수 | 카카오맵(로컬 API) |
 | 방문자 | 강화군 일별 외지인 방문자(통신사 데이터) | 한국관광공사 관광빅데이터 |
 
 **검색량은 전부 네이버 기준입니다.** 구글은 공식 API가 없어(구글 트렌드는 비공식 라이브러리만 존재, 자주 막힘) 넣지 않았습니다. 국내 맛집 검색은 네이버 비중이 압도적이라 큰 손실은 아니지만, 외국인 손님 비중이 커지면 구글 트렌드를 따로 붙이는 걸 검토합니다.

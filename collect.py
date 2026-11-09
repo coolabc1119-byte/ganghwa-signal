@@ -8,7 +8,6 @@
 데이터 출처
   1) 네이버 데이터랩 검색어 트렌드  → 키워드별 일별 상대 검색량 (0~100)
   2) 네이버 검색광고 키워드도구     → 월간 절대 검색량(PC/모바일) + 연관 키워드 발굴
-  3) 카카오 로컬 API                → 강화도 안 업체 수 (메뉴별 경쟁 강도)
   4) 한국관광공사 관광빅데이터       → 강화군 일별 방문자 수
   5) 네이버 뉴스 검색               → 급등일 설명용 뉴스 로그 (매일 쌓아 둠)
 
@@ -17,7 +16,6 @@
 환경변수
   NAVER_CLIENT_ID, NAVER_CLIENT_SECRET          (네이버 개발자센터 — 데이터랩·뉴스)
   NAVER_AD_API_KEY, NAVER_AD_SECRET, NAVER_AD_CUSTOMER_ID   (네이버 검색광고)
-  KAKAO_REST_KEY                                (카카오 개발자)
   DATA_GO_KR_KEY                                (공공데이터포털 — 한국관광공사)
 """
 
@@ -39,7 +37,7 @@ KST = timezone(timedelta(hours=9))
 PLACE_RE = re.compile(r"강화(도|군|읍|섬|산|\s?(화도|길상|선두|동막|낙조|추젓|젓국|꽃게|순무|인삼|평화|나들길|외포|후포|어시장|풍물))|전등사|석모도|교동도|마니산|보문사")
 TV_RE = re.compile(r"생생정보|오늘\s?N|생활의\s?달인|6시\s?내\s?고향|백반기행|맛있는\s?녀석들|줄서는\s?식당|전지적\s?참견|나혼자|1박\s?2일|놀면\s?뭐하니|VJ특공대|생방송\s?투데이|2TV\s?저녁|저녁\s?생생|토요일\s?저녁|신상출시|수요미식회|맛있는\s?이야기|고향\s?민국|한국인의\s?밥상|EBS|KBS|MBC|SBS|tvN|JTBC|채널A|MBN|TV조선")
 for _k in ("NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
-           "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY"):
+           "NAVER_AD_CUSTOMER_ID", "DATA_GO_KR_KEY"):
     if _k in os.environ:
         os.environ[_k] = os.environ[_k].strip().strip('"').strip("'").strip()
 ERRORS = {}  # 출처별 실패 메시지(키 값 미포함)
@@ -47,8 +45,6 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(ROOT, "data")
 DAYS = 485  # 120일 추이 + 364일 전 겹쳐보기까지 커버 (데이터랩은 2016년부터 제공)
 
-# 강화도 전체를 덮는 사각형 (경도1,위도1,경도2,위도2) — 카카오 로컬 rect 파라미터용
-GANGHWA_RECT = "126.25,37.55,126.62,37.83"
 GANGHWA_AREA_CD = "28"      # 인천광역시
 GANGHWA_SIGNGU_CD = "28710"  # 강화군
 
@@ -211,26 +207,6 @@ def fetch_keyword_tool(cfg):
         if t not in seen:
             keep.append({"keyword": t, "pc": 0, "mobile": 0, "total": 0, "comp": "", "tracked": True, "under10": True})
     return {"rows": keep, "note": "네이버 검색광고 키워드도구. 최근 한 달 PC/모바일 검색수 합계."}
-
-
-# ---------------------------------------------------------------------------
-# 3) 카카오 로컬 — 강화도 안 업체 수
-# ---------------------------------------------------------------------------
-def fetch_competitors(cfg):
-    key = os.getenv("KAKAO_REST_KEY")
-    if not key:
-        return None
-    headers = {"Authorization": f"KakaoAK {key}"}
-    out = {}
-    for q in cfg["competitor_queries"]:
-        params = urllib.parse.urlencode({"query": q, "category_group_code": "FD6" if q != "카페" else "CE7", "rect": GANGHWA_RECT, "size": 15})
-        res = http_json("https://dapi.kakao.com/v2/local/search/keyword.json?" + params, headers)
-        out[q] = {
-            "count": res.get("meta", {}).get("total_count", 0),
-            "samples": [d["place_name"] for d in res.get("documents", [])[:5]],
-        }
-        time.sleep(0.2)
-    return {"queries": out, "note": "카카오 로컬 API, 강화도 범위 안 음식점 수."}
 
 
 # ---------------------------------------------------------------------------
@@ -475,19 +451,19 @@ def detect_spikes(trend, rule, news_log, broadcast_log):
     return events
 
 
-def opportunity(volume, competitors, cfg):
-    """월 검색량 ÷ 업체 수 — 처남의 '젓국갈비' 논리: 찾는 사람은 있는데 파는 집이 적은 메뉴."""
-    if not (volume and competitors):
+def menu_demand(volume, cfg):
+    """메뉴별 월 검색 수요(네이버 검색광고 절대값). '강화도+메뉴' 계열 키워드를 합산."""
+    if not volume:
         return []
-    vol = {r["keyword"].replace(" ", ""): r["total"] for r in volume["rows"]}
+    vol = {r["keyword"].replace(" ", ""): r for r in volume["rows"]}
     out = []
-    for q, info in competitors["queries"].items():
-        cands = [f"강화도{q}", f"강화{q}", f"강화도{q}맛집"]
-        total = sum(vol.get(c, 0) for c in cands)
-        cnt = info["count"]
-        out.append({"menu": q, "monthly_search": total, "shops": cnt, "per_shop": round(total / cnt, 1) if cnt else None,
-                    "mine": q in cfg["store"]["menus"], "under10": total == 0})
-    return sorted(out, key=lambda r: -(r["per_shop"] or 0))
+    for q in cfg["menu_queries"]:
+        cands = [f"강화도{q}", f"강화{q}", f"강화도{q}맛집", f"강화{q}맛집"]
+        rows = [vol[c] for c in cands if c in vol]
+        total = sum(r["total"] for r in rows)
+        out.append({"menu": q, "monthly_search": total, "keywords": [r["keyword"] for r in rows],
+                    "mine": q in cfg["store"]["menus"], "under10": total == 0 and any(r.get("under10") for r in rows)})
+    return sorted(out, key=lambda r: -r["monthly_search"])
 
 
 # ---------------------------------------------------------------------------
@@ -557,11 +533,6 @@ def sample_volume(cfg):
     return {"rows": sorted(out, key=lambda r: -r["total"]), "note": "⚠ 샘플 데이터"}
 
 
-def sample_competitors(cfg):
-    counts = {"꽃게탕": 41, "간장게장": 23, "낙지": 37, "연포탕": 12, "젓국갈비": 9, "밴댕이": 28, "장어": 44, "순무": 6, "카페": 312}
-    return {"queries": {q: {"count": counts.get(q, 20), "samples": []} for q in cfg["competitor_queries"]}, "note": "⚠ 샘플 데이터"}
-
-
 def sample_visitors(cfg, start, end):
     rnd = random.Random(11)
     dates = ymd_list(start, end - timedelta(days=10))  # 실제처럼 열흘 늦게 끝남
@@ -617,20 +588,18 @@ def main():
 
     trend = run("datalab", lambda: fetch_datalab(cfg, start, end), lambda: sample_trend(cfg, start, end))
     volume = run("keyword_tool", lambda: fetch_keyword_tool(cfg), lambda: sample_volume(cfg))
-    comp = run("kakao_local", lambda: fetch_competitors(cfg), lambda: sample_competitors(cfg))
     visitors = run("tour_api", lambda: fetch_visitors(start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
 
     save("trend_daily.json", trend)
     save("volume_monthly.json", volume)
-    save("competitors.json", comp)
     save("visitors.json", visitors)
     save("news_log.json", news)
     save("weekly_change.json", weekly_change(trend))
     save("compare.json", compare(trend, volume))
     save("monthly.json", monthly_table(trend))
     save("events.json", detect_spikes(trend, cfg["spike_rule"], news, cfg["broadcast_log"]))
-    save("opportunity.json", opportunity(volume, comp, cfg))
+    save("menu_demand.json", menu_demand(volume, cfg))
     try:
         import brief
         save("brief.json", brief.build(cfg, visitors, compare(trend, volume), news))
@@ -645,10 +614,10 @@ def main():
         # 키 값은 절대 기록하지 않음 — 등록돼 있는지(길이>0)만 표시
         "keys_present": {k: bool(os.getenv(k, "").strip()) for k in (
             "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
-            "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY")},
+            "NAVER_AD_CUSTOMER_ID", "DATA_GO_KR_KEY")},
         "key_lengths": {k: len(os.getenv(k, "")) for k in (
             "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
-            "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY")},
+            "NAVER_AD_CUSTOMER_ID", "DATA_GO_KR_KEY")},
         "errors": ERRORS,
         "mode": "live" if all(v == "live" for v in sources.values()) else "partial" if any(v == "live" for v in sources.values()) else "sample",
         "store": cfg["store"], "groups": cfg["groups"], "broadcast_log": cfg["broadcast_log"],

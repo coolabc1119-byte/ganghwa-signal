@@ -58,7 +58,7 @@ small.u{font-size:.6em;font-weight:500;color:var(--sub);margin-left:3px;font-fam
 .ibtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer}
 .ibtn svg{width:16px;height:16px}
 @media(max-width:720px){.brand .st,.fresh,.brand .v{display:none}}
-@media(max-width:560px){.tab{padding:8px 2px;font-size:12.5px;letter-spacing:-.02em}}
+@media(max-width:560px){.tabs .tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible} .tabs .tab{padding:7px 2px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 
 .health{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:9px 14px;margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:var(--sub)}
 .health b{color:var(--ink);font-weight:600}
@@ -124,6 +124,10 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .wxg .h{font-size:11px;color:var(--faint);font-weight:600;text-align:center}
 .wxg .lab b{display:block;font-size:13px} .wxg .lab small{display:block;font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wxg .c{background:var(--soft);border-radius:8px;padding:7px 6px;text-align:center;min-width:0} .wxg .c .p{font-family:var(--mono);font-size:15px;font-weight:700} .wxg .c .b{font-size:10.5px;color:var(--faint)}
+.ng{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line2)} .ng:last-child{border-bottom:0}
+.ng .nd{font-family:var(--mono);font-size:12px;color:var(--ink2);font-weight:600;padding-top:1px} .ng .nl{min-width:0;display:grid;gap:6px} .ng .nd span{display:block;font-family:var(--sans);font-weight:400;color:var(--faint);font-size:11px}
+.ni{display:block;font-size:13.5px;line-height:1.45;color:var(--ink2);text-decoration:none;padding:2px 0;word-break:keep-all;overflow-wrap:anywhere} .ni:hover{color:var(--blue)}
+.tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -217,6 +221,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
 
   <div class="tabs"><div class="tablist">
     <button class="tab on" data-p="disc">핫키워드</button>
+    <button class="tab" data-p="news">뉴스</button>
     <button class="tab" data-p="brief">이번 주</button>
     <button class="tab" data-p="trend">메뉴 검색</button>
     <button class="tab" data-p="visit">방문자</button>
@@ -302,7 +307,14 @@ tr.ref td{color:var(--sub);background:var(--soft)}
         <div class="seg" id="dfilter"><button data-f="all" class="on">전체</button><button data-f="food">먹거리</button><button data-f="place">장소·여행</button></div></div>
       <table id="volume"></table>
     </div>
-    <div class="card"><h2>강화 관련 뉴스 <span class="chip" id="c-news"></span></h2><div class="sub">네이버 뉴스 · 📺 = 방송 프로그램 감지</div><div id="newslist"></div></div>
+  </section>
+
+  <!-- 뉴스 -->
+  <section class="panel" id="p-news">
+    <div class="card"><h2>강화 관련 뉴스 <span class="chip" id="c-news"></span></h2>
+      <div class="sub" id="newsSub"></div>
+      <div class="controls"><div class="seg" id="nfilter"><button data-f="all" class="on">전체</button><button data-f="tv">📺 방송</button><button data-f="food">맛집·먹거리</button></div></div>
+      <div id="newslist"></div></div>
   </section>
 
   <!-- 기준 -->
@@ -376,6 +388,7 @@ async function init(){
   bindSeg('vrange','r',v=>{state.vrange=+v;renderVisitors();}); bindSeg('vyoy','y',v=>{state.vyoy=v==='1';renderVisitors();});
   bindSeg('dfilter','f',v=>{state.dfilter=v;renderVolume();});
   bindSeg('dper','p',v=>{state.dper=v;renderVolume();});
+  bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();});
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redrawAll);
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
@@ -629,7 +642,15 @@ function renderVolume(){
   const rk=r=>{ if(!r.prank) return '<span class="muted" style="font-size:10px">NEW</span>'; const d=r.prank-r.rank; return d===0?'<span class="muted">–</span>':`<span class="${d>0?'up':'down'}">${d>0?'▲':'▼'}${Math.abs(d)}</span>`; };
   document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)<small class="thd">${state._hdr.cur}</small></th><th class="n">증감<small class="thd">vs ${state._hdr.prev}</small></th><th class="n">순위<small class="thd">vs 이전</small></th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td class="kw" title="${r.keyword}">${r.keyword}${r.tracked?'<span class="tdot" title="추적 중"></span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
 }
-function renderNews(){ const it=(D.news_log?.items||[]).slice(0,30); document.getElementById('newslist').innerHTML=it.length? it.map(n=>`<div class="al"><span class="d">${n.date.slice(5).replace('-','/')}</span><span>${n.tv?'📺 ':''}<a href="${n.link}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink2)">${n.title}</a></span></div>`).join('') : '<div class="empty">뉴스 없음</div>'; }
+const NEWSFOOD=/맛집|식당|꽃게|낙지|젓국|갈비|칼국수|밴댕이|장어|게장|먹거리|순무|인삼|음식|카페|빵|시장|축제/;
+function renderNews(){
+  const all=(D.news_log?.items||[]); const f=state.nfilter||'all';
+  let it=all; if(f==='tv') it=it.filter(n=>n.tv); else if(f==='food') it=it.filter(n=>NEWSFOOD.test(n.title));
+  const tvN=all.filter(n=>n.tv).length;
+  document.getElementById('newsSub').innerHTML=`네이버 뉴스 · 제목에 강화 지명이 들어간 기사만 · 전체 <b>${all.length}건</b>(📺 방송 ${tvN}건) · 최근 400일 누적, 매일 07:30 갱신`;
+  const groups={}; it.slice(0,80).forEach(n=>{ (groups[n.date] ||= []).push(n); });
+  document.getElementById('newslist').innerHTML=Object.keys(groups).length? Object.entries(groups).map(([d,ns])=>`<div class="ng"><div class="nd">${md(d)} <span>${WD[dow(d)]}</span></div><div class="nl">${ns.map(n=>`<a class="ni" href="${n.link}" target="_blank" rel="noopener">${n.tv?`<span class="tvb">📺 ${n.tv}</span>`:''}${n.title}</a>`).join('')}</div></div>`).join('') : '<div class="empty">해당 기사 없음</div>';
+}
 function renderAbout(){
   const m=D.meta;
   document.getElementById('about').innerHTML=`<b>검색량은 모두 네이버 기준</b> (구글 미포함)<br>

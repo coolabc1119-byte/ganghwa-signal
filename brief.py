@@ -54,7 +54,7 @@ def load_sales(path):
     return out
 
 
-def build(cfg, visitors, compare, today=None):
+def build(cfg, visitors, compare, news=None, today=None):
     today = today or datetime.now(KST).date()
     rules = cfg.get("brief_rules", {})
     lb = rules.get("lookback_weeks", 8)
@@ -90,7 +90,14 @@ def build(cfg, visitors, compare, today=None):
         if len(pairs) >= 14:
             capture = statistics.median([s / v * 10000 for v, s in pairs])  # 외지인 1만 명당 가게 값
 
-    recent_bc = [b for b in bc if 0 <= (today - date.fromisoformat(b["date"])).days <= rules.get("broadcast_boost_days", 10)]
+    # 방송 기록 = 직접 적은 것 + 뉴스에서 자동 감지한 강화 맛집 방송(예: '생생정보' 강화 꽃게탕)
+    auto_bc = []
+    for it in (news or {}).get("items", []):
+        if it.get("tv") and any(w in it["title"] for w in ("맛집", "꽃게", "낙지", "젓국", "식당", "밥상", "먹방", "게장")):
+            auto_bc.append({"date": it["date"], "program": it["tv"], "note": it["title"][:60], "link": it.get("link"), "auto": True})
+    seen = {b["date"] for b in bc}
+    all_bc = bc + [b for b in auto_bc if b["date"] not in seen and not seen.add(b["date"])]
+    recent_bc = [b for b in all_bc if 0 <= (today - date.fromisoformat(b["date"])).days <= rules.get("broadcast_boost_days", 10)]
 
     days = []
     for i in range(7):
@@ -155,6 +162,13 @@ def build(cfg, visitors, compare, today=None):
         ingredients.append({"name": name, "menus": ing.get("menus", []), "action": action, "reasons": reasons[:3], "note": ing.get("note", ""),
                             "week_pct": None if wk_pct is None else round(wk_pct, 1), "month_pct": None if mo_pct is None else round(mo_pct, 1)})
 
+    # 검색 신호가 없는 재료(낙지 등)는 꽃게 손님을 따라감
+    lead = next((i for i in ingredients if i["week_pct"] is not None or i["month_pct"] is not None), None)
+    for i in ingredients:
+        if i["week_pct"] is None and i["month_pct"] is None and lead and i is not lead and i["action"] != "frozen":
+            i["action"] = lead["action"]
+            i["reasons"] = ["검색량이 적어 " + lead["name"] + " 판단을 따름"] + [r for r in i["reasons"] if "검색" not in r][:2]
+
     # 인력 신호
     staff = []
     for x in days:
@@ -202,6 +216,7 @@ def build(cfg, visitors, compare, today=None):
         "capture_per_10k": round(capture, 2) if capture else None, "sales_days": len(sales),
         "summary": summary, "days": days, "ingredients": ingredients, "staff": staff, "alerts": alerts[:12],
         "broadcast_recent": recent_bc,
+        "broadcast_auto": sorted(auto_bc, key=lambda b: b["date"], reverse=True)[:10],
         "note": "방문자 = 한국관광공사(통신사) 강화군 외지인. 요일 중앙값×추세×연휴·방송 보정. 가게 매출 CSV(data/store_sales.csv)를 넣으면 가게 기준 숫자로 바뀜.",
     }
 

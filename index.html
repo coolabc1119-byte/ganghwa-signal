@@ -134,6 +134,8 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
     <div>
       <div class="bt">앞으로 30일 주의 알림</div>
       <div id="balerts"></div>
+      <div class="bt" style="margin-top:14px">최근 강화 맛집 방송 (뉴스 자동 감지)</div>
+      <div id="bbc"></div>
     </div>
   </div>
 </section>
@@ -235,8 +237,11 @@ async function init(){
     const live=st.every(x=>x==='live'), some=st.some(x=>x==='live');
     h.insertAdjacentHTML('beforeend', `<span class="st ${live?'live':'sample'}">${live?'실데이터':some?'일부 샘플':'샘플'}</span>`);
   });
+  // 뉴스에서 자동 감지한 방송도 그래프 점선에 표시
+  const seenBc=new Set((m.broadcast_log||[]).map(b=>b.date));
+  (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date, program:b.program+' (자동)'}); } });
   state.group = Object.keys(m.groups)[0];
-  renderBrief(); renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
+  renderBrief(); renderBcAuto(); renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
   document.getElementById('foot').innerHTML = [D.trend_daily.note, D.volume_monthly.note, D.competitors.note, D.visitors.note].map(s=>'· '+s).join('<br>');
   document.getElementById('q').addEventListener('input', renderVolume);
   document.querySelectorAll('#rangeSeg button').forEach(b=>b.onclick=()=>{sel(b);state.range=+b.dataset.r;renderTrend();renderVisitors();renderMine();});
@@ -258,6 +263,10 @@ function renderBrief(){
   document.getElementById('bing').innerHTML = b.ingredients.map(i=>`<div class="ing"><div class="a ${i.action}">${ACT[i.action]}</div><div><div class="nm">${i.name} <span class="muted" style="font-size:12px;font-weight:400">${i.menus.join('·')}</span></div><div class="rs">${i.reasons.length?i.reasons.join(' · '):'특이 신호 없음'}</div></div></div>`).join('');
   document.getElementById('bstaff').innerHTML = b.staff.length? b.staff.map(s=>`<div class="stf"><b>${s.date.slice(5).replace('-','/')} ${s.wd}</b> — ${s.advice} <span class="muted">(${s.why})</span></div>`).join('') : '<div class="stf muted">이번 주 추가 인원 필요 없음</div>';
   document.getElementById('balerts').innerHTML = b.alerts.length? b.alerts.map(a=>`<div class="al"><span class="d">${a.date.slice(5).replace('-','/')} ${a.wd}</span><span>${a.text}</span></div>`).join('') : '<div class="al muted">30일 안에 연휴·금어기·방송 예정 없음</div>';
+}
+function renderBcAuto(){
+  const a=D.brief?.broadcast_auto||[];
+  document.getElementById('bbc').innerHTML = a.length? a.slice(0,6).map(b=>`<div class="al"><span class="d">${b.date.slice(5).replace('-','/')}</span><span>📺 <b>${b.program}</b> · <a href="${b.link}" target="_blank" rel="noopener" style="color:var(--ink2)">${b.note.replace(/^'[^']+'\s*/,'')}</a></span></div>`).join('') : '<div class="al muted">감지된 방송 없음</div>';
 }
 function renderKPIs(){
   const C = Object.fromEntries(D.compare.map(r=>[r.keyword,r]));

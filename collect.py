@@ -21,6 +21,7 @@
   DATA_GO_KR_KEY                                (공공데이터포털 — 한국관광공사)
 """
 
+import re
 import base64
 import hashlib
 import hmac
@@ -35,6 +36,8 @@ import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
+PLACE_RE = re.compile(r"강화(도|군|읍|섬|산|\s?(화도|길상|선두|동막|낙조|추젓|젓국|꽃게|순무|인삼|평화|나들길|외포|후포|어시장|풍물))|전등사|석모도|교동도|마니산|보문사")
+TV_RE = re.compile(r"생생정보|오늘\s?N|생활의\s?달인|6시\s?내\s?고향|백반기행|맛있는\s?녀석들|줄서는\s?식당|전지적\s?참견|나혼자|1박\s?2일|놀면\s?뭐하니|VJ특공대|생방송\s?투데이|2TV\s?저녁|저녁\s?생생|토요일\s?저녁|신상출시|수요미식회|맛있는\s?이야기|고향\s?민국|한국인의\s?밥상|EBS|KBS|MBC|SBS|tvN|JTBC|채널A|MBN|TV조선")
 for _k in ("NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
            "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY"):
     if _k in os.environ:
@@ -362,13 +365,17 @@ def fetch_news_log(cfg):
             except Exception:
                 pub = datetime.now(KST).date().isoformat()
             title = it["title"].replace("<b>", "").replace("</b>", "").replace("&quot;", '"').replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
-            if not any(w in title for w in ("강화", "전등사", "석모도", "교동도")):
+            if not PLACE_RE.search(title):
                 continue
-            existing["items"].append({"date": pub, "title": title, "link": it["link"], "query": q})
+            tv = TV_RE.search(title)
+            existing["items"].append({"date": pub, "title": title, "link": it["link"], "query": q, "tv": tv.group(0) if tv else None})
             seen.add(it["link"])
         time.sleep(0.2)
     cutoff = (datetime.now(KST).date() - timedelta(days=400)).isoformat()
-    existing["items"] = sorted([i for i in existing["items"] if i["date"] >= cutoff and any(w in i["title"] for w in ("강화", "전등사", "석모도", "교동도"))], key=lambda i: i["date"], reverse=True)
+    existing["items"] = sorted([i for i in existing["items"] if i["date"] >= cutoff and PLACE_RE.search(i["title"])], key=lambda i: i["date"], reverse=True)
+    for i in existing["items"]:
+        m = TV_RE.search(i["title"])
+        i["tv"] = m.group(0) if m else None
     return existing
 
 
@@ -387,7 +394,7 @@ def _pct(cur, base):
     return None
 
 
-def compare(trend):
+def compare(trend, volume=None):
     """
     키워드별 비교 지표. 데이터랩은 한 호출 안에서는 척도가 같으므로 같은 시계열 안의 비교(전주·전월·전년)는 유효함.
       week:  최근 7일 평균  vs 직전 7일 평균
@@ -401,6 +408,11 @@ def compare(trend):
         m_cur, m_prev = _avg(v, n - 30, n), _avg(v, n - 60, n - 30)
         y_prev = _avg(v, n - 30 - 364, n - 364) if n >= 394 else 0
         tiny = _avg(v, max(0, n - 60), n) < 0.05  # 데이터랩이 거의 0을 주는 키워드 = 검색량 너무 적음
+        if volume:
+            vm = {r["keyword"].replace(" ", ""): r["total"] for r in volume.get("rows", [])}
+            mv = vm.get(k.replace(" ", ""))
+            if mv is not None and mv < 200:
+                tiny = True
         if tiny:
             out.append({"keyword": k, "tiny": True,
                         "week": {"cur": round(w_cur, 3), "prev": round(w_prev, 3), "pct": None},
@@ -615,13 +627,13 @@ def main():
     save("visitors.json", visitors)
     save("news_log.json", news)
     save("weekly_change.json", weekly_change(trend))
-    save("compare.json", compare(trend))
+    save("compare.json", compare(trend, volume))
     save("monthly.json", monthly_table(trend))
     save("events.json", detect_spikes(trend, cfg["spike_rule"], news, cfg["broadcast_log"]))
     save("opportunity.json", opportunity(volume, comp, cfg))
     try:
         import brief
-        save("brief.json", brief.build(cfg, visitors, compare(trend)))
+        save("brief.json", brief.build(cfg, visitors, compare(trend, volume), news))
     except Exception as e:
         log(f"brief 실패: {e}")
         ERRORS["brief"] = f"{type(e).__name__}: {str(e)[:200]}"

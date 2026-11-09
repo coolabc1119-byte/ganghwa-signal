@@ -120,13 +120,13 @@
    ],
    "action": "keep",
    "reasons": [
+    "검색량이 적어 꽃게 판단을 따름",
     "제철(성수기)",
-    "검색 전월 대비 -97% (성수기 끝물)",
     "주말·연휴 손님 많음 예상"
    ],
    "note": "낙지 금어기 6/21~7/20(지역별 상이). 가을이 제철. 검색 유입은 거의 없어 꽃게 손님의 곁들임 메뉴로 봄",
    "week_pct": null,
-   "month_pct": -97.1
+   "month_pct": null
   },
   {
    "name": "돼지갈비(젓국갈비)",
@@ -158,5 +158,63 @@
  ],
  "alerts": [],
  "broadcast_recent": [],
+ "broadcast_auto": [
+  {
+   "date": "2026-10-27",
+   "program": "생생정보",
+   "note": "'생생정보' 옥자 할매의 꽃게탕과 손두부보쌈, 강화도 맛집",
+   "link": "https://www.joongangenews.com/news/articleView.html?idxno=558856",
+   "auto": true
+  },
+  {
+   "date": "2026-10-27",
+   "program": "생생정보",
+   "note": "'생생정보' 강화 화도면 꽃게탕·손두부보쌈 맛집 위치는? \"옥자 할매의...",
+   "link": "https://www.topstarnews.net/news/articleView.html?idxno=16259561",
+   "auto": true
+  },
+  {
+   "date": "2026-10-19",
+   "program": "오늘N",
+   "note": "'오늘N' 꽃게탕에 강화 추젓 넣는 이유, 7남매 집안 세 자매의 손맛",
+   "link": "https://www.joongangenews.com/news/articleView.html?idxno=556118",
+   "auto": true
+  },
+  {
+   "date": "2026-09-16",
+   "program": "생방송투데이",
+   "note": "'생방송투데이' 인천 강화군 왕갈비육개장 맛집 위치는",
+   "link": "https://www.joongangenews.com/news/articleView.html?idxno=548647",
+   "auto": true
+  },
+  {
+   "date": "2026-07-22",
+   "program": "놀면 뭐하니",
+   "note": "'놀면 뭐하니' 강화 석모도 젓국갈비 맛집 위치는? \"김광규와 함께…\"",
+   "link": "https://www.topstarnews.net/news/articleView.html?idxno=16142460",
+   "auto": true
+  },
+  {
+   "date": "2026-02-20",
+   "program": "백반기행",
+   "note": "\"강화도 향토음식\"…'백반기행' 장윤정 편, 강화도 젓국갈비 맛집 소개",
+   "link": "https://www.topstarnews.net/news/articleView.html?idxno=15978367",
+   "auto": true
+  },
+  {
+   "date": "2026-02-15",
+   "program": "백반기행",
+   "note": "'백반기행' 강화 젓국갈비 맛집",
+   "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+   "auto": true
+  },
+  {
+   "date": "2026-02-15",
+   "program": "백반기행",
+   "note": "'백반기행' 강화 젓국갈비 보양",
+   "link": "https://enter.etoday.co.kr/news/view/293106",
+   "auto": true
+  }
+ ],
  "note": "방문자 = 한국관광공사(통신사) 강화군 외지인. 요일 중앙값×추세×연휴·방송 보정. 가게 매출 CSV(data/store_sales.csv)를 넣으면 가게 기준 숫자로 바뀜."
 }

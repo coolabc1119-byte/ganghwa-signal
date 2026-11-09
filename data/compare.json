@@ -37,20 +37,21 @@
  },
  {
   "keyword": "강화도 낙지",
+  "tiny": true,
   "week": {
    "cur": 0.0,
    "prev": 0.0,
    "pct": null
   },
   "month": {
-   "cur": 0.0,
-   "prev": 0.2,
-   "pct": -97.1
+   "cur": 0.005,
+   "prev": 0.157,
+   "pct": null
   },
   "yoy": {
-   "cur": 0.0,
-   "prev": 0.1,
-   "pct": -94.7
+   "cur": 0.005,
+   "prev": 0.086,
+   "pct": null
   }
  },
  {

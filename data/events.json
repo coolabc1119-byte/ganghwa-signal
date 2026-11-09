@@ -162,27 +162,17 @@
   "news": [
    {
     "date": "2026-02-15",
-    "title": "[종합] '식객 허영만의 백반기행' 강화 맛집, 고기국밥-젓국갈비-꽃게정...",
-    "link": "https://www.topstarnews.net/news/articleView.html?idxno=15971473",
-    "query": "강화 젓국갈비"
-   },
-   {
-    "date": "2026-02-15",
     "title": "'백반기행' 강화 젓국갈비 맛집",
     "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
-    "query": "강화 젓국갈비"
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
    },
    {
     "date": "2026-02-15",
     "title": "'백반기행' 강화 젓국갈비 보양",
     "link": "https://enter.etoday.co.kr/news/view/293106",
-    "query": "강화 젓국갈비"
-   },
-   {
-    "date": "2026-02-15",
-    "title": "'백반기행' 강화 밥상",
-    "link": "https://www.bntnews.co.kr/article/view/bnt202602150033",
-    "query": "강화 젓국갈비"
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
    }
   ]
  },

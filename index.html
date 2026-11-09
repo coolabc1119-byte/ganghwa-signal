@@ -293,6 +293,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
       <div id="ysum"></div>
     </div>
+    <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
     <div class="card">
       <h2>월별 — 작년 실적과 올해 증감</h2>
       <div class="sub" id="ymSub"></div>
@@ -317,7 +318,6 @@ tr.ref td{color:var(--sub);background:var(--soft)}
         <div class="seg" id="vyoy"><button data-y="0" class="on">올해</button><button data-y="1">작년 겹쳐보기</button></div></div>
       <div class="chart"><canvas id="visitors"></canvas></div>
     </div>
-    <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
   </section>
 
   <!-- 키워드 발굴 -->
@@ -560,7 +560,7 @@ function renderMonthly(){
   const S=yearStats(); if(!S) return; const {Y,P,mAvg}=S;
   const rowsP=Array.from({length:12},(_,i)=>({m:i+1,...mAvg(P,i+1)})), rowsY=Array.from({length:12},(_,i)=>({m:i+1,...mAvg(Y,i+1)}));
   const rankable=rowsP.filter(r=>r.n>=MIN_DAYS).sort((a,b)=>b.avg-a.avg); const rank=Object.fromEntries(rankable.map((r,i)=>[r.m,i+1]));
-  document.getElementById('ymSub').innerHTML=`단위: 그달 <b>하루 평균 외지인(명)</b> · 작년 = ${P}년 실제값 · 순위 = 작년 ${rankable.length===12?'12개월':`데이터가 있는 ${rankable.length}개월`} 중 몇 번째로 많았나${rankable.length<12?' (12개월이 다 차면 다시 매김)':''} · 증감 = 올해 그달 vs 작년 같은 달 · ${MIN_DAYS}일 미만인 달은 "수집 중"`;
+  document.getElementById('ymSub').innerHTML=`단위: 그달 <b>하루 평균 외지인(명)</b> · 작년 = ${P}년 실제값 · 순위 = 작년 ${rankable.length===12?'12개월':`데이터가 있는 ${rankable.length}개월`} 중 몇 번째로 많았나${rankable.length<12?' (12개월이 다 차면 다시 매김)':''} · 증감 = 올해 그달 vs 작년 같은 달 · ${MIN_DAYS}일 미만인 달은 "수집 중" · <b>세로축은 0이 아닌 값에서 시작</b>(차이를 잘 보이게)`;
   const labels=Array.from({length:12},(_,i)=>(i+1)+'월');
   mk('mchart','bar',labels,[{label:P+'년',data:rowsP.map(r=>r.n>=MIN_DAYS?Math.round(r.avg):null),backgroundColor:css('--wait'),borderRadius:4,maxBarThickness:22},{label:Y+'년',data:rowsY.map(r=>r.n>=MIN_DAYS?Math.round(r.avg):null),backgroundColor:css('--blue'),borderRadius:4,maxBarThickness:22}],{legend:true,unit:'명'});
   const cell=(r)=> r.n>=MIN_DAYS? fmt(r.avg) : r.n? `<span class="muted">수집 중 ${r.n}일</span>` : '<span class="muted">–</span>';
@@ -595,17 +595,21 @@ function renderYTrend(){
 }
 
 /* ================= 차트 공통 (간결) ================= */
-function baseOpts({unit='',legend=false,labels=[],yTitle=''}={}){
+function niceRange(vals){ const xs=vals.flat().filter(v=>v!=null&&isFinite(v)); if(!xs.length) return {}; let lo=Math.min(...xs), hi=Math.max(...xs); if(lo<0) return {};
+  const raw=(hi-lo)/4||hi/4||1; const p=Math.pow(10,Math.floor(Math.log10(raw))); const step=[1,2,2.5,5,10].map(k=>k*p).find(x=>x>=raw);
+  const min=Math.max(0,Math.floor((lo-raw*0.4)/step)*step), max=Math.ceil((hi+raw*0.3)/step)*step; return {min,max,step}; }
+function baseOpts({unit='',legend=false,labels=[],yTitle='',ymin,ymax,ystep}={}){
   return { responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
     plugins:{ legend:{display:legend,position:'top',align:'end',labels:{color:css('--sub'),boxWidth:10,boxHeight:10,font:{size:11},usePointStyle:true}},
       tooltip:{backgroundColor:css('--ink'),titleColor:css('--card'),bodyColor:css('--card'),padding:10,cornerRadius:8,displayColors:true,boxWidth:8,boxHeight:8,usePointStyle:true,
         titleFont:{family:css('--mono'),size:11},bodyFont:{family:css('--mono'),size:12},itemSort:(a,b)=>(b.parsed.y??-1)-(a.parsed.y??-1),filter:i=>i.parsed.y!=null,
         callbacks:{label:c=>' '+c.dataset.label+': '+fmt(c.parsed.y)+(unit.replace('/일',''))}} },
     scales:{ x:{grid:{display:false},border:{display:false},ticks:{color:css('--faint'),maxTicksLimit:7,maxRotation:0,font:{family:css('--mono'),size:11},callback:(v,i)=>{const l=labels[i]||''; return /^\d{4}-\d{2}-\d{2}/.test(l)? md(l.slice(0,10)) : l;}}},
-             y:{beginAtZero:true,grid:{color:css('--line2'),drawTicks:false},border:{display:false},ticks:{color:css('--faint'),maxTicksLimit:5,padding:6,font:{family:css('--mono'),size:11},callback:v=>v>=10000?(v/10000).toFixed(v%10000?1:0)+'만':v>=1000?fmt(v):v},title:{display:!!yTitle,text:yTitle,color:css('--faint'),font:{size:11}}} } };
+             y:{beginAtZero:false,min:ymin,max:ymax,grid:{color:css('--line2'),drawTicks:false},border:{display:false},ticks:{stepSize:ystep,color:css('--faint'),maxTicksLimit:6,padding:6,font:{family:css('--mono'),size:11},callback:v=>v>=10000?(v/10000).toFixed(v%10000?1:0)+'만':v>=1000?fmt(v):v},title:{display:!!yTitle,text:yTitle,color:css('--faint'),font:{size:11}}} } };
 }
 function mk(id,type,labels,datasets,opt={},plugins=[]){
   if(charts[id]) charts[id].destroy();
+  if(opt.ymin===undefined && opt.zero!==true){ const r=niceRange(datasets.map(d=>d.data)); opt={...opt, ymin:r.min, ymax:r.max, ystep:r.step}; }
   charts[id]=new Chart(document.getElementById(id),{type,data:{labels,datasets:datasets.map(d=>({borderWidth:2,pointRadius:0,pointHoverRadius:4,pointHoverBorderWidth:2,pointHoverBorderColor:css('--card'),tension:.3,fill:false,...d}))},options:baseOpts({...opt,labels}),plugins});
 }
 const bcPlugin={id:'bc',afterDraw(c){ const bc=D.meta.broadcast_log||[]; if(!bc.length) return; const labels=c.data.labels,x=c.scales.x,{top,bottom,right}=c.chartArea,ctx=c.ctx; let lastX=-1e9;
@@ -671,7 +675,7 @@ function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}
   const c=k=>{ const x=e[k]; if(!x) return '<div class="c"><div class="p muted">–</div></div>'; const p=(x.factor-1)*100; return `<div class="c"><div class="p ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</div><div class="b">${x.measured?x.n+'일 실측':'자료 부족'}</div></div>`; };
   const rows=[['비 조금','1~5mm 또는 확률 40%↑','1'],['비','5mm↑ 또는 확률 60%↑','2'],['많은 비·눈','20mm↑ 또는 눈','3']];
-  document.getElementById('wxeff').innerHTML=`<div class="basis"><div><span>증감 비교 대상</span><b>같은 시기(앞뒤 4주) 같은 요일 비 안 온 날</b></div></div>
+  document.getElementById('wxeff').innerHTML=`<div class="basis"><div><span>증감 비교 대상</span><b style="font-family:var(--sans)">같은 시기(앞뒤 4주) 같은 요일 비 안 온 날</b></div></div>
     <div class="wxg"><div class="h"></div><div class="h">주말 손님</div><div class="h">평일 손님</div>
     ${rows.map(r=>`<div class="lab"><b>${r[0]}</b><small>${r[1]}</small></div>${c('we'+r[2])}${c('wd'+r[2])}`).join('')}</div>`;
 }

@@ -1,17 +1,17 @@
 {
  "generated": "2026-11-10",
  "sample": false,
- "last_visitor_data": "2026-10-10",
+ "last_visitor_data": "2026-10-11",
  "weather_live": true,
- "trend_factor": 0.95,
+ "trend_factor": 1.023,
  "weekday_median": {
   "월": 32392,
   "화": 32599,
   "수": 31787,
   "목": 33386,
-  "금": 38619,
+  "금": 38328,
   "토": 80642,
-  "일": 71141
+  "일": 72040
  },
  "weekday_base": 32438,
  "weather_effect": {
@@ -48,15 +48,15 @@
  },
  "capture_per_10k": null,
  "sales_days": 0,
- "summary": "토요일 평소보다 -9% (비 예보) · 일요일 평소보다 -19% (비 예보) · 줄이기: 꽃게, 칼국수 재료, 돼지갈비(젓국갈비), 낙지",
+ "summary": "토요일 평소 수준 (비 예보) · 일요일 평소보다 -12% (비 예보)",
  "days": [
   {
    "date": "2026-11-10",
    "wd": "화",
-   "est_visitors": 32666,
+   "est_visitors": 35066,
    "level": "normal",
-   "vs_weekday_pct": 0,
-   "x_weekday": 1.01,
+   "vs_weekday_pct": 8,
+   "x_weekday": 1.08,
    "tags": [],
    "weather": {
     "code": 1,
@@ -71,27 +71,27 @@
     "prev_month": {
      "base": 30832,
      "n": 1,
-     "pct": 5.9,
+     "pct": 13.7,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 32666,
      "n": 4,
-     "pct": -0.0,
+     "pct": 7.3,
      "ym": "2025-11"
     }
    },
    "est_store": null,
-   "seasonal": 1.055,
+   "seasonal": 1.052,
    "weather_factor": 1.0
   },
   {
    "date": "2026-11-11",
    "wd": "수",
-   "est_visitors": 32249,
-   "level": "normal",
-   "vs_weekday_pct": 1,
-   "x_weekday": 0.99,
+   "est_visitors": 35883,
+   "level": "busy",
+   "vs_weekday_pct": 13,
+   "x_weekday": 1.11,
    "tags": [],
    "weather": {
     "code": 2,
@@ -106,27 +106,27 @@
     "prev_month": {
      "base": 34828,
      "n": 1,
-     "pct": -7.4,
+     "pct": 3.0,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 33952,
      "n": 4,
-     "pct": -5.0,
+     "pct": 5.7,
      "ym": "2025-11"
     }
    },
    "est_store": null,
-   "seasonal": 1.068,
+   "seasonal": 1.103,
    "weather_factor": 1.0
   },
   {
    "date": "2026-11-12",
    "wd": "목",
-   "est_visitors": 35334,
-   "level": "normal",
-   "vs_weekday_pct": 6,
-   "x_weekday": 1.09,
+   "est_visitors": 38053,
+   "level": "busy",
+   "vs_weekday_pct": 14,
+   "x_weekday": 1.17,
    "tags": [],
    "weather": {
     "code": 2,
@@ -141,13 +141,13 @@
     "prev_month": {
      "base": 29838,
      "n": 1,
-     "pct": 18.4,
+     "pct": 27.5,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 35163,
      "n": 4,
-     "pct": 0.5,
+     "pct": 8.2,
      "ym": "2025-11"
     }
    },
@@ -158,10 +158,10 @@
   {
    "date": "2026-11-13",
    "wd": "금",
-   "est_visitors": 40223,
-   "level": "normal",
-   "vs_weekday_pct": 4,
-   "x_weekday": 1.24,
+   "est_visitors": 42992,
+   "level": "busy",
+   "vs_weekday_pct": 12,
+   "x_weekday": 1.33,
    "tags": [],
    "weather": {
     "code": 51,
@@ -176,13 +176,13 @@
     "prev_month": {
      "base": 39784,
      "n": 1,
-     "pct": 1.1,
+     "pct": 8.1,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 43727,
      "n": 4,
-     "pct": -8.0,
+     "pct": -1.7,
      "ym": "2025-11"
     }
    },
@@ -193,10 +193,10 @@
   {
    "date": "2026-11-14",
    "wd": "토",
-   "est_visitors": 73287,
+   "est_visitors": 78926,
    "level": "normal",
-   "vs_weekday_pct": -9,
-   "x_weekday": 2.26,
+   "vs_weekday_pct": -2,
+   "x_weekday": 2.43,
    "tags": [
     "비 예보"
    ],
@@ -213,13 +213,13 @@
     "prev_month": {
      "base": 102949,
      "n": 1,
-     "pct": -28.8,
+     "pct": -23.3,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 81338,
      "n": 5,
-     "pct": -9.9,
+     "pct": -3.0,
      "ym": "2025-11"
     }
    },
@@ -230,10 +230,10 @@
   {
    "date": "2026-11-15",
    "wd": "일",
-   "est_visitors": 57927,
+   "est_visitors": 63173,
    "level": "normal",
-   "vs_weekday_pct": -19,
-   "x_weekday": 1.79,
+   "vs_weekday_pct": -12,
+   "x_weekday": 1.95,
    "tags": [
     "비 예보"
    ],
@@ -248,15 +248,15 @@
    },
    "cmp": {
     "prev_month": {
-     "base": 109907,
+     "base": 76184,
      "n": 1,
-     "pct": -47.3,
+     "pct": -17.1,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 72382,
      "n": 5,
-     "pct": -20.0,
+     "pct": -12.7,
      "ym": "2025-11"
     }
    },
@@ -267,10 +267,10 @@
   {
    "date": "2026-11-16",
    "wd": "월",
-   "est_visitors": 31358,
+   "est_visitors": 33771,
    "level": "normal",
-   "vs_weekday_pct": -3,
-   "x_weekday": 0.97,
+   "vs_weekday_pct": 4,
+   "x_weekday": 1.04,
    "tags": [],
    "weather": {
     "code": 3,
@@ -291,7 +291,7 @@
     "yoy_month": {
      "base": 34235,
      "n": 4,
-     "pct": -8.4,
+     "pct": -1.4,
      "ym": "2025-11"
     }
    },
@@ -304,10 +304,10 @@
   {
    "start": "2026-11-10",
    "end": "2026-11-16",
-   "sat": 73287,
-   "sun": 57927,
-   "weekday": 32902,
-   "week_total": 303044,
+   "sat": 78926,
+   "sun": 63173,
+   "weekday": 35693,
+   "week_total": 327864,
    "last_year_total": 361380,
    "holidays": [],
    "weather_applied": true
@@ -315,10 +315,10 @@
   {
    "start": "2026-11-17",
    "end": "2026-11-23",
-   "sat": 76152,
-   "sun": 60925,
-   "weekday": 30387,
-   "week_total": 295023,
+   "sat": 82011,
+   "sun": 66443,
+   "weekday": 32962,
+   "week_total": 319204,
    "last_year_total": 311156,
    "holidays": [],
    "weather_applied": false
@@ -326,10 +326,10 @@
   {
    "start": "2026-11-24",
    "end": "2026-11-30",
-   "sat": 67409,
-   "sun": 54603,
-   "weekday": 28448,
-   "week_total": 269076,
+   "sat": 72596,
+   "sun": 59547,
+   "weekday": 30860,
+   "week_total": 291142,
    "last_year_total": 272591,
    "holidays": [],
    "weather_applied": false
@@ -337,10 +337,10 @@
   {
    "start": "2026-12-01",
    "end": "2026-12-07",
-   "sat": 59897,
-   "sun": 49795,
-   "weekday": 26744,
-   "week_total": 247512,
+   "sat": 64506,
+   "sun": 54304,
+   "weekday": 29011,
+   "week_total": 267819,
    "last_year_total": 230038,
    "holidays": [],
    "weather_applied": false
@@ -353,51 +353,46 @@
     "꽃게탕",
     "간장게장"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.02,
+   "action": "keep",
+   "mult_weekend": 0.93,
+   "mult_weekday": 1.1,
    "reasons": [
-    "주말 손님 평소보다 -14%",
-    "검색 전월 대비 -40% (제철 끝물)"
+    "검색 전월 대비 -35% (제철 끝물)"
    ],
    "note": "서해 꽃게 금어기 6/21~8/20(인천). 가을 수꽃게 9~11월, 봄 암꽃게 4~6월. 추석 전주 제수·선물 수요",
    "in_season": true,
-   "week_pct": -13.2,
-   "month_pct": -40.5
+   "week_pct": -4.6,
+   "month_pct": -34.8
   },
   {
    "name": "칼국수 재료",
    "menus": [
     "칼국수"
    ],
-   "action": "less",
-   "mult_weekend": 0.79,
-   "mult_weekday": 1.02,
+   "action": "keep",
+   "mult_weekend": 0.93,
+   "mult_weekday": 1.1,
    "reasons": [
-    "주말 손님 평소보다 -14%",
-    "검색 전주 대비 -17%",
-    "검색 전월 대비 -39%"
+    "검색 전월 대비 -32%"
    ],
    "note": "면·육수 재료. 추울수록 수요 ↑",
    "in_season": false,
-   "week_pct": -17.1,
-   "month_pct": -38.8
+   "week_pct": -9.7,
+   "month_pct": -32.1
   },
   {
    "name": "돼지갈비(젓국갈비)",
    "menus": [
     "젓국갈비"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.02,
-   "reasons": [
-    "주말 손님 평소보다 -14%"
-   ],
+   "action": "keep",
+   "mult_weekend": 0.93,
+   "mult_weekday": 1.1,
+   "reasons": [],
    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
    "in_season": false,
-   "week_pct": -7.9,
-   "month_pct": -18.8
+   "week_pct": -7.4,
+   "month_pct": -10.3
   },
   {
    "name": "낙지",
@@ -405,11 +400,10 @@
     "연포탕",
     "낙지"
    ],
-   "action": "less",
-   "mult_weekend": 0.86,
-   "mult_weekday": 1.02,
+   "action": "keep",
+   "mult_weekend": 0.93,
+   "mult_weekday": 1.1,
    "reasons": [
-    "주말 손님 평소보다 -14%",
     "검색량 적어 손님 수만으로 판단"
    ],
    "note": "낙지 금어기 6/21~7/20(지역별 상이). 가을이 제철. 검색 유입은 거의 없어 꽃게 손님의 곁들임 메뉴로 봄",
@@ -420,8 +414,8 @@
  ],
  "staff": [],
  "alerts": [],
- "weekend_ratio": 0.86,
- "weekday_ratio": 1.016,
+ "weekend_ratio": 0.93,
+ "weekday_ratio": 1.102,
  "broadcast_recent": [],
  "broadcast_auto": [
   {

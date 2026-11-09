@@ -245,16 +245,26 @@ def fetch_visitors(start, end):
         for d, a, b, c in zip(prev["dates"], prev["visitor"], prev["local"], prev["foreign"]):
             if d >= start.isoformat():
                 by_day[d] = {"visitor": a, "local": b, "foreign": c}
-        start = max(start, date.fromisoformat(prev["dates"][-1]) - timedelta(days=14))
-    s0 = start
+        have = set(prev["dates"])
+        recent_cut = (end - timedelta(days=14)).isoformat()
+    # 최근 날짜부터 거꾸로 받음 — 시간 제한에 걸려도 브리핑에 필요한 최근 데이터는 먼저 확보
+    chunks, c0 = [], start
+    while c0 <= end:
+        chunks.append((c0, min(end, c0 + timedelta(days=29))))
+        c0 += timedelta(days=30)
+    chunks.reverse()
     seen_days = set()
     calls, chunk_errs = 0, []
     t_start = time.time()
     BUDGET = 180  # 관광공사는 해외 접속이 느림 — 3분 넘으면 받은 만큼만 쓰고 다음 실행에서 이어받음
     # 이 API에는 지역 필터가 없음 — 전국 시군구(하루 약 740행)를 받아 강화군만 골라냄.
     # 첫 실행(약 16개월 백필)은 300회 안팎 호출, 이후 매일은 10회 안팎.
-    while s0 <= end and calls < 450 and time.time() - t_start < BUDGET:
-        e0 = min(end, s0 + timedelta(days=29))
+    if prev.get("live") and prev.get("dates"):
+        chunks = [(a, b) for a, b in chunks
+                  if b.isoformat() >= recent_cut or any((a + timedelta(days=i)).isoformat() not in have for i in range((b - a).days + 1))]
+    for s0, e0 in chunks:
+        if calls >= 450 or time.time() - t_start >= BUDGET:
+            break
         page, total = 1, None
         while calls < 450 and time.time() - t_start < BUDGET:
             params = {
@@ -314,7 +324,6 @@ def fetch_visitors(start, end):
                 break
             page += 1
             time.sleep(0.1)
-        s0 = e0 + timedelta(days=1)
     if chunk_errs:
         ERRORS["tour_api_chunks"] = chunk_errs[:6]
     ERRORS["tour_api_calls"] = calls

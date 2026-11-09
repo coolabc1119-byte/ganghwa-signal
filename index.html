@@ -126,7 +126,16 @@ input[type=search]{font:inherit;padding:7px 11px;border:1px solid var(--line);bo
 .day .w{font-size:11px;color:var(--faint);font-family:var(--mono)} .day .d{font-size:14px;font-weight:700;margin:2px 0 6px}
 .lv{font-size:11px;font-weight:700;border-radius:6px;padding:3px 0}
 .lv.quiet{background:var(--wait-bg);color:var(--sub)} .lv.normal{background:var(--ok-bg);color:var(--ok)} .lv.busy{background:var(--warn-bg);color:var(--warn)} .lv.peak{background:var(--hot-bg);color:var(--hot)}
-.day .v{font-size:12px;color:var(--ink2);margin-top:6px;font-family:var(--mono)} .day .tg{font-size:10px;color:var(--hot);margin-top:3px;min-height:12px;line-height:1.2}
+.day .v{font-size:13px;font-weight:600;color:var(--ink);margin-top:6px;font-family:var(--mono)}
+.day .cp{margin-top:6px;border-top:1px dashed var(--line);padding-top:5px;display:grid;gap:1px}
+.day .cp div{display:flex;justify-content:space-between;font-size:10.5px;font-family:var(--mono);padding:0 2px}
+.day .cp span:first-child{color:var(--faint);font-family:var(--sans)}
+.day .cp .na{color:var(--faint)}
+details.how{margin-top:14px;font-size:12px;color:var(--sub);border-top:1px solid var(--line);padding-top:10px}
+details.how summary{cursor:pointer;font-weight:600;color:var(--ink2);list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::before{content:"▸ ";color:var(--faint)} details.how[open] summary::before{content:"▾ "}
+details.how ul{margin:8px 0 0;padding-left:18px;line-height:1.75} .day .tg{font-size:10px;color:var(--hot);margin-top:3px;min-height:12px;line-height:1.2}
 .kpi .l{font-size:12px;color:var(--sub)} .kpi .v{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:6px 0 4px;font-family:var(--mono)}
 .kpi .dd{display:inline-block;margin-right:10px;font-size:12px;font-family:var(--mono)}
 .ing{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line2)} .ing:last-child{border-bottom:0}
@@ -190,6 +199,13 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <h1 id="bsum"></h1>
       <div class="meta" id="bmeta"></div>
       <div class="days" id="bdays"></div>
+      <details class="how"><summary>숫자 기준 보기</summary><ul>
+        <li><b>카드 숫자</b> = 그날 강화군에 올 <b>외지인 예상 인원</b>(한국관광공사 통신사 데이터 기반)</li>
+        <li><b>예상 방법</b> = 최근 8주 같은 요일 중앙값 × 최근 추세(±10%) × 작년 같은 시기 계절 변화 × 연휴·방송 보정</li>
+        <li><b>전주</b> = 지난주 같은 요일 <b>실제</b> 인원 대비 · <b>전월</b> = 지난달 같은 요일 <b>실제 평균</b> 대비 · <b>전년</b> = 작년 같은 달 같은 요일 <b>실제 평균</b> 대비 (연휴는 평균에서 제외)</li>
+        <li><b>"–"</b> = 관광공사 데이터가 약 한 달 늦게 올라와 아직 실제값이 없음 → 매일 아침 자동으로 채워짐</li>
+        <li><b>손님 수준</b> = 예상 ÷ 평소 하루 → 평소 · 많음(1.25배↑) · 매우 많음(1.7배↑)</li>
+      </ul></details>
     </div>
     <div class="grid g4">
       <div class="card kpi" id="k1"></div><div class="card kpi" id="k2"></div><div class="card kpi" id="k3"></div><div class="card kpi" id="k4"></div>
@@ -303,7 +319,7 @@ document.getElementById('theme').onclick=()=>{ const cur=document.documentElemen
 const tabs=[...document.querySelectorAll('.tab')];
 function showTab(p){ tabs.forEach(t=>t.classList.toggle('on',t.dataset.p===p)); document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('on',s.id==='p-'+p)); try{localStorage.setItem('gs-tab',p);}catch(e){} setTimeout(redrawAll,20); }
 tabs.forEach(t=>t.onclick=()=>showTab(t.dataset.p));
-(function(){ let x0=null; document.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true}); document.addEventListener('touchend',e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)<70) return; const i=tabs.findIndex(t=>t.classList.contains('on')); const n=dx<0?i+1:i-1; if(tabs[n]) showTab(tabs[n].dataset.p); },{passive:true}); })();
+// 탭은 상단 버튼으로만 이동 (스와이프 없음)
 
 init().catch(e => { const n=document.getElementById('notice'); n.hidden=false; n.textContent='데이터를 불러오지 못했습니다: '+e.message+' — collect.py를 먼저 실행해 data/ 폴더를 만들어 주세요.'; });
 
@@ -356,6 +372,8 @@ function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x
 function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderWd(); renderMonthly(); renderMine(); }
 
 /* ---------- 브리핑 ---------- */
+function cpRows(c){ if(!c) return ''; const r=(lab,x)=>{ if(!x||x.pct==null) return `<div><span>${lab}</span><span class="na">–</span></div>`; const p=x.pct; return `<div title="기준 ${fmt(x.base)}명 (${x.n}일 평균)"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
+  return `<div class="cp">${r('전주',c.prev_week)}${r('전월',c.prev_month)}${r('전년',c.yoy_month)}</div>`; }
 const LV={quiet:'한산',normal:'평소',busy:'많음',peak:'매우 많음'};
 const ACT={more:'더 받기',keep:'평소대로',less:'줄이기',frozen:'냉동 운영'};
 function renderBrief(){
@@ -363,8 +381,8 @@ function renderBrief(){
   const d0=b.days[0].date, d6=b.days[6].date;
   document.getElementById('bweek').textContent = `주간 준비 브리핑 · ${md(d0)} ~ ${md(d6)}`;
   document.getElementById('bsum').textContent = b.summary;
-  document.getElementById('bmeta').innerHTML = `외지인 방문자 예상 · 평일 <b class="mono">${fmt(b.weekday_median['수'])}</b> · 토 <b class="mono">${fmt(b.weekday_median['토'])}</b> 기준 · 추세 <b class="mono">${b.trend_factor>=1?'+':''}${((b.trend_factor-1)*100).toFixed(0)}%</b>` + (b.last_visitor_data?` · 방문자 집계 마지막 날 ${b.last_visitor_data}`:'') + (b.capture_per_10k?` · 가게 비율 1만 명당 ${b.capture_per_10k}`:'');
-  document.getElementById('bdays').innerHTML = b.days.map((d,i)=>`<div class="day ${i===0?'today':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div><div class="lv ${d.level}">${LV[d.level]}</div><div class="v">${fmt(d.est_visitors)}</div>${d.est_store!=null?`<div class="v">가게≈${fmt(d.est_store)}</div>`:''}<div class="tg">${d.tags.join(', ')}</div></div>`).join('');
+  document.getElementById('bmeta').innerHTML = `카드 숫자 = 그날 외지인 예상 인원 · ▲▼ = 예상이 실제 과거값보다 많고 적음 · 평소 · 평일 <b class="mono">${fmt(b.weekday_median['수'])}</b> · 토 <b class="mono">${fmt(b.weekday_median['토'])}</b> 기준 · 추세 <b class="mono">${b.trend_factor>=1?'+':''}${((b.trend_factor-1)*100).toFixed(0)}%</b>` + (b.last_visitor_data?` · 방문자 집계 마지막 날 ${b.last_visitor_data}`:'') + (b.capture_per_10k?` · 가게 비율 1만 명당 ${b.capture_per_10k}`:'');
+  document.getElementById('bdays').innerHTML = b.days.map((d,i)=>`<div class="day ${i===0?'today':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div><div class="lv ${d.level}">${LV[d.level]}</div><div class="v">${fmt(d.est_visitors)}</div>${d.est_store!=null?`<div class="v">가게≈${fmt(d.est_store)}</div>`:''}${cpRows(d.cmp)}<div class="tg">${d.tags.join(', ')}</div></div>`).join('');
   document.getElementById('bing').innerHTML = b.ingredients.map(i=>`<div class="ing"><div class="act ${i.action}">${ACT[i.action]}</div><div><div class="nm">${i.name}<span>${i.menus.join('·')}</span></div><div class="rs">${i.reasons.length?i.reasons.join(' · '):'특이 신호 없음'}</div></div></div>`).join('');
   document.getElementById('bstaff').innerHTML = b.staff.length? b.staff.map(s=>`<div class="stf"><b class="mono">${s.date.slice(5).replace('-','/')} ${s.wd}</b> — ${s.advice} <span class="muted">(${s.why})</span></div>`).join('') : '<div class="stf muted">이번 주 추가 인원 필요 없음</div>';
   document.getElementById('balerts').innerHTML = b.alerts.length? b.alerts.map(a=>`<div class="al"><span class="d">${a.date.slice(5).replace('-','/')} ${a.wd}</span><span>${a.text}</span></div>`).join('') : '<div class="al muted">30일 안에 연휴·금어기·방송 예정 없음</div>';

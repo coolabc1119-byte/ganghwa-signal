@@ -2,14 +2,14 @@
  "generated": "2026-11-09",
  "sample": false,
  "last_visitor_data": "2026-10-10",
- "trend_factor": 1.012,
+ "trend_factor": 0.944,
  "weekday_median": {
   "월": 32387,
-  "화": 32484,
-  "수": 31650,
-  "목": 33386,
-  "금": 39202,
-  "토": 83162,
+  "화": 32599,
+  "수": 31787,
+  "목": 35780,
+  "금": 38619,
+  "토": 80642,
   "일": 71141
  },
  "overall_median": 35906,
@@ -20,79 +20,226 @@
   {
    "date": "2026-11-09",
    "wd": "월",
-   "est_visitors": 32779,
-   "ratio": 0.91,
+   "est_visitors": 35406,
+   "ratio": 0.99,
    "level": "normal",
    "yoy_visitors": 33614,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": 9,
+   "est_store": null,
+   "seasonal": 1.157,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-02"
+    },
+    "prev_month": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 33614,
+     "n": 1,
+     "pct": 5.3,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-10",
    "wd": "화",
-   "est_visitors": 32877,
-   "ratio": 0.92,
+   "est_visitors": 34906,
+   "ratio": 0.97,
    "level": "normal",
    "yoy_visitors": 33943,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": 7,
+   "est_store": null,
+   "seasonal": 1.134,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-03"
+    },
+    "prev_month": {
+     "base": 30832,
+     "n": 1,
+     "pct": 13.2,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 33943,
+     "n": 1,
+     "pct": 2.8,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-11",
    "wd": "수",
-   "est_visitors": 32034,
-   "ratio": 0.89,
+   "est_visitors": 34028,
+   "ratio": 0.95,
    "level": "normal",
    "yoy_visitors": 35651,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": 7,
+   "est_store": null,
+   "seasonal": 1.133,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-04"
+    },
+    "prev_month": {
+     "base": 34828,
+     "n": 1,
+     "pct": -2.3,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 35651,
+     "n": 1,
+     "pct": -4.6,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-12",
    "wd": "목",
-   "est_visitors": 33790,
-   "ratio": 0.94,
+   "est_visitors": 41700,
+   "ratio": 1.16,
    "level": "normal",
    "yoy_visitors": 39277,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": 17,
+   "est_store": null,
+   "seasonal": 1.234,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-05"
+    },
+    "prev_month": {
+     "base": 29838,
+     "n": 1,
+     "pct": 39.8,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 39277,
+     "n": 1,
+     "pct": 6.2,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-13",
    "wd": "금",
-   "est_visitors": 39676,
-   "ratio": 1.1,
+   "est_visitors": 36475,
+   "ratio": 1.02,
    "level": "normal",
    "yoy_visitors": null,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": -6,
+   "est_store": null,
+   "seasonal": 1.0,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-06"
+    },
+    "prev_month": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-14",
    "wd": "토",
-   "est_visitors": 84168,
-   "ratio": 2.34,
+   "est_visitors": 76165,
+   "ratio": 2.12,
    "level": "peak",
    "yoy_visitors": null,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": -6,
+   "est_store": null,
+   "seasonal": 1.0,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-07"
+    },
+    "prev_month": {
+     "base": 102949,
+     "n": 1,
+     "pct": -26.0,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 88504,
+     "n": 1,
+     "pct": -13.9,
+     "label": "2025-11"
+    }
+   }
   },
   {
    "date": "2026-11-15",
    "wd": "일",
-   "est_visitors": 72002,
-   "ratio": 2.01,
+   "est_visitors": 67192,
+   "ratio": 1.87,
    "level": "peak",
    "yoy_visitors": null,
    "tags": [],
-   "vs_weekday_pct": 1,
-   "est_store": null
+   "vs_weekday_pct": -6,
+   "est_store": null,
+   "seasonal": 1.0,
+   "cmp": {
+    "prev_week": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-11-08"
+    },
+    "prev_month": {
+     "base": null,
+     "n": 0,
+     "pct": null,
+     "label": "2026-10"
+    },
+    "yoy_month": {
+     "base": 83342,
+     "n": 1,
+     "pct": -19.4,
+     "label": "2025-11"
+    }
+   }
   }
  ],
  "ingredients": [

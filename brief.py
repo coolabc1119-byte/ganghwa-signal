@@ -77,6 +77,42 @@ def build(cfg, visitors, compare, news=None, today=None):
     trend = max(0.9, min(1.1, trend))  # 한 달 이상 늦게 올라오는 데이터라 추세는 ±10%까지만 반영
     last_data = dates[-1] if dates else None
 
+    # 계절 보정: 작년 데이터로 "기준 기간 → 예측 주" 사이 요일별 변화를 구해 곱함 (예: 10월→11월 단풍 끝물 하락)
+    def _ly_avg(wd, center, half=14):
+        xs = [by[(center + timedelta(days=k)).isoformat()] for k in range(-half, half + 1)
+              if (center + timedelta(days=k)).weekday() == wd and (center + timedelta(days=k)).isoformat() in by
+              and (center + timedelta(days=k)).isoformat() not in hol]
+        return (sum(xs) / len(xs), len(xs)) if xs else (None, 0)
+    base_center = recent[len(recent) // 2][0] if recent else today
+
+    def seasonal(wd, target):
+        a, na = _ly_avg(wd, target - timedelta(days=364))
+        b, nb = _ly_avg(wd, base_center - timedelta(days=364))
+        if a and b and na >= 2 and nb >= 2:
+            return max(0.7, min(1.3, a / b))
+        return 1.0
+
+    # 실제값 비교: 전주 같은 요일 / 전월 같은 요일 평균 / 전년 동월 같은 요일 평균 (연휴 제외)
+    def month_wd_avg(ym, wd):
+        xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and d not in hol]
+        return (sum(xs) / len(xs), len(xs)) if xs else (None, 0)
+
+    def ym_shift(d, k):
+        y, m = d.year, d.month - k
+        while m <= 0:
+            m += 12; y -= 1
+        return f"{y}-{m:02d}"
+
+    def cmp_block(d, est):
+        out = {}
+        pw = by.get((d - timedelta(days=7)).isoformat())
+        out["prev_week"] = {"base": pw, "n": 1 if pw else 0, "pct": round((est / pw - 1) * 100, 1) if pw else None, "label": (d - timedelta(days=7)).isoformat()}
+        for key, k in (("prev_month", 1), ("yoy_month", 12)):
+            ym = ym_shift(d, k)
+            a, n = month_wd_avg(ym, d.weekday())
+            out[key] = {"base": round(a) if a else None, "n": n, "pct": round((est / a - 1) * 100, 1) if a else None, "label": ym}
+        return out
+
     # 작년 같은 요일(364일 전) 대비 — 참고용
     def yoy(d):
         a, b = by.get((d - timedelta(days=364)).isoformat()), by.get((d - timedelta(days=371)).isoformat())
@@ -111,7 +147,8 @@ def build(cfg, visitors, compare, news=None, today=None):
         elif (d + timedelta(days=1)).isoformat() in holidays and wd not in (4, 5):
             base_wd = 4
             tags.append("연휴 전날")
-        est = by_wd.get(base_wd, overall) * trend
+        sf = seasonal(base_wd, d)
+        est = by_wd.get(base_wd, overall) * trend * sf
         if recent_bc and wd in (5, 6):
             est *= rules.get("broadcast_boost", 1.3)
             tags.append("방송 후 첫 주말")
@@ -122,6 +159,7 @@ def build(cfg, visitors, compare, news=None, today=None):
             "date": d.isoformat(), "wd": WD[wd], "est_visitors": round(est), "ratio": round(ratio, 2), "level": level,
             "yoy_visitors": yoy(d), "tags": tags, "vs_weekday_pct": round(vs_wd),
             "est_store": round(est / 10000 * capture) if capture else None,
+            "seasonal": round(sf, 3), "cmp": cmp_block(d, est),
         })
 
     # 재료 신호

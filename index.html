@@ -99,6 +99,10 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:8px 8px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:middle}
 th{color:var(--faint);font-weight:600;font-size:11px;letter-spacing:.02em}
 td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.kw{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+.tdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-left:6px;vertical-align:2px}
+th,td{white-space:nowrap}
+@media(max-width:560px){.bar{display:none!important} table{font-size:12.5px} th,td{padding:8px 6px}}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -190,16 +194,15 @@ tr.ref td{color:var(--sub);background:var(--soft)}
   <div class="sample-note" id="notice" hidden></div>
 
   <div class="tabs"><div class="tablist">
-    <button class="tab on" data-p="brief">이번 주</button>
-    <button class="tab" data-p="outlook">4주 전망</button>
+    <button class="tab on" data-p="disc">핫키워드</button>
+    <button class="tab" data-p="brief">이번 주</button>
     <button class="tab" data-p="trend">메뉴 검색</button>
     <button class="tab" data-p="visit">방문자</button>
-    <button class="tab" data-p="disc">키워드 발굴</button>
     <button class="tab" data-p="about">기준</button>
   </div></div>
 
   <!-- 이번 주 -->
-  <section class="panel on" id="p-brief">
+  <section class="panel" id="p-brief">
     <div class="hero">
       <div class="eyebrow" id="bweek"></div>
       <h1 id="bsum"></h1>
@@ -222,21 +225,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
     </div>
   </section>
 
-  <!-- 4주 전망 -->
-  <section class="panel" id="p-outlook">
-    <div class="card">
-      <h2>앞으로 4주 — 주말·평일 예상 손님 <span class="chip" id="c-ol"></span></h2>
-      <div class="sub">단위: 명/일(강화군 외지인) · 이번 주만 날씨 반영, 나머지는 요일·계절·연휴 기준 · 작년 같은 주 실제 합계와 비교 · 발주·휴무·알바 일정 잡을 때</div>
-      <div class="ol" id="outlook"></div>
-    </div>
-    <div class="card">
-      <h2>계절 흐름 — 작년 월별 하루 평균 방문자 <span class="chip" id="c-season"></span></h2>
-      <div class="sub">단위: 명/일 · 연중 성수기·비수기 파악 · 올해 데이터가 쌓이는 달은 겹쳐 표시</div>
-      <div class="chart sm"><canvas id="mchart"></canvas></div>
-    </div>
-  </section>
-
-  <!-- 메뉴 검색 -->
+    <!-- 메뉴 검색 -->
   <section class="panel" id="p-trend">
     <div class="card">
       <h2>우리 메뉴 네이버 검색 — 주별 <span class="chip" id="c-trend"></span></h2>
@@ -262,6 +251,11 @@ tr.ref td{color:var(--sub);background:var(--soft)}
   <!-- 방문자 -->
   <section class="panel" id="p-visit">
     <div class="card">
+      <h2>계절 흐름 — 월별 하루 평균 방문자 <span class="chip" id="c-season"></span></h2>
+      <div class="sub">단위: 명/일 · 연중 성수기·비수기 파악 · 작년(회색)과 올해(파랑) 같은 달 비교</div>
+      <div class="chart sm"><canvas id="mchart"></canvas></div>
+    </div>
+    <div class="card">
       <h2>강화군 하루 외지인 방문자 <span class="chip" id="c-vis"></span></h2>
       <div class="sub">단위: 명/일 · 한국관광공사(통신사 집계) · 약 한 달 늦게 올라옴 · 얇은 선 = 일별, 굵은 선 = 7일 평균 · 점 색 = 비 온 날</div>
       <div class="controls"><div class="seg" id="vrange"><button data-r="90">3개월</button><button data-r="180" class="on">6개월</button><button data-r="9999">전체</button></div>
@@ -275,9 +269,9 @@ tr.ref td{color:var(--sub);background:var(--soft)}
   </section>
 
   <!-- 키워드 발굴 -->
-  <section class="panel" id="p-disc">
+  <section class="panel on" id="p-disc">
     <div class="card">
-      <h2>강화도 검색어 순위 <span class="chip" id="c-disc"></span></h2>
+      <h2>핫키워드 — 강화도 검색어 순위 <span class="chip" id="c-disc"></span></h2>
       <div class="sub" id="discSub"></div>
       <div class="controls"><div class="seg" id="dper"><button data-p="day">어제</button><button data-p="week" class="on">최근 7일</button><button data-p="month">최근 30일</button></div>
         <input type="search" id="q" placeholder="걸러보기 (예: 게, 칼국수, 카페)">
@@ -343,15 +337,15 @@ async function init(){
   const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
   const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
-  chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-ol',['tour_api','weather']); chip('c-season',['tour_api']); chip('c-wx',['tour_api','weather']);
+  chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-season',['tour_api']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로
   if(D.visitors?.dates?.length){ const v=D.visitors, by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); const out=[],vals=[]; let d=v.dates[0]; const end=v.dates.at(-1); while(d<=end){ out.push(d); vals.push(by[d]??null); d=shift(d,1); } D.visitors={...v,dates:out,visitor:vals}; }
   const seenBc=new Set((m.broadcast_log||[]).map(b=>b.date));
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
-  try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderBc(); renderEvents(); renderOutlook(); renderMonthly(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWd(); renderWx(); renderVolume(); renderNews(); renderAbout();
+  try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
+  renderBrief(); renderPrep(); renderStaffAlerts(); renderBc(); renderEvents(); renderMonthly(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWd(); renderWx(); renderVolume(); renderNews(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',renderVolume);
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
@@ -401,10 +395,6 @@ const HOW={
     '<b>방송 감지</b> = 뉴스 제목에 방송 프로그램명(생생정보·오늘N·생활의 달인·백반기행 등)과 음식 단어(맛집·꽃게·젓국·칼국수 등)가 함께 있으면 방송으로 기록',
     '<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회', CNT],
     s:['news','dlab','ad']},
-  outlook:{f:[
-    '<b>주별 예상</b> = 각 날짜를 「이번 주」와 같은 공식으로 계산 (날씨·방송은 이번 주만, 이후는 예보 범위 밖이라 제외)',
-    '<b>작년 같은 주</b> = 364일 전(같은 요일) 7일 실제 방문자 합계 · 5일 이상 있을 때만 표시'],
-    s:['tour','cfg']},
   mchart:{f:['<b>막대</b> = 그 달 하루 외지인 방문자 실제값의 평균 (그 달 7일 이상 있을 때만)'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
   cmp:{f:[CNT,'<b>전주</b> = 7일 전 같은 요일 값','<b>전월 평균</b> = 지난달 같은 요일 값들의 평균','<b>전년 평균</b> = 작년 같은 달 같은 요일 값들의 평균','<b>증감</b> = 그날 ÷ 비교값 − 1'], s:['dlab','ad']},
@@ -477,16 +467,6 @@ function renderEvents(){
   document.getElementById('events').innerHTML=ev.length? ev.map(e=>`<div class="ev"><b class="mono">${e.date}</b> · ${e.keyword} — 평소 <span class="mono">${fmt(e.baseline)}회</span> → <b class="mono">${fmt(e.value)}회</b>${e.holiday?`<span class="tag">${e.holiday}</span>`:''}${e.broadcast?`<span class="tag">📺 ${e.broadcast.program}</span>`:''}${e.news&&e.news.length?`<div class="news">${e.news.slice(0,2).map(n=>`<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>`).join(' · ')}</div>`:''}</div>`).join('') : '<div class="empty">최근 급등 없음</div>';
 }
 
-/* ================= 4주 전망 ================= */
-function renderOutlook(){
-  const o=D.brief?.outlook||[];
-  document.getElementById('outlook').innerHTML=o.map((w,i)=>{ const ly=w.last_year_total; const d=ly?(w.week_total/ly-1)*100:null;
-    return `<div class="olw"><div class="h">${i===0?'이번 주':i===1?'다음 주':`${i+1}주 뒤`}${w.weather_applied?' · 날씨 반영':''}</div><div class="t">${md(w.start)} ~ ${md(w.end)}</div>
-      <div class="row"><span>토요일</span><b>${fmt(w.sat)}명</b></div><div class="row"><span>일요일</span><b>${fmt(w.sun)}명</b></div><div class="row"><span>평일 평균</span><b>${fmt(w.weekday)}명</b></div>
-      <div class="row"><span>주 합계</span><b>${fmt(w.week_total)}</b></div>
-      <div class="row"><span>작년 같은 주</span><b>${ly?fmt(ly)+` <span class="${d>=0?'up':'down'}">${d>=0?'▲':'▼'}${Math.abs(d).toFixed(0)}%</span>`:'<span class="muted">집계 전</span>'}</b></div>
-      ${w.holidays.length?`<div class="hol">📅 ${w.holidays.join(', ')}</div>`:''}</div>`; }).join('');
-}
 function renderMonthly(){
   const v=D.visitors; if(!v) return; const by={}; v.dates.forEach((d,i)=>{ if(v.visitor[i]!=null) (by[d.slice(0,7)]||=[]).push(v.visitor[i]); });
   const years=[...new Set(Object.keys(by).map(m=>m.slice(0,4)))].sort().slice(-2);
@@ -606,12 +586,12 @@ function discRank(){
 }
 function renderVolume(){
   const {rows:all,lab,prevLab}=discRank();
-  document.getElementById('discSub').innerHTML=`단위: <b>${lab}</b> · 증감 = ${prevLab} · ▲▼숫자 = 순위 변동 · 파란 표시 = 추적 중 · 내가 모르는 메뉴·장소가 여기서 나옴`;
+  document.getElementById('discSub').innerHTML=`단위: <b>${lab}</b> · 증감 = ${prevLab} · ▲▼숫자 = 순위 변동 · 파란 점 = 메뉴 검색 탭에서 추적 중`;
   const q=document.getElementById('q').value.trim(); let rows=all; if(q) rows=rows.filter(r=>r.keyword.includes(q));
   if(state.dfilter==='food') rows=rows.filter(r=>FOOD.test(r.keyword)); else if(state.dfilter==='place') rows=rows.filter(r=>PLACE.test(r.keyword)&&!FOOD.test(r.keyword));
   rows=rows.slice(0,100); const max=Math.max(1,...rows.map(r=>r.cur||0));
   const rk=r=>{ if(!r.prank) return '<span class="muted" style="font-size:10px">NEW</span>'; const d=r.prank-r.rank; return d===0?'<span class="muted">–</span>':`<span class="${d>0?'up':'down'}">${d>0?'▲':'▼'}${Math.abs(d)}</span>`; };
-  document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)</th><th class="n">증감</th><th class="n">순위</th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td>${r.keyword}${r.tracked?'<span class="tag mine">추적 중</span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
+  document.getElementById('volume').innerHTML=`<tr><th>#</th><th>키워드</th><th class="n">검색(회)</th><th class="n">증감</th><th class="n">순위</th></tr>`+rows.map(r=>`<tr><td class="n muted">${r.rank}</td><td class="kw" title="${r.keyword}">${r.keyword}${r.tracked?'<span class="tdot" title="추적 중"></span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round((r.cur||0)/max*70)}px"></span>${fmt(r.cur)}`}</td><td class="n ${r.pct==null?'muted':r.pct>=0?'up':'down'}">${r.pct==null?'–':(r.pct>=0?'+':'')+r.pct.toFixed(0)+'%'}</td><td class="n" style="font-size:12px">${state.dper==='month'&&r.prev==null?'<span class="muted">–</span>':rk(r)}</td></tr>`).join('')+(rows.length?'':'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
 }
 function renderNews(){ const it=(D.news_log?.items||[]).slice(0,30); document.getElementById('newslist').innerHTML=it.length? it.map(n=>`<div class="al"><span class="d">${n.date.slice(5).replace('-','/')}</span><span>${n.tv?'📺 ':''}<a href="${n.link}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink2)">${n.title}</a></span></div>`).join('') : '<div class="empty">뉴스 없음</div>'; }
 function renderAbout(){

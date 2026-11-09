@@ -59,7 +59,8 @@ a{color:inherit}
 .dot.bad{background:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 20%,transparent)}
 .ibtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer}
 .ibtn svg{width:16px;height:16px}
-@media(max-width:720px){.brand .st,.fresh .long{display:none}}
+@media(max-width:720px){.brand .st,.fresh{display:none}.brand .v{display:none}}
+.health .upd{display:none}@media(max-width:720px){.health .upd{display:inline-flex}.health .right{margin-left:0}}
 
 /* ---------- 데이터 상태 띠 ---------- */
 .health{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:10px 14px;margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:var(--sub)}
@@ -137,6 +138,15 @@ input[type=search]{font:inherit;padding:7px 11px;border:1px solid var(--line);bo
 .stf{font-size:13px;padding:5px 0}
 .ev{border-left:3px solid var(--s2);padding:7px 12px;margin-bottom:8px;background:var(--soft);border-radius:0 8px 8px 0}
 .ev .news{font-size:12px;color:var(--sub);margin-top:3px} .ev .news a{color:var(--blue);text-decoration:none}
+.daypick{display:flex;gap:6px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
+.daypick::-webkit-scrollbar{display:none}
+.dp{flex:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:10px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer;text-align:center;min-width:54px}
+.dp b{display:block;font-family:var(--mono);font-size:13px;color:var(--ink)}
+.dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);background:color-mix(in srgb,var(--blue) 6%,var(--card))}
+.tblwrap{overflow-x:auto}
+td.big{font-family:var(--mono);font-size:15px;font-weight:600;text-align:right}
+td .base{display:block;font-size:11px;color:var(--faint);font-family:var(--mono)}
+tr.ref td{color:var(--sub);background:var(--soft)}
 .foot{margin-top:28px;color:var(--faint);font-size:12px;line-height:1.8}
 .method{font-size:12px;color:var(--sub);line-height:1.7}
 .method b{color:var(--ink)}
@@ -199,13 +209,18 @@ input[type=search]{font:inherit;padding:7px 11px;border:1px solid var(--line);bo
       <div class="chart"><canvas id="trend"></canvas></div>
       <div class="legend" id="trendLegend"></div>
     </div>
+    <div class="card"><h2>일자별 비교 — 같은 요일끼리 <span class="chip" id="c-cmp"></span></h2>
+      <div class="sub" id="cmpSub">날짜를 고르면 그날 검색량을 <b>전주 같은 요일</b> · <b>전월 같은 요일 평균</b> · <b>전년 동월 같은 요일 평균</b>과 비교합니다</div>
+      <div class="daypick" id="daypick"></div>
+      <div class="tblwrap"><table id="cmp"></table></div>
+    </div>
     <div class="grid g2">
-      <div class="card"><h2>키워드별 비교 — 전주 · 전월 · 전년동월 <span class="chip" id="c-cmp"></span></h2>
-        <div class="sub">전주 = 최근 7일 vs 직전 7일 · 전월 = 최근 30일 vs 직전 30일 · 전년 = 최근 30일 vs 1년 전 같은 30일 · 파란 줄 = 우리 메뉴 · 헤더를 누르면 정렬</div>
-        <table id="cmp"></table></div>
       <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
         <div class="sub">네이버 검색광고 · "강화도+메뉴" 계열 키워드 월 검색 횟수 합계(절대값)</div>
         <table id="menu"></table></div>
+      <div class="card"><h2>기간 비교 — 최근 7일·30일 <span class="chip">참고</span></h2>
+        <div class="sub">최근 7일 평균 vs 직전 7일 · 최근 30일 vs 직전 30일 · 최근 30일 vs 1년 전 같은 30일</div>
+        <table id="cmp2"></table></div>
     </div>
   </section>
 
@@ -303,7 +318,7 @@ async function init(){
   // 데이터 상태 띠
   const S = m.sources, L = {datalab:'네이버 데이터랩',keyword_tool:'네이버 검색광고',tour_api:'관광공사 방문자',naver_news:'네이버 뉴스'};
   const lastV = D.visitors?.dates?.at(-1), lastT = D.trend_daily?.dates?.at(-1);
-  document.getElementById('health').innerHTML = Object.keys(L).map(k=>`<span class="src"><i class="${S[k]==='live'?'':'off'}"></i>${L[k]} <b>${S[k]==='live'?'실데이터':'샘플'}</b></span>`).join('')
+  document.getElementById('health').innerHTML = `<span class="src upd"><i class="${ageH>30?'err':ageH>26?'off':''}"></i><b>업데이트 ${upd.slice(5)}</b></span>` + Object.keys(L).map(k=>`<span class="src"><i class="${S[k]==='live'?'':'off'}"></i>${L[k]} <b>${S[k]==='live'?'실데이터':'샘플'}</b></span>`).join('')
     + `<span class="right">검색 데이터 ~${lastT?md(lastT):'–'} · 방문자 데이터 ~${lastV?md(lastV):'–'}</span>`;
   const sampleSrc = Object.keys(L).filter(k=>S[k]!=='live');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다. API 키를 연결하면 실데이터로 바뀝니다.'; }
@@ -384,13 +399,13 @@ const bcPlugin = { id:'bc', afterDraw(c){
     const px = x.getPixelForValue(i);
     ctx.save(); ctx.strokeStyle=css('--red'); ctx.setLineDash([4,4]); ctx.lineWidth=1.2; ctx.globalAlpha=.8;
     ctx.beginPath(); ctx.moveTo(px,top); ctx.lineTo(px,bottom); ctx.stroke(); ctx.setLineDash([]);
-    if(px-lastX>=110){ lastX=px; ctx.fillStyle=css('--red'); ctx.font='11px '+css('--sans'); const txt='📺 '+b.program; const flip=px+ctx.measureText(txt).width+8>c.chartArea.right; ctx.textAlign=flip?'right':'left'; ctx.fillText(txt, flip?px-4:px+4, top+12); }
+    if(c.chartArea.right-c.chartArea.left>=520 && px-lastX>=110){ lastX=px; ctx.fillStyle=css('--red'); ctx.font='11px '+css('--sans'); const txt='📺 '+b.program; const flip=px+ctx.measureText(txt).width+8>c.chartArea.right; ctx.textAlign=flip?'right':'left'; ctx.fillText(txt, flip?px-4:px+4, top+12); }
     ctx.restore();
   });
 }};
 function baseOpts(yTitle, labelsRef){
   return { responsive:true, maintainAspectRatio:false, animation:false, interaction:{mode:'index',intersect:false},
-    plugins:{ legend:{display:false}, tooltip:{backgroundColor:css('--ink'),titleColor:css('--card'),bodyColor:css('--card'),padding:10,titleFont:{family:css('--mono')},bodyFont:{family:css('--mono')},callbacks:{label:c=>' '+c.dataset.label+': '+(c.parsed.y==null?'–':c.parsed.y>=1000?fmt(c.parsed.y):c.parsed.y.toFixed(2))}} },
+    plugins:{ legend:{display:false}, tooltip:{filter:i=>!/1년 전/.test(i.dataset.label)||i.chart.data.datasets.length<=2, itemSort:(a,b)=>(b.parsed.y??-1)-(a.parsed.y??-1), backgroundColor:css('--ink'),titleColor:css('--card'),bodyColor:css('--card'),padding:10,titleFont:{family:css('--mono')},bodyFont:{family:css('--mono')},callbacks:{label:c=>' '+c.dataset.label+': '+(c.parsed.y==null?'–':c.parsed.y>=1000?fmt(c.parsed.y):c.parsed.y.toFixed(2))}} },
     scales:{ x:{grid:{display:false},border:{color:css('--line')},ticks:{color:css('--faint'),maxTicksLimit:10,font:{family:css('--mono'),size:11},callback:(v,i)=>{const l=labelsRef[i]||''; return l.length>=10? md(l.slice(0,10)) : l;}}},
              y:{beginAtZero:true,grid:{color:css('--line2')},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},callback:v=>v>=1000?fmt(v):v},title:{display:!!yTitle,text:yTitle,color:css('--faint'),font:{size:11}}} } };
 }
@@ -410,7 +425,7 @@ function weekly(dates, series){
 function buildGroupSeg(){
   const seg=document.getElementById('grpSeg');
   seg.innerHTML = Object.keys(D.meta.groups).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join('');
-  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();});
+  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();renderCmp();});
 }
 function renderTrend(){
   const kws=D.meta.groups[state.group], S=SER(), all=D.trend_daily.dates, N=all.length;
@@ -424,14 +439,31 @@ function renderTrend(){
   line('trend', labels, ds, '상대 검색량', [bcPlugin]);
   document.getElementById('trendLegend').innerHTML = kws.map((k,i)=>`<span><i style="background:${S[i]}"></i>${k}</span>`).join('') + (state.yoy?`<span><i style="background:none;border-top:2px dashed var(--sub);height:0;margin-top:5px"></i>1년 전 같은 요일</span>`:'') + `<span><i style="background:var(--red);height:2px;margin-top:4px"></i>방송일</span>`;
 }
+let cmpDay=null;
+function sameWdAvg(series, dates, wd, ym){ const xs=[]; dates.forEach((d,i)=>{ if(d.startsWith(ym) && new Date(d).getDay()===wd && series[i]!=null) xs.push(series[i]); }); return xs.length? {v:avg(xs), n:xs.length} : null; }
+function prevYm(ym,k){ let [y,m]=ym.split('-').map(Number); m-=k; while(m<=0){m+=12;y--;} return `${y}-${String(m).padStart(2,'0')}`; }
 function renderCmp(){
-  const mine=new Set(D.meta.groups[Object.keys(D.meta.groups)[0]]);
-  const rows=[...D.compare].sort((a,b)=>((b[state.cmpSort].pct??-1e9)-(a[state.cmpSort].pct??-1e9)));
-  const cell=p=>p==null?'<td class="n muted">–</td>':`<td class="n ${p>=0?'up':'down'}">${pct(p)}</td>`;
-  const th=(k,l)=>`<th class="n sortable ${state.cmpSort===k?'on':''}" data-k="${k}">${l}${state.cmpSort===k?' ▾':''}</th>`;
-  document.getElementById('cmp').innerHTML = `<tr><th>키워드</th><th class="n">최근 7일</th>${th('week','전주')}${th('month','전월')}${th('yoy','전년동월')}</tr>` +
-    rows.map(r=>`<tr class="${mine.has(r.keyword)?'mine':''}"><td>${r.keyword}${r.tiny?'<span class="tag">검색량 적음</span>':''}</td><td class="n">${r.week.cur<10?r.week.cur.toFixed(2):r.week.cur.toFixed(0)}</td>${cell(r.week.pct)}${cell(r.month.pct)}${cell(r.yoy.pct)}</tr>`).join('');
-  document.querySelectorAll('#cmp th.sortable').forEach(h=>h.onclick=()=>{state.cmpSort=h.dataset.k;renderCmp();});
+  const dates=D.trend_daily.dates, ser=D.trend_daily.series;
+  if(!cmpDay) cmpDay=dates.at(-1);
+  // 날짜 고르기: 최근 14일
+  document.getElementById('daypick').innerHTML = dates.slice(-14).reverse().map(d=>{ const w=new Date(d).getDay(); return `<button class="dp ${w===0||w===6?'we':''} ${d===cmpDay?'on':''}" data-d="${d}">${WD[w]}<b>${md(d)}</b></button>`; }).join('');
+  document.querySelectorAll('#daypick .dp').forEach(b=>b.onclick=()=>{cmpDay=b.dataset.d;renderCmp();});
+  const i=dates.indexOf(cmpDay), wd=new Date(cmpDay).getDay(), ym=cmpDay.slice(0,7), pm=prevYm(ym,1), py=prevYm(ym,12);
+  const wdName=WD[wd]+'요일';
+  const kws=[...D.meta.groups[state.group]]; const ref='강화도 맛집'; if(!kws.includes(ref)) kws.push(ref);
+  const pc=(cur,base)=> base==null||!base.v ? null : (cur-base.v)/base.v*100;
+  const cell=(p,base,lab)=> p==null? `<td class="n muted">–</td>` : `<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'} ${Math.abs(p).toFixed(1)}%<span class="base">${lab} ${base.v<10?base.v.toFixed(2):base.v.toFixed(1)}</span></td>`;
+  const tiny=new Set(D.compare.filter(r=>r.tiny).map(r=>r.keyword));
+  document.getElementById('cmpSub').innerHTML = `<b>${cmpDay} (${WD[wd]})</b> 검색량을 비교 · 전주 = ${md(shift(cmpDay,-7))} ${WD[wd]} · 전월 = ${+pm.slice(5)}월 ${wdName} 평균 · 전년동월 = ${py.slice(0,4)}년 ${+py.slice(5)}월 ${wdName} 평균`;
+  document.getElementById('cmp').innerHTML = `<tr><th>키워드</th><th class="n">그날</th><th class="n">전주 ${WD[wd]}</th><th class="n">전월 ${WD[wd]} 평균</th><th class="n">전년동월 ${WD[wd]} 평균</th></tr>` +
+    kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7],n:1}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py);
+      const isRef=k===ref && !D.meta.groups[state.group].includes(ref);
+      if(tiny.has(k)) return `<tr><td>${k}<span class="tag">검색량 적음</span></td><td class="big muted">–</td><td class="n muted" colspan="3">검색량이 너무 적어 비교 생략</td></tr>`;
+      return `<tr class="${isRef?'ref':''}"><td>${k}${isRef?'<span class="tag">기준</span>':''}</td><td class="big">${cur==null?'–':cur<10?cur.toFixed(2):cur.toFixed(1)}</td>${cell(pc(cur,w),w,'')}${cell(pc(cur,m),m,'')}${cell(pc(cur,y),y,'')}</tr>`; }).join('');
+  // 기간 비교(참고)
+  const rows=D.compare.filter(r=>D.meta.groups[state.group].includes(r.keyword)||r.keyword===ref);
+  const c2=p=>p==null?'<td class="n muted">–</td>':`<td class="n ${p>=0?'up':'down'}">${pct(p)}</td>`;
+  document.getElementById('cmp2').innerHTML = `<tr><th>키워드</th><th class="n">7일</th><th class="n">30일</th><th class="n">전년 30일</th></tr>` + rows.map(r=>`<tr><td>${r.keyword}</td>${c2(r.week.pct)}${c2(r.month.pct)}${c2(r.yoy.pct)}</tr>`).join('');
 }
 function renderMenu(){
   const o=D.menu_demand||[]; if(!o.length){document.getElementById('menu').innerHTML='<tr><td class="empty">검색광고 데이터가 있어야 계산됩니다.</td></tr>';return;}

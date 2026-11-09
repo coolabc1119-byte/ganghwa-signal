@@ -145,7 +145,7 @@ def fetch_datalab(cfg, start, end):
             "endDate": end.isoformat(),
             "timeUnit": "date",
             "keywordGroups": [{"groupName": anchor, "keywords": [anchor]}]
-            + [{"groupName": k, "keywords": [k]} for k in chunk],
+            + [{"groupName": k, "keywords": cfg.get("aliases", {}).get(k, [k])[:20]} for k in chunk],
         }
         res = http_json(url, headers, "POST", body)
         got = {}
@@ -265,6 +265,9 @@ def fetch_keyword_tool(cfg):
     if not (os.getenv("NAVER_AD_API_KEY") and os.getenv("NAVER_AD_SECRET") and os.getenv("NAVER_AD_CUSTOMER_ID")):
         return None
     tracked = {k.replace(" ", "") for kws in cfg["groups"].values() for k in kws}
+    aliases = {k.replace(" ", ""): list(dict.fromkeys(a.replace(" ", "") for a in v)) for k, v in cfg.get("aliases", {}).items()}
+    alias_all = {a for v in aliases.values() for a in v}
+    tracked |= alias_all
     hints = list(dict.fromkeys(cfg["discovery_hints"] + sorted(tracked)))
     uri = "/keywordstool"
     rows = {}
@@ -288,12 +291,20 @@ def fetch_keyword_tool(cfg):
         time.sleep(0.5)
     out = sorted(rows.values(), key=lambda r: -r["total"])
     # 강화 관련 키워드만 남김 (추적 키워드는 순위와 무관하게 항상 포함)
-    out = [r for r in out if "강화" in r["keyword"] or "전등사" in r["keyword"] or "석모도" in r["keyword"]]
+    out = [r for r in out if "강화" in r["keyword"] or "전등사" in r["keyword"] or "석모도" in r["keyword"] or r["tracked"]]
     keep = out[:1000] + [r for r in out[1000:] if r["tracked"]]
     seen = {r["keyword"].replace(" ", "") for r in keep}
     for t in sorted(tracked):  # 키워드도구가 아예 돌려주지 않은 추적 키워드 = 월 10회 미만으로 간주
         if t not in seen:
             keep.append({"keyword": t, "pc": 0, "mobile": 0, "total": 0, "comp": "", "tracked": True, "under10": True})
+    # 별칭(띄어쓰기·지역명 붙인 표기)을 대표 키워드 하나로 합산
+    byk = {r["keyword"].replace(" ", ""): r for r in keep}
+    for canon, al in aliases.items():
+        got = [byk[a] for a in al if a in byk]
+        tot = sum(r["total"] for r in got)
+        row = {"keyword": canon, "pc": sum(r["pc"] for r in got), "mobile": sum(r["mobile"] for r in got), "total": tot,
+               "comp": "", "tracked": True, "under10": all(r.get("under10") for r in got) if got else True, "aliases": al}
+        keep = [r for r in keep if r["keyword"].replace(" ", "") not in set(al) | {canon}] + [row]
     return {"rows": keep, "note": "네이버 검색광고 키워드도구. 최근 한 달 PC/모바일 검색수 합계."}
 
 
@@ -507,6 +518,77 @@ def fetch_news_log(cfg):
         m = TV_RE.search(i["title"])
         i["tv"] = m.group(0) if m else None
     return existing
+
+
+UPCOMING_RE = re.compile(r"예정|예고|방송된다|방영된다|전파를\s?탄다|공개된다|출연한다|찾아간다|소개된다|오늘\s?\(|오늘\s?밤|오늘\s?저녁|내일|이번\s?주")
+AIR_RE = re.compile(r"(?:오는\s?)?(\d{1,2})일\s*(?:\([월화수목금토일]\)\s*)?(?:오전|오후|저녁|밤)?\s*(?:\d{1,2}시\s*(?:\d{1,2}분)?\s*)?(?:에\s*)?(?:방송|방영|전파|공개)")
+
+
+def _clean(t):
+    return re.sub(r"<[^>]+>", "", t or "").replace("&quot;", '"').replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">").replace("&apos;", "'")
+
+
+def _air_date(text, pub):
+    """기사 본문 요약에서 방송 날짜를 추정. 못 찾으면 None"""
+    if re.search(r"오늘\s?(?:\(|밤|저녁|오후)", text):
+        return pub
+    if "내일" in text:
+        return pub + timedelta(days=1)
+    m = AIR_RE.search(text) or re.search(r"오늘\s?\((\d{1,2})일\)", text)
+    if not m:
+        return None
+    d = int(m.group(1))
+    if not 1 <= d <= 31:
+        return None
+    y, mo = pub.year, pub.month
+    if d < pub.day - 3:  # 이미 지난 날짜면 다음 달
+        mo += 1
+        if mo == 13:
+            y, mo = y + 1, 1
+    try:
+        return date(y, mo, d)
+    except ValueError:
+        return None
+
+
+def fetch_upcoming(cfg):
+    """방송 예고 기사(최근 10일)에서 강화 관련 예정 방송을 찾음 — 공식 편성표 API가 없어 기사 기반"""
+    cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
+    if not (cid and csec):
+        return []
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    today = datetime.now(KST).date()
+    out, seen = [], set()
+    for q in cfg.get("broadcast_queries", []):
+        params = urllib.parse.urlencode({"query": q, "display": 50, "sort": "date"})
+        try:
+            res = http_json("https://naverapihub.apigw.ntruss.com/search/v1/news?" + params, headers)
+        except Exception as e:
+            log(f"방송 예정 검색 실패 {q}: {e}")
+            continue
+        for it in res.get("items", []):
+            try:
+                pub = datetime.strptime(it["pubDate"], "%a, %d %b %Y %H:%M:%S %z").astimezone(KST).date()
+            except Exception:
+                continue
+            if (today - pub).days > 10:
+                continue
+            title, desc = _clean(it["title"]), _clean(it.get("description"))
+            text = title + " " + desc
+            tv = TV_RE.search(text)
+            if not (PLACE_RE.search(text) and tv and UPCOMING_RE.search(text)):
+                continue
+            air = _air_date(text, pub)
+            if air and air < today - timedelta(days=1):
+                continue
+            key = (tv.group(0), air.isoformat() if air else title[:20])
+            if key in seen or it["link"] in seen:
+                continue
+            seen.add(key); seen.add(it["link"])
+            out.append({"air": air.isoformat() if air else None, "pub": pub.isoformat(), "program": tv.group(0), "title": title,
+                        "link": it.get("originallink") or it["link"], "ours": "만선" in text})
+        time.sleep(0.2)
+    return sorted(out, key=lambda x: (x["air"] or "9999", x["pub"]))
 
 
 # ---------------------------------------------------------------------------
@@ -791,6 +873,12 @@ def main():
     v_start = min(start, date(2024, 1, 1))
     visitors = run("tour_api", lambda: fetch_visitors(v_start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
+    try:
+        news = dict(news or {})
+        news["upcoming"] = fetch_upcoming(cfg)
+        news["upcoming_checked"] = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
+    except Exception as e:
+        ERRORS["upcoming"] = f"{type(e).__name__}: {str(e)[:120]}"
     weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
     save("weather.json", weather)
 

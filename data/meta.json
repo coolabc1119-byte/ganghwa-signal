@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "0.2",
- "updated_at": "2026-11-09 12:51 KST",
+ "updated_at": "2026-11-09 12:52 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -13,6 +13,16 @@
   "tour_api": "sample",
   "naver_news": "sample"
  },
+ "keys_present": {
+  "NAVER_CLIENT_ID": true,
+  "NAVER_CLIENT_SECRET": false,
+  "NAVER_AD_API_KEY": true,
+  "NAVER_AD_SECRET": false,
+  "NAVER_AD_CUSTOMER_ID": false,
+  "KAKAO_REST_KEY": false,
+  "DATA_GO_KR_KEY": false
+ },
+ "errors": {},
  "mode": "sample",
  "store": {
   "name": "만선꽃게랑낙지",

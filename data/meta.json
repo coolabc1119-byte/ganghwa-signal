@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "0.2",
- "updated_at": "2026-11-09 13:26 KST",
+ "updated_at": "2026-11-09 13:35 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -14,15 +14,18 @@
   "naver_news": "sample"
  },
  "keys_present": {
-  "NAVER_CLIENT_ID": false,
+  "NAVER_CLIENT_ID": true,
   "NAVER_CLIENT_SECRET": true,
   "NAVER_AD_API_KEY": false,
   "NAVER_AD_SECRET": false,
-  "NAVER_AD_CUSTOMER_ID": false,
+  "NAVER_AD_CUSTOMER_ID": true,
   "KAKAO_REST_KEY": false,
   "DATA_GO_KR_KEY": false
  },
- "errors": {},
+ "errors": {
+  "datalab": "HTTPError: HTTP Error 401: Unauthorized",
+  "naver_news": "HTTPError: HTTP Error 401: Unauthorized"
+ },
  "mode": "sample",
  "store": {
   "name": "만선꽃게랑낙지",
@@ -64,7 +67,7 @@
   {
    "date": "2026-10-18",
    "program": "(샘플) 생생정보",
-   "note": "샘플 데이터용 예시 — 실제 방송 날짜를 여기에 기록하세요"
+   "note": "샘플 예시 — 실제 방송 날짜를 여기에 기록하세요"
   }
  ]
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-강화 시그널 수집기 (v0.1)
+강화 시그널 수집기 (v0.2)
 
 매일 1회 실행되어 data/ 폴더에 JSON을 만든다. 대시보드(index.html)는 이 JSON만 읽는다.
 

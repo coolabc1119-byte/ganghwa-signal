@@ -170,6 +170,7 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
     # 메인 데이터랩과 같은 방식(네이버 클라우드 API 게이트웨이)
     headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
     series, errs = {}, []
+    anchor_vol = next((r["total"] for r in rows if r["keyword"].replace(" ", "") == "강화도맛집"), 0)
     rows = [r for r in rows if r["keyword"].replace(" ", "") != "강화도맛집"]
     for i in range(0, len(rows), 4):
         chunk = rows[i:i + 4]
@@ -194,15 +195,18 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
         if res is None:
             continue
         for g in res.get("results", []):
-            if g["title"] == "강화도 맛집":
-                continue
+            name = g["title"]
+            if name == "강화도 맛집":
+                name = "강화도맛집"
+                if name in series:
+                    continue
             m = {d["period"]: d["ratio"] for d in g.get("data", [])}
             rel = [m.get(d, 0) for d in dates]
             rel30 = sum(rel[-30:])
-            vol = next((r["total"] for r in chunk if r["keyword"] == g["title"]), 0)
+            vol = anchor_vol if name == "강화도맛집" else next((r["total"] for r in chunk if r["keyword"] == name), 0)
             if rel30 > 0 and vol:
                 sc = vol / rel30
-                series[g["title"]] = [round(x * sc, 1) for x in rel]
+                series[name] = [round(x * sc, 1) for x in rel]
         time.sleep(0.6)
     if errs:
         ERRORS["discovery_chunks"] = errs[:8]

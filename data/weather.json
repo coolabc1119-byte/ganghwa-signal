@@ -3916,36 +3916,36 @@
   },
   "2026-11-12": {
    "code": 2,
-   "tmax": 14.6,
+   "tmax": 14.5,
    "tmin": 4.9,
-   "rain": 0.08,
+   "rain": 0.1,
    "pop": 0,
    "wind": 14.0,
    "src": "forecast"
   },
   "2026-11-13": {
-   "code": 51,
-   "tmax": 14.4,
+   "code": 45,
+   "tmax": 15.3,
    "tmin": 5.7,
-   "rain": 0.3,
+   "rain": 0.0,
    "pop": 4,
    "wind": 8.0,
    "src": "forecast"
   },
   "2026-11-14": {
-   "code": 61,
-   "tmax": 10.6,
+   "code": 55,
+   "tmax": 9.9,
    "tmin": 6.6,
-   "rain": 11.5,
+   "rain": 6.0,
    "pop": 76,
    "wind": 13.0,
    "src": "forecast"
   },
   "2026-11-15": {
-   "code": 55,
-   "tmax": 16.7,
+   "code": 53,
+   "tmax": 17.2,
    "tmin": 5.0,
-   "rain": 4.4,
+   "rain": 3.3,
    "pop": 55,
    "wind": 17.1,
    "src": "forecast"

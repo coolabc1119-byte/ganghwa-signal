@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "2.2",
- "updated_at": "2026-11-09 22:29 KST",
+ "updated_at": "2026-11-09 22:32 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -9,7 +9,7 @@
  "sources": {
   "keyword_tool": "live",
   "datalab": "live",
-  "discovery": "sample",
+  "discovery": "live",
   "tour_api": "live",
   "naver_news": "live",
   "weather": "live"
@@ -31,26 +31,6 @@
   "DATA_GO_KR_KEY": 64
  },
  "errors": {
-  "discovery_diag": {
-   "A_추적키워드_70일": "401 HTTP Error 401: Unauthorized",
-   "B_발굴키워드1개_70일": "401 HTTP Error 401: Unauthorized",
-   "C_앵커만_70일": "401 HTTP Error 401: Unauthorized",
-   "D_앵커만_2025시작": "401 HTTP Error 401: Unauthorized",
-   "E_발굴키워드_ascii그룹명": "401 HTTP Error 401: Unauthorized",
-   "cid_len": 10,
-   "csec_len": 40
-  },
-  "discovery_chunks": [
-   "묶음1 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음1 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음1 시도3: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음2 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음2 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음2 시도3: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음3 시도1: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-   "묶음3 시도2: HTTPError HTTP Error 401: Unauthorized {\"errorMessage\":\"NID AUTH Result Invalid (1000) : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
-  ],
-  "discovery": "RuntimeError: 발굴 키워드 데이터랩 응답 없음",
   "tour_api_chunks": [
    "2026-01-08~2026-02-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
    "2025-12-09~2026-01-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
@@ -61,7 +41,7 @@
   ],
   "tour_api_calls": 12
  },
- "mode": "partial",
+ "mode": "live",
  "store": {
   "name": "선두리 만선꽃게랑낙지",
   "address": "인천 강화군 길상면 선두리",

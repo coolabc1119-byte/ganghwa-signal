@@ -127,7 +127,7 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .ng{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line2)} .ng:last-child{border-bottom:0}
 .ng .nd{font-family:var(--mono);font-size:12px;color:var(--ink2);font-weight:600;padding-top:1px} .ng .nl{min-width:0;display:grid;gap:6px} .ng .nd span{display:block;font-family:var(--sans);font-weight:400;color:var(--faint);font-size:11px}
 .ni{display:block;font-size:13.5px;line-height:1.45;color:var(--ink2);text-decoration:none;padding:2px 0;word-break:keep-all;overflow-wrap:anywhere} .ni:hover{color:var(--blue)}
-.tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
+.tvb.up{color:#fff;background:var(--red)} .tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
 .ys{display:grid;grid-template-columns:1fr 1fr;gap:10px} @media(max-width:560px){.ys{grid-template-columns:1fr}}
 .yc{background:var(--soft);border-radius:12px;padding:12px 14px} .yc .l{font-size:12px;color:var(--sub)} .yc .l span{display:block;font-size:11px;color:var(--faint)}
 .yc .v{font-family:var(--mono);font-size:28px;font-weight:700;margin:4px 0 2px;letter-spacing:-.02em} .yc .v.sm{font-family:var(--sans);font-size:22px}
@@ -291,8 +291,8 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div class="chart"><canvas id="trend"></canvas></div>
       <div class="legend" id="trendLegend"></div>
     </div>
-    <div class="card"><h2>우리 가게·주변 검색량 <span class="chip" id="c-local"></span></h2>
-      <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 주변 펜션·캠핑장 = 가게 앞에 묵을 손님 → 간접 신호 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
+    <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
+      <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
       <div id="local"></div></div>
     <div class="card"><h2>기간별 메뉴 수요 — 이번 주 준비 <span class="chip" id="c-cmp"></span></h2>
       <div class="sub" id="cmpSub"></div>
@@ -368,9 +368,6 @@ tr.ref td{color:var(--sub);background:var(--soft)}
 
   <!-- 뉴스 -->
   <section class="panel" id="p-news">
-    <div class="card"><h2>방송 예정 <span class="chip" id="c-up"></span></h2>
-      <div class="sub" id="upSub"></div>
-      <div id="upList"></div></div>
     <div class="card"><h2>강화 뉴스·방송 <span class="chip" id="c-news"></span></h2>
       <div class="sub" id="newsSub"></div>
       <div class="controls"><div class="seg" id="nfilter"><button data-f="all" class="on">전체</button><button data-f="tv">📺 방송</button><button data-f="food">맛집·먹거리</button></div></div>
@@ -439,7 +436,7 @@ async function init(){
   const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
   const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
-  chip('c-sv',['tour_api','datalab']); chip('c-up',['naver_news']); chip('c-local',['datalab','keyword_tool']); chip('c-stay',['datalab','tour_api']); chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
+  chip('c-sv',['tour_api','datalab']); chip('c-local',['datalab','keyword_tool']); chip('c-stay',['datalab','tour_api']); chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로
   if(D.visitors?.dates?.length){ const v=D.visitors, by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); const out=[],vals=[]; let d=v.dates[0]; const end=v.dates.at(-1); while(d<=end){ out.push(d); vals.push(by[d]??null); d=shift(d,1); } D.visitors={...v,dates:out,visitor:vals}; }
@@ -447,7 +444,7 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderUpcoming(); renderLocal(); renderStay(); renderAbout();
+  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
@@ -507,10 +504,9 @@ const HOW={
     s:['tour','wx','cfg']},
   volume:{f:[CNT,'<b>하루</b> = 집계가 끝난 가장 최근 하루의 검색 횟수(네이버는 보통 1~2일 늦게 집계) · 증감은 지난주 같은 요일 대비','<b>최근 7일</b> = 7일 합계 · 증감은 직전 7일 대비','<b>최근 30일</b> = 검색광고 한 달 실제 횟수 · 증감은 직전 30일 대비(일별 데이터가 있는 상위 60개)','<b>순위 변동</b> = 직전 같은 기간 순위 − 지금 순위','<b>대상</b> = 검색광고가 돌려준 강화 관련 연관 검색어(월 100회 이상 상위 60개는 일별까지)'], s:['ad','dlab']},
   scorr:{f:['<b>주 단위</b> = 월~일 7일이 다 있는 주만, 검색 횟수 합 vs 외지인 방문자 합','<b>같은 주</b> = 그 주 검색과 그 주 방문자의 상관계수','<b>다음 주</b> = 그 주 검색과 그다음 주 방문자의 상관계수','<b>추정 방문자</b> = 「강화도 맛집」 주간 검색 × 기울기 + 기본값 (겹치는 모든 주로 직선 맞춤) ÷ 7 → 하루 평균','<b>평균 오차</b> = 과거 각 주를, 그 주보다 4주 이상 앞선 데이터로만 맞춘 직선으로 추정했을 때 실제와의 차이 평균 (방문자 통계가 약 한 달 늦게 나오는 상황을 그대로 재현)','<b>작년 같은 주</b> = 364일 전 같은 요일로 시작하는 주의 실제 방문자','<b>최근 8주 치우침</b> = 실제값이 있는 마지막 8주에서 추정이 실제보다 평균 몇 % 높/낮았는지 (5% 이상일 때만 표시) → 추정 주를 읽을 때 그만큼 감안'], s:['dlab','ad','tour']},
-  upList:{f:['<b>자동 감지</b> = 매일 네이버 뉴스에서 「강화도 맛집 방송」「강화 방송 예정」 등으로 최근 10일 기사를 찾아, 강화 지명 + 방송 프로그램명 + 예고 표현(예정·오늘·방송된다 등)이 모두 있는 것만','<b>방송일</b> = 기사 속 「오늘(10일)」「오는 15일 방송」「내일」 표현으로 추정, 못 찾으면 날짜 미확인(기사 2일 이내만)','<b>직접 입력</b> = keywords.json의 broadcast_log 중 오늘 이후 날짜','<b>한계</b> = 공식 편성표 API가 없어 기사 기반 → 예고 기사가 없는 방송은 못 잡음'], s:['news','cfg']},
   local:{f:[CNT,'<b>표기 합산</b> = 「만선꽃게랑낙지」「만선 꽃게랑 낙지」「강화 만선꽃게랑낙지」 등 띄어쓰기·지역명 변형을 한 묶음으로 집계 (데이터랩 키워드 묶음 + 검색광고 표기별 합)','<b>보헤미안펜션</b>은 보령 등 같은 이름이 있어 「강화」 붙인 검색만 셈','<b>10회 미만</b> = 검색광고가 정확한 수를 주지 않는 수준 → 하루 수치는 강화도 맛집 비율로 환산한 대략값'], s:['dlab','ad','cfg']},
   stay:{f:['<b>펜션·당일치기 검색</b> = 「강화도 펜션」「강화도 당일치기」 최근 7일 하루 평균, 평소 = 그 앞 4주 평균','<b>펜션 비중</b> = 펜션 검색 ÷ 「강화도 맛집」 검색','<b>과거 검증</b> = 연휴 없는 주마다 (월~토 펜션 비중) vs (일요일 방문자 ÷ 토요일 방문자)의 상관계수, 0.3 미만이면 관계 없음으로 봄','<b>많던/적던 주</b> = 펜션 비중 상위 1/3 주와 하위 1/3 주의 일요일÷토요일 중앙값'], s:['dlab','ad','tour']},
-  newslist:{f:['<b>수집</b> = 매일 「강화도 맛집」「강화도 방송」「강화도 꽃게」「강화 젓국갈비」「전등사 맛집」 최신 기사 30건씩, 제목에 강화 지명이 있는 것만 누적 (최근 400일)'], s:['news']},
+  newslist:{f:['<b>방송 예정</b> = 예정 방송이 있을 때만 목록 맨 위에 표시 · 강화 지명 + 맛집·여행 프로그램명 + 예고 표현(오늘·오는 ○일·예정)이 있는 최근 10일 기사, 또는 keywords.json broadcast_log에 적은 오늘 이후 날짜','<b>수집</b> = 매일 「강화도 맛집」「강화도 방송」「강화도 꽃게」「강화 젓국갈비」「전등사 맛집」 최신 기사 30건씩, 제목에 강화 지명이 있는 것만 누적 (최근 400일)'], s:['news']},
 };
 function attachHow(){
   for(const [id,h] of Object.entries(HOW)){
@@ -832,25 +828,22 @@ const NEWSFOOD=/맛집|식당|꽃게|낙지|젓국|갈비|칼국수|밴댕이|�
 const KTODAY=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
 const XSS=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* ---------- 방송 예정 ---------- */
-function renderUpcoming(){
+function upcomingHtml(){
   const today=KTODAY(); const N=D.news_log||{};
-  const auto=(N.upcoming||[]).filter(x=>x.air? x.air>=today : (Date.parse(today)-Date.parse(x.pub))/864e5<=2).map(x=>({...x,src:'auto'}));
-  const manual=(D.meta.broadcast_log||[]).filter(b=>b.date>=today).map(b=>({air:b.date,program:b.program||'방송',title:b.note||'',src:'manual',ours:/만선/.test((b.note||'')+(b.program||''))}));
-  const list=[...manual,...auto].sort((a,b)=>(a.air||'9999').localeCompare(b.air||'9999'));
-  document.getElementById('upSub').innerHTML=`강화 관련 방송 예고 기사 자동 감지 + 직접 입력 · 확인 ${N.upcoming_checked?md(N.upcoming_checked.slice(0,10))+' '+N.upcoming_checked.slice(11):'–'}`;
-  document.getElementById('upList').innerHTML=list.length? list.map(x=>{ const d=x.air?`${md(x.air)}<span>${WD[dow(x.air)]}${x.air===today?' · 오늘':''}</span>`:`<span style="margin:0">날짜<br>미확인</span>`;
-    const tags=(x.ours?'<span class="tag mine">우리 가게!</span>':'')+(x.src==='manual'?'<span class="tag">직접 입력</span>':'');
-    const body=x.link?`<a class="ni" href="${XSS(x.link)}" target="_blank" rel="noopener"><span class="tvb">📺 ${XSS(x.program)}</span> ${XSS(x.title)}</a>`:`<div class="ni"><span class="tvb">📺 ${XSS(x.program)}</span> ${XSS(x.title)}</div>`;
-    return `<div class="ng"><div class="nd">${d}</div><div class="nl"><div>${body}${tags}</div></div></div>`; }).join('')
-    : `<div class="empty" style="text-align:left">지금 확인된 예정 방송은 없습니다.<br><span class="muted" style="font-size:12px">예고 기사는 보통 방송 당일~하루 전에 나와서 미리 알 수 있는 기간이 짧습니다. 촬영 연락을 받으면 keywords.json의 broadcast_log에 날짜를 적어 두면 여기 바로 뜹니다.</span></div>`;
+  const auto=(N.upcoming||[]).filter(x=>x.air? x.air>=today : (Date.parse(today)-Date.parse(x.pub))/864e5<=2);
+  const manual=(D.meta.broadcast_log||[]).filter(b=>b.date>=today).map(b=>({air:b.date,program:b.program||'방송',title:b.note||'',manual:true,ours:/만선/.test((b.note||'')+(b.program||''))}));
+  const list=[...manual,...auto].sort((a,b)=>(a.air||'9999').localeCompare(b.air||'9999')); if(!list.length) return '';
+  return list.map(x=>{ const d=x.air?`${md(x.air)} <span>${WD[dow(x.air)]}</span>`:'<span style="margin:0">날짜<br>미확인</span>';
+    const inner=`<span class="tvb up">📺 방송 예정${x.air===today?' · 오늘':''}</span>${XSS(x.program)} · ${XSS(x.title)}${x.ours?'<span class="tag mine">우리 가게!</span>':''}`;
+    return `<div class="ng"><div class="nd">${d}</div><div class="nl">${x.link?`<a class="ni" href="${XSS(x.link)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="ni">${inner}</div>`}</div></div>`; }).join('');
 }
-/* ---------- 우리 가게·주변 검색 ---------- */
+/* ---------- 우리 가게 검색어 (직접·간접) ---------- */
 function renderLocal(){
-  const kws=D.meta.groups['우리 가게·주변']||[]; const el=document.getElementById('local'); if(!kws.length){el.innerHTML='';return;}
+  const kws=D.meta.groups['우리 가게 검색어']||[]; const el=document.getElementById('local'); if(!kws.length){el.innerHTML='';return;}
   const t=D.trend_daily, n=t.dates.length; const vol=Object.fromEntries((D.volume_monthly?.rows||[]).map(r=>[r.keyword.replace(/\s/g,''),r]));
   const sum=(v,a,b)=>{ let s=0,c=0; for(let i=Math.max(0,a);i<b;i++){ if(v[i]!=null){s+=v[i];c++;} } return c?s:null; };
   const box=(l,p,b,cls='')=>`<div class="c"><div class="l">${l}</div><div class="p ${cls}">${p}</div><div class="b">${b}</div></div>`;
-  el.innerHTML=kws.map(k=>{ const v=t.series[k]; const ours=/만선/.test(k); const nm=`${XSS(k)}${ours?'<span class="tag mine">우리 가게</span>':'<span class="tag">주변 숙박·간접</span>'}`;
+  el.innerHTML=kws.map(k=>{ const v=t.series[k]; const ours=/만선/.test(k); const nm=`${XSS(k)}${ours?'<span class="tag mine">직접</span>':'<span class="tag">간접</span>'}`;
     const ad=vol[k.replace(/\s/g,'')]; const adTxt=!ad?'–':ad.under10||!ad.total?'10회 미만':fmt(ad.total)+'회';
     if(!v) return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="muted" style="font-size:12px">다음 수집부터 표시</span></div></div>`;
     const w=sum(v,n-7,n), pw=sum(v,n-14,n-7), m=sum(v,n-30,n);
@@ -875,12 +868,10 @@ function renderStay(){
   let r=null,hi=null,lo=null,medR=null; if(rows.length>=12){ const a=rows.map(x=>x.sh), b=rows.map(x=>x.ratio), ma=avg(a), mb=avg(b); let sab=0,saa=0,sbb=0; a.forEach((x,i)=>{sab+=(x-ma)*(b[i]-mb);saa+=(x-ma)**2;sbb+=(b[i]-mb)**2;}); r=sab/Math.sqrt(saa*sbb);
     const o=[...rows].sort((x,y)=>x.sh-y.sh), k=Math.floor(o.length/3); lo=med(o.slice(0,k).map(x=>x.ratio)); hi=med(o.slice(-k).map(x=>x.ratio)); medR=med(b); }
   const verdict=r==null?'검증할 주가 아직 부족':Math.abs(r)<0.3?`뚜렷한 관계 없음 (상관 ${r.toFixed(2)}) → 참고만`:`${r>0?'펜션 검색이 많을수록 일요일 손님 비율이 높음':'펜션 검색이 많을수록 일요일 손님 비율이 낮음'} (상관 ${r.toFixed(2)})`;
-  const near=(D.meta.groups['우리 가게·주변']||[]).filter(k=>!/만선/.test(k)&&S[k]); let nNow=0,nU=0; near.forEach(k=>{nNow+=s7(S[k]);nU+=s28b(S[k]);});
   const box=(l,p,b,cls='')=>`<div class="c"><div class="l">${l}</div><div class="p ${cls}">${p}</div><div class="b">${b}</div></div>`;
   const cl=p=>p==null?'muted':p>=0?'up':'down';
   el.innerHTML=`<div class="basis"><div><span>최근 7일</span><b>${md(t.dates[n-7])}~${md(t.dates[n-1])}</b></div><div><span>평소</span><b>그 앞 4주의 주 평균</b></div></div>
     <div class="cr" style="padding-top:0"><div class="g3">${box('펜션 검색',fmt(pNow/7)+'회/일',`평소 대비 ${ar(pc(pNow,pU))}`,'')}${box('당일치기 검색',fmt(dNow/7)+'회/일',`평소 대비 ${ar(pc(dNow,dU))}`)}${box('펜션 비중(÷맛집)',shNow.toFixed(0)+'%',`평소 ${shU.toFixed(0)}%`)}</div></div>
-    ${near.length&&nU?`<div class="cr"><div class="ctop"><span class="nm">가게 주변 펜션·캠핑장 검색</span><span class="val ${cl(pc(nNow,nU))}" style="font-size:15px">${ar(pc(nNow,nU))}<small>평소 대비</small></span></div></div>`:''}
     <div class="basis" style="margin-top:10px"><div><span>과거 검증</span><b style="font-family:var(--sans);font-weight:500">${verdict}</b></div>${medR?`<div><span>보통 일요일</span><b>토요일 손님의 ${(medR*100).toFixed(0)}%</b></div><div><span>펜션 검색 많던 주</span><b>일요일 = 토요일의 ${(hi*100).toFixed(0)}%</b></div><div><span>적던 주</span><b>일요일 = 토요일의 ${(lo*100).toFixed(0)}%</b></div>`:''}</div>
     <div class="sub" style="margin:6px 0 0">당일치기 검색은 하루 20회 안팎으로 적어 흔들림이 큼 · 강화군 전체 방문자 기준이라 우리 가게 매출과는 다를 수 있음</div>`;
 }
@@ -890,7 +881,8 @@ function renderNews(){
   const tvN=all.filter(n=>n.tv).length;
   document.getElementById('newsSub').innerHTML=`네이버 뉴스 · 제목에 강화 지명이 들어간 기사만 · 전체 <b>${all.length}건</b>(📺 방송 ${tvN}건) · 최근 400일 누적, 매일 07:30 갱신`;
   const groups={}; it.slice(0,80).forEach(n=>{ (groups[n.date] ||= []).push(n); });
-  document.getElementById('newslist').innerHTML=Object.keys(groups).length? Object.entries(groups).map(([d,ns])=>`<div class="ng"><div class="nd">${md(d)} <span>${WD[dow(d)]}</span></div><div class="nl">${ns.map(n=>`<a class="ni" href="${n.link}" target="_blank" rel="noopener">${n.tv?`<span class="tvb">📺 ${n.tv}</span>`:''}${n.title}</a>`).join('')}</div></div>`).join('') : '<div class="empty">해당 기사 없음</div>';
+  const UP=(f==='all'||f==='tv')?upcomingHtml():'';
+  document.getElementById('newslist').innerHTML=UP+(Object.keys(groups).length? Object.entries(groups).map(([d,ns])=>`<div class="ng"><div class="nd">${md(d)} <span>${WD[dow(d)]}</span></div><div class="nl">${ns.map(n=>`<a class="ni" href="${n.link}" target="_blank" rel="noopener">${n.tv?`<span class="tvb">📺 ${n.tv}</span>`:''}${n.title}</a>`).join('')}</div></div>`).join('') : '<div class="empty">해당 기사 없음</div>');
 }
 function renderAbout(){
   const m=D.meta;

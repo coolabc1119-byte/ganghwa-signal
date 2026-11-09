@@ -359,6 +359,40 @@ def fetch_news_log(cfg):
 # 분석: 주간 변화, 급등일, 기회 키워드
 # ---------------------------------------------------------------------------
 
+def to_counts(trend, volume):
+    """
+    데이터랩 상대지수 → 추정 검색 횟수(회/일).
+    검색광고 키워드도구의 '최근 한 달 실제 검색 횟수'(PC+모바일)를 데이터랩 최근 30일 모양에 맞춰 날짜별로 나눔.
+      배율 = 한 달 실제 횟수 ÷ 최근 30일 상대지수 합   →   날짜별 추정 횟수 = 상대지수 × 배율
+    검색광고에 없는 키워드는 '강화도 맛집' 배율을 그대로 씀(같은 척도로 맞춰 둔 값이라 비례 관계 유지).
+    """
+    if not volume or trend.get("unit") == "count":
+        return trend
+    vol = {r["keyword"].replace(" ", ""): r["total"] for r in volume.get("rows", [])}
+    n = len(trend["dates"])
+    scales, src = {}, {}
+    for k, v in trend["series"].items():
+        rel30 = sum(x for x in v[n - 30:n] if x)
+        mv = vol.get(k.replace(" ", ""))
+        if mv and rel30 > 0:
+            scales[k] = mv / rel30
+            src[k] = "direct"
+    anchor_scale = scales.get("강화도 맛집") or (sorted(scales.values())[len(scales) // 2] if scales else None)
+    if anchor_scale is None:
+        return trend
+    out = {}
+    for k, v in trend["series"].items():
+        sc = scales.get(k, anchor_scale)
+        src.setdefault(k, "anchor")
+        out[k] = [round(x * sc, 1) if x is not None else None for x in v]
+    trend = dict(trend)
+    trend["series"] = out
+    trend["unit"] = "count"
+    trend["scale_source"] = src
+    trend["note"] = "네이버 검색 추정 횟수(회/일) = 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수로 환산. PC+모바일 합계."
+    return trend
+
+
 def _avg(vals, a, b):
     seg = vals[a:b]
     return (sum(seg) / len(seg)) if seg else 0.0
@@ -383,7 +417,7 @@ def compare(trend, volume=None):
         w_cur, w_prev = _avg(v, n - 7, n), _avg(v, n - 14, n - 7)
         m_cur, m_prev = _avg(v, n - 30, n), _avg(v, n - 60, n - 30)
         y_prev = _avg(v, n - 30 - 364, n - 364) if n >= 394 else 0
-        tiny = _avg(v, max(0, n - 60), n) < 0.05  # 데이터랩이 거의 0을 주는 키워드 = 검색량 너무 적음
+        tiny = _avg(v, max(0, n - 60), n) < (3 if trend.get("unit") == "count" else 0.05)  # 하루 3회 미만 = 검색량 너무 적음
         if volume:
             vm = {r["keyword"].replace(" ", ""): r["total"] for r in volume.get("rows", [])}
             mv = vm.get(k.replace(" ", ""))
@@ -591,6 +625,7 @@ def main():
     visitors = run("tour_api", lambda: fetch_visitors(start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
 
+    trend = to_counts(trend, volume)
     save("trend_daily.json", trend)
     save("volume_monthly.json", volume)
     save("visitors.json", visitors)
@@ -598,7 +633,10 @@ def main():
     save("weekly_change.json", weekly_change(trend))
     save("compare.json", compare(trend, volume))
     save("monthly.json", monthly_table(trend))
-    save("events.json", detect_spikes(trend, cfg["spike_rule"], news, cfg["broadcast_log"]))
+    _ev = detect_spikes(trend, cfg["spike_rule"], news, cfg["broadcast_log"])
+    for _x in _ev:
+        _x["holiday"] = cfg.get("holidays", {}).get(_x["date"])
+    save("events.json", _ev)
     save("menu_demand.json", menu_demand(volume, cfg))
     try:
         import brief

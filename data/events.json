@@ -1,162 +1,1049 @@
 [
  {
-  "date": "2026-09-25",
-  "keyword": "강화도 맛집",
-  "value": 45.7,
-  "baseline": 24.1,
-  "ratio": 1.9,
+  "date": "2026-11-05",
+  "keyword": "강화도 순무",
+  "value": 129.3,
+  "baseline": 37.3,
+  "ratio": 3.47,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-10-20",
+  "keyword": "강화도 젓국갈비",
+  "value": 130.6,
+  "baseline": 51.4,
+  "ratio": 2.54,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-10-07",
+  "keyword": "강화도 젓국갈비",
+  "value": 238.1,
+  "baseline": 61.1,
+  "ratio": 3.9,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-10-05",
+  "keyword": "전등사 맛집",
+  "value": 152.8,
+  "baseline": 70.2,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절 대체"
+ },
+ {
+  "date": "2026-10-05",
+  "keyword": "강화도 칼국수",
+  "value": 150.6,
+  "baseline": 59.6,
+  "ratio": 2.53,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절 대체"
+ },
+ {
+  "date": "2026-10-04",
+  "keyword": "전등사 맛집",
+  "value": 224.5,
+  "baseline": 108.5,
+  "ratio": 2.07,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-10-04",
+  "keyword": "강화도 꽃게탕",
+  "value": 334.4,
+  "baseline": 156.3,
+  "ratio": 2.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "강화도 가볼만한곳",
+  "value": 454.3,
+  "baseline": 224.2,
+  "ratio": 2.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "강화도 꽃게탕",
+  "value": 252.6,
+  "baseline": 119.8,
+  "ratio": 2.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "전등사 맛집",
+  "value": 157.9,
+  "baseline": 73.3,
+  "ratio": 2.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
  },
  {
   "date": "2026-09-25",
   "keyword": "강화도 카페",
-  "value": 17.9,
-  "baseline": 8.1,
+  "value": 1602.7,
+  "baseline": 722.1,
   "ratio": 2.22,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "강화도 젓국갈비",
+  "value": 153.8,
+  "baseline": 65.6,
+  "ratio": 2.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "강화도 장어",
+  "value": 121.9,
+  "baseline": 50.2,
+  "ratio": 2.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
+  "keyword": "강화도 칼국수",
+  "value": 185.1,
+  "baseline": 71.1,
+  "ratio": 2.6,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
  },
  {
   "date": "2026-09-24",
-  "keyword": "강화도 맛집",
-  "value": 41.4,
-  "baseline": 20.9,
-  "ratio": 1.99,
+  "keyword": "강화도 젓국갈비",
+  "value": 105.3,
+  "baseline": 52.1,
+  "ratio": 2.02,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-24",
+  "keyword": "강화도 카페",
+  "value": 1270.3,
+  "baseline": 601.3,
+  "ratio": 2.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-24",
+  "keyword": "강화도 칼국수",
+  "value": 122.3,
+  "baseline": 51.8,
+  "ratio": 2.36,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-24",
+  "keyword": "강화도 꽃게탕",
+  "value": 226.7,
+  "baseline": 95.8,
+  "ratio": 2.37,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-24",
+  "keyword": "전등사 맛집",
+  "value": 171.2,
+  "baseline": 55.6,
+  "ratio": 3.08,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-23",
+  "keyword": "강화도 가볼만한곳",
+  "value": 328.5,
+  "baseline": 157.5,
+  "ratio": 2.09,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-09-22",
+  "keyword": "강화도 가볼만한곳",
+  "value": 477.3,
+  "baseline": 158.3,
+  "ratio": 3.02,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-09-21",
+  "keyword": "강화도 가볼만한곳",
+  "value": 462.3,
+  "baseline": 165.2,
+  "ratio": 2.8,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-08-17",
+  "keyword": "강화도 칼국수",
+  "value": 169.4,
+  "baseline": 83.4,
+  "ratio": 2.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절 대체"
+ },
+ {
+  "date": "2026-08-16",
+  "keyword": "강화도 젓국갈비",
+  "value": 220.2,
+  "baseline": 91.4,
+  "ratio": 2.41,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-08-16",
+  "keyword": "강화도 간장게장",
+  "value": 128.6,
+  "baseline": 49.9,
+  "ratio": 2.58,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-08-15",
+  "keyword": "전등사 맛집",
+  "value": 149.7,
+  "baseline": 74.8,
+  "ratio": 2.0,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2026-08-15",
+  "keyword": "강화도 꽃게탕",
+  "value": 224.6,
+  "baseline": 108.2,
+  "ratio": 2.08,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2026-07-30",
+  "keyword": "강화도 젓국갈비",
+  "value": 111.7,
+  "baseline": 47.6,
+  "ratio": 2.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-26",
+  "keyword": "강화도 젓국갈비",
+  "value": 105.3,
+  "baseline": 51.1,
+  "ratio": 2.06,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-21",
+  "keyword": "강화도 젓국갈비",
+  "value": 195.9,
+  "baseline": 34.5,
+  "ratio": 5.68,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-20",
+  "keyword": "강화도 젓국갈비",
+  "value": 212.8,
+  "baseline": 31.6,
+  "ratio": 6.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-07-17",
   "keyword": "강화도 맛집",
-  "value": 52.3,
-  "baseline": 23.9,
+  "value": 4719.1,
+  "baseline": 2161.0,
   "ratio": 2.18,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
  },
  {
-  "date": "2026-05-24",
+  "date": "2026-07-17",
+  "keyword": "강화도 꽃게탕",
+  "value": 130.4,
+  "baseline": 58.5,
+  "ratio": 2.23,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-17",
+  "keyword": "강화도 칼국수",
+  "value": 193.4,
+  "baseline": 80.5,
+  "ratio": 2.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-17",
+  "keyword": "전등사 맛집",
+  "value": 113.8,
+  "baseline": 43.3,
+  "ratio": 2.63,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-24",
+  "keyword": "강화도 밴댕이",
+  "value": 129.9,
+  "baseline": 50.4,
+  "ratio": 2.58,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-23",
+  "keyword": "강화도 밴댕이",
+  "value": 175.9,
+  "baseline": 51.8,
+  "ratio": 3.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-22",
+  "keyword": "강화도 밴댕이",
+  "value": 290.9,
+  "baseline": 66.3,
+  "ratio": 4.39,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-15",
+  "keyword": "강화도 밴댕이",
+  "value": 117.7,
+  "baseline": 54.8,
+  "ratio": 2.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-14",
+  "keyword": "강화도 밴댕이",
+  "value": 189.5,
+  "baseline": 61.2,
+  "ratio": 3.1,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-13",
+  "keyword": "강화도 밴댕이",
+  "value": 235.5,
+  "baseline": 77.5,
+  "ratio": 3.04,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-12",
+  "keyword": "강화도 밴댕이",
+  "value": 102.8,
+  "baseline": 45.3,
+  "ratio": 2.27,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-11",
+  "keyword": "강화도 밴댕이",
+  "value": 101.5,
+  "baseline": 41.0,
+  "ratio": 2.48,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-06-03",
+  "keyword": "강화도 간장게장",
+  "value": 102.9,
+  "baseline": 41.0,
+  "ratio": 2.51,
+  "broadcast": null,
+  "news": [],
+  "holiday": "지방선거"
+ },
+ {
+  "date": "2026-06-03",
   "keyword": "강화도 카페",
-  "value": 21.7,
-  "baseline": 11.8,
-  "ratio": 1.84,
+  "value": 1294.9,
+  "baseline": 456.9,
+  "ratio": 2.83,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "지방선거"
+ },
+ {
+  "date": "2026-05-25",
+  "keyword": "전등사 맛집",
+  "value": 215.3,
+  "baseline": 106.1,
+  "ratio": 2.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": "부처님오신날 대체"
  },
  {
   "date": "2026-05-24",
-  "keyword": "강화도 맛집",
-  "value": 71.5,
-  "baseline": 37.1,
-  "ratio": 1.93,
+  "keyword": "강화도 가볼만한곳",
+  "value": 654.0,
+  "baseline": 292.3,
+  "ratio": 2.24,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "부처님오신날"
+ },
+ {
+  "date": "2026-05-24",
+  "keyword": "전등사 맛집",
+  "value": 368.1,
+  "baseline": 158.4,
+  "ratio": 2.32,
+  "broadcast": null,
+  "news": [],
+  "holiday": "부처님오신날"
  },
  {
   "date": "2026-05-05",
   "keyword": "강화도 맛집",
-  "value": 46.1,
-  "baseline": 22.2,
+  "value": 4162.4,
+  "baseline": 2001.2,
   "ratio": 2.08,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "어린이날"
+ },
+ {
+  "date": "2026-05-05",
+  "keyword": "전등사 맛집",
+  "value": 157.9,
+  "baseline": 60.8,
+  "ratio": 2.6,
+  "broadcast": null,
+  "news": [],
+  "holiday": "어린이날"
+ },
+ {
+  "date": "2026-05-05",
+  "keyword": "강화도 칼국수",
+  "value": 195.5,
+  "baseline": 72.7,
+  "ratio": 2.69,
+  "broadcast": null,
+  "news": [],
+  "holiday": "어린이날"
+ },
+ {
+  "date": "2026-05-05",
+  "keyword": "강화도 카페",
+  "value": 1198.4,
+  "baseline": 442.2,
+  "ratio": 2.71,
+  "broadcast": null,
+  "news": [],
+  "holiday": "어린이날"
  },
  {
   "date": "2026-05-04",
-  "keyword": "강화도 맛집",
-  "value": 45.2,
-  "baseline": 22.9,
-  "ratio": 1.97,
+  "keyword": "강화도 가볼만한곳",
+  "value": 426.4,
+  "baseline": 199.2,
+  "ratio": 2.14,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-04",
+  "keyword": "강화도 카페",
+  "value": 1112.3,
+  "baseline": 474.8,
+  "ratio": 2.34,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-04",
+  "keyword": "전등사 맛집",
+  "value": 179.4,
+  "baseline": 72.5,
+  "ratio": 2.47,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 여행",
+  "value": 413.1,
+  "baseline": 173.5,
+  "ratio": 2.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 칼국수",
+  "value": 223.8,
+  "baseline": 83.4,
+  "ratio": 2.68,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 꽃게탕",
+  "value": 264.0,
+  "baseline": 93.5,
+  "ratio": 2.83,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-05-01",
   "keyword": "강화도 카페",
-  "value": 17.8,
-  "baseline": 6.2,
+  "value": 1595.5,
+  "baseline": 557.9,
   "ratio": 2.86,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-05-01",
   "keyword": "강화도 맛집",
-  "value": 78.5,
-  "baseline": 26.0,
+  "value": 7084.3,
+  "baseline": 2350.3,
   "ratio": 3.01,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 가볼만한곳",
+  "value": 635.0,
+  "baseline": 195.2,
+  "ratio": 3.25,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 간장게장",
+  "value": 142.5,
+  "baseline": 42.6,
+  "ratio": 3.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 밴댕이",
+  "value": 119.1,
+  "baseline": 35.5,
+  "ratio": 3.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 당일치기",
+  "value": 108.3,
+  "baseline": 27.9,
+  "ratio": 3.88,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "전등사 맛집",
+  "value": 324.0,
+  "baseline": 80.8,
+  "ratio": 4.01,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-04-30",
-  "keyword": "강화도 맛집",
-  "value": 39.8,
-  "baseline": 21.8,
-  "ratio": 1.83,
+  "keyword": "전등사 맛집",
+  "value": 135.3,
+  "baseline": 58.2,
+  "ratio": 2.33,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-30",
+  "keyword": "강화도 가볼만한곳",
+  "value": 452.3,
+  "baseline": 170.0,
+  "ratio": 2.66,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-29",
+  "keyword": "강화도 가볼만한곳",
+  "value": 302.5,
+  "baseline": 148.3,
+  "ratio": 2.04,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-15",
+  "keyword": "강화도 꽃게탕",
+  "value": 234.0,
+  "baseline": 91.3,
+  "ratio": 2.56,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-14",
+  "keyword": "강화도 꽃게탕",
+  "value": 176.0,
+  "baseline": 48.4,
+  "ratio": 3.64,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-13",
+  "keyword": "강화도 꽃게탕",
+  "value": 196.7,
+  "baseline": 52.3,
+  "ratio": 3.76,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-11",
+  "keyword": "강화도 꽃게탕",
+  "value": 271.2,
+  "baseline": 107.9,
+  "ratio": 2.51,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-10",
+  "keyword": "강화도 꽃게탕",
+  "value": 157.4,
+  "baseline": 65.0,
+  "ratio": 2.42,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-09",
+  "keyword": "강화도 꽃게탕",
+  "value": 216.4,
+  "baseline": 48.7,
+  "ratio": 4.45,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-04-08",
+  "keyword": "강화도 꽃게탕",
+  "value": 215.3,
+  "baseline": 49.2,
+  "ratio": 4.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-03-31",
+  "keyword": "전등사 맛집",
+  "value": 109.7,
+  "baseline": 46.6,
+  "ratio": 2.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-03-01",
+  "keyword": "강화도 당일치기",
+  "value": 133.1,
+  "baseline": 65.7,
+  "ratio": 2.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": "삼일절"
+ },
+ {
+  "date": "2026-03-01",
+  "keyword": "전등사 맛집",
+  "value": 256.3,
+  "baseline": 118.2,
+  "ratio": 2.17,
+  "broadcast": null,
+  "news": [],
+  "holiday": "삼일절"
+ },
+ {
+  "date": "2026-02-28",
+  "keyword": "강화도 젓국갈비",
+  "value": 105.3,
+  "baseline": 52.4,
+  "ratio": 2.01,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-28",
+  "keyword": "강화도 가볼만한곳",
+  "value": 601.1,
+  "baseline": 276.3,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-28",
+  "keyword": "강화도 당일치기",
+  "value": 172.6,
+  "baseline": 68.5,
+  "ratio": 2.52,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-02-27",
-  "keyword": "강화도 맛집",
-  "value": 45.6,
-  "baseline": 23.4,
-  "ratio": 1.94,
+  "keyword": "강화도 가볼만한곳",
+  "value": 420.4,
+  "baseline": 204.9,
+  "ratio": 2.05,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-27",
+  "keyword": "강화도 당일치기",
+  "value": 122.9,
+  "baseline": 56.1,
+  "ratio": 2.19,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-21",
+  "keyword": "강화도 당일치기",
+  "value": 107.1,
+  "baseline": 47.9,
+  "ratio": 2.23,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2026-02-18",
   "keyword": "강화도 맛집",
-  "value": 39.9,
-  "baseline": 16.9,
+  "value": 3600.5,
+  "baseline": 1524.7,
   "ratio": 2.36,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-18",
+  "keyword": "강화도 가볼만한곳",
+  "value": 312.5,
+  "baseline": 127.1,
+  "ratio": 2.46,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-18",
+  "keyword": "강화도 꽃게탕",
+  "value": 130.4,
+  "baseline": 50.0,
+  "ratio": 2.61,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-18",
+  "keyword": "전등사 맛집",
+  "value": 106.6,
+  "baseline": 37.9,
+  "ratio": 2.81,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-18",
+  "keyword": "강화도 카페",
+  "value": 1204.6,
+  "baseline": 420.9,
+  "ratio": 2.86,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 칼국수",
+  "value": 381.7,
+  "baseline": 183.5,
+  "ratio": 2.08,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 가볼만한곳",
+  "value": 381.4,
+  "baseline": 132.6,
+  "ratio": 2.88,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
  },
  {
   "date": "2026-02-17",
   "keyword": "강화도 맛집",
-  "value": 47.1,
-  "baseline": 16.0,
+  "value": 4252.2,
+  "baseline": 1445.5,
   "ratio": 2.94,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 꽃게탕",
+  "value": 177.0,
+  "baseline": 52.0,
+  "ratio": 3.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "전등사 맛집",
+  "value": 195.8,
+  "baseline": 52.6,
+  "ratio": 3.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
  },
  {
   "date": "2026-02-17",
   "keyword": "강화도 카페",
-  "value": 20.8,
-  "baseline": 4.2,
+  "value": 1865.4,
+  "baseline": 379.6,
   "ratio": 4.91,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 젓국갈비",
+  "value": 127.5,
+  "baseline": 20.5,
+  "ratio": 6.21,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 칼국수",
+  "value": 385.8,
+  "baseline": 186.7,
+  "ratio": 2.07,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 가볼만한곳",
+  "value": 472.3,
+  "baseline": 137.8,
+  "ratio": 3.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
  },
  {
   "date": "2026-02-16",
   "keyword": "강화도 맛집",
-  "value": 57.4,
-  "baseline": 16.7,
+  "value": 5185.9,
+  "baseline": 1503.6,
   "ratio": 3.45,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 간장게장",
+  "value": 138.2,
+  "baseline": 38.9,
+  "ratio": 3.56,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 꽃게탕",
+  "value": 225.7,
+  "baseline": 59.8,
+  "ratio": 3.77,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "전등사 맛집",
+  "value": 183.5,
+  "baseline": 47.2,
+  "ratio": 3.89,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
  },
  {
   "date": "2026-02-16",
   "keyword": "강화도 카페",
-  "value": 18.9,
-  "baseline": 4.7,
+  "value": 1693.0,
+  "baseline": 420.4,
   "ratio": 4.03,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 젓국갈비",
+  "value": 371.8,
+  "baseline": 22.6,
+  "ratio": 16.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
  },
  {
   "date": "2026-02-15",
   "keyword": "강화도 맛집",
-  "value": 63.3,
-  "baseline": 30.0,
+  "value": 5713.7,
+  "baseline": 2707.1,
   "ratio": 2.11,
   "broadcast": null,
   "news": [
@@ -174,150 +1061,1423 @@
     "query": "강화 젓국갈비",
     "tv": "백반기행"
    }
-  ]
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-15",
+  "keyword": "강화도 가볼만한곳",
+  "value": 450.3,
+  "baseline": 192.2,
+  "ratio": 2.34,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 맛집",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 보양",
+    "link": "https://enter.etoday.co.kr/news/view/293106",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-15",
+  "keyword": "강화도 꽃게탕",
+  "value": 243.3,
+  "baseline": 92.4,
+  "ratio": 2.63,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 맛집",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 보양",
+    "link": "https://enter.etoday.co.kr/news/view/293106",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-15",
+  "keyword": "강화도 간장게장",
+  "value": 196.1,
+  "baseline": 47.1,
+  "ratio": 4.16,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 맛집",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 보양",
+    "link": "https://enter.etoday.co.kr/news/view/293106",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-15",
+  "keyword": "강화도 젓국갈비",
+  "value": 785.8,
+  "baseline": 34.0,
+  "ratio": 23.11,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 맛집",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 보양",
+    "link": "https://enter.etoday.co.kr/news/view/293106",
+    "query": "강화 젓국갈비",
+    "tv": "백반기행"
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2026-02-05",
+  "keyword": "전등사 맛집",
+  "value": 100.5,
+  "baseline": 43.3,
+  "ratio": 2.32,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-27",
+  "keyword": "강화도 장어",
+  "value": 119.6,
+  "baseline": 49.6,
+  "ratio": 2.41,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-26",
+  "keyword": "강화도 장어",
+  "value": 161.4,
+  "baseline": 40.6,
+  "ratio": 3.97,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-25",
+  "keyword": "강화도 장어",
+  "value": 184.6,
+  "baseline": 51.1,
+  "ratio": 3.61,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-24",
+  "keyword": "강화도 장어",
+  "value": 357.5,
+  "baseline": 58.9,
+  "ratio": 6.07,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-23",
+  "keyword": "강화도 장어",
+  "value": 452.7,
+  "baseline": 50.8,
+  "ratio": 8.92,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-22",
+  "keyword": "강화도 장어",
+  "value": 143.9,
+  "baseline": 65.6,
+  "ratio": 2.19,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-11",
+  "keyword": "강화도 젓국갈비",
+  "value": 489.8,
+  "baseline": 31.9,
+  "ratio": 15.37,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-07",
+  "keyword": "강화도 젓국갈비",
+  "value": 351.8,
+  "baseline": 27.4,
+  "ratio": 12.85,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-02",
+  "keyword": "전등사 맛집",
+  "value": 108.7,
+  "baseline": 44.1,
+  "ratio": 2.46,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-01-01",
+  "keyword": "강화도 가볼만한곳",
+  "value": 342.5,
+  "baseline": 170.8,
+  "ratio": 2.01,
+  "broadcast": null,
+  "news": [],
+  "holiday": "신정"
  },
  {
   "date": "2026-01-01",
   "keyword": "강화도 맛집",
-  "value": 56.6,
-  "baseline": 24.3,
+  "value": 5111.6,
+  "baseline": 2193.0,
   "ratio": 2.33,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "신정"
  },
  {
   "date": "2026-01-01",
   "keyword": "강화도 카페",
-  "value": 21.0,
-  "baseline": 7.6,
+  "value": 1882.8,
+  "baseline": 681.0,
   "ratio": 2.76,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "신정"
+ },
+ {
+  "date": "2026-01-01",
+  "keyword": "강화도 꽃게탕",
+  "value": 221.5,
+  "baseline": 60.5,
+  "ratio": 3.66,
+  "broadcast": null,
+  "news": [],
+  "holiday": "신정"
+ },
+ {
+  "date": "2026-01-01",
+  "keyword": "전등사 맛집",
+  "value": 344.5,
+  "baseline": 58.4,
+  "ratio": 5.89,
+  "broadcast": null,
+  "news": [],
+  "holiday": "신정"
+ },
+ {
+  "date": "2025-12-31",
+  "keyword": "전등사 맛집",
+  "value": 118.9,
+  "baseline": 44.6,
+  "ratio": 2.66,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-12-31",
+  "keyword": "강화도 꽃게탕",
+  "value": 133.5,
+  "baseline": 48.9,
+  "ratio": 2.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-12-25",
   "keyword": "강화도 맛집",
-  "value": 43.0,
-  "baseline": 17.7,
+  "value": 3882.5,
+  "baseline": 1601.5,
   "ratio": 2.42,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "성탄절"
+ },
+ {
+  "date": "2025-12-25",
+  "keyword": "전등사 맛집",
+  "value": 112.8,
+  "baseline": 43.3,
+  "ratio": 2.6,
+  "broadcast": null,
+  "news": [],
+  "holiday": "성탄절"
+ },
+ {
+  "date": "2025-12-25",
+  "keyword": "강화도 카페",
+  "value": 1259.0,
+  "baseline": 478.6,
+  "ratio": 2.63,
+  "broadcast": null,
+  "news": [],
+  "holiday": "성탄절"
+ },
+ {
+  "date": "2025-12-25",
+  "keyword": "강화도 장어",
+  "value": 102.2,
+  "baseline": 38.6,
+  "ratio": 2.65,
+  "broadcast": null,
+  "news": [],
+  "holiday": "성탄절"
+ },
+ {
+  "date": "2025-12-25",
+  "keyword": "강화도 꽃게탕",
+  "value": 128.4,
+  "baseline": 35.5,
+  "ratio": 3.62,
+  "broadcast": null,
+  "news": [],
+  "holiday": "성탄절"
+ },
+ {
+  "date": "2025-12-18",
+  "keyword": "강화도 칼국수",
+  "value": 354.5,
+  "baseline": 162.6,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-12-17",
+  "keyword": "강화도 칼국수",
+  "value": 401.5,
+  "baseline": 194.7,
+  "ratio": 2.06,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-12-17",
+  "keyword": "강화도 간장게장",
+  "value": 1231.1,
+  "baseline": 27.1,
+  "ratio": 45.47,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-11-13",
+  "keyword": "강화도 젓국갈비",
+  "value": 103.2,
+  "baseline": 46.1,
+  "ratio": 2.24,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2025-11-13",
+    "title": "'생방송오늘아침' 강화 화도면 '삼국지 카페' 위치는? \"오감 깨우는 여...",
+    "link": "https://www.topstarnews.net/news/articleView.html?idxno=15873788",
+    "query": "강화 젓국갈비",
+    "tv": null
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2025-11-08",
+  "keyword": "전등사 맛집",
+  "value": 424.5,
+  "baseline": 201.2,
+  "ratio": 2.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-25",
+  "keyword": "강화도 순무",
+  "value": 231.5,
+  "baseline": 34.4,
+  "ratio": 6.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-24",
+  "keyword": "강화도 순무",
+  "value": 150.2,
+  "baseline": 42.5,
+  "ratio": 3.53,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-23",
+  "keyword": "강화도 순무",
+  "value": 154.3,
+  "baseline": 48.2,
+  "ratio": 3.2,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2025-10-23",
+    "title": "인천 강화도, 서해의 바람과 고즈넉한 사찰이 어우러진 여행지",
+    "link": "https://www.tournews21.com/news/articleView.html?idxno=118157",
+    "query": "전등사 맛집",
+    "tv": null
+   }
+  ],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-22",
+  "keyword": "강화도 순무",
+  "value": 226.3,
+  "baseline": 55.5,
+  "ratio": 4.08,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-21",
+  "keyword": "강화도 순무",
+  "value": 346.2,
+  "baseline": 79.0,
+  "ratio": 4.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-20",
+  "keyword": "강화도 순무",
+  "value": 280.5,
+  "baseline": 41.8,
+  "ratio": 6.72,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-12",
+  "keyword": "강화도 순무",
+  "value": 100.1,
+  "baseline": 30.0,
+  "ratio": 3.34,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-10",
+  "keyword": "강화도 젓국갈비",
+  "value": 193.8,
+  "baseline": 88.8,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-10-09",
   "keyword": "강화도 맛집",
-  "value": 58.5,
-  "baseline": 29.1,
+  "value": 5279.9,
+  "baseline": 2629.7,
   "ratio": 2.01,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "한글날"
  },
  {
   "date": "2025-10-09",
   "keyword": "강화도 카페",
-  "value": 18.7,
-  "baseline": 8.0,
+  "value": 1679.7,
+  "baseline": 713.1,
   "ratio": 2.36,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "한글날"
+ },
+ {
+  "date": "2025-10-09",
+  "keyword": "전등사 맛집",
+  "value": 347.6,
+  "baseline": 142.8,
+  "ratio": 2.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": "한글날"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 젓국갈비",
+  "value": 224.4,
+  "baseline": 100.6,
+  "ratio": 2.23,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 간장게장",
+  "value": 156.4,
+  "baseline": 60.0,
+  "ratio": 2.61,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 당일치기",
+  "value": 178.2,
+  "baseline": 64.0,
+  "ratio": 2.78,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 꽃게탕",
+  "value": 304.4,
+  "baseline": 90.1,
+  "ratio": 3.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 밴댕이",
+  "value": 242.2,
+  "baseline": 68.3,
+  "ratio": 3.54,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
  },
  {
   "date": "2025-10-08",
   "keyword": "강화도 맛집",
-  "value": 100,
-  "baseline": 25.2,
+  "value": 9028.1,
+  "baseline": 2273.1,
   "ratio": 3.97,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "전등사 맛집",
+  "value": 586.5,
+  "baseline": 130.2,
+  "ratio": 4.5,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 가볼만한곳",
+  "value": 1248.1,
+  "baseline": 273.4,
+  "ratio": 4.57,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
  },
  {
   "date": "2025-10-08",
   "keyword": "강화도 카페",
-  "value": 32.4,
-  "baseline": 7.0,
+  "value": 2905.8,
+  "baseline": 625.9,
   "ratio": 4.64,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 장어",
+  "value": 155.5,
+  "baseline": 73.4,
+  "ratio": 2.12,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 간장게장",
+  "value": 161.8,
+  "baseline": 59.2,
+  "ratio": 2.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 젓국갈비",
+  "value": 194.9,
+  "baseline": 68.0,
+  "ratio": 2.87,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "전등사 맛집",
+  "value": 372.2,
+  "baseline": 127.9,
+  "ratio": 2.91,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 밴댕이",
+  "value": 244.9,
+  "baseline": 79.8,
+  "ratio": 3.07,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 당일치기",
+  "value": 185.0,
+  "baseline": 56.4,
+  "ratio": 3.28,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
  },
  {
   "date": "2025-10-07",
   "keyword": "강화도 맛집",
-  "value": 90.0,
-  "baseline": 25.8,
+  "value": 8121.3,
+  "baseline": 2329.3,
   "ratio": 3.49,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 가볼만한곳",
+  "value": 987.5,
+  "baseline": 279.1,
+  "ratio": 3.54,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 꽃게탕",
+  "value": 323.0,
+  "baseline": 78.2,
+  "ratio": 4.13,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
  },
  {
   "date": "2025-10-07",
   "keyword": "강화도 카페",
-  "value": 32.2,
-  "baseline": 6.6,
+  "value": 2890.4,
+  "baseline": 590.2,
   "ratio": 4.9,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 순무",
+  "value": 161.6,
+  "baseline": 31.1,
+  "ratio": 5.2,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 간장게장",
+  "value": 133.9,
+  "baseline": 61.4,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 밴댕이",
+  "value": 197.6,
+  "baseline": 84.6,
+  "ratio": 2.34,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
  },
  {
   "date": "2025-10-06",
   "keyword": "강화도 맛집",
-  "value": 69.2,
-  "baseline": 27.7,
+  "value": 6245.6,
+  "baseline": 2497.9,
   "ratio": 2.5,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 가볼만한곳",
+  "value": 730.9,
+  "baseline": 286.1,
+  "ratio": 2.55,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "전등사 맛집",
+  "value": 318.9,
+  "baseline": 114.0,
+  "ratio": 2.8,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 장어",
+  "value": 210.1,
+  "baseline": 65.3,
+  "ratio": 3.22,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 꽃게탕",
+  "value": 318.9,
+  "baseline": 96.3,
+  "ratio": 3.31,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
  },
  {
   "date": "2025-10-06",
   "keyword": "강화도 카페",
-  "value": 27.2,
-  "baseline": 7.1,
+  "value": 2443.1,
+  "baseline": 635.9,
   "ratio": 3.84,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2025-10-05",
+  "keyword": "강화도 가볼만한곳",
+  "value": 787.8,
+  "baseline": 385.2,
+  "ratio": 2.05,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-05",
+  "keyword": "강화도 장어",
+  "value": 183.4,
+  "baseline": 87.7,
+  "ratio": 2.09,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-04",
+  "keyword": "강화도 장어",
+  "value": 205.5,
+  "baseline": 93.2,
+  "ratio": 2.21,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-04",
+  "keyword": "강화도 가볼만한곳",
+  "value": 847.7,
+  "baseline": 378.4,
+  "ratio": 2.24,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-04",
+  "keyword": "전등사 맛집",
+  "value": 480.9,
+  "baseline": 177.4,
+  "ratio": 2.71,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-10-03",
   "keyword": "강화도 카페",
-  "value": 17.7,
-  "baseline": 8.7,
+  "value": 1584.2,
+  "baseline": 780.0,
   "ratio": 2.03,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "개천절"
+ },
+ {
+  "date": "2025-10-03",
+  "keyword": "강화도 당일치기",
+  "value": 143.2,
+  "baseline": 67.9,
+  "ratio": 2.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절"
+ },
+ {
+  "date": "2025-10-03",
+  "keyword": "강화도 가볼만한곳",
+  "value": 631.1,
+  "baseline": 294.1,
+  "ratio": 2.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절"
+ },
+ {
+  "date": "2025-10-03",
+  "keyword": "전등사 맛집",
+  "value": 371.2,
+  "baseline": 118.7,
+  "ratio": 3.13,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절"
+ },
+ {
+  "date": "2025-10-03",
+  "keyword": "강화도 장어",
+  "value": 183.4,
+  "baseline": 49.6,
+  "ratio": 3.7,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절"
+ },
+ {
+  "date": "2025-10-02",
+  "keyword": "전등사 맛집",
+  "value": 225.6,
+  "baseline": 102.0,
+  "ratio": 2.21,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-02",
+  "keyword": "강화도 장어",
+  "value": 162.5,
+  "baseline": 62.7,
+  "ratio": 2.59,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-01",
+  "keyword": "전등사 맛집",
+  "value": 204.0,
+  "baseline": 96.2,
+  "ratio": 2.12,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-01",
+  "keyword": "강화도 장어",
+  "value": 137.0,
+  "baseline": 64.1,
+  "ratio": 2.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-10-01",
+  "keyword": "강화도 당일치기",
+  "value": 100.4,
+  "baseline": 46.8,
+  "ratio": 2.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-30",
+  "keyword": "강화도 장어",
+  "value": 131.2,
+  "baseline": 49.9,
+  "ratio": 2.63,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-22",
+  "keyword": "전등사 맛집",
+  "value": 168.1,
+  "baseline": 65.4,
+  "ratio": 2.57,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-21",
+  "keyword": "전등사 맛집",
+  "value": 274.8,
+  "baseline": 123.8,
+  "ratio": 2.22,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-19",
+  "keyword": "전등사 맛집",
+  "value": 178.4,
+  "baseline": 72.0,
+  "ratio": 2.48,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-18",
+  "keyword": "전등사 맛집",
+  "value": 166.1,
+  "baseline": 62.8,
+  "ratio": 2.65,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-17",
+  "keyword": "전등사 맛집",
+  "value": 137.4,
+  "baseline": 61.3,
+  "ratio": 2.24,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-16",
+  "keyword": "전등사 맛집",
+  "value": 155.8,
+  "baseline": 65.4,
+  "ratio": 2.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-11",
+  "keyword": "강화도 밴댕이",
+  "value": 144.8,
+  "baseline": 46.0,
+  "ratio": 3.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-10",
+  "keyword": "강화도 밴댕이",
+  "value": 150.2,
+  "baseline": 30.4,
+  "ratio": 4.93,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-10",
+  "keyword": "강화도 젓국갈비",
+  "value": 192.8,
+  "baseline": 17.6,
+  "ratio": 10.92,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-09",
+  "keyword": "강화도 밴댕이",
+  "value": 174.6,
+  "baseline": 43.3,
+  "ratio": 4.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-09",
+  "keyword": "강화도 젓국갈비",
+  "value": 130.6,
+  "baseline": 28.2,
+  "ratio": 4.64,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-08",
+  "keyword": "강화도 밴댕이",
+  "value": 174.6,
+  "baseline": 51.8,
+  "ratio": 3.37,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-08",
+  "keyword": "강화도 젓국갈비",
+  "value": 332.9,
+  "baseline": 29.8,
+  "ratio": 11.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-07",
+  "keyword": "강화도 젓국갈비",
+  "value": 493.0,
+  "baseline": 37.1,
+  "ratio": 13.28,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-09-06",
   "keyword": "강화도 젓국갈비",
-  "value": 16.7,
-  "baseline": 0.5,
-  "ratio": 35.39,
+  "value": 1538.0,
+  "baseline": 43.5,
+  "ratio": 35.38,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-09-05",
   "keyword": "강화도 젓국갈비",
-  "value": 16.6,
-  "baseline": 0.4,
-  "ratio": 42.09,
+  "value": 1529.5,
+  "baseline": 36.4,
+  "ratio": 42.08,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-04",
+  "keyword": "강화도 간장게장",
+  "value": 206.8,
+  "baseline": 60.3,
+  "ratio": 3.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-09-04",
   "keyword": "강화도 젓국갈비",
-  "value": 22.0,
-  "baseline": 0.3,
-  "ratio": 79.47,
+  "value": 2029.9,
+  "baseline": 25.6,
+  "ratio": 79.45,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-03",
+  "keyword": "강화도 간장게장",
+  "value": 177.9,
+  "baseline": 60.5,
+  "ratio": 2.94,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-02",
+  "keyword": "강화도 꽃게탕",
+  "value": 150.1,
+  "baseline": 62.6,
+  "ratio": 2.4,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-02",
+  "keyword": "강화도 간장게장",
+  "value": 154.3,
+  "baseline": 43.7,
+  "ratio": 3.53,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-01",
+  "keyword": "강화도 밴댕이",
+  "value": 100.1,
+  "baseline": 34.9,
+  "ratio": 2.87,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-01",
+  "keyword": "강화도 꽃게탕",
+  "value": 198.8,
+  "baseline": 68.8,
+  "ratio": 2.89,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-01",
+  "keyword": "강화도 간장게장",
+  "value": 155.4,
+  "baseline": 46.3,
+  "ratio": 3.35,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-31",
+  "keyword": "강화도 간장게장",
+  "value": 170.4,
+  "baseline": 73.9,
+  "ratio": 2.31,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-31",
+  "keyword": "강화도 꽃게탕",
+  "value": 337.5,
+  "baseline": 78.9,
+  "ratio": 4.28,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-31",
+  "keyword": "강화도 밴댕이",
+  "value": 209.8,
+  "baseline": 36.5,
+  "ratio": 5.74,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-30",
+  "keyword": "강화도 간장게장",
+  "value": 170.4,
+  "baseline": 74.2,
+  "ratio": 2.3,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-30",
+  "keyword": "강화도 꽃게탕",
+  "value": 253.6,
+  "baseline": 83.6,
+  "ratio": 3.03,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-30",
+  "keyword": "강화도 밴댕이",
+  "value": 262.5,
+  "baseline": 54.5,
+  "ratio": 4.82,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-30",
+  "keyword": "강화도 순무",
+  "value": 102.2,
+  "baseline": 16.1,
+  "ratio": 6.33,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-29",
+  "keyword": "강화도 간장게장",
+  "value": 172.5,
+  "baseline": 72.6,
+  "ratio": 2.38,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-29",
+  "keyword": "강화도 꽃게탕",
+  "value": 310.6,
+  "baseline": 79.0,
+  "ratio": 3.93,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-29",
+  "keyword": "강화도 밴댕이",
+  "value": 376.2,
+  "baseline": 48.7,
+  "ratio": 7.72,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-29",
+  "keyword": "강화도 순무",
+  "value": 135.6,
+  "baseline": 11.5,
+  "ratio": 11.82,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-28",
+  "keyword": "강화도 간장게장",
+  "value": 110.4,
+  "baseline": 38.6,
+  "ratio": 2.86,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-27",
+  "keyword": "강화도 간장게장",
+  "value": 111.4,
+  "baseline": 53.3,
+  "ratio": 2.09,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-16",
+  "keyword": "강화도 드라이브",
+  "value": 101.6,
+  "baseline": 47.3,
+  "ratio": 2.15,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-16",
+  "keyword": "강화도 간장게장",
+  "value": 121.1,
+  "baseline": 54.7,
+  "ratio": 2.22,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  },
  {
   "date": "2025-08-15",
   "keyword": "강화도 맛집",
-  "value": 74.3,
-  "baseline": 36.0,
+  "value": 6710.4,
+  "baseline": 3247.6,
   "ratio": 2.07,
   "broadcast": null,
-  "news": []
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "강화도 가볼만한곳",
+  "value": 696.0,
+  "baseline": 321.8,
+  "ratio": 2.16,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "강화도 간장게장",
+  "value": 129.6,
+  "baseline": 47.4,
+  "ratio": 2.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "강화도 당일치기",
+  "value": 171.4,
+  "baseline": 60.0,
+  "ratio": 2.85,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "전등사 맛집",
+  "value": 269.7,
+  "baseline": 78.5,
+  "ratio": 3.44,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-14",
+  "keyword": "전등사 맛집",
+  "value": 156.9,
+  "baseline": 73.5,
+  "ratio": 2.13,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-13",
+  "keyword": "전등사 맛집",
+  "value": 113.8,
+  "baseline": 48.2,
+  "ratio": 2.36,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-12",
+  "keyword": "전등사 맛집",
+  "value": 173.3,
+  "baseline": 67.4,
+  "ratio": 2.57,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-11",
+  "keyword": "전등사 맛집",
+  "value": 178.4,
+  "baseline": 60.0,
+  "ratio": 2.97,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
  }
 ]

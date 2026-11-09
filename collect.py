@@ -261,8 +261,20 @@ def fetch_visitors(start, end):
             }
             calls += 1
             req = urllib.request.Request(base + "?" + urllib.parse.urlencode(params))
-            with urllib.request.urlopen(req, timeout=60) as r:
-                txt = r.read().decode("utf-8", "ignore")
+            txt, last_err = None, None
+            for attempt in range(4):  # 공공데이터포털은 해외(GitHub 서버)에서 접속이 느릴 때가 있어 재시도
+                try:
+                    with urllib.request.urlopen(req, timeout=90) as r:
+                        txt = r.read().decode("utf-8", "ignore")
+                    break
+                except Exception as e:
+                    last_err = e
+                    time.sleep(5 * (attempt + 1))
+            if txt is None:
+                chunk_errs.append(f"{s0}~{e0}: 접속 실패 {type(last_err).__name__}: {str(last_err)[:80]}")
+                if len(chunk_errs) >= 3 and not by_day:
+                    raise RuntimeError("관광공사 서버 접속 반복 실패: " + str(last_err)[:120])
+                break
             if not raw_head:
                 raw_head = txt[:300]
             try:

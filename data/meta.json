@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
- "version": "0.5",
- "updated_at": "2026-11-09 19:22 KST",
+ "version": "1.0",
+ "updated_at": "2026-11-09 19:41 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
@@ -9,7 +9,6 @@
  "sources": {
   "datalab": "live",
   "keyword_tool": "live",
-  "kakao_local": "sample",
   "tour_api": "live",
   "naver_news": "live"
  },
@@ -19,7 +18,6 @@
   "NAVER_AD_API_KEY": true,
   "NAVER_AD_SECRET": true,
   "NAVER_AD_CUSTOMER_ID": true,
-  "KAKAO_REST_KEY": false,
   "DATA_GO_KR_KEY": true
  },
  "key_lengths": {
@@ -28,7 +26,6 @@
   "NAVER_AD_API_KEY": 74,
   "NAVER_AD_SECRET": 52,
   "NAVER_AD_CUSTOMER_ID": 7,
-  "KAKAO_REST_KEY": 0,
   "DATA_GO_KR_KEY": 64
  },
  "errors": {
@@ -42,7 +39,7 @@
   ],
   "tour_api_calls": 12
  },
- "mode": "partial",
+ "mode": "live",
  "store": {
   "name": "선두리 만선꽃게랑낙지",
   "address": "인천 강화군 길상면 선두리",
@@ -168,11 +165,5 @@
    "강화도 펜션"
   ]
  },
- "broadcast_log": [
-  {
-   "date": "2026-10-18",
-   "program": "(샘플) 생생정보",
-   "note": "샘플 예시 — 실제 방송 날짜를 여기에 기록하세요"
-  }
- ]
+ "broadcast_log": []
 }

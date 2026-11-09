@@ -35,6 +35,7 @@ import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
+ERRORS = {}  # 출처별 실패 메시지(키 값 미포함)
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(ROOT, "data")
 DAYS = 485  # 120일 추이 + 364일 전 겹쳐보기까지 커버 (데이터랩은 2016년부터 제공)
@@ -493,6 +494,7 @@ def main():
             res = fn()
         except Exception as e:  # 한 출처가 죽어도 나머지는 계속
             log(f"{name} 실패: {e}")
+            ERRORS[name] = f"{type(e).__name__}: {str(e)[:200]}"
             res = None
         if res is None:
             sources[name] = "sample"
@@ -521,6 +523,11 @@ def main():
         "updated_at": datetime.now(KST).strftime("%Y-%m-%d %H:%M KST"),
         "range": [start.isoformat(), end.isoformat()],
         "sources": sources,
+        # 키 값은 절대 기록하지 않음 — 등록돼 있는지(길이>0)만 표시
+        "keys_present": {k: bool(os.getenv(k, "").strip()) for k in (
+            "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
+            "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY")},
+        "errors": ERRORS,
         "mode": "live" if all(v == "live" for v in sources.values()) else "partial" if any(v == "live" for v in sources.values()) else "sample",
         "store": cfg["store"], "groups": cfg["groups"], "broadcast_log": cfg["broadcast_log"],
     })

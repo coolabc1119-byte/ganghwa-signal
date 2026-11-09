@@ -136,6 +136,8 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .yg{display:grid;gap:0;font-size:13px} .yg4{grid-template-columns:44px minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr)}
 .yg>div{padding:7px 4px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .yg .h{font-size:11px;color:var(--faint);font-weight:600} .yg .h:not(:first-child){text-align:right}
+.yg5{grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) minmax(0,.7fr) minmax(0,.7fr)} .yg .k{font-weight:600}
+.h3{font-size:14px;margin:18px 0 4px}
 .yg .m{font-weight:600} .yg .m.we{color:var(--red)} .yg .n{text-align:right;font-family:var(--mono)}
 .rk{display:inline-block;font-size:10px;font-family:var(--sans);color:var(--sub);background:var(--soft2);border-radius:4px;padding:0 4px;margin-left:3px;vertical-align:1px} .rk.top{background:var(--hot-bg);color:var(--hot);font-weight:700}
 .more{display:block;width:100%;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink2);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
@@ -307,6 +309,16 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div id="ysum"></div>
     </div>
     <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
+    <div class="card"><h2>검색으로 보는 최근 방문자 <span class="chip" id="c-sv"></span></h2>
+      <div class="sub" id="svSub"></div>
+      <div class="basis" id="svBasis"></div>
+      <div id="svTable"></div>
+      <div class="chart sm" style="margin-top:12px"><canvas id="svChart"></canvas></div>
+      <div class="legend" id="svLegend"></div>
+      <h3 class="h3">검색어별 방문자와의 연관성</h3>
+      <div class="sub">숫자 = 상관계수(−1~1) · 1에 가까울수록 검색과 방문자가 같이 오르내림 · 0.7 이상 강함, 0.4~0.7 보통, 0.4 미만 약함</div>
+      <div id="scorr"></div>
+    </div>
     <div class="card">
       <h2>월별 — 작년 실적과 올해 증감</h2>
       <div class="sub" id="ymSub"></div>
@@ -418,7 +430,7 @@ async function init(){
   const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
   const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
-  chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
+  chip('c-sv',['tour_api','datalab']); chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로
   if(D.visitors?.dates?.length){ const v=D.visitors, by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); const out=[],vals=[]; let d=v.dates[0]; const end=v.dates.at(-1); while(d<=end){ out.push(d); vals.push(by[d]??null); d=shift(d,1); } D.visitors={...v,dates:out,visitor:vals}; }
@@ -426,7 +438,7 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderWx(); renderVolume(); renderNews(); renderAbout();
+  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
@@ -438,7 +450,7 @@ async function init(){
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
 function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b)); }
-function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderMonthly(); renderYTrend(); }
+function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderSearchVis(); renderMonthly(); renderYTrend(); }
 
 
 /* ================= 카드별 계산 방식 · 출처 ================= */
@@ -485,6 +497,7 @@ const HOW={
     '<b>예측 적용</b> = 이번 주 예보가 해당 단계면 이 배율을 그날 예상에 곱함'],
     s:['tour','wx','cfg']},
   volume:{f:[CNT,'<b>하루</b> = 집계가 끝난 가장 최근 하루의 검색 횟수(네이버는 보통 1~2일 늦게 집계) · 증감은 지난주 같은 요일 대비','<b>최근 7일</b> = 7일 합계 · 증감은 직전 7일 대비','<b>최근 30일</b> = 검색광고 한 달 실제 횟수 · 증감은 직전 30일 대비(일별 데이터가 있는 상위 60개)','<b>순위 변동</b> = 직전 같은 기간 순위 − 지금 순위','<b>대상</b> = 검색광고가 돌려준 강화 관련 연관 검색어(월 100회 이상 상위 60개는 일별까지)'], s:['ad','dlab']},
+  scorr:{f:['<b>주 단위</b> = 월~일 7일이 다 있는 주만, 검색 횟수 합 vs 외지인 방문자 합','<b>같은 주</b> = 그 주 검색과 그 주 방문자의 상관계수','<b>다음 주</b> = 그 주 검색과 그다음 주 방문자의 상관계수','<b>추정 방문자</b> = 「강화도 맛집」 주간 검색 × 기울기 + 기본값 (겹치는 모든 주로 직선 맞춤) ÷ 7 → 하루 평균','<b>평균 오차</b> = 과거 각 주를, 그 주보다 4주 이상 앞선 데이터로만 맞춘 직선으로 추정했을 때 실제와의 차이 평균 (방문자 통계가 약 한 달 늦게 나오는 상황을 그대로 재현)','<b>작년 같은 주</b> = 364일 전 같은 요일로 시작하는 주의 실제 방문자','<b>최근 8주 치우침</b> = 실제값이 있는 마지막 8주에서 추정이 실제보다 평균 몇 % 높/낮았는지 (5% 이상일 때만 표시) → 추정 주를 읽을 때 그만큼 감안'], s:['dlab','ad','tour']},
   newslist:{f:['<b>수집</b> = 매일 「강화도 맛집」「강화도 방송」「강화도 꽃게」「강화 젓국갈비」「전등사 맛집」 최신 기사 30건씩, 제목에 강화 지명이 있는 것만 누적 (최근 400일)'], s:['news']},
 };
 function attachHow(){
@@ -717,6 +730,40 @@ function renderVisitors(){
             {label:'7일 평균',data:ma,borderColor:css('--ink'),borderWidth:2.2,backgroundColor:css('--ink'),spanGaps:true,order:1}];
   if(state.vyoy){ const by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); ds.push({label:'작년 같은 요일',data:dates.map(d=>by[shift(d,-364)]??null),borderColor:css('--wait'),backgroundColor:css('--wait'),borderDash:[3,4],borderWidth:1.2,spanGaps:true,order:3}); }
   mk('visitors','line',dates,ds,{unit:'명',legend:true},[bcPlugin]);
+}
+function renderSearchVis(){
+  const v=D.visitors, t=D.trend_daily; if(!v||!t) return; const REF='강화도 맛집';
+  const wkey=d=>shift(d,-((dow(d)+6)%7));
+  const weekly=(dates,vals)=>{ const W={}; dates.forEach((d,i)=>{ const x=vals[i]; if(x==null) return; const k=wkey(d); (W[k]=W[k]||[]).push(x); }); const o={}; for(const k in W) if(W[k].length===7) o[k]=W[k].reduce((a,b)=>a+b,0); return o; };
+  const corr=(a,b)=>{ const n=a.length; if(n<8) return null; const ma=avg(a), mb=avg(b); let sab=0,saa=0,sbb=0; for(let i=0;i<n;i++){ const x=a[i]-ma,y=b[i]-mb; sab+=x*y; saa+=x*x; sbb+=y*y; } return saa&&sbb? sab/Math.sqrt(saa*sbb):null; };
+  const fit=(a,b)=>{ const ma=avg(a), mb=avg(b); let sab=0,saa=0; a.forEach((x,i)=>{sab+=(x-ma)*(b[i]-mb); saa+=(x-ma)**2;}); const sl=saa?sab/saa:0; return {sl,ic:mb-sl*ma}; };
+  const V=weekly(v.dates,v.visitor); const S=weekly(t.dates,t.series[REF]||[]);
+  const ks=Object.keys(S).filter(k=>k in V).sort(); if(ks.length<12){ document.getElementById('svTable').innerHTML='<div class="empty">겹치는 주가 부족합니다</div>'; return; }
+  const m=fit(ks.map(k=>S[k]),ks.map(k=>V[k])); const est=k=>m.sl*S[k]+m.ic;
+  const errs=[]; ks.forEach((k,j)=>{ if(j<20) return; const tr=ks.filter(x=>x<=shift(k,-28)); const f=fit(tr.map(x=>S[x]),tr.map(x=>V[x])); errs.push(Math.abs((f.sl*S[k]+f.ic)/V[k]-1)); });
+  const mape=errs.length?avg(errs)*100:null;
+  const r0=corr(ks.map(k=>S[k]),ks.map(k=>V[k])); const nk=ks.filter(k=>shift(k,7) in V); const r1=corr(nk.map(k=>S[k]),nk.map(k=>V[shift(k,7)]));
+  const lvl=r=>r==null?'–':r>=0.7?'강함':r>=0.4?'보통':'약함';
+  const recent=ks.slice(-8); const bias=avg(recent.map(k=>est(k)/V[k]-1))*100;
+  const HOL=D.meta.holidays||{}; const holOf=k=>{ for(let i=0;i<7;i++){ const d=shift(k,i); if(HOL[d]) return HOL[d]; } return null; };
+  const lastV=Object.keys(V).sort().at(-1); const sWeeks=Object.keys(S).sort();
+  const newer=sWeeks.filter(k=>k>lastV); const show=[...ks.slice(-2),...newer];
+  document.getElementById('svSub').innerHTML=`단위: <b>하루 평균 외지인(명/일)</b> · 방문자 통계는 약 한 달 늦게 나오므로, 그 뒤 주들은 <b>「${REF}」 검색량으로 추정</b>`;
+  document.getElementById('svBasis').innerHTML=`<div><span>같은 주 연관성</span><b>${r0==null?'–':r0.toFixed(2)} (${lvl(r0)})</b></div><div><span>다음 주 연관성</span><b>${r1==null?'–':r1.toFixed(2)} (${lvl(r1)})</b></div><div><span>추정 평균 오차</span><b>${mape==null?'–':'±'+mape.toFixed(0)+'%'}</b></div>${bias!=null&&Math.abs(bias)>=5?`<div><span>최근 8주 치우침</span><b>실제보다 ${Math.abs(bias).toFixed(0)}% ${bias<0?'낮게':'높게'} 추정</b></div>`:''}<div><span>읽는 법</span><b style="font-family:var(--sans);font-weight:500">검색 많은 주 = 그 주 손님 많음 · 지난주 검색으로 이번 주 손님은 못 맞힘</b></div>`;
+  document.getElementById('svTable').innerHTML=`<div class="yg yg4" style="grid-template-columns:62px minmax(0,1.25fr) minmax(0,1fr) minmax(0,.75fr)"><div class="h">주(월~일)</div><div class="h">방문자</div><div class="h">작년 같은 주</div><div class="h">증감</div>`+show.map(k=>{
+    const real=V[k]!=null; const cur=(real?V[k]:est(k))/7; const ly=V[shift(k,-364)]; const lyd=ly!=null?ly/7:null; const p=lyd?(cur/lyd-1)*100:null;
+    const hh=holOf(k)||holOf(shift(k,-364)); const pc=p==null?'muted':real?(p>=0?'up':'down'):'muted';
+    return `<div class="m">${md(k)}주${hh?'<sup style="color:var(--warn);font-size:9px">연휴</sup>':''}</div><div class="n">${fmt(cur)}<span class="muted" style="font-size:11px"> ${real?'실제':'추정'}</span></div><div class="n">${lyd?fmt(lyd):'<span class="muted">–</span>'}</div><div class="n ${pc}">${p==null?'–':`${real?'':'≈'}${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`}</div>`; }).join('')+`</div><div class="sub" style="margin-top:6px">≈ = 추정값 기준이라 참고만 · <span style="color:var(--warn)">연휴</span> = 올해나 작년 그 주에 연휴가 있어 작년 대비 증감이 크게 흔들릴 수 있음</div>`;
+  const all=[...new Set([...ks,...newer])].sort().slice(-26);
+  mk('svChart','line',all.map(k=>k+' 주'),[
+    {label:'실제 방문자',data:all.map(k=>V[k]!=null?V[k]/7:null),borderColor:css('--ink'),backgroundColor:css('--ink'),borderWidth:2.2},
+    {label:'검색으로 추정',data:all.map(k=>S[k]!=null?est(k)/7:null),borderColor:css('--blue'),backgroundColor:css('--blue'),borderDash:[4,4],borderWidth:1.8}],{unit:'명'});
+  document.getElementById('svLegend').innerHTML=`<span><i style="background:var(--ink)"></i>실제 방문자</span><span><i style="background:none;border-top:2px dashed var(--blue);height:0;margin-top:5px"></i>검색으로 추정</span>`;
+  const KW=['강화도 맛집','강화도 가볼만한곳','강화도 여행','강화도 카페','강화도 꽃게탕','강화도 칼국수','강화도 젓국갈비','강화도 간장게장','강화도 펜션'].filter(k=>t.series[k]);
+  const rows=KW.map(k=>{ const Sk=weekly(t.dates,t.series[k]); const a=Object.keys(Sk).filter(x=>x in V).sort(); const b=a.filter(x=>shift(x,7) in V);
+    return {k, r0:corr(a.map(x=>Sk[x]),a.map(x=>V[x])), r1:corr(b.map(x=>Sk[x]),b.map(x=>V[shift(x,7)]))}; }).sort((a,b)=>(b.r0??-2)-(a.r0??-2));
+  const cl=r=>r==null?'muted':r>=0.7?'up':r>=0.4?'':'muted';
+  document.getElementById('scorr').innerHTML=`<div class="yg yg5"><div class="h">검색어</div><div class="h">같은 주</div><div class="h">다음 주</div><div class="h">연관성</div>`+rows.map(r=>`<div class="k">${short(r.k)}</div><div class="n ${cl(r.r0)}">${r.r0==null?'–':r.r0.toFixed(2)}</div><div class="n muted">${r.r1==null?'–':r.r1.toFixed(2)}</div><div class="n">${lvl(r.r0)}</div>`).join('')+`</div>`;
 }
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}

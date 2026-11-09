@@ -829,7 +829,7 @@ def main():
             "NAVER_AD_CUSTOMER_ID", "DATA_GO_KR_KEY")},
         "errors": ERRORS,
         "mode": "live" if all(v in ("live", "stale") for v in sources.values()) else "partial" if any(v == "live" for v in sources.values()) else "sample",
-        "store": cfg["store"], "groups": cfg["groups"], "broadcast_log": cfg["broadcast_log"],
+        "store": cfg["store"], "groups": cfg["groups"], "broadcast_log": cfg["broadcast_log"], "holidays": cfg.get("holidays", {}),
     })
     log("완료: " + json.dumps(sources, ensure_ascii=False))
 

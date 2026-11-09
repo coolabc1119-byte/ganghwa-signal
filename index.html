@@ -58,6 +58,7 @@ small.u{font-size:.6em;font-weight:500;color:var(--sub);margin-left:3px;font-fam
 .ibtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer}
 .ibtn svg{width:16px;height:16px}
 @media(max-width:720px){.brand .st,.fresh,.brand .v{display:none}}
+@media(max-width:560px){.tab{padding:8px 2px;font-size:12.5px;letter-spacing:-.02em}}
 
 .health{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:9px 14px;margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:var(--sub)}
 .health b{color:var(--ink);font-weight:600}
@@ -72,13 +73,13 @@ small.u{font-size:.6em;font-weight:500;color:var(--sub);margin-left:3px;font-fam
 .tabs{position:sticky;top:53px;z-index:15;margin:14px 0 0;background:var(--bg);padding:4px 0}
 .tablist{display:flex;gap:4px;background:var(--soft2);border:1px solid var(--line);border-radius:12px;padding:4px;overflow-x:auto;scrollbar-width:none}
 .tablist::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:max-content;border:0;background:transparent;color:var(--sub);font:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.tab{flex:1;min-width:0;border:0;background:transparent;color:var(--sub);font:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:9px;cursor:pointer;white-space:nowrap}
 .tab.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
 .panel{display:none;animation:fade .18s ease} .panel.on{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
 /* 카드 */
-.grid{display:grid;gap:14px}
+.grid{display:grid;gap:14px} .grid>*{min-width:0} .chart{min-width:0}
 .g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);margin-top:14px}
@@ -102,11 +103,27 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 td.kw{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-left:6px;vertical-align:2px}
 th,td{white-space:nowrap}
-@media(max-width:560px){.bar{display:none!important} table{font-size:12px} th,td{padding:8px 4px} td.kw{max-width:calc(100vw - 250px)} small.thd{font-size:9px} #volume td:first-child,#volume th:first-child{padding-left:0;width:18px} #cmp td .base{font-size:10px} #cmp td.n{font-size:11.5px}  #cmp .base i{display:none} #cmp td:first-child{white-space:normal;word-break:keep-all}}
+@media(max-width:560px){.bar{display:none!important} table{font-size:12px} th,td{padding:8px 4px}  small.thd{font-size:9px} #volume td:first-child,#volume th:first-child{padding-left:0;width:18px} #cmp td .base{font-size:10px} #cmp td.n{font-size:11.5px}  #cmp .base i{display:none} #cmp td:first-child{white-space:normal;word-break:keep-all}}
 .basis{display:grid;gap:4px;margin:0 0 12px;padding:10px 12px;border-radius:10px;background:var(--cold-bg);font-size:12.5px}
 .basis div{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
 .basis span{color:var(--sub)} .basis b{font-family:var(--mono);font-weight:600;color:var(--ink)}
 small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-family:var(--mono);letter-spacing:0;margin-top:1px}
+.cr{padding:12px 0;border-bottom:1px solid var(--line2)} .cr:last-child{border-bottom:0}
+.cr.ref{background:var(--soft);margin:0 -10px;padding:12px 10px;border-radius:10px}
+.cr .ctop{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.cr .nm{font-weight:600;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cr .val{font-family:var(--mono);font-size:17px;font-weight:700;white-space:nowrap} .cr .val small{font-size:11px;font-weight:400;color:var(--faint);margin-left:2px}
+.cr .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.cr .c{background:var(--soft);border-radius:8px;padding:6px 8px;min-width:0} .cr.ref .c{background:var(--card)}
+.cr .c .l{font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cr .c .p{font-family:var(--mono);font-size:14px;font-weight:700;white-space:nowrap} .cr .c .b{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
+#volume{table-layout:fixed;width:100%} #volume td,#volume th{overflow:hidden;text-overflow:ellipsis}
+#volume th:nth-child(1){width:9%} #volume th:nth-child(3){width:22%} #volume th:nth-child(4){width:22%} #volume th:nth-child(5){width:15%}
+#volume td.kw{max-width:none}
+.wxg{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:6px;align-items:center}
+.wxg .h{font-size:11px;color:var(--faint);font-weight:600;text-align:center}
+.wxg .lab b{display:block;font-size:13px} .wxg .lab small{display:block;font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wxg .c{background:var(--soft);border-radius:8px;padding:7px 6px;text-align:center;min-width:0} .wxg .c .p{font-family:var(--mono);font-size:15px;font-weight:700} .wxg .c .b{font-size:10.5px;color:var(--faint)}
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
@@ -174,9 +191,9 @@ details.how .srcs::before{content:'데이터 출처';display:block;font-weight:7
 .olw .row b{font-family:var(--mono)} .olw .hol{color:var(--hot);font-size:12px;margin-top:6px}
 .foot{margin-top:28px;color:var(--faint);font-size:12px;line-height:1.8}
 .method{font-size:12px;color:var(--sub);line-height:1.75} .method b{color:var(--ink)}
-.daypick{display:flex;gap:6px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none} .daypick::-webkit-scrollbar{display:none}
-.dp{flex:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:10px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer;text-align:center;min-width:54px}
-.dp b{display:block;font-family:var(--mono);font-size:13px;color:var(--ink)} .dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.daypick{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding:2px 0 12px}
+.dp{min-width:0;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:9px;padding:5px 0;font:inherit;font-size:11px;cursor:pointer;text-align:center}
+.dp b{display:block;font-family:var(--mono);font-size:12px;color:var(--ink);letter-spacing:-.02em} .dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
 @media(max-width:560px){td.big small{display:none} #cmp th,#cmp td{padding:8px 4px}}
 td.big{font-family:var(--mono);font-size:15px;font-weight:600;text-align:right;white-space:nowrap} td.big small{font-size:11px;color:var(--faint);font-weight:400}
 td .base{display:block;font-size:11px;color:var(--faint);font-family:var(--mono)}
@@ -247,7 +264,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div class="sub" id="cmpSub"></div>
       <div class="daypick" id="daypick"></div>
       <div class="basis" id="cmpBasis"></div>
-      <div style="overflow-x:auto"><table id="cmp"></table></div>
+      <div id="cmp"></div>
     </div>
     <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
       <div class="sub">단위: 최근 한 달 네이버 검색 횟수(회/월) · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지</div>
@@ -530,9 +547,13 @@ function renderCmp(){
   const cell=(p,base)=>p==null?`<td class="n muted">–</td>`:`<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%<span class="base">${fmt(base.v)}<i>회</i></span></td>`;
   document.getElementById('cmpBasis').innerHTML=`<div><span>그날</span><b>${md(state.cmpDay)}(${WD[wd]}) 하루 검색 횟수</b></div><div><span>전주 증감</span><b>vs ${md(shift(state.cmpDay,-7))}(${WD[wd]}) 하루</b></div><div><span>전월 증감</span><b>vs ${+pm.slice(5)}월 ${WD[wd]}요일 평균</b></div><div><span>전년 증감</span><b>vs ${py.slice(0,4)}년 ${+py.slice(5)}월 ${WD[wd]}요일 평균</b></div>`;
   document.getElementById('cmpSub').innerHTML=`네이버 하루 검색 횟수(회, 추정) · 아래 날짜를 고르면 그날 기준으로 다시 계산`;
-  document.getElementById('cmp').innerHTML=`<tr><th>메뉴</th><th class="n">그날<small class="thd">${md(state.cmpDay)}</small></th><th class="n">전주<small class="thd">${md(shift(state.cmpDay,-7))}</small></th><th class="n">전월<small class="thd">${+pm.slice(5)}월</small></th><th class="n">전년<small class="thd">'${py.slice(2,4)}.${+py.slice(5)}월</small></th></tr>`+kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7]}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py); const isRef=k===ref&&!D.meta.groups[state.group].includes(ref);
-    if(tiny.has(k)) return `<tr><td>${short(k)}<span class="tag">검색량 적음</span></td><td class="big muted">–</td><td class="n muted" colspan="3">너무 적어 비교 생략</td></tr>`;
-    return `<tr class="${isRef?'ref':''}"><td>${isRef?k+'<span class="tag">기준</span>':short(k)}</td><td class="big">${cur==null?'–':fmt(cur)+'<small>회</small>'}</td>${cell(pc(cur,w),w)}${cell(pc(cur,m),m)}${cell(pc(cur,y),y)}</tr>`; }).join('');
+  const lw=`${md(shift(state.cmpDay,-7))}(${WD[wd]})`, lm=`${+pm.slice(5)}월 ${WD[wd]} 평균`, ly=`'${py.slice(2,4)}.${+py.slice(5)}월 ${WD[wd]} 평균`;
+  const box=(lab,p,base)=>`<div class="c"><div class="l">${lab}</div>${p==null?'<div class="p muted">–</div><div class="b">&nbsp;</div>':`<div class="p ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</div><div class="b">${fmt(base.v)}회</div>`}</div>`;
+  document.getElementById('cmp').innerHTML=kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7]}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py); const isRef=k===ref&&!D.meta.groups[state.group].includes(ref);
+    const name=isRef?k+' <span class="tag">기준</span>':short(k);
+    if(tiny.has(k)) return `<div class="cr"><div class="ctop"><span class="nm">${name}</span><span class="muted" style="font-size:12px">검색량 적어 비교 생략</span></div></div>`;
+    return `<div class="cr ${isRef?'ref':''}"><div class="ctop"><span class="nm">${name}</span><span class="val">${cur==null?'–':fmt(cur)}<small>회</small></span></div>
+      <div class="g3">${box('전주',pc(cur,w),w)}${box('전월',pc(cur,m),m)}${box('전년',pc(cur,y),y)}</div></div>`; }).join('');
 }
 function renderMenu(){
   const o=D.menu_demand||[]; if(!o.length){document.getElementById('menu').innerHTML='<tr><td class="empty">데이터 없음</td></tr>';return;}
@@ -560,9 +581,11 @@ function renderWd(){
 }
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}
-  const row=(lab,k)=>{ const x=e[k]; if(!x) return ''; const p=(x.factor-1)*100; return `<tr><td>${lab}</td><td class="n ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</td><td class="n muted">${x.measured?x.n+'일 실측':'기본값(자료 부족)'}</td></tr>`; };
-  document.getElementById('wxeff').innerHTML=`<table><tr><th>날씨</th><th class="n">주말 손님 증감<small class="thd">vs 같은 시기 비 안 온 주말</small></th><th class="n">근거</th></tr>${row('비 조금 (1~5mm)','we1')}${row('비 (5mm↑ 또는 60%↑)','we2')}${row('많은 비·눈 (20mm↑)','we3')}</table>
-    <table style="margin-top:10px"><tr><th>날씨</th><th class="n">평일 손님 증감<small class="thd">vs 같은 시기 비 안 온 평일</small></th><th class="n">근거</th></tr>${row('비 조금','wd1')}${row('비','wd2')}${row('많은 비·눈','wd3')}</table>`;
+  const c=k=>{ const x=e[k]; if(!x) return '<div class="c"><div class="p muted">–</div></div>'; const p=(x.factor-1)*100; return `<div class="c"><div class="p ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</div><div class="b">${x.measured?x.n+'일 실측':'자료 부족'}</div></div>`; };
+  const rows=[['비 조금','1~5mm 또는 확률 40%↑','1'],['비','5mm↑ 또는 확률 60%↑','2'],['많은 비·눈','20mm↑ 또는 눈','3']];
+  document.getElementById('wxeff').innerHTML=`<div class="basis"><div><span>증감 비교 대상</span><b>같은 시기(앞뒤 4주) 같은 요일 비 안 온 날</b></div></div>
+    <div class="wxg"><div class="h"></div><div class="h">주말 손님</div><div class="h">평일 손님</div>
+    ${rows.map(r=>`<div class="lab"><b>${r[0]}</b><small>${r[1]}</small></div>${c('we'+r[2])}${c('wd'+r[2])}`).join('')}</div>`;
 }
 
 /* ================= 키워드 발굴 ================= */

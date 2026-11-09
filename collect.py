@@ -35,6 +35,10 @@ import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
+for _k in ("NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
+           "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY"):
+    if _k in os.environ:
+        os.environ[_k] = os.environ[_k].strip().strip('"').strip("'").strip()
 ERRORS = {}  # 출처별 실패 메시지(키 값 미포함)
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -494,7 +498,13 @@ def main():
             res = fn()
         except Exception as e:  # 한 출처가 죽어도 나머지는 계속
             log(f"{name} 실패: {e}")
-            ERRORS[name] = f"{type(e).__name__}: {str(e)[:200]}"
+            body = ""
+            if hasattr(e, "read"):
+                try:
+                    body = e.read().decode("utf-8", "ignore")[:200]
+                except Exception:
+                    pass
+            ERRORS[name] = f"{type(e).__name__}: {str(e)[:120]} {body}".strip()
             res = None
         if res is None:
             sources[name] = "sample"
@@ -525,6 +535,9 @@ def main():
         "sources": sources,
         # 키 값은 절대 기록하지 않음 — 등록돼 있는지(길이>0)만 표시
         "keys_present": {k: bool(os.getenv(k, "").strip()) for k in (
+            "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
+            "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY")},
+        "key_lengths": {k: len(os.getenv(k, "")) for k in (
             "NAVER_CLIENT_ID", "NAVER_CLIENT_SECRET", "NAVER_AD_API_KEY", "NAVER_AD_SECRET",
             "NAVER_AD_CUSTOMER_ID", "KAKAO_REST_KEY", "DATA_GO_KR_KEY")},
         "errors": ERRORS,

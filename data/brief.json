@@ -48,7 +48,7 @@
  },
  "capture_per_10k": null,
  "sales_days": 0,
- "summary": "토요일 평소 수준 (비 예보) · 일요일 평소보다 -12% (비 예보)",
+ "summary": "토요일 평소 수준 (비 예보) · 일요일 평소 수준 (비 조금)",
  "days": [
   {
    "date": "2026-11-10",
@@ -134,7 +134,7 @@
     "tmax": 15.3,
     "tmin": 5.8,
     "rain": 0.0,
-    "pop": 0,
+    "pop": 2,
     "src": "forecast"
    },
    "cmp": {
@@ -169,7 +169,7 @@
     "tmax": 15.4,
     "tmin": 7.8,
     "rain": 0.3,
-    "pop": 8,
+    "pop": 14,
     "src": "forecast"
    },
    "cmp": {
@@ -206,7 +206,7 @@
     "tmax": 11.0,
     "tmin": 8.2,
     "rain": 7.2,
-    "pop": 69,
+    "pop": 71,
     "src": "forecast"
    },
    "cmp": {
@@ -230,12 +230,12 @@
   {
    "date": "2026-11-15",
    "wd": "일",
-   "est_visitors": 63173,
+   "est_visitors": 68962,
    "level": "normal",
-   "vs_weekday_pct": -12,
-   "x_weekday": 1.95,
+   "vs_weekday_pct": -4,
+   "x_weekday": 2.13,
    "tags": [
-    "비 예보"
+    "비 조금"
    ],
    "weather": {
     "code": 3,
@@ -243,26 +243,26 @@
     "tmax": 16.5,
     "tmin": 5.9,
     "rain": 0.0,
-    "pop": 69,
+    "pop": 55,
     "src": "forecast"
    },
    "cmp": {
     "prev_month": {
      "base": 76184,
      "n": 1,
-     "pct": -17.1,
+     "pct": -9.5,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 72382,
      "n": 5,
-     "pct": -12.7,
+     "pct": -4.7,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 0.982,
-   "weather_factor": 0.873
+   "weather_factor": 0.953
   },
   {
    "date": "2026-11-16",
@@ -278,7 +278,7 @@
     "tmax": 15.6,
     "tmin": 6.4,
     "rain": 0.0,
-    "pop": 8,
+    "pop": 2,
     "src": "forecast"
    },
    "cmp": {
@@ -305,9 +305,9 @@
    "start": "2026-11-10",
    "end": "2026-11-16",
    "sat": 78926,
-   "sun": 63173,
+   "sun": 68962,
    "weekday": 35693,
-   "week_total": 327864,
+   "week_total": 333653,
    "last_year_total": 361380,
    "holidays": [],
    "weather_applied": true
@@ -354,7 +354,7 @@
     "간장게장"
    ],
    "action": "keep",
-   "mult_weekend": 0.93,
+   "mult_weekend": 0.97,
    "mult_weekday": 1.1,
    "reasons": [
     "검색 전월 대비 -35% (제철 끝물)"
@@ -370,7 +370,7 @@
     "칼국수"
    ],
    "action": "keep",
-   "mult_weekend": 0.93,
+   "mult_weekend": 0.97,
    "mult_weekday": 1.1,
    "reasons": [
     "검색 전월 대비 -32%"
@@ -386,7 +386,7 @@
     "젓국갈비"
    ],
    "action": "keep",
-   "mult_weekend": 0.93,
+   "mult_weekend": 0.97,
    "mult_weekday": 1.1,
    "reasons": [],
    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
@@ -401,7 +401,7 @@
     "낙지"
    ],
    "action": "keep",
-   "mult_weekend": 0.93,
+   "mult_weekend": 0.97,
    "mult_weekday": 1.1,
    "reasons": [
     "검색량 적어 손님 수만으로 판단"
@@ -414,7 +414,7 @@
  ],
  "staff": [],
  "alerts": [],
- "weekend_ratio": 0.93,
+ "weekend_ratio": 0.97,
  "weekday_ratio": 1.102,
  "broadcast_recent": [],
  "broadcast_auto": [

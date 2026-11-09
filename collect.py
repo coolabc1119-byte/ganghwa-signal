@@ -120,8 +120,8 @@ def fetch_datalab(cfg, start, end):
                 all_kw.append(k)
     others = [k for k in all_kw if k != anchor]
 
-    headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
-    url = "https://openapi.naver.com/v1/datalab/search"
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    url = "https://naverapihub.apigw.ntruss.com/search-trend/v1/search"
     series = {}
     anchor_ref = None
     for i in range(0, len(others), 4):  # 앵커 1 + 4개 = 5그룹
@@ -349,11 +349,11 @@ def fetch_news_log(cfg):
         return None
     existing = load_existing("news_log.json", {"items": []})
     existing["items"] = [i for i in existing["items"] if not str(i.get("link", "")).startswith("https://example.com/")]  # 샘플 제거
-    headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
     seen = {it["link"] for it in existing["items"]}
     for q in cfg["news_queries"]:
         params = urllib.parse.urlencode({"query": q, "display": 30, "sort": "date"})
-        res = http_json("https://openapi.naver.com/v1/search/news.json?" + params, headers)
+        res = http_json("https://naverapihub.apigw.ntruss.com/search/v1/news?" + params, headers)
         for it in res.get("items", []):
             if it["link"] in seen:
                 continue

@@ -142,7 +142,7 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
 
 <div class="section card">
   <h2 data-srcs="datalab">키워드 일별 검색 추이 <span class="src">출처: 네이버 데이터랩</span></h2>
-  <div class="sub">상대 검색량(기간 내 최고점 = 100, 절대 횟수 아님) · 세로 점선 = 기록된 방송일 · 점선 그래프 = 1년 전 같은 요일</div>
+  <div class="sub">상대 검색량("강화도 맛집" 기준 척도, 절대 횟수 아님 — 절대 횟수는 아래 키워드 발굴 표) · 세로 점선 = 기록된 방송일 · 점선 그래프 = 1년 전 같은 요일</div>
   <div class="controls">
     <div class="seg" id="grpSeg"></div>
     <div class="seg" id="rangeSeg">
@@ -270,7 +270,7 @@ function renderKPIs(){
   const vThis = n? v.visitor.slice(n-7).reduce((a,b)=>a+b,0)/Math.min(7,n) : null, vLast = n>=14? v.visitor.slice(n-14,n-7).reduce((a,b)=>a+b,0)/7 : 0;
   const tiles = [
     {label:'"강화도 맛집" 검색 (최근 7일 평균, 네이버)', val:anchor.week.cur.toFixed(0), html:d3(anchor)},
-    {label:'우리 가게 메뉴 키워드 합계 (최근 7일, 네이버)', val:mt.toFixed(0), html:d3(mineC)},
+    {label:'우리 가게 메뉴 키워드 합계 (최근 7일, 네이버)', val:mt<10?mt.toFixed(2):mt.toFixed(0), html:d3(mineC)},
     {label:'최근 7일 급등 이벤트', val:ev7.length, note: ev7.length ? [...new Set(ev7.map(e=>e.keyword))].slice(0,3).join(', ') : '급등 없음'},
     {label:'강화군 외지인 방문자 (최근 주 일평균)', val:fmt(vThis), d: vLast? (vThis-vLast)/vLast*100 : null, note: n? '마지막 집계 '+md(v.dates.at(-1)) : '데이터 없음'},
   ];
@@ -361,7 +361,7 @@ function renderWeekly(){
   const cell = p => p==null ? '<td class="num muted">–</td>' : `<td class="num ${p>=0?'up':'down'}">${pct(p)}</td>`;
   const th = (k,l) => `<th class="num sortable ${cmpSort===k?'on':''}" data-k="${k}">${l}${cmpSort===k?' ▾':''}</th>`;
   document.getElementById('weekly').innerHTML = `<tr><th>키워드</th><th class="num">최근 7일</th>${th('week','전주 대비')}${th('month','전월 대비')}${th('yoy','전년동월 대비')}</tr>` +
-    rows.map(r=>`<tr class="${mine.has(r.keyword)?'mine':''}"><td>${r.keyword}</td><td class="num">${r.week.cur.toFixed(0)}</td>${cell(r.week.pct)}${cell(r.month.pct)}${cell(r.yoy.pct)}</tr>`).join('');
+    rows.map(r=>`<tr class="${mine.has(r.keyword)?'mine':''}"><td>${r.keyword}${r.tiny?'<span class="tag">검색량 적음</span>':''}</td><td class="num">${r.week.cur<10?r.week.cur.toFixed(2):r.week.cur.toFixed(0)}</td>${cell(r.week.pct)}${cell(r.month.pct)}${cell(r.yoy.pct)}</tr>`).join('');
   document.querySelectorAll('#weekly th.sortable').forEach(h=>h.onclick=()=>{cmpSort=h.dataset.k;renderWeekly();});
 }
 function renderOpp(){

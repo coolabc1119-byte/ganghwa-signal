@@ -123,7 +123,7 @@ def build(cfg, visitors, compare, today=None):
     busy_week = any(l in ("busy", "peak") for l in weekend_levels)
     ingredients = []
     for name, ing in cfg["store"].get("ingredients", {}).items():
-        kws = [cmp[k] for k in ing.get("keywords", []) if k in cmp]
+        kws = [cmp[k] for k in ing.get("keywords", []) if k in cmp and not cmp[k].get("tiny")]
         wk = [k["week"]["pct"] for k in kws if k["week"]["pct"] is not None]
         mo = [k["month"]["pct"] for k in kws if k["month"]["pct"] is not None]
         wk_pct = sum(wk) / len(wk) if wk else None
@@ -142,7 +142,11 @@ def build(cfg, visitors, compare, today=None):
             elif wk_pct is not None and wk_pct <= -15:
                 score -= 1; reasons.append(f"검색 수요 전주 대비 {wk_pct:.0f}%")
             if mo_pct is not None and mo_pct >= 20:
-                reasons.append(f"전월 대비 +{mo_pct:.0f}%")
+                score += 1; reasons.append(f"검색 전월 대비 +{mo_pct:.0f}%")
+            elif mo_pct is not None and mo_pct <= -20:
+                score -= 1; reasons.append(f"검색 전월 대비 {mo_pct:.0f}% (성수기 끝물)")
+            if not kws:
+                reasons.append("검색량이 너무 적어 검색 신호 없음 — 꽃게 손님 연동으로 판단")
             if busy_week:
                 score += 1; reasons.append("주말·연휴 손님 많음 예상")
             if recent_bc:

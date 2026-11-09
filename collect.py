@@ -144,7 +144,7 @@ def fetch_datalab(cfg, start, end):
             series[anchor] = a
         scale = (anchor_ref / a_mean) if a_mean else 1
         for k in chunk:
-            series[k] = {d: round(v * scale, 2) for d, v in got.get(k, {}).items()}
+            series[k] = {d: round(v * scale, 5) for d, v in got.get(k, {}).items()}
         time.sleep(0.3)
     dates = ymd_list(start, end)
     return {
@@ -361,12 +361,14 @@ def fetch_news_log(cfg):
                 pub = datetime.strptime(it["pubDate"], "%a, %d %b %Y %H:%M:%S %z").astimezone(KST).date().isoformat()
             except Exception:
                 pub = datetime.now(KST).date().isoformat()
-            title = it["title"].replace("<b>", "").replace("</b>", "").replace("&quot;", '"').replace("&amp;", "&")
+            title = it["title"].replace("<b>", "").replace("</b>", "").replace("&quot;", '"').replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+            if not any(w in title for w in ("강화", "전등사", "석모도", "교동도")):
+                continue
             existing["items"].append({"date": pub, "title": title, "link": it["link"], "query": q})
             seen.add(it["link"])
         time.sleep(0.2)
     cutoff = (datetime.now(KST).date() - timedelta(days=400)).isoformat()
-    existing["items"] = sorted([i for i in existing["items"] if i["date"] >= cutoff], key=lambda i: i["date"], reverse=True)
+    existing["items"] = sorted([i for i in existing["items"] if i["date"] >= cutoff and any(w in i["title"] for w in ("강화", "전등사", "석모도", "교동도"))], key=lambda i: i["date"], reverse=True)
     return existing
 
 
@@ -398,6 +400,13 @@ def compare(trend):
         w_cur, w_prev = _avg(v, n - 7, n), _avg(v, n - 14, n - 7)
         m_cur, m_prev = _avg(v, n - 30, n), _avg(v, n - 60, n - 30)
         y_prev = _avg(v, n - 30 - 364, n - 364) if n >= 394 else 0
+        tiny = _avg(v, max(0, n - 60), n) < 0.05  # 데이터랩이 거의 0을 주는 키워드 = 검색량 너무 적음
+        if tiny:
+            out.append({"keyword": k, "tiny": True,
+                        "week": {"cur": round(w_cur, 3), "prev": round(w_prev, 3), "pct": None},
+                        "month": {"cur": round(m_cur, 3), "prev": round(m_prev, 3), "pct": None},
+                        "yoy": {"cur": round(m_cur, 3), "prev": round(y_prev, 3), "pct": None}})
+            continue
         out.append({
             "keyword": k,
             "week": {"cur": round(w_cur, 1), "prev": round(w_prev, 1), "pct": _pct(w_cur, w_prev)},

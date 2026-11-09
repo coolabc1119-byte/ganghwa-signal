@@ -65,13 +65,16 @@ def build(cfg, visitors, compare, today=None):
 
     dates, vis = visitors.get("dates", []), visitors.get("visitor", [])
     by = dict(zip(dates, vis))
-    recent = [(date.fromisoformat(d), v) for d, v in zip(dates, vis)][-7 * lb:]
+    # 연휴·연휴 전날은 기준값 계산에서 제외(추석 같은 연휴가 평일 기준을 부풀리지 않게)
+    hol = set(holidays)
+    hol |= {(date.fromisoformat(h) - timedelta(days=1)).isoformat() for h in holidays}
+    recent = [(date.fromisoformat(d), v) for d, v in zip(dates, vis) if d not in hol][-7 * lb:]
     by_wd = {i: _median([v for d, v in recent if d.weekday() == i]) for i in range(7)}
     overall = _median([v for _, v in recent]) or 1
     last4 = [v for d, v in recent[-28:]]
     prev4 = [v for d, v in recent[-56:-28]]
     trend = (sum(last4) / len(last4)) / (sum(prev4) / len(prev4)) if last4 and prev4 else 1.0
-    trend = max(0.75, min(1.25, trend))
+    trend = max(0.9, min(1.1, trend))  # 한 달 이상 늦게 올라오는 데이터라 추세는 ±10%까지만 반영
     last_data = dates[-1] if dates else None
 
     # 작년 같은 요일(364일 전) 대비 — 참고용

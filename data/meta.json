@@ -1,6 +1,6 @@
 {
  "project": "강화 시그널",
- "version": "2.1",
+ "version": "2.2",
  "updated_at": "2026-11-09 22:05 KST",
  "range": [
   "2025-07-12",
@@ -11,7 +11,8 @@
   "keyword_tool": "live",
   "tour_api": "live",
   "naver_news": "live",
-  "weather": "live"
+  "weather": "live",
+  "discovery": "sample"
  },
  "keys_present": {
   "NAVER_CLIENT_ID": true,

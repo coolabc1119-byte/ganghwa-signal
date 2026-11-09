@@ -100,16 +100,27 @@ def build(cfg, visitors, compare, news=None, weather=None, today=None):
     last_data = dates[-1] if dates else None
     base_center = recent[len(recent) // 2][0] if recent else today
 
-    # ---- 날씨 효과: 과거에서 "비 오는 날 ÷ 평소 같은 요일" 실측 ----
+    # ---- 날씨 효과: 과거에서 "비 온 날 ÷ 그 주변(±4주) 같은 요일 비 안 온 날" 실측 ----
+    #  주변 날짜와 비교해야 계절 차이(여름 vs 가을)가 비 효과에 섞이지 않음
+    def local_dry_base(dt):
+        xs = []
+        for k in (-28, -21, -14, -7, 7, 14, 21, 28):
+            o = (dt + timedelta(days=k)).isoformat()
+            if o in by and o not in hol and o in wx and rain_level(wx[o]) == 0:
+                xs.append(by[o])
+        return statistics.median(xs) if len(xs) >= 2 else None
+
     def wx_effect():
         eff = {(k, l): [] for k in ("we", "wd") for l in (1, 2, 3)}
         for d, v in by.items():
             if d in hol or d not in wx:
                 continue
             dt = date.fromisoformat(d)
-            base = by_wd.get(dt.weekday())
             lvl = rain_level(wx[d])
-            if not base or lvl == 0:
+            if lvl == 0:
+                continue
+            base = local_dry_base(dt)
+            if not base:
                 continue
             eff[("we" if dt.weekday() >= 5 else "wd", lvl)].append(v / base)
         default = {1: 0.95, 2: 0.80, 3: 0.65}

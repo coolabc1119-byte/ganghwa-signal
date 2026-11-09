@@ -153,6 +153,52 @@ def fetch_datalab(cfg, start, end):
     }
 
 
+def fetch_discovery_daily(volume, days=70, top_n=60):
+    """
+    키워드 발굴용: 검색광고 상위 키워드(강화 관련 top_n개)의 최근 days일 일별 검색 추정 횟수.
+    데이터랩은 한 호출에 5개까지 → 5개씩 묶어 호출. 각 키워드는 자기 자신의 '한 달 실제 검색 횟수'로 환산하므로
+    호출 간 척도 차이는 결과에 영향 없음.
+      일별 추정 횟수 = 데이터랩 일별 상대값 × (검색광고 한 달 횟수 ÷ 최근 30일 상대값 합)
+    """
+    cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
+    if not (cid and csec) or not volume:
+        return None
+    rows = [r for r in volume.get("rows", []) if r.get("total", 0) >= 100][:top_n]
+    end = datetime.now(KST).date() - timedelta(days=1)
+    start = end - timedelta(days=days - 1)
+    dates = ymd_list(start, end)
+    headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    series = {}
+    for i in range(0, len(rows), 5):
+        chunk = rows[i:i + 5]
+        body = {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
+                "keywordGroups": [{"groupName": r["keyword"], "keywords": [r["keyword"]]} for r in chunk]}
+        res = http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", body)
+        for g in res.get("results", []):
+            m = {d["period"]: d["ratio"] for d in g.get("data", [])}
+            rel = [m.get(d, 0) for d in dates]
+            rel30 = sum(rel[-30:])
+            vol = next((r["total"] for r in chunk if r["keyword"] == g["title"]), 0)
+            if rel30 > 0 and vol:
+                sc = vol / rel30
+                series[g["title"]] = [round(x * sc, 1) for x in rel]
+        time.sleep(0.3)
+    if not series:
+        raise RuntimeError("발굴 키워드 데이터랩 응답 없음")
+    return {"dates": dates, "series": series, "note": "검색광고 상위 키워드의 일별 추정 검색 횟수(회/일)", "live": True}
+
+
+def sample_discovery(volume, days=70):
+    rnd = random.Random(9)
+    end = datetime.now(KST).date() - timedelta(days=1)
+    dates = ymd_list(end - timedelta(days=days - 1), end)
+    series = {}
+    for r in (volume or {}).get("rows", [])[:60]:
+        base = r["total"] / 30
+        series[r["keyword"]] = [round(base * (1.4 if date.fromisoformat(d).weekday() >= 5 else 0.85) * rnd.uniform(.7, 1.3), 1) for d in dates]
+    return {"dates": dates, "series": series, "note": "⚠ 샘플", "live": False}
+
+
 # ---------------------------------------------------------------------------
 # 2) 네이버 검색광고 키워드도구 — 월간 절대 검색량 + 연관 키워드
 # ---------------------------------------------------------------------------
@@ -683,6 +729,8 @@ def main():
     visitors = run("tour_api", lambda: fetch_visitors(start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
     weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
+    disc = run("discovery", lambda: fetch_discovery_daily(volume), lambda: sample_discovery(volume))
+    save("discovery_daily.json", disc)
     save("weather.json", weather)
 
     trend = to_counts(trend, volume)

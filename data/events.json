@@ -1,78 +1,388 @@
 [
  {
-  "date": "2026-10-19",
-  "keyword": "강화도 젓국갈비",
-  "value": 50.7,
-  "baseline": 21.8,
-  "ratio": 2.32,
+  "date": "2026-09-25",
+  "keyword": "강화도 맛집",
+  "value": 45.7,
+  "baseline": 24.1,
+  "ratio": 1.9,
   "broadcast": null,
   "news": [
    {
-    "date": "2026-10-19",
-    "title": "(샘플) 가을 꽃게 제철… 강화 어판장 시세 소폭 상승",
-    "link": "https://example.com/sample-2",
+    "date": "2026-09-25",
+    "title": "해병2사단 유엔사·해경과 서해 꽃게 성어기 대비 민정경찰 소집훈련 실...",
+    "link": "https://n.news.naver.com/mnews/article/021/0002821190?sid=100",
     "query": "강화도 꽃게"
    }
   ]
  },
  {
-  "date": "2026-10-18",
-  "keyword": "전등사 맛집",
-  "value": 71.9,
-  "baseline": 32.2,
-  "ratio": 2.23,
-  "broadcast": {
-   "date": "2026-10-18",
-   "program": "(샘플) 생생정보",
-   "note": "샘플 예시 — 실제 방송 날짜를 여기에 기록하세요"
-  },
+  "date": "2026-09-25",
+  "keyword": "강화도 카페",
+  "value": 17.9,
+  "baseline": 8.0,
+  "ratio": 2.22,
+  "broadcast": null,
   "news": [
    {
-    "date": "2026-10-18",
-    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
-    "link": "https://example.com/sample-1",
-    "query": "강화도 방송"
+    "date": "2026-09-25",
+    "title": "해병2사단 유엔사·해경과 서해 꽃게 성어기 대비 민정경찰 소집훈련 실...",
+    "link": "https://n.news.naver.com/mnews/article/021/0002821190?sid=100",
+    "query": "강화도 꽃게"
    }
   ]
  },
  {
-  "date": "2026-10-18",
+  "date": "2026-09-24",
+  "keyword": "강화도 맛집",
+  "value": 41.4,
+  "baseline": 20.9,
+  "ratio": 1.99,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-09-24",
+    "title": "한양 길목 지켰던 그림 같은 성곽, 넓은 초록 마당… 마음도 초록초록 ...",
+    "link": "https://n.news.naver.com/mnews/article/081/0003683291?sid=110",
+    "query": "강화도 맛집"
+   }
+  ]
+ },
+ {
+  "date": "2026-07-17",
+  "keyword": "강화도 맛집",
+  "value": 52.3,
+  "baseline": 23.9,
+  "ratio": 2.18,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-24",
+  "keyword": "강화도 카페",
+  "value": 21.8,
+  "baseline": 11.8,
+  "ratio": 1.84,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-24",
+  "keyword": "강화도 맛집",
+  "value": 71.5,
+  "baseline": 37.1,
+  "ratio": 1.93,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-05",
+  "keyword": "강화도 맛집",
+  "value": 46.1,
+  "baseline": 22.2,
+  "ratio": 2.08,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-04",
+  "keyword": "강화도 맛집",
+  "value": 45.2,
+  "baseline": 22.9,
+  "ratio": 1.97,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 카페",
+  "value": 17.8,
+  "baseline": 6.2,
+  "ratio": 2.86,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "강화도 맛집",
+  "value": 78.5,
+  "baseline": 26.0,
+  "ratio": 3.01,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-04-30",
+  "keyword": "강화도 맛집",
+  "value": 39.8,
+  "baseline": 21.8,
+  "ratio": 1.83,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-02-27",
+  "keyword": "강화도 맛집",
+  "value": 45.6,
+  "baseline": 23.4,
+  "ratio": 1.94,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-02-18",
+  "keyword": "강화도 맛집",
+  "value": 39.9,
+  "baseline": 16.9,
+  "ratio": 2.36,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 맛집",
+  "value": 47.1,
+  "baseline": 16.0,
+  "ratio": 2.94,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-17",
+    "title": "[뉴스공감] 함께할 때 더욱 발하는…'더하기'의 미학",
+    "link": "https://news.cpbc.co.kr/article/1170762?division=NAVER",
+    "query": "강화 젓국갈비"
+   }
+  ]
+ },
+ {
+  "date": "2026-02-17",
+  "keyword": "강화도 카페",
+  "value": 20.8,
+  "baseline": 4.2,
+  "ratio": 4.91,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-17",
+    "title": "[뉴스공감] 함께할 때 더욱 발하는…'더하기'의 미학",
+    "link": "https://news.cpbc.co.kr/article/1170762?division=NAVER",
+    "query": "강화 젓국갈비"
+   }
+  ]
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 맛집",
+  "value": 57.4,
+  "baseline": 16.7,
+  "ratio": 3.45,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-16",
+    "title": "‘식객’ 장윤정, 미역국 고백",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602160014",
+    "query": "강화 젓국갈비"
+   }
+  ]
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "강화도 카페",
+  "value": 18.9,
+  "baseline": 4.7,
+  "ratio": 4.03,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-16",
+    "title": "‘식객’ 장윤정, 미역국 고백",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602160014",
+    "query": "강화 젓국갈비"
+   }
+  ]
+ },
+ {
+  "date": "2026-02-15",
+  "keyword": "강화도 맛집",
+  "value": 63.3,
+  "baseline": 30.0,
+  "ratio": 2.11,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-02-15",
+    "title": "[종합] '식객 허영만의 백반기행' 강화 맛집, 고기국밥-젓국갈비-꽃게정...",
+    "link": "https://www.topstarnews.net/news/articleView.html?idxno=15971473",
+    "query": "강화 젓국갈비"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'도경완♥' 장윤정, 30년간 생일상 없었다…\"결혼 후 시母가 미역국 끓...",
+    "link": "https://m.entertain.naver.com/article/311/0001975817",
+    "query": "강화 젓국갈비"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 맛집",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150068",
+    "query": "강화 젓국갈비"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 젓국갈비 보양",
+    "link": "https://enter.etoday.co.kr/news/view/293106",
+    "query": "강화 젓국갈비"
+   },
+   {
+    "date": "2026-02-15",
+    "title": "'백반기행' 강화 밥상",
+    "link": "https://www.bntnews.co.kr/article/view/bnt202602150033",
+    "query": "강화 젓국갈비"
+   }
+  ]
+ },
+ {
+  "date": "2026-01-01",
+  "keyword": "강화도 맛집",
+  "value": 56.6,
+  "baseline": 24.3,
+  "ratio": 2.33,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2026-01-01",
+  "keyword": "강화도 카페",
+  "value": 21.0,
+  "baseline": 7.6,
+  "ratio": 2.76,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-12-25",
+  "keyword": "강화도 맛집",
+  "value": 43.0,
+  "baseline": 17.7,
+  "ratio": 2.42,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-09",
+  "keyword": "강화도 맛집",
+  "value": 58.5,
+  "baseline": 29.1,
+  "ratio": 2.01,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-09",
+  "keyword": "강화도 카페",
+  "value": 18.7,
+  "baseline": 7.9,
+  "ratio": 2.36,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 맛집",
+  "value": 100,
+  "baseline": 25.2,
+  "ratio": 3.97,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "강화도 카페",
+  "value": 32.4,
+  "baseline": 7.0,
+  "ratio": 4.64,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 맛집",
+  "value": 90.0,
+  "baseline": 25.8,
+  "ratio": 3.49,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "강화도 카페",
+  "value": 32.2,
+  "baseline": 6.6,
+  "ratio": 4.89,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 맛집",
+  "value": 69.2,
+  "baseline": 27.7,
+  "ratio": 2.5,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-06",
+  "keyword": "강화도 카페",
+  "value": 27.2,
+  "baseline": 7.1,
+  "ratio": 3.84,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-10-03",
+  "keyword": "강화도 카페",
+  "value": 17.7,
+  "baseline": 8.7,
+  "ratio": 2.03,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-09-06",
   "keyword": "강화도 젓국갈비",
-  "value": 70.8,
-  "baseline": 27.8,
-  "ratio": 2.55,
-  "broadcast": {
-   "date": "2026-10-18",
-   "program": "(샘플) 생생정보",
-   "note": "샘플 예시 — 실제 방송 날짜를 여기에 기록하세요"
-  },
-  "news": [
-   {
-    "date": "2026-10-18",
-    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
-    "link": "https://example.com/sample-1",
-    "query": "강화도 방송"
-   }
-  ]
+  "value": 16.7,
+  "baseline": 0.5,
+  "ratio": 35.34,
+  "broadcast": null,
+  "news": []
  },
  {
-  "date": "2026-10-18",
-  "keyword": "강화 젓국갈비",
-  "value": 35.7,
-  "baseline": 13.8,
-  "ratio": 2.58,
-  "broadcast": {
-   "date": "2026-10-18",
-   "program": "(샘플) 생생정보",
-   "note": "샘플 예시 — 실제 방송 날짜를 여기에 기록하세요"
-  },
-  "news": [
-   {
-    "date": "2026-10-18",
-    "title": "(샘플) 강화도 전등사 앞 맛집, 방송 소개 뒤 주말 대기 줄",
-    "link": "https://example.com/sample-1",
-    "query": "강화도 방송"
-   }
-  ]
+  "date": "2025-09-05",
+  "keyword": "강화도 젓국갈비",
+  "value": 16.6,
+  "baseline": 0.4,
+  "ratio": 42.32,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-09-04",
+  "keyword": "강화도 젓국갈비",
+  "value": 22.1,
+  "baseline": 0.3,
+  "ratio": 78.75,
+  "broadcast": null,
+  "news": []
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "강화도 맛집",
+  "value": 74.3,
+  "baseline": 36.0,
+  "ratio": 2.07,
+  "broadcast": null,
+  "news": []
  }
 ]

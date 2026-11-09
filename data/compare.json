@@ -2,307 +2,307 @@
  {
   "keyword": "강화도 꽃게탕",
   "week": {
-   "cur": 38.0,
-   "prev": 42.3,
-   "pct": -10.3
+   "cur": 0.9,
+   "prev": 1.1,
+   "pct": -23.6
   },
   "month": {
-   "cur": 42.6,
-   "prev": 37.8,
-   "pct": 12.9
+   "cur": 1.1,
+   "prev": 1.8,
+   "pct": -40.8
   },
   "yoy": {
-   "cur": 42.6,
-   "prev": 46.1,
-   "pct": -7.5
+   "cur": 1.1,
+   "prev": 1.0,
+   "pct": 7.8
   }
  },
  {
   "keyword": "강화도 간장게장",
   "week": {
-   "cur": 18.3,
-   "prev": 19.6,
-   "pct": -6.7
+   "cur": 0.4,
+   "prev": 0.4,
+   "pct": 14.6
   },
   "month": {
-   "cur": 20.1,
-   "prev": 18.0,
-   "pct": 11.7
+   "cur": 0.4,
+   "prev": 0.5,
+   "pct": -28.8
   },
   "yoy": {
-   "cur": 20.1,
-   "prev": 21.1,
-   "pct": -4.6
+   "cur": 0.4,
+   "prev": 0.6,
+   "pct": -39.2
   }
  },
  {
   "keyword": "강화도 낙지",
   "week": {
-   "cur": 15.8,
-   "prev": 16.6,
-   "pct": -5.0
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
   },
   "month": {
-   "cur": 16.0,
-   "prev": 16.1,
-   "pct": -0.8
+   "cur": 0.0,
+   "prev": 0.2,
+   "pct": -97.0
   },
   "yoy": {
-   "cur": 16.0,
-   "prev": 16.1,
-   "pct": -0.8
+   "cur": 0.0,
+   "prev": 0.1,
+   "pct": -94.6
   }
  },
  {
   "keyword": "강화도 연포탕",
   "week": {
-   "cur": 8.1,
-   "prev": 8.0,
-   "pct": 0.4
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
   },
   "month": {
-   "cur": 8.4,
-   "prev": 8.4,
-   "pct": 0.8
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": -100.0
   },
   "yoy": {
-   "cur": 8.4,
-   "prev": 8.0,
-   "pct": 5.5
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
   }
  },
  {
   "keyword": "강화도 젓국갈비",
   "week": {
-   "cur": 27.0,
-   "prev": 25.5,
-   "pct": 5.6
+   "cur": 0.7,
+   "prev": 0.7,
+   "pct": -7.2
   },
   "month": {
-   "cur": 28.9,
-   "prev": 25.1,
-   "pct": 14.8
+   "cur": 0.8,
+   "prev": 0.9,
+   "pct": -10.2
   },
   "yoy": {
-   "cur": 28.9,
-   "prev": 13.9,
-   "pct": 108.3
+   "cur": 0.8,
+   "prev": 0.7,
+   "pct": 13.4
   }
  },
  {
   "keyword": "강화 젓국갈비",
   "week": {
-   "cur": 15.0,
-   "prev": 15.2,
-   "pct": -1.0
+   "cur": 0.2,
+   "prev": 0.2,
+   "pct": -20.9
   },
   "month": {
-   "cur": 16.1,
-   "prev": 13.8,
-   "pct": 17.2
+   "cur": 0.2,
+   "prev": 0.3,
+   "pct": -19.2
   },
   "yoy": {
-   "cur": 16.1,
-   "prev": 7.9,
-   "pct": 103.2
+   "cur": 0.2,
+   "prev": 0.4,
+   "pct": -34.2
   }
  },
  {
   "keyword": "강화도 맛집",
   "week": {
-   "cur": 83.6,
-   "prev": 85.9,
-   "pct": -2.7
+   "cur": 21.4,
+   "prev": 20.8,
+   "pct": 2.7
   },
   "month": {
-   "cur": 87.8,
-   "prev": 83.6,
-   "pct": 5.1
+   "cur": 21.7,
+   "prev": 28.6,
+   "pct": -24.0
   },
   "yoy": {
-   "cur": 87.8,
-   "prev": 82.2,
-   "pct": 6.8
+   "cur": 21.7,
+   "prev": 31.1,
+   "pct": -30.2
   }
  },
  {
   "keyword": "전등사 맛집",
   "week": {
-   "cur": 31.3,
-   "prev": 31.6,
-   "pct": -1.1
+   "cur": 1.2,
+   "prev": 1.1,
+   "pct": 4.3
   },
   "month": {
-   "cur": 34.1,
-   "prev": 30.3,
-   "pct": 12.4
+   "cur": 1.1,
+   "prev": 1.2,
+   "pct": -4.9
   },
   "yoy": {
-   "cur": 34.1,
-   "prev": 29.7,
-   "pct": 14.9
+   "cur": 1.1,
+   "prev": 1.8,
+   "pct": -38.8
   }
  },
  {
   "keyword": "강화도 밴댕이",
   "week": {
-   "cur": 19.5,
-   "prev": 20.3,
-   "pct": -4.2
+   "cur": 0.1,
+   "prev": 0.2,
+   "pct": -20.7
   },
   "month": {
-   "cur": 19.8,
-   "prev": 19.4,
-   "pct": 1.9
+   "cur": 0.2,
+   "prev": 0.3,
+   "pct": -49.9
   },
   "yoy": {
-   "cur": 19.8,
-   "prev": 18.9,
-   "pct": 4.6
+   "cur": 0.2,
+   "prev": 0.5,
+   "pct": -68.0
   }
  },
  {
   "keyword": "강화도 장어",
   "week": {
-   "cur": 44.8,
-   "prev": 43.3,
-   "pct": 3.4
+   "cur": 0.4,
+   "prev": 0.4,
+   "pct": -0.8
   },
   "month": {
-   "cur": 43.6,
-   "prev": 42.7,
-   "pct": 2.0
+   "cur": 0.4,
+   "prev": 0.6,
+   "pct": -29.5
   },
   "yoy": {
-   "cur": 43.6,
-   "prev": 38.9,
-   "pct": 11.9
+   "cur": 0.4,
+   "prev": 0.6,
+   "pct": -27.4
   }
  },
  {
   "keyword": "강화도 순무",
   "week": {
-   "cur": 18.3,
-   "prev": 16.0,
-   "pct": 14.5
+   "cur": 0.8,
+   "prev": 0.6,
+   "pct": 28.9
   },
   "month": {
-   "cur": 15.8,
-   "prev": 14.1,
-   "pct": 11.8
+   "cur": 0.6,
+   "prev": 0.3,
+   "pct": 119.1
   },
   "yoy": {
-   "cur": 15.8,
-   "prev": 15.1,
-   "pct": 4.4
+   "cur": 0.6,
+   "prev": 1.3,
+   "pct": -53.0
   }
  },
  {
   "keyword": "강화도 카페",
   "week": {
-   "cur": 54.8,
-   "prev": 56.2,
-   "pct": -2.5
+   "cur": 4.6,
+   "prev": 5.0,
+   "pct": -8.0
   },
   "month": {
-   "cur": 58.2,
-   "prev": 55.0,
-   "pct": 5.7
+   "cur": 5.5,
+   "prev": 8.9,
+   "pct": -38.3
   },
   "yoy": {
-   "cur": 58.2,
-   "prev": 52.4,
-   "pct": 10.9
+   "cur": 5.5,
+   "prev": 9.1,
+   "pct": -39.1
   }
  },
  {
   "keyword": "강화도 가볼만한곳",
   "week": {
-   "cur": 78.3,
-   "prev": 80.7,
-   "pct": -2.9
+   "cur": 1.9,
+   "prev": 1.7,
+   "pct": 9.8
   },
   "month": {
-   "cur": 79.0,
-   "prev": 76.3,
-   "pct": 3.5
+   "cur": 2.0,
+   "prev": 3.4,
+   "pct": -40.1
   },
   "yoy": {
-   "cur": 79.0,
-   "prev": 74.5,
-   "pct": 6.1
+   "cur": 2.0,
+   "prev": 3.2,
+   "pct": -35.6
   }
  },
  {
   "keyword": "강화도 여행",
   "week": {
-   "cur": 64.3,
-   "prev": 62.4,
-   "pct": 3.1
+   "cur": 1.2,
+   "prev": 1.4,
+   "pct": -11.9
   },
   "month": {
-   "cur": 64.2,
-   "prev": 62.9,
-   "pct": 2.0
+   "cur": 1.4,
+   "prev": 2.1,
+   "pct": -33.8
   },
   "yoy": {
-   "cur": 64.2,
-   "prev": 59.4,
-   "pct": 8.1
+   "cur": 1.4,
+   "prev": 2.1,
+   "pct": -36.5
   }
  },
  {
   "keyword": "강화도 당일치기",
   "week": {
-   "cur": 41.3,
-   "prev": 42.1,
-   "pct": -2.0
+   "cur": 0.1,
+   "prev": 0.1,
+   "pct": 10.6
   },
   "month": {
-   "cur": 41.6,
-   "prev": 41.3,
-   "pct": 0.7
+   "cur": 0.2,
+   "prev": 0.3,
+   "pct": -51.3
   },
   "yoy": {
-   "cur": 41.6,
-   "prev": 39.7,
-   "pct": 4.8
+   "cur": 0.2,
+   "prev": 0.5,
+   "pct": -71.5
   }
  },
  {
   "keyword": "강화도 드라이브",
   "week": {
-   "cur": 36.0,
-   "prev": 35.0,
-   "pct": 2.9
+   "cur": 0.0,
+   "prev": 0.1,
+   "pct": -40.4
   },
   "month": {
-   "cur": 36.0,
-   "prev": 35.5,
-   "pct": 1.4
+   "cur": 0.1,
+   "prev": 0.1,
+   "pct": -24.4
   },
   "yoy": {
-   "cur": 36.0,
-   "prev": 32.8,
-   "pct": 9.8
+   "cur": 0.1,
+   "prev": 0.2,
+   "pct": -59.2
   }
  },
  {
   "keyword": "강화도 펜션",
   "week": {
-   "cur": 47.2,
-   "prev": 52.4,
-   "pct": -9.9
+   "cur": 8.0,
+   "prev": 8.3,
+   "pct": -2.9
   },
   "month": {
-   "cur": 51.0,
-   "prev": 50.0,
-   "pct": 2.0
+   "cur": 8.6,
+   "prev": 13.7,
+   "pct": -37.5
   },
   "yoy": {
-   "cur": 51.0,
-   "prev": 45.5,
-   "pct": 12.0
+   "cur": 8.6,
+   "prev": 12.7,
+   "pct": -32.5
   }
  }
 ]

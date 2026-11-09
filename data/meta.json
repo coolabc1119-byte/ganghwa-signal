@@ -1,17 +1,17 @@
 {
  "project": "강화 시그널",
  "version": "0.4",
- "updated_at": "2026-11-09 16:37 KST",
+ "updated_at": "2026-11-09 19:09 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
  ],
  "sources": {
-  "datalab": "sample",
+  "datalab": "live",
   "keyword_tool": "live",
   "kakao_local": "sample",
   "tour_api": "live",
-  "naver_news": "sample"
+  "naver_news": "live"
  },
  "keys_present": {
   "NAVER_CLIENT_ID": true,
@@ -23,8 +23,8 @@
   "DATA_GO_KR_KEY": true
  },
  "key_lengths": {
-  "NAVER_CLIENT_ID": 20,
-  "NAVER_CLIENT_SECRET": 10,
+  "NAVER_CLIENT_ID": 10,
+  "NAVER_CLIENT_SECRET": 40,
   "NAVER_AD_API_KEY": 74,
   "NAVER_AD_SECRET": 52,
   "NAVER_AD_CUSTOMER_ID": 7,
@@ -32,9 +32,15 @@
   "DATA_GO_KR_KEY": 64
  },
  "errors": {
-  "datalab": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-  "tour_api_calls": 78,
-  "naver_news": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
+  "tour_api_chunks": [
+   "2026-07-07~2026-08-05: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-06-07~2026-07-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-05-08~2026-06-06: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-04-08~2026-05-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-03-09~2026-04-07: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests",
+   "2026-02-07~2026-03-08: 접속 실패 HTTPError: HTTP Error 429: Too Many Requests"
+  ],
+  "tour_api_calls": 29
  },
  "mode": "partial",
  "store": {

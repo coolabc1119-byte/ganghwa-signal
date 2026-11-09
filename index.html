@@ -854,7 +854,7 @@ function renderLocal(){
     const ad=vol[k.replace(/\s/g,'')]; const adTxt=!ad?'–':ad.under10||!ad.total?'10회 미만':fmt(ad.total)+'회';
     if(!v) return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="muted" style="font-size:12px">다음 수집부터 표시</span></div></div>`;
     const w=sum(v,n-7,n), pw=sum(v,n-14,n-7), m=sum(v,n-30,n);
-    if(!m) return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="muted" style="font-size:12px">검색이 너무 적어 집계 안 됨</span></div><div class="g3">${box('검색광고 월','',adTxt)}</div></div>`;
+    if(!m){ const mo=ad&&!ad.under10?ad.total:0; return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="val">${mo?(mo/30).toFixed(1)+'<small>회/일</small>':'<small>10회 미만/월</small>'}</span></div><div class="sub" style="margin:0">일별 추이는 없음(데이터랩 집계 기준 미달) · 검색광고 한 달 ${adTxt} ÷ 30</div></div>`; }
     const p=pw?(w/pw-1)*100:null;
     return `<div class="cr ${ours?'ref':''}"><div class="ctop"><span class="nm">${nm}</span><span class="val">${(w/7).toFixed(1)}<small>회/일</small></span></div>
       <div class="g3">${box('최근 7일 합계',fmt(w)+'회',p==null?'직전 7일 –':`직전 7일 ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`)}${box('최근 30일 합계',fmt(m)+'회','하루 '+(m/30).toFixed(1)+'회')}${box('검색광고 월(실측)',adTxt,ad?.aliases?ad.aliases.length+'개 표기 합':'PC+모바일')}</div></div>`; }).join('');
@@ -879,7 +879,7 @@ function renderStay(){
   const box=(l,p,b,cls='')=>`<div class="c"><div class="l">${l}</div><div class="p ${cls}">${p}</div><div class="b">${b}</div></div>`;
   const cl=p=>p==null?'muted':p>=0?'up':'down';
   el.innerHTML=`<div class="basis"><div><span>최근 7일</span><b>${md(t.dates[n-7])}~${md(t.dates[n-1])}</b></div><div><span>평소</span><b>그 앞 4주의 주 평균</b></div></div>
-    <div class="cr" style="padding-top:0"><div class="g3">${box('펜션 검색',fmt(pNow/7)+'회/일',`평소 대비 ${ar(pc(pNow,pU))}`,'')}${box('당일치기 검색',fmt(dNow/7)+'회/일',`평소 대비 ${ar(pc(dNow,dU))}`)}${box('펜션 비중',shNow.toFixed(0)+'%',`평소 ${shU.toFixed(0)}% (맛집 검색 대비)`)}</div></div>
+    <div class="cr" style="padding-top:0"><div class="g3">${box('펜션 검색',fmt(pNow/7)+'회/일',`평소 대비 ${ar(pc(pNow,pU))}`,'')}${box('당일치기 검색',fmt(dNow/7)+'회/일',`평소 대비 ${ar(pc(dNow,dU))}`)}${box('펜션 비중(÷맛집)',shNow.toFixed(0)+'%',`평소 ${shU.toFixed(0)}%`)}</div></div>
     ${near.length&&nU?`<div class="cr"><div class="ctop"><span class="nm">가게 주변 펜션·캠핑장 검색</span><span class="val ${cl(pc(nNow,nU))}" style="font-size:15px">${ar(pc(nNow,nU))}<small>평소 대비</small></span></div></div>`:''}
     <div class="basis" style="margin-top:10px"><div><span>과거 검증</span><b style="font-family:var(--sans);font-weight:500">${verdict}</b></div>${medR?`<div><span>보통 일요일</span><b>토요일 손님의 ${(medR*100).toFixed(0)}%</b></div><div><span>펜션 검색 많던 주</span><b>일요일 = 토요일의 ${(hi*100).toFixed(0)}%</b></div><div><span>적던 주</span><b>일요일 = 토요일의 ${(lo*100).toFixed(0)}%</b></div>`:''}</div>
     <div class="sub" style="margin:6px 0 0">당일치기 검색은 하루 20회 안팎으로 적어 흔들림이 큼 · 강화군 전체 방문자 기준이라 우리 가게 매출과는 다를 수 있음</div>`;

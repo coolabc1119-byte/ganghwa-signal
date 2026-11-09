@@ -520,6 +520,9 @@ def fetch_news_log(cfg):
     return existing
 
 
+# 방송 예정은 '방송사 이름'만으로는 드라마·예능 기사까지 걸려서, 맛집·여행 프로그램명 + 먹거리·여행 맥락이 있을 때만 인정
+SHOW_RE = re.compile(r"생생정보|오늘\s?N|생활의\s?달인|6시\s?내\s?고향|백반기행|맛있는\s?녀석들|줄서는\s?식당|전지적\s?참견|나\s?혼자|1박\s?2일|놀면\s?뭐하니|VJ특공대|생방송\s?투데이|2TV\s?저녁|저녁\s?생생|토요일\s?저녁|신상출시|수요미식회|맛있는\s?이야기|고향\s?민국|한국인의\s?밥상|동네\s?한\s?바퀴|극한\s?직업|서민갑부|생방송\s?오늘\s?저녁|모닝와이드|섬총사|나의\s?외사친|맛\s?따라|어영차|굿모닝\s?대한민국|아침마당|체험\s?삶의|전현무계획|현지에서|토밥|노포의\s?영업|뛰어야|사장님\s?귀는|맛있을\s?지도|식객|허영만")
+FOODTRIP_RE = re.compile(r"맛집|식당|음식|먹방|요리|밥상|꽃게|게장|젓국|갈비|칼국수|낙지|밴댕이|장어|새우젓|순무|해산물|여행|나들이|가볼|명소|섬|펜션|캠핑")
 UPCOMING_RE = re.compile(r"예정|예고|방송된다|방영된다|전파를\s?탄다|공개된다|출연한다|찾아간다|소개된다|오늘\s?\(|오늘\s?밤|오늘\s?저녁|내일|이번\s?주")
 AIR_RE = re.compile(r"(?:오는\s?)?(\d{1,2})일\s*(?:\([월화수목금토일]\)\s*)?(?:오전|오후|저녁|밤)?\s*(?:\d{1,2}시\s*(?:\d{1,2}분)?\s*)?(?:에\s*)?(?:방송|방영|전파|공개)")
 
@@ -575,8 +578,8 @@ def fetch_upcoming(cfg):
                 continue
             title, desc = _clean(it["title"]), _clean(it.get("description"))
             text = title + " " + desc
-            tv = TV_RE.search(text)
-            if not (PLACE_RE.search(text) and tv and UPCOMING_RE.search(text)):
+            tv = SHOW_RE.search(text)
+            if not (PLACE_RE.search(text) and tv and FOODTRIP_RE.search(text) and UPCOMING_RE.search(text)):
                 continue
             air = _air_date(text, pub)
             if air and air < today - timedelta(days=1):

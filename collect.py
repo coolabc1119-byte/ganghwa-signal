@@ -58,6 +58,21 @@ def load_config():
         return json.load(f)
 
 
+def trim_empty_tail(obj):
+    """데이터랩은 가장 최근 하루가 아직 집계 전이면 모든 키워드를 0으로 돌려줌 → '데이터 없음'이므로 잘라냄"""
+    if not isinstance(obj, dict) or not obj.get("dates") or not isinstance(obj.get("series"), dict):
+        return obj
+    ser = obj["series"]
+    n = len(obj["dates"])
+    while n > 0 and all((v[n - 1] if n - 1 < len(v) else None) in (0, 0.0, None) for v in ser.values()):
+        n -= 1
+    if n < len(obj["dates"]):
+        obj = dict(obj)
+        obj["dates"] = obj["dates"][:n]
+        obj["series"] = {k: v[:n] for k, v in ser.items()}
+    return obj
+
+
 def save(name, obj):
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(os.path.join(DATA_DIR, name), "w", encoding="utf-8") as f:
@@ -769,7 +784,8 @@ def main():
 
     volume = run("keyword_tool", lambda: fetch_keyword_tool(cfg), lambda: sample_volume(cfg))
     trend = run("datalab", lambda: fetch_datalab(cfg, start, end), lambda: sample_trend(cfg, start, end))
-    disc = run("discovery", lambda: fetch_discovery_daily(volume), lambda: sample_discovery(volume))
+    trend = trim_empty_tail(trend)
+    disc = trim_empty_tail(run("discovery", lambda: fetch_discovery_daily(volume), lambda: sample_discovery(volume)))
     save("discovery_daily.json", disc)
     # 방문자는 월별·요일별 연간 비교를 위해 2024-01-01부터 보관(매일 빈 구간을 조금씩 채움)
     v_start = min(start, date(2024, 1, 1))

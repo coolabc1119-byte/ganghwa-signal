@@ -326,7 +326,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <h2>핫키워드 — 강화도 검색어 순위 <span class="chip" id="c-disc"></span></h2>
       <div class="sub" id="discSub"></div>
       <div class="basis" id="discBasis"></div>
-      <div class="controls"><div class="seg" id="dper"><button data-p="day">어제</button><button data-p="week" class="on">최근 7일</button><button data-p="month">최근 30일</button></div>
+      <div class="controls"><div class="seg" id="dper"><button data-p="day">하루</button><button data-p="week" class="on">최근 7일</button><button data-p="month">최근 30일</button></div>
         <input type="search" id="q" placeholder="필터 검색 (예: 게, 칼국수, 카페)">
         <div class="seg" id="dfilter"><button data-f="all" class="on">전체</button><button data-f="food">먹거리</button><button data-f="place">장소·여행</button></div></div>
       <table id="volume"></table>
@@ -367,6 +367,10 @@ const WD=['일','월','화','수','목','금','토'];
 const WXI = c => c==null?'': c<=1?'☀️': c==2?'⛅': c==3?'☁️': c<=48?'🌫️': c<=57?'🌦️': c<=67?'🌧️': c<=77?'🌨️': c<=82?'🌧️': c<=86?'🌨️':'⛈️';
 function shift(d,days){ const x=new Date(d+'T00:00:00Z'); x.setUTCDate(x.getUTCDate()+days); return x.toISOString().slice(0,10); }
 const dow=d=>new Date(d+'T00:00:00Z').getUTCDay();
+// 가장 최근 날짜가 아직 집계 전이면 모든 키워드가 0 → 데이터 없음으로 보고 잘라냄
+function trimTail(o){ if(!o||!o.dates||!o.series) return o; const S=Object.values(o.series); let n=o.dates.length;
+  while(n>0&&S.every(v=>!v[n-1])) n--; if(n===o.dates.length) return o;
+  return {...o,dates:o.dates.slice(0,n),series:Object.fromEntries(Object.entries(o.series).map(([k,v])=>[k,v.slice(0,n)]))}; }
 function avg(a){ a=a.filter(x=>x!=null); return a.length?a.reduce((x,y)=>x+y,0)/a.length:null; }
 function med(a){ a=a.filter(x=>x!=null).sort((x,y)=>x-y); return a.length?a[Math.floor(a.length/2)]:null; }
 async function J(p){ const r = await fetch('data/'+p+'?v='+Date.now()); if(!r.ok) throw new Error(p); return r.json(); }
@@ -385,6 +389,8 @@ async function init(){
   const names=['meta','trend_daily','compare','events','menu_demand','volume_monthly','visitors','news_log','brief','weather','discovery_daily'];
   const res=await Promise.all(names.map(n=>J(n+'.json').catch(()=>null)));
   names.forEach((n,i)=>D[n]=res[i]);
+  ['trend_daily','discovery_daily'].forEach(n=>{ D[n]=trimTail(D[n]); });
+  if(window.Chart){ Chart.defaults.events=[]; Chart.defaults.plugins.tooltip.enabled=false; }
   const m=D.meta;
   document.getElementById('ver').textContent='v'+m.version;
   document.getElementById('store').textContent=m.store.name+' · '+m.store.address;
@@ -465,7 +471,7 @@ const HOW={
     '<b>표의 %</b> = 중앙값(비 온 날 실제 ÷ 비교 기준) − 1, 주말·평일 따로 · 4일 이상 있을 때만 실측값 사용',
     '<b>예측 적용</b> = 이번 주 예보가 해당 단계면 이 배율을 그날 예상에 곱함'],
     s:['tour','wx','cfg']},
-  volume:{f:[CNT,'<b>어제</b> = 어제 하루 검색 횟수 · 증감은 지난주 같은 요일 대비','<b>최근 7일</b> = 7일 합계 · 증감은 직전 7일 대비','<b>최근 30일</b> = 검색광고 한 달 실제 횟수 · 증감은 직전 30일 대비(일별 데이터가 있는 상위 60개)','<b>순위 변동</b> = 직전 같은 기간 순위 − 지금 순위','<b>대상</b> = 검색광고가 돌려준 강화 관련 연관 검색어(월 100회 이상 상위 60개는 일별까지)'], s:['ad','dlab']},
+  volume:{f:[CNT,'<b>하루</b> = 집계가 끝난 가장 최근 하루의 검색 횟수(네이버는 보통 1~2일 늦게 집계) · 증감은 지난주 같은 요일 대비','<b>최근 7일</b> = 7일 합계 · 증감은 직전 7일 대비','<b>최근 30일</b> = 검색광고 한 달 실제 횟수 · 증감은 직전 30일 대비(일별 데이터가 있는 상위 60개)','<b>순위 변동</b> = 직전 같은 기간 순위 − 지금 순위','<b>대상</b> = 검색광고가 돌려준 강화 관련 연관 검색어(월 100회 이상 상위 60개는 일별까지)'], s:['ad','dlab']},
   newslist:{f:['<b>수집</b> = 매일 「강화도 맛집」「강화도 방송」「강화도 꽃게」「강화 젓국갈비」「전등사 맛집」 최신 기사 30건씩, 제목에 강화 지명이 있는 것만 누적 (최근 400일)'], s:['news']},
 };
 function attachHow(){
@@ -590,7 +596,7 @@ function renderYTrend(){
   const labels=list.map(x=>`${x.k.slice(2,4)}.${+x.k.slice(5)}월`);
   if(charts.ytrend) charts.ytrend.destroy();
   charts.ytrend=new Chart(document.getElementById('ytrend'),{type:'bar',data:{labels,datasets:[{data:list.map(x=>+x.pct.toFixed(1)),backgroundColor:list.map(x=>x.pct>=0?css('--ok'):css('--red')),borderRadius:4,maxBarThickness:28}]},
-    options:{...baseOpts({labels}),plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' 전년 같은 달 대비 '+(c.parsed.y>=0?'+':'')+c.parsed.y+'%'}}},scales:{x:{grid:{display:false},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},maxRotation:0,autoSkip:true}},y:{grid:{color:css('--line2')},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},callback:v=>v+'%'}}}}});
+    options:{...baseOpts({labels}),events:[],plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{grid:{display:false},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},maxRotation:0,autoSkip:true}},y:{grid:{color:css('--line2')},border:{display:false},ticks:{color:css('--faint'),font:{family:css('--mono'),size:11},callback:v=>v+'%'}}}}});
   document.getElementById('yverdict').innerHTML=`<div class="basis"><div><span>판정</span><b>${v.label}</b></div><div><span>근거</span><b style="font-family:var(--sans);font-weight:500">${v.detail}</b></div><div><span>기준</span><b style="font-family:var(--sans);font-weight:500">최근 12개월 중 75% 이상 증가 = 꾸준히 증가 · 75% 이상 감소 = 꾸준히 감소 · 그 외 = 등락 반복</b></div></div>`;
 }
 
@@ -599,9 +605,9 @@ function niceRange(vals){ const xs=vals.flat().filter(v=>v!=null&&isFinite(v)); 
   const raw=(hi-lo)/4||hi/4||1; const p=Math.pow(10,Math.floor(Math.log10(raw))); const step=[1,2,2.5,5,10].map(k=>k*p).find(x=>x>=raw);
   const min=Math.max(0,Math.floor((lo-raw*0.4)/step)*step), max=Math.ceil((hi+raw*0.3)/step)*step; return {min,max,step}; }
 function baseOpts({unit='',legend=false,labels=[],yTitle='',ymin,ymax,ystep}={}){
-  return { responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
+  return { responsive:true,maintainAspectRatio:false,animation:false,events:[],interaction:{mode:'index',intersect:false},
     plugins:{ legend:{display:legend,position:'top',align:'end',labels:{color:css('--sub'),boxWidth:10,boxHeight:10,font:{size:11},usePointStyle:true}},
-      tooltip:{backgroundColor:css('--ink'),titleColor:css('--card'),bodyColor:css('--card'),padding:10,cornerRadius:8,displayColors:true,boxWidth:8,boxHeight:8,usePointStyle:true,
+      tooltip:{enabled:false,backgroundColor:css('--ink'),titleColor:css('--card'),bodyColor:css('--card'),padding:10,cornerRadius:8,displayColors:true,boxWidth:8,boxHeight:8,usePointStyle:true,
         titleFont:{family:css('--mono'),size:11},bodyFont:{family:css('--mono'),size:12},itemSort:(a,b)=>(b.parsed.y??-1)-(a.parsed.y??-1),filter:i=>i.parsed.y!=null,
         callbacks:{label:c=>' '+c.dataset.label+': '+fmt(c.parsed.y)+(unit.replace('/일',''))}} },
     scales:{ x:{grid:{display:false},border:{display:false},ticks:{color:css('--faint'),maxTicksLimit:7,maxRotation:0,font:{family:css('--mono'),size:11},callback:(v,i)=>{const l=labels[i]||''; return /^\d{4}-\d{2}-\d{2}/.test(l)? md(l.slice(0,10)) : l;}}},
@@ -610,14 +616,15 @@ function baseOpts({unit='',legend=false,labels=[],yTitle='',ymin,ymax,ystep}={})
 function mk(id,type,labels,datasets,opt={},plugins=[]){
   if(charts[id]) charts[id].destroy();
   if(opt.ymin===undefined && opt.zero!==true){ const r=niceRange(datasets.map(d=>d.data)); opt={...opt, ymin:r.min, ymax:r.max, ystep:r.step}; }
-  charts[id]=new Chart(document.getElementById(id),{type,data:{labels,datasets:datasets.map(d=>({borderWidth:2,pointRadius:0,pointHoverRadius:4,pointHoverBorderWidth:2,pointHoverBorderColor:css('--card'),tension:.3,fill:false,...d}))},options:baseOpts({...opt,labels}),plugins});
+  charts[id]=new Chart(document.getElementById(id),{type,data:{labels,datasets:datasets.map(d=>({borderWidth:2,pointRadius:0,pointHoverRadius:0,cubicInterpolationMode:'monotone',tension:.4,borderCapStyle:'round',borderJoinStyle:'round',spanGaps:false,fill:false,...d}))},options:baseOpts({...opt,labels}),plugins});
 }
 const bcPlugin={id:'bc',afterDraw(c){ const bc=D.meta.broadcast_log||[]; if(!bc.length) return; const labels=c.data.labels,x=c.scales.x,{top,bottom,right}=c.chartArea,ctx=c.ctx; let lastX=-1e9;
   [...bc].sort((a,b)=>a.date<b.date?-1:1).forEach(b=>{ let i=labels.indexOf(b.date); if(i<0&&labels.length&&labels[0].length>10){ i=labels.findIndex((l,j)=>j<labels.length-1&&l.slice(0,10)<=b.date&&labels[j+1].slice(0,10)>b.date); } if(i<0) return;
     const px=x.getPixelForValue(i); ctx.save(); ctx.strokeStyle=css('--red'); ctx.globalAlpha=.55; ctx.setLineDash([3,4]); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(px,top); ctx.lineTo(px,bottom); ctx.stroke(); ctx.setLineDash([]);
     if(right-c.chartArea.left>=560&&px-lastX>=120){ lastX=px; ctx.globalAlpha=.9; ctx.fillStyle=css('--red'); ctx.font='10px '+css('--sans'); const t='📺 '+b.program; const flip=px+ctx.measureText(t).width+8>right; ctx.textAlign=flip?'right':'left'; ctx.fillText(t,flip?px-4:px+4,top+10); } ctx.restore(); }); }};
 function weekly(dates,series){ const buckets=[],idx={}; dates.forEach((d,i)=>{ const k=shift(d,-((dow(d)+6)%7)); if(!(k in idx)){idx[k]=buckets.length;buckets.push({k,i:[]});} buckets[idx[k]].i.push(i); });
-  return [buckets.map(b=>b.k+' 주'), series.map(v=>buckets.map(b=>avg(b.i.map(i=>v[i]))))]; }
+  const full=buckets.filter(b=>b.i.length===7); // 앞뒤로 며칠만 걸친 주는 평균이 왜곡되므로 제외
+  return [full.map(b=>b.k+' 주'), series.map(v=>full.map(b=>avg(b.i.map(i=>v[i]))))]; }
 function sliceRange(dates,vals,range){ const n=dates.length,s=Math.max(0,n-range); return [dates.slice(s),vals.map(v=>v.slice(s))]; }
 
 /* ================= 메뉴 검색 ================= */
@@ -691,7 +698,7 @@ function discRank(){
     const n=dd.dates.length, last=dd.dates[n-1];
     for(const [k,v] of Object.entries(dd.series)){
       let cur,prev;
-      if(per==='day'){ cur=v[n-1]; prev=v[n-8]; }        // 어제 vs 지난주 같은 요일
+      if(per==='day'){ cur=v[n-1]; prev=v[n-8]; }        // 최근 하루 vs 지난주 같은 요일
       else { cur=sum(v,n-7,n); prev=sum(v,n-14,n-7); }  // 최근 7일 vs 직전 7일
       rows.push({keyword:k,cur,prev,tracked:vol[k]?.tracked});
     }
@@ -714,7 +721,7 @@ function renderVolume(){
   document.getElementById('discSub').innerHTML=`네이버 검색 횟수(회) · 파란 점 = 메뉴 검색 탭에서 추적 중인 키워드`;
   const [curP,prevP]=[lab,prevLab.split(' — ')[0]];
   document.getElementById('discBasis').innerHTML=`<div><span>검색(회)</span><b>${lab}</b></div><div><span>증감 · 순위 비교 대상</span><b>${prevLab}</b></div>`;
-  state._hdr={cur:{day:'어제 하루',week:'최근 7일',month:'최근 30일'}[state.dper], prev:{day:'지난주 '+(D.discovery_daily?.dates?.length?WD[dow(D.discovery_daily.dates.at(-1))]:''),week:'직전 7일',month:'직전 30일'}[state.dper]};
+  const _ld=D.discovery_daily?.dates?.at(-1); state._hdr={cur:{day:_ld?`${md(_ld)}(${WD[dow(_ld)]})`:'하루',week:'최근 7일',month:'최근 30일'}[state.dper], prev:{day:'지난주 '+(D.discovery_daily?.dates?.length?WD[dow(D.discovery_daily.dates.at(-1))]:''),week:'직전 7일',month:'직전 30일'}[state.dper]};
   const q=document.getElementById('q').value.trim(); let rows=all; if(q) rows=rows.filter(r=>r.keyword.includes(q));
   if(state.dfilter==='food') rows=rows.filter(r=>FOOD.test(r.keyword)); else if(state.dfilter==='place') rows=rows.filter(r=>PLACE.test(r.keyword)&&!FOOD.test(r.keyword));
   const total=rows.length; const lim=state.vlimit||10; rows=rows.slice(0,lim); const max=Math.max(1,...rows.map(r=>r.cur||0));

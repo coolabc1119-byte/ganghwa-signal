@@ -191,6 +191,26 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
                 errs.append(f"묶음{i//4+1} 시도{attempt+1}: {type(e).__name__} {str(e)[:40]} {body_txt}")
                 time.sleep(1.5 * (attempt + 1))
         if res is None:
+            if i == 0 and "discovery_diag" not in ERRORS:
+                diag = {}
+                def _try(name, b):
+                    try:
+                        http_json("https://openapi.naver.com/v1/datalab/search", headers, "POST", b)
+                        diag[name] = "OK"
+                    except Exception as e:
+                        diag[name] = f"{getattr(e, 'code', '')} {str(e)[:40]}"
+                    time.sleep(0.5)
+                g0 = [{"groupName": "강화도 맛집", "keywords": ["강화도 맛집"]}]
+                _try("A_추적키워드_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
+                                        "keywordGroups": g0 + [{"groupName": "강화도 꽃게탕", "keywords": ["강화도 꽃게탕"]}]})
+                _try("B_발굴키워드1개_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
+                                          "keywordGroups": g0 + [{"groupName": chunk[0]["keyword"], "keywords": [chunk[0]["keyword"]]}]})
+                _try("C_앵커만_70일", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date", "keywordGroups": g0})
+                _try("D_앵커만_2025시작", {"startDate": "2025-07-12", "endDate": end.isoformat(), "timeUnit": "date", "keywordGroups": g0})
+                _try("E_발굴키워드_ascii그룹명", {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
+                                             "keywordGroups": [{"groupName": "k1", "keywords": [chunk[0]["keyword"]]}]})
+                diag["cid_len"] = len(cid); diag["csec_len"] = len(csec)
+                ERRORS["discovery_diag"] = diag
             continue
         for g in res.get("results", []):
             if g["title"] == "강화도 맛집":

@@ -188,6 +188,7 @@ def fetch_keyword_tool(cfg):
         for it in res.get("keywordList", []):
             k = it["relKeyword"]
             pc, mo = _qc(it.get("monthlyPcQcCnt")), _qc(it.get("monthlyMobileQcCnt"))
+            under10 = "<" in str(it.get("monthlyPcQcCnt")) + str(it.get("monthlyMobileQcCnt"))
             rows[k] = {
                 "keyword": k,
                 "pc": pc,
@@ -195,12 +196,18 @@ def fetch_keyword_tool(cfg):
                 "total": pc + mo,
                 "comp": it.get("compIdx", ""),
                 "tracked": k.replace(" ", "") in tracked,
+                "under10": under10 and pc + mo < 20,
             }
         time.sleep(0.5)
     out = sorted(rows.values(), key=lambda r: -r["total"])
-    # 강화 관련 키워드만 남김
+    # 강화 관련 키워드만 남김 (추적 키워드는 순위와 무관하게 항상 포함)
     out = [r for r in out if "강화" in r["keyword"] or "전등사" in r["keyword"] or "석모도" in r["keyword"]]
-    return {"rows": out[:300], "note": "네이버 검색광고 키워드도구. 최근 한 달 PC/모바일 검색수 합계."}
+    keep = out[:1000] + [r for r in out[1000:] if r["tracked"]]
+    seen = {r["keyword"].replace(" ", "") for r in keep}
+    for t in sorted(tracked):  # 키워드도구가 아예 돌려주지 않은 추적 키워드 = 월 10회 미만으로 간주
+        if t not in seen:
+            keep.append({"keyword": t, "pc": 0, "mobile": 0, "total": 0, "comp": "", "tracked": True, "under10": True})
+    return {"rows": keep, "note": "네이버 검색광고 키워드도구. 최근 한 달 PC/모바일 검색수 합계."}
 
 
 # ---------------------------------------------------------------------------
@@ -231,23 +238,66 @@ def fetch_visitors(start, end):
     if not key:
         return None
     base = "https://apis.data.go.kr/B551011/DataLabService/locgoRegnVisitrDDList"
-    params = {
-        "serviceKey": key, "numOfRows": 1000, "pageNo": 1, "MobileOS": "ETC", "MobileApp": "ganghwa-signal",
-        "startYmd": start.strftime("%Y%m%d"), "endYmd": end.strftime("%Y%m%d"),
-        "areaCd": GANGHWA_AREA_CD, "signguCd": GANGHWA_SIGNGU_CD, "_type": "json",
-    }
-    res = http_json(base + "?" + urllib.parse.urlencode(params, safe="%"), timeout=60)
-    items = res.get("response", {}).get("body", {}).get("items", {}).get("item", [])
-    by_day = {}
-    for it in items:
-        d = str(it.get("baseYmd", ""))
-        if len(d) != 8:
-            continue
-        iso = f"{d[:4]}-{d[4:6]}-{d[6:]}"
-        div = str(it.get("touDivCd", ""))  # 1 현지인, 2 외지인, 3 외국인
-        by_day.setdefault(iso, {"local": 0, "visitor": 0, "foreign": 0})
-        n = float(it.get("touNum", 0) or 0)
-        by_day[iso]["local" if div == "1" else "foreign" if div == "3" else "visitor"] += n
+    by_day, raw_head = {}, ""
+    # 이전에 받은 실데이터가 있으면 이어서(최근 14일만 다시) 받음 — 공공데이터 일일 호출 한도 절약
+    prev = load_existing("visitors.json", {})
+    if prev.get("live") and prev.get("dates"):
+        for d, a, b, c in zip(prev["dates"], prev["visitor"], prev["local"], prev["foreign"]):
+            if d >= start.isoformat():
+                by_day[d] = {"visitor": a, "local": b, "foreign": c}
+        start = max(start, date.fromisoformat(prev["dates"][-1]) - timedelta(days=14))
+    s0 = start
+    seen_days = set()
+    calls = 0
+    while s0 <= end:
+        e0 = min(end, s0 + timedelta(days=89))
+        page = 1
+        while True:
+            params = {
+                "serviceKey": key, "numOfRows": 1000, "pageNo": page, "MobileOS": "ETC", "MobileApp": "ganghwasignal",
+                "startYmd": s0.strftime("%Y%m%d"), "endYmd": e0.strftime("%Y%m%d"), "_type": "json",
+                "areaCd": GANGHWA_AREA_CD, "signguCd": GANGHWA_SIGNGU_CD,
+            }
+            calls += 1
+            if calls > 400:
+                raise RuntimeError("관광공사 호출이 400회를 넘어 중단 (일일 한도 보호)")
+            req = urllib.request.Request(base + "?" + urllib.parse.urlencode(params))
+            with urllib.request.urlopen(req, timeout=60) as r:
+                txt = r.read().decode("utf-8", "ignore")
+            if not raw_head:
+                raw_head = txt[:300]
+            try:
+                res = json.loads(txt)
+            except Exception:
+                raise RuntimeError("관광공사 응답이 JSON이 아님: " + txt[:200])
+            body = res.get("response", {}).get("body", {})
+            items = body.get("items") or {}
+            items = items.get("item", []) if isinstance(items, dict) else []
+            if isinstance(items, dict):
+                items = [items]
+            for it in items:
+                code = str(it.get("signguCode", it.get("signguCd", "")))
+                name = str(it.get("signguNm", ""))
+                if code != GANGHWA_SIGNGU_CD and "강화" not in name:
+                    continue
+                d = str(it.get("baseYmd", ""))
+                if len(d) != 8:
+                    continue
+                iso = f"{d[:4]}-{d[4:6]}-{d[6:]}"
+                div = str(it.get("touDivCd", ""))  # 1 현지인, 2 외지인, 3 외국인
+                if iso not in seen_days:  # 이어받기 구간은 새로 덮어씀
+                    by_day[iso] = {"local": 0, "visitor": 0, "foreign": 0}
+                    seen_days.add(iso)
+                n = float(it.get("touNum", 0) or 0)
+                by_day[iso]["local" if div == "1" else "foreign" if div == "3" else "visitor"] += n
+            total = int(body.get("totalCount", 0) or 0)
+            if page * 1000 >= total or not items:
+                break
+            page += 1
+            time.sleep(0.2)
+        s0 = e0 + timedelta(days=1)
+    if not by_day:
+        raise RuntimeError("관광공사 응답에 강화군 데이터 없음. 응답 앞부분: " + raw_head)
     dates = sorted(by_day)
     return {
         "dates": dates,
@@ -255,6 +305,7 @@ def fetch_visitors(start, end):
         "local": [round(by_day[d]["local"]) for d in dates],
         "foreign": [round(by_day[d]["foreign"]) for d in dates],
         "note": "한국관광공사 관광빅데이터(통신사 기반) 강화군 일별 방문자. 원천 데이터가 며칠~몇 주 늦게 올라옴.",
+        "live": True,
     }
 
 
@@ -383,7 +434,7 @@ def opportunity(volume, competitors, cfg):
         total = sum(vol.get(c, 0) for c in cands)
         cnt = info["count"]
         out.append({"menu": q, "monthly_search": total, "shops": cnt, "per_shop": round(total / cnt, 1) if cnt else None,
-                    "mine": q in cfg["store"]["menus"]})
+                    "mine": q in cfg["store"]["menus"], "under10": total == 0})
     return sorted(out, key=lambda r: -(r["per_shop"] or 0))
 
 

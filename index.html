@@ -42,6 +42,8 @@ h1 small{font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
 .badge.live{background:#e4f5e4;color:var(--good)}
 .srcline{color:var(--ink2);font-size:13px;margin:4px 0 10px;padding:8px 12px;border-left:3px solid var(--s1);background:var(--surface);border-radius:0 8px 8px 0}
 .src{display:inline-block;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle;font-weight:500}
+.st{display:inline-block;font-size:11px;font-weight:600;border-radius:4px;padding:0 6px;margin-left:4px;vertical-align:middle}
+.st.sample{background:var(--warn-bg);color:var(--warn-ink)} .st.live{background:#e4f5e4;color:var(--good)}
 .notice{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 14px;margin:12px 0 18px;font-size:13px}
 .grid{display:grid;gap:14px}
 .kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
@@ -96,7 +98,7 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
 <div class="grid kpis" id="kpis"></div>
 
 <div class="section card">
-  <h2>키워드 일별 검색 추이 <span class="src">출처: 네이버 데이터랩</span></h2>
+  <h2 data-srcs="datalab">키워드 일별 검색 추이 <span class="src">출처: 네이버 데이터랩</span></h2>
   <div class="sub">상대 검색량(기간 내 최고점 = 100, 절대 횟수 아님) · 세로 점선 = 기록된 방송일 · 점선 그래프 = 1년 전 같은 요일</div>
   <div class="controls">
     <div class="seg" id="grpSeg"></div>
@@ -114,12 +116,12 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
 
 <div class="section grid row2">
   <div class="card">
-    <h2>키워드별 비교 — 전주 · 전월 · 전년동월 <span class="src">출처: 네이버 데이터랩</span></h2>
+    <h2 data-srcs="datalab">키워드별 비교 — 전주 · 전월 · 전년동월 <span class="src">출처: 네이버 데이터랩</span></h2>
     <div class="sub">전주 = 최근 7일 vs 직전 7일 · 전월 = 최근 30일 vs 직전 30일 · 전년 = 최근 30일 vs 1년 전 같은 30일(요일 맞춤) · 파란 줄 = 우리 메뉴</div>
     <table id="weekly"></table>
   </div>
   <div class="card">
-    <h2>수요 대비 경쟁이 적은 메뉴 <span class="src">네이버 검색광고 ÷ 카카오맵</span></h2>
+    <h2 data-srcs="keyword_tool,kakao_local">수요 대비 경쟁이 적은 메뉴 <span class="src">네이버 검색광고 ÷ 카카오맵</span></h2>
     <div class="sub">월 검색량 ÷ 강화도 안 업체 수 — 숫자가 클수록 "찾는 사람은 많은데 파는 집이 적은" 메뉴</div>
     <table id="opp"></table>
   </div>
@@ -127,25 +129,25 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
 
 <div class="section grid row2">
   <div class="card">
-    <h2>강화군 일별 방문자 <span class="src">출처: 한국관광공사</span></h2>
+    <h2 data-srcs="tour_api">강화군 일별 방문자 <span class="src">출처: 한국관광공사</span></h2>
     <div class="sub" id="visSub">한국관광공사 관광빅데이터(통신사 기반), 외지인 기준</div>
     <div class="chart sm"><canvas id="visitors"></canvas></div>
   </div>
   <div class="card">
-    <h2>우리 가게 메뉴 검색 합계 <span class="src">출처: 네이버 데이터랩</span></h2>
+    <h2 data-srcs="datalab">우리 가게 메뉴 검색 합계 <span class="src">출처: 네이버 데이터랩</span></h2>
     <div class="sub">같은 기간 — 방문자 그래프와 나란히 보기 (척도가 달라 한 그래프에 겹치지 않음)</div>
     <div class="chart sm"><canvas id="mine"></canvas></div>
   </div>
 </div>
 
 <div class="section card">
-  <h2>급등 감지 이벤트 <span class="src">네이버 데이터랩 + 네이버 뉴스</span></h2>
+  <h2 data-srcs="datalab,naver_news">급등 감지 이벤트 <span class="src">네이버 데이터랩 + 네이버 뉴스</span></h2>
   <div class="sub" id="evSub"></div>
   <div id="events"></div>
 </div>
 
 <div class="section card">
-  <h2>키워드 발굴 — 사람들이 실제로 치는 강화도 검색어 <span class="src">출처: 네이버 검색광고 키워드도구</span></h2>
+  <h2 data-srcs="keyword_tool">키워드 발굴 — 사람들이 실제로 치는 강화도 검색어 <span class="src">출처: 네이버 검색광고 키워드도구</span></h2>
   <div class="sub">최근 한 달 네이버 PC+모바일 검색 횟수(절대값) · 파란 표시 = 현재 추적 중</div>
   <div class="controls"><input type="search" id="q" placeholder="검색어 걸러보기 (예: 게, 낙지, 맛집)"></div>
   <table id="volume"></table>
@@ -185,6 +187,11 @@ async function init(){
     const smp = Object.entries(m.sources).filter(([k,v])=>v==='sample').map(([k])=>({datalab:'네이버 데이터랩',keyword_tool:'네이버 검색광고 키워드도구',kakao_local:'카카오 로컬',tour_api:'관광공사 방문자',naver_news:'네이버 뉴스'})[k]).join(', ');
     n.textContent = '⚠ 아직 샘플 데이터로 보여 주는 화면입니다 — '+smp+'. API 키를 연결하면 같은 화면이 실제 수치로 바뀝니다. 숫자의 의미를 해석하지 마세요.';
   }
+  document.querySelectorAll('h2[data-srcs]').forEach(h=>{
+    const ks=h.dataset.srcs.split(','), st=ks.map(k=>m.sources[k]);
+    const live=st.every(x=>x==='live'), some=st.some(x=>x==='live');
+    h.insertAdjacentHTML('beforeend', `<span class="st ${live?'live':'sample'}">${live?'실데이터':some?'일부 샘플':'샘플'}</span>`);
+  });
   state.group = Object.keys(m.groups)[0];
   renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
   document.getElementById('foot').innerHTML = [D.trend_daily.note, D.volume_monthly.note, D.competitors.note, D.visitors.note].map(s=>'· '+s).join('<br>');
@@ -206,12 +213,12 @@ function renderKPIs(){
   const mt = mineC.week.cur;
   const ev7 = D.events.filter(e => (new Date(D.trend_daily.dates.at(-1)) - new Date(e.date))/864e5 <= 7);
   const v = D.visitors; const n = v.dates.length;
-  const vThis = v.visitor.slice(n-7).reduce((a,b)=>a+b,0)/7, vLast = v.visitor.slice(n-14,n-7).reduce((a,b)=>a+b,0)/7;
+  const vThis = n? v.visitor.slice(n-7).reduce((a,b)=>a+b,0)/Math.min(7,n) : null, vLast = n>=14? v.visitor.slice(n-14,n-7).reduce((a,b)=>a+b,0)/7 : 0;
   const tiles = [
     {label:'"강화도 맛집" 검색 (최근 7일 평균, 네이버)', val:anchor.week.cur.toFixed(0), html:d3(anchor)},
     {label:'우리 가게 메뉴 키워드 합계 (최근 7일, 네이버)', val:mt.toFixed(0), html:d3(mineC)},
     {label:'최근 7일 급등 이벤트', val:ev7.length, note: ev7.length ? [...new Set(ev7.map(e=>e.keyword))].slice(0,3).join(', ') : '급등 없음'},
-    {label:'강화군 외지인 방문자 (최근 주 일평균)', val:fmt(vThis), d: vLast? (vThis-vLast)/vLast*100 : null, note:'마지막 집계 '+md(v.dates.at(-1))},
+    {label:'강화군 외지인 방문자 (최근 주 일평균)', val:fmt(vThis), d: vLast? (vThis-vLast)/vLast*100 : null, note: n? '마지막 집계 '+md(v.dates.at(-1)) : '데이터 없음'},
   ];
   document.getElementById('kpis').innerHTML = tiles.map(t=>`<div class="card kpi"><div class="label">${t.label}</div><div class="val">${t.val}</div><div class="delta">${t.html||''}${t.d!=null?`<span class="${t.d>=0?'up':'down'}">${t.d>=0?'▲':'▼'} ${pct(t.d)}</span> `:''}${t.note||''}</div></div>`).join('');
 }
@@ -307,7 +314,7 @@ function renderOpp(){
   const o = D.opportunity; if(!o.length){document.getElementById('opp').innerHTML='<tr><td class="empty">검색광고·카카오 데이터가 둘 다 있어야 계산됩니다.</td></tr>';return;}
   const max = Math.max(...o.map(r=>r.per_shop||0));
   document.getElementById('opp').innerHTML = `<tr><th>메뉴</th><th class="num">월 검색</th><th class="num">업체 수</th><th class="num">업체당 검색</th></tr>` +
-    o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="num">${fmt(r.monthly_search)}</td><td class="num">${fmt(r.shops)}</td><td class="num"><span class="bar" style="width:${Math.round((r.per_shop||0)/max*60)}px"></span>${fmt(r.per_shop)}</td></tr>`).join('');
+    o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="num">${r.under10?'<span class="muted">10 미만</span>':fmt(r.monthly_search)}</td><td class="num">${fmt(r.shops)}</td><td class="num"><span class="bar" style="width:${Math.round((r.per_shop||0)/max*60)}px"></span>${fmt(r.per_shop)}</td></tr>`).join('');
 }
 function renderEvents(){
   const ev = D.events, r = D.meta;
@@ -320,9 +327,9 @@ function renderEvents(){
 function renderVolume(){
   const q = document.getElementById('q').value.trim();
   let rows = D.volume_monthly.rows; if(q) rows = rows.filter(r=>r.keyword.includes(q));
-  rows = rows.slice(0,60); const max = rows[0]?.total||1;
+  rows = rows.slice(0,100); const max = Math.max(1,...rows.map(r=>r.total));
   document.getElementById('volume').innerHTML = `<tr><th>키워드</th><th class="num">월 검색 합계</th><th class="num">PC</th><th class="num">모바일</th><th>경쟁</th></tr>` +
-    rows.map(r=>`<tr><td>${r.keyword}${r.tracked?'<span class="tag mine">추적 중</span>':''}</td><td class="num"><span class="bar" style="width:${Math.round(r.total/max*80)}px"></span>${fmt(r.total)}</td><td class="num">${fmt(r.pc)}</td><td class="num">${fmt(r.mobile)}</td><td>${r.comp||''}</td></tr>`).join('') + (rows.length?'' :'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
+    rows.map(r=>`<tr><td>${r.keyword}${r.tracked?'<span class="tag mine">추적 중</span>':''}</td><td class="num">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round(r.total/max*80)}px"></span>${fmt(r.total)}`}</td><td class="num">${fmt(r.pc)}</td><td class="num">${fmt(r.mobile)}</td><td>${r.comp||''}</td></tr>`).join('') + (rows.length?'' :'<tr><td class="empty" colspan="5">결과 없음</td></tr>');
 }
 </script>
 </body>

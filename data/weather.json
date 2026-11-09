@@ -1,13 +1,5 @@
 {
  "days": {
-  "2025-07-12": {
-   "code": 3,
-   "tmax": 33.1,
-   "tmin": 20.3,
-   "rain": 0.0,
-   "pop": null,
-   "src": "past"
-  },
   "2025-07-13": {
    "code": 51,
    "tmax": 28.2,
@@ -3826,11 +3818,10 @@
   },
   "2026-11-02": {
    "code": 3,
-   "tmax": 12.8,
-   "tmin": 6.6,
+   "tmax": 13.6,
+   "tmin": 5.4,
    "rain": 0.0,
-   "pop": 14,
-   "wind": 16.9,
+   "pop": null,
    "src": "past"
   },
   "2026-11-03": {
@@ -3890,73 +3881,82 @@
   "2026-11-09": {
    "code": 2,
    "tmax": 10.0,
-   "tmin": 2.9,
+   "tmin": 2.8,
    "rain": 0.0,
    "pop": 94,
    "wind": 18.0,
-   "src": "forecast"
+   "src": "past"
   },
   "2026-11-10": {
    "code": 1,
-   "tmax": 9.8,
-   "tmin": 0.4,
+   "tmax": 9.7,
+   "tmin": 0.3,
    "rain": 0.0,
    "pop": 0,
-   "wind": 15.0,
+   "wind": 13.9,
    "src": "forecast"
   },
   "2026-11-11": {
-   "code": 3,
-   "tmax": 14.0,
-   "tmin": 5.0,
+   "code": 2,
+   "tmax": 13.8,
+   "tmin": 4.3,
    "rain": 0.0,
    "pop": 0,
-   "wind": 11.2,
+   "wind": 10.8,
    "src": "forecast"
   },
   "2026-11-12": {
    "code": 2,
-   "tmax": 14.5,
-   "tmin": 4.9,
-   "rain": 0.1,
+   "tmax": 15.3,
+   "tmin": 5.8,
+   "rain": 0.0,
    "pop": 0,
-   "wind": 14.0,
+   "wind": 14.8,
    "src": "forecast"
   },
   "2026-11-13": {
-   "code": 45,
-   "tmax": 15.3,
-   "tmin": 5.7,
-   "rain": 0.0,
-   "pop": 4,
-   "wind": 8.0,
+   "code": 51,
+   "tmax": 15.4,
+   "tmin": 7.8,
+   "rain": 0.3,
+   "pop": 8,
+   "wind": 11.9,
    "src": "forecast"
   },
   "2026-11-14": {
-   "code": 55,
-   "tmax": 9.9,
-   "tmin": 6.6,
-   "rain": 6.0,
-   "pop": 76,
-   "wind": 13.0,
+   "code": 53,
+   "tmax": 11.0,
+   "tmin": 8.2,
+   "rain": 7.2,
+   "pop": 69,
+   "wind": 10.0,
    "src": "forecast"
   },
   "2026-11-15": {
-   "code": 53,
-   "tmax": 17.2,
-   "tmin": 5.0,
-   "rain": 3.3,
-   "pop": 55,
-   "wind": 17.1,
+   "code": 3,
+   "tmax": 16.5,
+   "tmin": 5.9,
+   "rain": 0.0,
+   "pop": 69,
+   "wind": 13.6,
    "src": "forecast"
   },
   "2026-11-16": {
-   "code": 51,
-   "tmax": 14.4,
-   "tmin": 5.0,
-   "rain": 0.2,
+   "code": 3,
+   "tmax": 15.6,
+   "tmin": 6.4,
+   "rain": 0.0,
    "pop": 8,
-   "wind": 19.3,
+   "wind": 22.4,
+   "src": "forecast"
+  },
+  "2026-11-17": {
+   "code": 80,
+   "tmax": 11.8,
+   "tmin": 4.8,
+   "rain": 11.4,
+   "pop": 37,
+   "wind": 15.0,
    "src": "forecast"
   }
  },

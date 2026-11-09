@@ -3890,25 +3890,25 @@
   "2026-11-09": {
    "code": 2,
    "tmax": 10.0,
-   "tmin": 3.1,
+   "tmin": 2.9,
    "rain": 0.0,
    "pop": 94,
-   "wind": 17.7,
+   "wind": 18.0,
    "src": "forecast"
   },
   "2026-11-10": {
    "code": 1,
-   "tmax": 9.9,
-   "tmin": 0.5,
+   "tmax": 9.8,
+   "tmin": 0.4,
    "rain": 0.0,
    "pop": 0,
-   "wind": 14.7,
+   "wind": 15.0,
    "src": "forecast"
   },
   "2026-11-11": {
    "code": 3,
    "tmax": 14.0,
-   "tmin": 4.5,
+   "tmin": 5.0,
    "rain": 0.0,
    "pop": 0,
    "wind": 11.2,

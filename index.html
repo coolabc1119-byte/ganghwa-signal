@@ -306,7 +306,8 @@ const bcPlugin = {
   id:'bc', afterDraw(c){
     const bc = D.meta.broadcast_log||[]; if(!bc.length) return;
     const labels = c.data.labels, x = c.scales.x, {top,bottom} = c.chartArea, ctx = c.ctx;
-    bc.forEach(b=>{
+    let lastLabelX = -1e9;
+    [...bc].sort((a,b)=>a.date<b.date?-1:1).forEach(b=>{
       let i = labels.indexOf(b.date);
       if(i<0 && state.unit==='w'){ i = labels.findIndex((l,j)=> j<labels.length-1 && l.slice(0,10)<=b.date && labels[j+1].slice(0,10)>b.date); }
       if(i<0) return;
@@ -315,6 +316,8 @@ const bcPlugin = {
       ctx.beginPath(); ctx.moveTo(px,top); ctx.lineTo(px,bottom); ctx.stroke();
       ctx.setLineDash([]); ctx.fillStyle=css('--s2'); ctx.font='11px system-ui';
       const txt='📺 '+b.program, flip = px + ctx.measureText(txt).width + 8 > c.chartArea.right;
+      if(px - lastLabelX < 110){ ctx.restore(); return; }  // 가까운 방송은 점선만, 글자는 생략
+      lastLabelX = px;
       ctx.textAlign = flip ? 'right' : 'left';
       ctx.fillText(txt, flip ? px-4 : px+4, top+12); ctx.restore();
     });

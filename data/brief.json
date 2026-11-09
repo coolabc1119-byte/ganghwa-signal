@@ -61,8 +61,8 @@
    "weather": {
     "code": 1,
     "text": "맑음",
-    "tmax": 9.7,
-    "tmin": 0.3,
+    "tmax": 9.6,
+    "tmin": 0.1,
     "rain": 0.0,
     "pop": 0,
     "src": "forecast"
@@ -96,8 +96,8 @@
    "weather": {
     "code": 2,
     "text": "구름",
-    "tmax": 13.8,
-    "tmin": 4.3,
+    "tmax": 13.7,
+    "tmin": 4.2,
     "rain": 0.0,
     "pop": 0,
     "src": "forecast"

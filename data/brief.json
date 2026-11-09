@@ -166,11 +166,11 @@
    "x_weekday": 1.29,
    "tags": [],
    "weather": {
-    "code": 3,
-    "text": "흐림",
-    "tmax": 14.6,
+    "code": 2,
+    "text": "구름",
+    "tmax": 14.5,
     "tmin": 4.9,
-    "rain": 0.08,
+    "rain": 0.1,
     "pop": 0,
     "src": "forecast"
    },
@@ -201,11 +201,11 @@
    "x_weekday": 1.12,
    "tags": [],
    "weather": {
-    "code": 51,
-    "text": "이슬비",
-    "tmax": 14.4,
-    "tmin": 6.4,
-    "rain": 0.3,
+    "code": 45,
+    "text": "안개",
+    "tmax": 15.3,
+    "tmin": 5.7,
+    "rain": 0.0,
     "pop": 4,
     "src": "forecast"
    },
@@ -238,11 +238,11 @@
     "비 예보"
    ],
    "weather": {
-    "code": 61,
-    "text": "비",
-    "tmax": 10.6,
-    "tmin": 6.9,
-    "rain": 11.5,
+    "code": 55,
+    "text": "이슬비",
+    "tmax": 9.9,
+    "tmin": 6.6,
+    "rain": 6.0,
     "pop": 76,
     "src": "forecast"
    },
@@ -275,11 +275,11 @@
     "비 조금"
    ],
    "weather": {
-    "code": 55,
+    "code": 53,
     "text": "이슬비",
-    "tmax": 16.7,
+    "tmax": 17.2,
     "tmin": 5.0,
-    "rain": 4.4,
+    "rain": 3.3,
     "pop": 55,
     "src": "forecast"
    },

@@ -1,52 +1,137 @@
 {
  "project": "강화 시그널",
- "version": "0.3",
- "updated_at": "2026-11-09 16:13 KST",
+ "version": "0.4",
+ "updated_at": "2026-11-09 16:26 KST",
  "range": [
   "2025-07-12",
   "2026-11-08"
  ],
  "sources": {
   "datalab": "sample",
-  "keyword_tool": "live",
+  "keyword_tool": "sample",
   "kakao_local": "sample",
   "tour_api": "sample",
   "naver_news": "sample"
  },
  "keys_present": {
-  "NAVER_CLIENT_ID": true,
-  "NAVER_CLIENT_SECRET": true,
-  "NAVER_AD_API_KEY": true,
-  "NAVER_AD_SECRET": true,
-  "NAVER_AD_CUSTOMER_ID": true,
+  "NAVER_CLIENT_ID": false,
+  "NAVER_CLIENT_SECRET": false,
+  "NAVER_AD_API_KEY": false,
+  "NAVER_AD_SECRET": false,
+  "NAVER_AD_CUSTOMER_ID": false,
   "KAKAO_REST_KEY": false,
-  "DATA_GO_KR_KEY": true
+  "DATA_GO_KR_KEY": false
  },
  "key_lengths": {
-  "NAVER_CLIENT_ID": 20,
-  "NAVER_CLIENT_SECRET": 10,
-  "NAVER_AD_API_KEY": 74,
-  "NAVER_AD_SECRET": 52,
-  "NAVER_AD_CUSTOMER_ID": 7,
+  "NAVER_CLIENT_ID": 0,
+  "NAVER_CLIENT_SECRET": 0,
+  "NAVER_AD_API_KEY": 0,
+  "NAVER_AD_SECRET": 0,
+  "NAVER_AD_CUSTOMER_ID": 0,
   "KAKAO_REST_KEY": 0,
-  "DATA_GO_KR_KEY": 64
+  "DATA_GO_KR_KEY": 0
  },
- "errors": {
-  "datalab": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}",
-  "tour_api": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>",
-  "naver_news": "HTTPError: HTTP Error 401: Unauthorized {\"errorMessage\":\"Scope Status Invalid : Authentication failed. (인증에 실패했습니다.)\",\"errorCode\":\"024\"}"
- },
- "mode": "partial",
+ "errors": {},
+ "mode": "sample",
  "store": {
-  "name": "만선꽃게랑낙지",
-  "address": "인천 강화군 길상면",
+  "name": "선두리 만선꽃게랑낙지",
+  "address": "인천 강화군 길상면 선두리",
   "menus": [
    "꽃게탕",
    "간장게장",
    "연포탕",
    "낙지",
    "젓국갈비"
-  ]
+  ],
+  "ingredients": {
+   "꽃게": {
+    "menus": [
+     "꽃게탕",
+     "간장게장"
+    ],
+    "keywords": [
+     "강화도 꽃게탕",
+     "강화도 간장게장"
+    ],
+    "season": {
+     "peak": [
+      [
+       9,
+       1
+      ],
+      [
+       11,
+       30
+      ]
+     ],
+     "spring": [
+      [
+       4,
+       1
+      ],
+      [
+       6,
+       20
+      ]
+     ],
+     "closed": [
+      [
+       6,
+       21
+      ],
+      [
+       8,
+       20
+      ]
+     ]
+    },
+    "note": "서해 꽃게 금어기 6/21~8/20(인천). 가을 수꽃게 9~11월, 봄 암꽃게 4~6월. 추석 전주 제수·선물 수요"
+   },
+   "낙지": {
+    "menus": [
+     "연포탕",
+     "낙지"
+    ],
+    "keywords": [
+     "강화도 낙지",
+     "강화도 연포탕"
+    ],
+    "season": {
+     "peak": [
+      [
+       9,
+       1
+      ],
+      [
+       11,
+       30
+      ]
+     ],
+     "closed": [
+      [
+       6,
+       21
+      ],
+      [
+       7,
+       20
+      ]
+     ]
+    },
+    "note": "낙지 금어기 6/21~7/20(지역별 상이). 가을이 제철. 검색 유입은 거의 없어 꽃게 손님의 곁들임 메뉴로 봄"
+   },
+   "돼지갈비(젓국갈비)": {
+    "menus": [
+     "젓국갈비"
+    ],
+    "keywords": [
+     "강화도 젓국갈비",
+     "강화 젓국갈비"
+    ],
+    "season": {},
+    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움"
+   }
+  }
  },
  "groups": {
   "우리 가게 메뉴": [

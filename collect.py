@@ -599,6 +599,12 @@ def main():
     save("monthly.json", monthly_table(trend))
     save("events.json", detect_spikes(trend, cfg["spike_rule"], news, cfg["broadcast_log"]))
     save("opportunity.json", opportunity(volume, comp, cfg))
+    try:
+        import brief
+        save("brief.json", brief.build(cfg, visitors, compare(trend)))
+    except Exception as e:
+        log(f"brief 실패: {e}")
+        ERRORS["brief"] = f"{type(e).__name__}: {str(e)[:200]}"
     save("meta.json", {
         "project": cfg["project"], "version": cfg["version"],
         "updated_at": datetime.now(KST).strftime("%Y-%m-%d %H:%M KST"),

@@ -1,0 +1,160 @@
+{
+ "generated": "2026-11-09",
+ "sample": true,
+ "last_visitor_data": "2026-10-29",
+ "trend_factor": 1.181,
+ "weekday_median": {
+  "월": 58848,
+  "화": 60506,
+  "수": 60014,
+  "목": 59108,
+  "금": 59726,
+  "토": 89504,
+  "일": 85888
+ },
+ "overall_median": 62148,
+ "capture_per_10k": null,
+ "sales_days": 0,
+ "summary": "이번 주 손님 많은 날: 토(11/14), 일(11/15) · 더 받을 재료: 꽃게, 낙지",
+ "days": [
+  {
+   "date": "2026-11-09",
+   "wd": "월",
+   "est_visitors": 69527,
+   "ratio": 1.12,
+   "level": "normal",
+   "yoy_visitors": 54046,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-10",
+   "wd": "화",
+   "est_visitors": 71486,
+   "ratio": 1.15,
+   "level": "normal",
+   "yoy_visitors": 61011,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-11",
+   "wd": "수",
+   "est_visitors": 70905,
+   "ratio": 1.14,
+   "level": "normal",
+   "yoy_visitors": 59081,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-12",
+   "wd": "목",
+   "est_visitors": 69834,
+   "ratio": 1.12,
+   "level": "normal",
+   "yoy_visitors": 55047,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-13",
+   "wd": "금",
+   "est_visitors": 70564,
+   "ratio": 1.14,
+   "level": "normal",
+   "yoy_visitors": 52068,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-14",
+   "wd": "토",
+   "est_visitors": 105746,
+   "ratio": 1.7,
+   "level": "peak",
+   "yoy_visitors": 86249,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  },
+  {
+   "date": "2026-11-15",
+   "wd": "일",
+   "est_visitors": 101473,
+   "ratio": 1.63,
+   "level": "busy",
+   "yoy_visitors": 85038,
+   "tags": [],
+   "vs_weekday_pct": 18,
+   "est_store": null
+  }
+ ],
+ "ingredients": [
+  {
+   "name": "꽃게",
+   "menus": [
+    "꽃게탕",
+    "간장게장"
+   ],
+   "action": "more",
+   "reasons": [
+    "제철(성수기)",
+    "주말·연휴 손님 많음 예상"
+   ],
+   "note": "서해 꽃게 금어기 6/21~8/20(인천). 가을 수꽃게 9~11월, 봄 암꽃게 4~6월. 추석 전주 제수·선물 수요",
+   "week_pct": -8.5,
+   "month_pct": 12.3
+  },
+  {
+   "name": "낙지",
+   "menus": [
+    "연포탕",
+    "낙지"
+   ],
+   "action": "more",
+   "reasons": [
+    "제철(성수기)",
+    "주말·연휴 손님 많음 예상"
+   ],
+   "note": "낙지 금어기 6/21~7/20(지역별 상이). 가을이 제철. 검색 유입은 거의 없어 꽃게 손님의 곁들임 메뉴로 봄",
+   "week_pct": -2.3,
+   "month_pct": 0.0
+  },
+  {
+   "name": "돼지갈비(젓국갈비)",
+   "menus": [
+    "젓국갈비"
+   ],
+   "action": "keep",
+   "reasons": [
+    "주말·연휴 손님 많음 예상"
+   ],
+   "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
+   "week_pct": 2.3,
+   "month_pct": 16.0
+  }
+ ],
+ "staff": [
+  {
+   "date": "2026-11-14",
+   "wd": "토",
+   "advice": "홀 +1, 주방 +1",
+   "why": "매우 많음 예상"
+  },
+  {
+   "date": "2026-11-15",
+   "wd": "일",
+   "advice": "홀 +1",
+   "why": "많음 예상"
+  }
+ ],
+ "alerts": [],
+ "broadcast_recent": [],
+ "note": "방문자 = 한국관광공사(통신사) 강화군 외지인. 요일 중앙값×추세×연휴·방송 보정. 가게 매출 CSV(data/store_sales.csv)를 넣으면 가게 기준 숫자로 바뀜."
+}

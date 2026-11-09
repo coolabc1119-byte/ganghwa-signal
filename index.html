@@ -44,6 +44,28 @@ h1 small{font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
 .src{display:inline-block;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle;font-weight:500}
 .st{display:inline-block;font-size:11px;font-weight:600;border-radius:4px;padding:0 6px;margin-left:4px;vertical-align:middle}
 .st.sample{background:var(--warn-bg);color:var(--warn-ink)} .st.live{background:#e4f5e4;color:var(--good)}
+.brief{margin-bottom:14px;border-width:2px;border-color:var(--s1)}
+.bhead h2{font-size:17px}
+.bgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px}
+@media(max-width:900px){.bgrid{grid-template-columns:1fr}}
+.bt{font-size:12px;font-weight:700;color:var(--ink2);margin:6px 0 8px;letter-spacing:.02em}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day{border:1px solid var(--border);border-radius:10px;padding:8px 4px;text-align:center;background:var(--page)}
+.day .w{font-size:12px;color:var(--muted)} .day .n{font-size:13px;font-weight:600;margin:2px 0}
+.day .lv{font-size:11px;font-weight:700;border-radius:6px;padding:2px 0;margin-top:4px}
+.day .v{font-size:11px;color:var(--ink2);margin-top:4px;font-variant-numeric:tabular-nums}
+.day .tg{font-size:10px;color:var(--s2);margin-top:3px;min-height:12px;line-height:1.2}
+.lv.quiet{background:#eceae4;color:var(--ink2)} .lv.normal{background:#e4f5e4;color:var(--good)} .lv.busy{background:var(--warn-bg);color:var(--warn-ink)} .lv.peak{background:#fde3e3;color:var(--bad)}
+:root[data-theme="dark"] .lv.quiet,:root:not([data-theme="light"]) .lv.quiet{background:#2c2c2a}
+.day.today{border-color:var(--s1);box-shadow:inset 0 0 0 1px var(--s1)}
+.ing{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--grid)}
+.ing:last-child{border-bottom:0}
+.ing .a{flex:0 0 68px;text-align:center;font-size:12px;font-weight:700;border-radius:6px;padding:4px 0}
+.a.more{background:#fde3e3;color:var(--bad)} .a.keep{background:#e4f5e4;color:var(--good)} .a.less{background:#eceae4;color:var(--ink2)} .a.frozen{background:var(--warn-bg);color:var(--warn-ink)}
+.ing .nm{font-weight:600;font-size:14px} .ing .rs{font-size:12px;color:var(--ink2);margin-top:2px}
+.al{display:flex;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--grid)} .al:last-child{border-bottom:0}
+.al .d{flex:0 0 74px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stf{font-size:13px;padding:4px 0}
 .notice{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 14px;margin:12px 0 18px;font-size:13px}
 .grid{display:grid;gap:14px}
 .kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
@@ -94,6 +116,27 @@ input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--axis);bo
 </header>
 <div class="srcline">검색량은 모두 <b>네이버</b> 기준입니다 (구글 미포함). 추이·비교는 네이버 데이터랩 상대 검색량, 월 검색 횟수는 네이버 검색광고 키워드도구, 업체 수는 카카오맵, 방문자는 한국관광공사(통신사 데이터)입니다.</div>
 <div class="notice" id="notice" hidden></div>
+
+<section class="card brief" id="brief">
+  <div class="bhead"><h2 data-srcs="tour_api,datalab">이번 주 준비 브리핑 <span class="src">강화군 방문자 + 네이버 검색 + 연휴·방송</span></h2><div class="sub" id="bsum"></div></div>
+  <div class="bgrid">
+    <div>
+      <div class="bt">날짜별 예상 손님 수준</div>
+      <div class="days" id="bdays"></div>
+      <div class="sub" id="bnote" style="margin-top:8px"></div>
+    </div>
+    <div>
+      <div class="bt">재료 준비 신호</div>
+      <div id="bing"></div>
+      <div class="bt" style="margin-top:14px">인력</div>
+      <div id="bstaff"></div>
+    </div>
+    <div>
+      <div class="bt">앞으로 30일 주의 알림</div>
+      <div id="balerts"></div>
+    </div>
+  </div>
+</section>
 
 <div class="grid kpis" id="kpis"></div>
 
@@ -172,7 +215,7 @@ let charts = {};
 init().catch(e => { document.getElementById('notice').hidden=false; document.getElementById('notice').textContent='데이터를 불러오지 못했습니다: '+e.message+' — collect.py를 먼저 실행해 data/ 폴더를 만들어 주세요.'; });
 
 async function init(){
-  const names = ['meta','trend_daily','weekly_change','events','opportunity','volume_monthly','visitors','competitors','news_log','compare','monthly'];
+  const names = ['meta','trend_daily','weekly_change','events','opportunity','volume_monthly','visitors','competitors','news_log','compare','monthly','brief'];
   const res = await Promise.all(names.map(n => J(n+'.json')));
   names.forEach((n,i) => D[n]=res[i]);
   const m = D.meta;
@@ -193,7 +236,7 @@ async function init(){
     h.insertAdjacentHTML('beforeend', `<span class="st ${live?'live':'sample'}">${live?'실데이터':some?'일부 샘플':'샘플'}</span>`);
   });
   state.group = Object.keys(m.groups)[0];
-  renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
+  renderBrief(); renderKPIs(); buildGroupSeg(); renderTrend(); renderWeekly(); renderOpp(); renderVisitors(); renderMine(); renderEvents(); renderVolume();
   document.getElementById('foot').innerHTML = [D.trend_daily.note, D.volume_monthly.note, D.competitors.note, D.visitors.note].map(s=>'· '+s).join('<br>');
   document.getElementById('q').addEventListener('input', renderVolume);
   document.querySelectorAll('#rangeSeg button').forEach(b=>b.onclick=()=>{sel(b);state.range=+b.dataset.r;renderTrend();renderVisitors();renderMine();});
@@ -205,6 +248,17 @@ function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x
 
 const d3 = c => ['week','month','yoy'].map(k=>{const p=c[k].pct; const lab={week:'전주',month:'전월',yoy:'전년'}[k]; return p==null?`<span class="dd"><span class="muted">${lab} –</span></span>`:`<span class="dd ${p>=0?'up':'down'}">${lab} ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(1)}%</span>`;}).join('');
 function sumCmp(rows){ const o={}; for(const k of ['week','month','yoy']){ const cur=rows.reduce((a,r)=>a+r[k].cur,0), prev=rows.reduce((a,r)=>a+r[k].prev,0); o[k]={cur,prev,pct: prev>0?(cur-prev)/prev*100:null}; } return o; }
+const LV={quiet:'한산',normal:'평소',busy:'많음',peak:'매우 많음'};
+const ACT={more:'더 받기',keep:'평소대로',less:'줄이기',frozen:'냉동 운영'};
+function renderBrief(){
+  const b=D.brief; if(!b) return;
+  document.getElementById('bsum').innerHTML = `<b>${b.summary}</b>` + (b.sample?' <span class="st sample">방문자 샘플</span>':'') + (b.last_visitor_data?` · 방문자 집계 마지막 날 ${b.last_visitor_data}`:'');
+  document.getElementById('bdays').innerHTML = b.days.map((d,i)=>`<div class="day ${i===0?'today':''}"><div class="w">${d.wd}</div><div class="n">${d.date.slice(5).replace('-','/')}</div><div class="lv ${d.level}">${LV[d.level]}</div><div class="v">${fmt(d.est_visitors)}명</div>${d.est_store!=null?`<div class="v">가게 ≈${fmt(d.est_store)}</div>`:''}<div class="tg">${d.tags.join(', ')}</div></div>`).join('');
+  document.getElementById('bnote').textContent = `외지인 방문자 예상(명). 요일별 최근 ${8}주 중앙값 × 추세 ${b.trend_factor>=1?'+':''}${((b.trend_factor-1)*100).toFixed(0)}% × 연휴·방송 보정. 평일 ${fmt(b.weekday_median['수'])} · 토 ${fmt(b.weekday_median['토'])} 기준.` + (b.capture_per_10k?` 가게 비율: 외지인 1만 명당 ${b.capture_per_10k} (매출 ${b.sales_days}일 기준)`:' 가게 매출 CSV를 넣으면 가게 기준 숫자가 추가됩니다.');
+  document.getElementById('bing').innerHTML = b.ingredients.map(i=>`<div class="ing"><div class="a ${i.action}">${ACT[i.action]}</div><div><div class="nm">${i.name} <span class="muted" style="font-size:12px;font-weight:400">${i.menus.join('·')}</span></div><div class="rs">${i.reasons.length?i.reasons.join(' · '):'특이 신호 없음'}</div></div></div>`).join('');
+  document.getElementById('bstaff').innerHTML = b.staff.length? b.staff.map(s=>`<div class="stf"><b>${s.date.slice(5).replace('-','/')} ${s.wd}</b> — ${s.advice} <span class="muted">(${s.why})</span></div>`).join('') : '<div class="stf muted">이번 주 추가 인원 필요 없음</div>';
+  document.getElementById('balerts').innerHTML = b.alerts.length? b.alerts.map(a=>`<div class="al"><span class="d">${a.date.slice(5).replace('-','/')} ${a.wd}</span><span>${a.text}</span></div>`).join('') : '<div class="al muted">30일 안에 연휴·금어기·방송 예정 없음</div>';
+}
 function renderKPIs(){
   const C = Object.fromEntries(D.compare.map(r=>[r.keyword,r]));
   const anchor = C['강화도 맛집'] || D.compare[0];

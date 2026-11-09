@@ -143,8 +143,13 @@ def build(cfg, visitors, compare, news=None, weather=None, today=None):
         return 1.0
 
     # ---- 실제값 비교 ----
+    true_hol = set(holidays)
+
     def month_wd_avg(ym, wd):
+        # 연휴·연휴 전날 제외 → 없으면 연휴 당일만 제외하고 다시
         xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and d not in hol]
+        if not xs:
+            xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and d not in true_hol]
         return (_mean(xs), len(xs))
 
     def ym_shift(d, k):
@@ -156,11 +161,10 @@ def build(cfg, visitors, compare, news=None, weather=None, today=None):
 
     def cmp_block(d, est):
         out = {}
-        pw = by.get((d - timedelta(days=7)).isoformat())
-        out["prev_week"] = {"base": pw, "n": 1 if pw else 0, "pct": round((est / pw - 1) * 100, 1) if pw else None}
         for key, k in (("prev_month", 1), ("yoy_month", 12)):
-            a, n = month_wd_avg(ym_shift(d, k), d.weekday())
-            out[key] = {"base": round(a) if a else None, "n": n, "pct": round((est / a - 1) * 100, 1) if a else None}
+            ym = ym_shift(d, k)
+            a, n = month_wd_avg(ym, d.weekday())
+            out[key] = {"base": round(a) if a else None, "n": n, "pct": round((est / a - 1) * 100, 1) if a else None, "ym": ym}
         return out
 
     # ---- 가게 매출 비율(선택) ----

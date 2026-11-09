@@ -70,20 +70,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
      "base": null,
      "n": 0,
-     "pct": null
+     "pct": null,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 33614,
      "n": 1,
-     "pct": 2.8
+     "pct": 2.8,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -108,20 +105,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
      "base": 30832,
      "n": 1,
-     "pct": 13.2
+     "pct": 13.2,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 33943,
      "n": 1,
-     "pct": 2.8
+     "pct": 2.8,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -146,20 +140,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
      "base": 34828,
      "n": 1,
-     "pct": -2.3
+     "pct": -2.3,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 35651,
      "n": 1,
-     "pct": -4.6
+     "pct": -4.6,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -184,20 +175,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
      "base": 29838,
      "n": 1,
-     "pct": 39.8
+     "pct": 39.8,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 39277,
      "n": 1,
-     "pct": 6.2
+     "pct": 6.2,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -222,20 +210,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
-     "base": null,
-     "n": 0,
-     "pct": null
+     "base": 39784,
+     "n": 1,
+     "pct": -8.3,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": null,
      "n": 0,
-     "pct": null
+     "pct": null,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -262,20 +247,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
      "base": 102949,
      "n": 1,
-     "pct": -31.0
+     "pct": -31.0,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 88504,
      "n": 1,
-     "pct": -19.7
+     "pct": -19.7,
+     "ym": "2025-11"
     }
    },
    "est_store": null,
@@ -302,20 +284,17 @@
     "src": "forecast"
    },
    "cmp": {
-    "prev_week": {
-     "base": null,
-     "n": 0,
-     "pct": null
-    },
     "prev_month": {
-     "base": null,
-     "n": 0,
-     "pct": null
+     "base": 109907,
+     "n": 1,
+     "pct": -40.0,
+     "ym": "2026-10"
     },
     "yoy_month": {
      "base": 83342,
      "n": 1,
-     "pct": -20.8
+     "pct": -20.8,
+     "ym": "2025-11"
     }
    },
    "est_store": null,

@@ -232,10 +232,13 @@ def fetch_visitors(start, end):
         chunks.append((c0, min(end, c0 + timedelta(days=29))))
         c0 += timedelta(days=30)
     chunks.reverse()
+    ly_center = datetime.now(KST).date() - timedelta(days=364)
+    chunks.sort(key=lambda c: (0 if abs((c[0] - ly_center).days) <= 75 else 1, -c[0].toordinal()))
     seen_days = set()
     calls, chunk_errs = 0, []
     t_start = time.time()
-    BUDGET = 180  # 관광공사는 해외 접속이 느림 — 3분 넘으면 받은 만큼만 쓰고 다음 실행에서 이어받음
+    BUDGET = 660  # 관광공사는 해외 접속이 느림 — 11분 넘으면 받은 만큼만 쓰고 다음 실행에서 이어받음
+    page_size = [5000]
     # 이 API에는 지역 필터가 없음 — 전국 시군구(하루 약 740행)를 받아 강화군만 골라냄.
     # 첫 실행(약 16개월 백필)은 300회 안팎 호출, 이후 매일은 10회 안팎.
     if prev.get("live") and prev.get("dates"):
@@ -247,7 +250,7 @@ def fetch_visitors(start, end):
         page, total = 1, None
         while calls < 450 and time.time() - t_start < BUDGET:
             params = {
-                "serviceKey": key, "numOfRows": 1000, "pageNo": page, "MobileOS": "ETC", "MobileApp": "ganghwasignal",
+                "serviceKey": key, "numOfRows": page_size[0], "pageNo": page, "MobileOS": "ETC", "MobileApp": "ganghwasignal",
                 "startYmd": s0.strftime("%Y%m%d"), "endYmd": e0.strftime("%Y%m%d"), "_type": "json",
             }
             calls += 1
@@ -255,7 +258,7 @@ def fetch_visitors(start, end):
             txt, last_err = None, None
             for attempt in range(2):  # 공공데이터포털은 해외(GitHub 서버)에서 접속이 느릴 때가 있어 재시도
                 try:
-                    with urllib.request.urlopen(req, timeout=30) as r:
+                    with urllib.request.urlopen(req, timeout=75) as r:
                         txt = r.read().decode("utf-8", "ignore")
                     break
                 except Exception as e:
@@ -275,6 +278,9 @@ def fetch_visitors(start, end):
                 break
             head = res.get("response", {}).get("header", {}) or {}
             code = str(head.get("resultCode", res.get("resultCode", "")))
+            if code not in ("0000", "00", "0", "") and page_size[0] > 1000:
+                page_size[0] = 1000  # 큰 페이지가 거부되면 1000으로 낮춰 같은 구간 재시도
+                continue
             if code not in ("0000", "00", "0", ""):
                 chunk_errs.append(f"{s0}~{e0}: {code} {head.get('resultMsg', res.get('resultMsg', ''))}")
                 break
@@ -299,7 +305,7 @@ def fetch_visitors(start, end):
                 n = float(it.get("touNum", 0) or 0)
                 by_day[iso]["local" if div == "1" else "foreign" if div == "3" else "visitor"] += n
             total = int(body.get("totalCount", 0) or 0)
-            if page * 1000 >= total or not items:
+            if page * page_size[0] >= total or not items:
                 break
             page += 1
             time.sleep(0.1)

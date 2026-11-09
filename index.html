@@ -144,6 +144,13 @@ input[type=search]{font:inherit;padding:7px 11px;border:1px solid var(--line);bo
 .dp b{display:block;font-family:var(--mono);font-size:13px;color:var(--ink)}
 .dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);background:color-mix(in srgb,var(--blue) 6%,var(--card))}
 .tblwrap{overflow-x:auto}
+#cmp td.n{white-space:nowrap} #cmp td:first-child{white-space:nowrap;font-weight:600}
+@media(max-width:560px){
+  #cmp{font-size:12px} #cmp th,#cmp td{padding:8px 5px} #cmp td.big{font-size:14px}
+  #cmp th{font-size:10px;letter-spacing:0;text-transform:none}
+  #menu td:nth-child(3),#menu th:nth-child(3){display:none}
+  .card{padding:16px 14px}
+}
 td.big{font-family:var(--mono);font-size:15px;font-weight:600;text-align:right}
 td .base{display:block;font-size:11px;color:var(--faint);font-family:var(--mono)}
 tr.ref td{color:var(--sub);background:var(--soft)}
@@ -203,7 +210,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div class="controls">
         <div class="seg" id="grpSeg"></div>
         <div class="seg" id="rangeSeg"><button data-r="30">30일</button><button data-r="90" class="on">90일</button><button data-r="180">180일</button><button data-r="365">1년</button></div>
-        <div class="seg" id="unitSeg"><button data-u="d" class="on">일별</button><button data-u="w">주별</button></div>
+        <div class="seg" id="unitSeg"><button data-u="d">일별</button><button data-u="w">주별</button></div>
         <div class="seg" id="yoySeg"><button data-y="0" class="on">올해만</button><button data-y="1">전년 겹쳐보기</button></div>
       </div>
       <div class="chart"><canvas id="trend"></canvas></div>
@@ -286,7 +293,7 @@ const WD=['일','월','화','수','목','금','토'];
 async function J(p){ const r = await fetch('data/'+p+'?v='+Date.now()); if(!r.ok) throw new Error(p); return r.json(); }
 
 let D = {}, charts = {};
-let state = { group:null, range:90, unit:'d', yoy:false, vrange:120, vyoy:false, dfilter:'all', cmpSort:'week' };
+let state = { group:null, range:90, unit: matchMedia('(max-width:720px)').matches?'w':'d', yoy:false, vrange:120, vyoy:false, dfilter:'all', cmpSort:'week' };
 
 // 테마
 (function(){ try{ const t=localStorage.getItem('gs-theme'); if(t) document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -336,6 +343,7 @@ async function init(){
   renderBrief(); renderKPIs(); buildGroupSeg(); renderTrend(); renderCmp(); renderMenu(); renderVisitors(); renderWd(); renderMonthly(); renderMine(); renderVolume(); renderEvents(); renderNews(); renderAbout();
   document.getElementById('q').addEventListener('input', renderVolume);
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();});
+  document.querySelectorAll('#unitSeg button').forEach(b=>b.classList.toggle('on',b.dataset.u===state.unit));
   bindSeg('unitSeg','u',v=>{state.unit=v;renderTrend();});
   bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
   bindSeg('vrange','r',v=>{state.vrange=+v;renderVisitors();renderMine();});
@@ -440,6 +448,7 @@ function renderTrend(){
   document.getElementById('trendLegend').innerHTML = kws.map((k,i)=>`<span><i style="background:${S[i]}"></i>${k}</span>`).join('') + (state.yoy?`<span><i style="background:none;border-top:2px dashed var(--sub);height:0;margin-top:5px"></i>1년 전 같은 요일</span>`:'') + `<span><i style="background:var(--red);height:2px;margin-top:4px"></i>방송일</span>`;
 }
 let cmpDay=null;
+const short=k=>k.replace(/^강화도\s/,'').replace(/^강화\s/,'강화 ').replace(/ 맛집$/,' 맛집');
 function sameWdAvg(series, dates, wd, ym){ const xs=[]; dates.forEach((d,i)=>{ if(d.startsWith(ym) && new Date(d).getDay()===wd && series[i]!=null) xs.push(series[i]); }); return xs.length? {v:avg(xs), n:xs.length} : null; }
 function prevYm(ym,k){ let [y,m]=ym.split('-').map(Number); m-=k; while(m<=0){m+=12;y--;} return `${y}-${String(m).padStart(2,'0')}`; }
 function renderCmp(){
@@ -452,14 +461,14 @@ function renderCmp(){
   const wdName=WD[wd]+'요일';
   const kws=[...D.meta.groups[state.group]]; const ref='강화도 맛집'; if(!kws.includes(ref)) kws.push(ref);
   const pc=(cur,base)=> base==null||!base.v ? null : (cur-base.v)/base.v*100;
-  const cell=(p,base,lab)=> p==null? `<td class="n muted">–</td>` : `<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'} ${Math.abs(p).toFixed(1)}%<span class="base">${lab} ${base.v<10?base.v.toFixed(2):base.v.toFixed(1)}</span></td>`;
+  const cell=(p,base,lab)=> p==null? `<td class="n muted">–</td>` : `<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%<span class="base">${lab} ${base.v<10?base.v.toFixed(2):base.v.toFixed(1)}</span></td>`;
   const tiny=new Set(D.compare.filter(r=>r.tiny).map(r=>r.keyword));
   document.getElementById('cmpSub').innerHTML = `<b>${cmpDay} (${WD[wd]})</b> 검색량을 비교 · 전주 = ${md(shift(cmpDay,-7))} ${WD[wd]} · 전월 = ${+pm.slice(5)}월 ${wdName} 평균 · 전년동월 = ${py.slice(0,4)}년 ${+py.slice(5)}월 ${wdName} 평균`;
-  document.getElementById('cmp').innerHTML = `<tr><th>키워드</th><th class="n">그날</th><th class="n">전주 ${WD[wd]}</th><th class="n">전월 ${WD[wd]} 평균</th><th class="n">전년동월 ${WD[wd]} 평균</th></tr>` +
+  document.getElementById('cmp').innerHTML = `<tr><th>메뉴 <span class="muted" style="text-transform:none">(강화도 ○○)</span></th><th class="n">그날</th><th class="n">전주 ${WD[wd]}</th><th class="n">전월 ${WD[wd]}평균</th><th class="n">전년동월 ${WD[wd]}평균</th></tr>` +
     kws.map(k=>{ const v=ser[k]||[]; const cur=v[i]; const w=v[i-7]!=null?{v:v[i-7],n:1}:null; const m=sameWdAvg(v,dates,wd,pm); const y=sameWdAvg(v,dates,wd,py);
       const isRef=k===ref && !D.meta.groups[state.group].includes(ref);
-      if(tiny.has(k)) return `<tr><td>${k}<span class="tag">검색량 적음</span></td><td class="big muted">–</td><td class="n muted" colspan="3">검색량이 너무 적어 비교 생략</td></tr>`;
-      return `<tr class="${isRef?'ref':''}"><td>${k}${isRef?'<span class="tag">기준</span>':''}</td><td class="big">${cur==null?'–':cur<10?cur.toFixed(2):cur.toFixed(1)}</td>${cell(pc(cur,w),w,'')}${cell(pc(cur,m),m,'')}${cell(pc(cur,y),y,'')}</tr>`; }).join('');
+      if(tiny.has(k)) return `<tr><td>${short(k)}<span class="tag">검색량 적음</span></td><td class="big muted">–</td><td class="n muted" colspan="3">검색량이 너무 적어 비교 생략</td></tr>`;
+      return `<tr class="${isRef?'ref':''}"><td>${isRef?k:short(k)}${isRef?'<span class="tag">기준</span>':''}</td><td class="big">${cur==null?'–':cur<10?cur.toFixed(2):cur.toFixed(1)}</td>${cell(pc(cur,w),w,'')}${cell(pc(cur,m),m,'')}${cell(pc(cur,y),y,'')}</tr>`; }).join('');
   // 기간 비교(참고)
   const rows=D.compare.filter(r=>D.meta.groups[state.group].includes(r.keyword)||r.keyword===ref);
   const c2=p=>p==null?'<td class="n muted">–</td>':`<td class="n ${p>=0?'up':'down'}">${pct(p)}</td>`;
@@ -469,7 +478,7 @@ function renderMenu(){
   const o=D.menu_demand||[]; if(!o.length){document.getElementById('menu').innerHTML='<tr><td class="empty">검색광고 데이터가 있어야 계산됩니다.</td></tr>';return;}
   const max=Math.max(1,...o.map(r=>r.monthly_search));
   document.getElementById('menu').innerHTML = `<tr><th>메뉴</th><th class="n">월 검색 횟수</th><th>합산 키워드</th></tr>` +
-    o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="n">${r.under10?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round(r.monthly_search/max*70)}px"></span>${fmt(r.monthly_search)}`}</td><td class="muted" style="font-size:12px">${r.keywords.join(', ')||'–'}</td></tr>`).join('');
+    o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round(r.monthly_search/max*70)}px"></span>${fmt(r.monthly_search)}`}</td><td class="muted" style="font-size:12px">${r.keywords.join(', ')||'–'}</td></tr>`).join('');
 }
 
 /* ---------- 방문자 ---------- */

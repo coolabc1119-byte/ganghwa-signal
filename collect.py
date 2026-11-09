@@ -169,10 +169,12 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
     dates = ymd_list(start, end)
     headers = {"X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
     series, errs = {}, []
-    for i in range(0, len(rows), 5):
-        chunk = rows[i:i + 5]
+    rows = [r for r in rows if r["keyword"].replace(" ", "") != "강화도맛집"]
+    for i in range(0, len(rows), 4):
+        chunk = rows[i:i + 4]
         body = {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
-                "keywordGroups": [{"groupName": r["keyword"], "keywords": [r["keyword"]]} for r in chunk]}
+                "keywordGroups": [{"groupName": "강화도 맛집", "keywords": ["강화도 맛집"]}]
+                + [{"groupName": r["keyword"], "keywords": [r["keyword"]]} for r in chunk]}
         res, last = None, None
         for attempt in range(3):
             try:
@@ -186,11 +188,13 @@ def fetch_discovery_daily(volume, days=70, top_n=60):
                         body_txt = e.read().decode("utf-8", "ignore")[:120]
                     except Exception:
                         pass
-                errs.append(f"묶음{i//5+1} 시도{attempt+1}: {type(e).__name__} {str(e)[:40]} {body_txt}")
+                errs.append(f"묶음{i//4+1} 시도{attempt+1}: {type(e).__name__} {str(e)[:40]} {body_txt}")
                 time.sleep(1.5 * (attempt + 1))
         if res is None:
             continue
         for g in res.get("results", []):
+            if g["title"] == "강화도 맛집":
+                continue
             m = {d["period"]: d["ratio"] for d in g.get("data", [])}
             rel = [m.get(d, 0) for d in dates]
             rel30 = sum(rel[-30:])
@@ -742,13 +746,13 @@ def main():
         sources[name] = "live"
         return res
 
-    trend = run("datalab", lambda: fetch_datalab(cfg, start, end), lambda: sample_trend(cfg, start, end))
     volume = run("keyword_tool", lambda: fetch_keyword_tool(cfg), lambda: sample_volume(cfg))
+    trend = run("datalab", lambda: fetch_datalab(cfg, start, end), lambda: sample_trend(cfg, start, end))
+    disc = run("discovery", lambda: fetch_discovery_daily(volume), lambda: sample_discovery(volume))
+    save("discovery_daily.json", disc)
     visitors = run("tour_api", lambda: fetch_visitors(start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
     weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
-    disc = run("discovery", lambda: fetch_discovery_daily(volume), lambda: sample_discovery(volume))
-    save("discovery_daily.json", disc)
     save("weather.json", weather)
 
     trend = to_counts(trend, volume)

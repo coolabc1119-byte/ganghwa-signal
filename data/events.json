@@ -70,6 +70,46 @@
   "holiday": null
  },
  {
+  "date": "2026-10-01",
+  "keyword": "강화도 낙지",
+  "value": 133.3,
+  "baseline": 25.0,
+  "ratio": 5.33,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-09-28",
+  "keyword": "강화도 낙지",
+  "value": 100.0,
+  "baseline": 24.2,
+  "ratio": 4.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2026-09-27",
+  "keyword": "강화도 낙지",
+  "value": 143.3,
+  "baseline": 23.3,
+  "ratio": 6.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-09-26",
+  "keyword": "강화도 낙지",
+  "value": 100.0,
+  "baseline": 24.2,
+  "ratio": 4.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
   "date": "2026-09-25",
   "keyword": "강화도 가볼만한곳",
   "value": 453.5,

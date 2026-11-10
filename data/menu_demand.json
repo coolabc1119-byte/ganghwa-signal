@@ -81,15 +81,19 @@
  },
  {
   "menu": "낙지",
-  "monthly_search": 0,
-  "keywords": [],
+  "monthly_search": 40,
+  "keywords": [
+   "강화도낙지"
+  ],
   "mine": true,
   "under10": false
  },
  {
   "menu": "연포탕",
-  "monthly_search": 0,
-  "keywords": [],
+  "monthly_search": 30,
+  "keywords": [
+   "강화도연포탕"
+  ],
   "mine": true,
   "under10": false
  }

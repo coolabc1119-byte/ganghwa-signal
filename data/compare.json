@@ -361,5 +361,43 @@
    "prev": 0.0,
    "pct": null
   }
+ },
+ {
+  "keyword": "강화도 낙지",
+  "tiny": true,
+  "week": {
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
+  },
+  "month": {
+   "cur": 1.333,
+   "prev": 45.667,
+   "pct": null
+  },
+  "yoy": {
+   "cur": 1.333,
+   "prev": 26.003,
+   "pct": null
+  }
+ },
+ {
+  "keyword": "강화도 연포탕",
+  "tiny": true,
+  "week": {
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
+  },
+  "month": {
+   "cur": 0.0,
+   "prev": 0.173,
+   "pct": null
+  },
+  "yoy": {
+   "cur": 0.0,
+   "prev": 0.0,
+   "pct": null
+  }
  }
 ]

@@ -346,10 +346,8 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <table id="menu" style="table-layout:fixed"></table></div>
     <div class="card" id="rkCard" hidden><h2>메뉴를 검색하면 누가 먼저 나오나 <span class="chip live">실데이터</span></h2>
       <div class="sub" id="rkSub"></div>
+      <div class="basis" id="rkBasis"></div>
       <div class="prep" id="rkMine"></div>
-      <div class="controls" style="margin-top:12px"><div class="seg" id="rkSeg"></div>
-        <div class="seg" id="rkSort"><button data-s="place" class="on">네이버 노출 순</button><button data-s="s7">가게 검색량 7일</button><button data-s="s30">30일</button></div></div>
-      <div class="basis" id="rkBasis" hidden></div>
       <div id="rkList"></div>
       <h3 class="h3">여러 메뉴에서 겹치는 가게</h3>
       <div class="sub">우리 메뉴 검색 2개 이상에서 10위 안에 든 가게 · 숫자 = 그 검색에서의 순위</div>
@@ -570,7 +568,7 @@ const HOW={
   yweek:{f:['<b>작년 요일 평균</b> = 작년 1년 중 그 요일 실제값 평균 (연휴·연휴 전날 제외)','<b>배율</b> = 그 요일 평균 ÷ 작년 월~목 평균','<b>증감</b> = 올해 그 요일 평균 ÷ 작년 같은 기간(올해 데이터 첫날~마지막 날과 같은 월·일 범위) 그 요일 평균 − 1'], s:['tour','cfg']},
   ytrend:{f:['<b>막대</b> = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 (두 해 모두 '+MIN_DAYS+'일 이상 있는 달)','<b>판정</b> = 비교 가능한 최근 12개월 중 증가한 달이 75% 이상 → 꾸준히 증가 · 25% 이하 → 꾸준히 감소 · 그 외 → 등락 반복','<b>연속</b> = 가장 최근 달부터 같은 방향(증가/감소)이 몇 달 이어졌나'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
-  rkList:{f:['<b>순서</b> = 네이버 지도(플레이스)의 식당 검색 결과 순서 그대로, 광고 칸 제외','<b>검색 위치</b> = 강화군 가운데 좌표로 고정 · 실제로는 검색하는 사람 위치·시간에 따라 순서가 조금씩 다름','<b>10위 밖</b> = 첫 화면 10곳 안에 없음(그 뒤 순위는 읽지 않음)','<b>리뷰</b> = 그 가게의 방문자 리뷰 누적 건수','<b>가게 검색량 30일</b> = 가게 이름(지점 표기 뺀 이름, 「강화」 붙인 표기 포함)의 네이버 최근 한 달 실제 검색수 합 — 검색광고 키워드도구','<b>가게 검색량 7일</b> = 한 달 검색수 × (데이터랩 최근 7일 ÷ 최근 30일) → 추정값 · 증감은 같은 방식의 직전 7일 대비','<b>* 표시</b> = 이름이 4글자 이하라 다른 지역의 같은 이름 가게·낱말 검색이 섞였을 수 있음','<b>정렬</b> = 노출 순서 상위 10곳 안에서만 검색량으로 다시 줄 세움(10위 밖 가게는 포함하지 않음)','<b>겹치는 가게</b> = 우리 메뉴 검색어 2개 이상에서 10위 안','<b>한계</b> = 공식 API가 없어 공개 화면을 하루 한 번 읽는 방식 → 네이버가 화면을 바꾸면 멈출 수 있음'], s:['place','ad','dlab']},
+  rkList:{f:['<b>순서</b> = 네이버 지도(플레이스)의 식당 검색 결과 순서 그대로, 광고 칸 제외','<b>검색 위치</b> = 강화군 가운데 좌표로 고정 · 실제로는 검색하는 사람 위치·시간에 따라 순서가 조금씩 다름','<b>10위 밖</b> = 첫 화면 10곳 안에 없음(그 뒤 순위는 읽지 않음)','<b>리뷰</b> = 그 가게의 방문자 리뷰 누적 건수','<b>가게 검색량 30일</b> = 가게 이름(지점 표기 뺀 이름, 「강화」 붙인 표기 포함)의 네이버 최근 한 달 실제 검색수 합 — 검색광고 키워드도구','<b>가게 검색량 7일</b> = 한 달 검색수 × (데이터랩 최근 7일 ÷ 최근 30일) → 추정값 · 증감은 같은 방식의 직전 7일 대비','<b>* 표시</b> = 이름이 4글자 이하라 다른 지역의 같은 이름 가게·낱말 검색이 섞였을 수 있음','<b>검색 순위</b> = 노출 상위 10곳 안에서 7일 검색량이 많은 순(10위 밖 가게는 포함하지 않음) · 주황 숫자 = 그중 1위','<b>겹치는 가게</b> = 우리 메뉴 검색어 2개 이상에서 10위 안','<b>한계</b> = 공식 API가 없어 공개 화면을 하루 한 번 읽는 방식 → 네이버가 화면을 바꾸면 멈출 수 있음'], s:['place','ad','dlab']},
   menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)','<b>전월(전주) 대비</b> = 「강화도 ○○」 한 가지 검색어의 최근 30일(7일) 합 ÷ 그 직전 같은 길이 기간 합 − 1 (데이터랩 일별 추이)','<b>전년 대비</b> = 최근 30일(7일) 합 ÷ 364일 전 같은 기간 합 − 1 (요일이 맞도록 364일)','<b>달력의 월이 아닌 이유</b> = 이번 달이 아직 안 끝나 달력 기준으로는 비교가 안 맞음 → 같은 길이 30일끼리 비교','<b>적음</b> = 하루 평균 3회 미만이라 증감이 의미 없음 · <b>수집 전</b> = 다음 수집부터 표시'], s:['ad','dlab']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
   wxeff:{f:[
@@ -699,26 +697,30 @@ function renderRank(){
   const qs=Object.keys(R.queries).filter(q=>R.queries[q].place.length); if(!qs.length){ card.hidden=true; return; }
   const nm=q=>q.replace(/^강화도\s*/,''), area=a=>(a||'').replace(/^인천\s*/,'').replace(/^강화군\s*/,'')||'–';
   const hs=Object.keys(R.history||{}).sort(), prevDay=hs.length>=2?hs.at(-2):null;
-  document.getElementById('rkSub').innerHTML=`네이버 지도에서 「강화도 ○○」를 검색했을 때 나오는 순서 · <b>광고 제외, 상위 10곳</b> · 강화 한가운데에서 검색한 것으로 계산(검색하는 사람 위치에 따라 순서가 조금 달라짐) · 확인 ${R.checked?md(R.checked.slice(0,10))+' '+R.checked.slice(11):'–'} · 리뷰 = 방문자 리뷰 누적(건)`;
-  document.getElementById('rkMine').innerHTML=`<div class="hd">우리 가게(만선꽃게랑낙지) 순위${prevDay?` · 변화는 ${md(prevDay)} 대비`:''}</div>`+qs.map(q=>{ const e=R.queries[q], r=e.my_rank, p=prevDay?R.history[prevDay]?.[q]?.my_rank:undefined;
+  const top=q=>R.queries[q].place.slice(0,10).map((x,i)=>({...x,pos:i+1}));
+  const srank=(L,x,key)=> x[key]==null? null : 1+L.filter(y=>(y[key]??-1)>x[key]).length;
+  const to=qs.flatMap(q=>top(q)).find(x=>x.to)?.to;
+  document.getElementById('rkSub').innerHTML=`「강화도 ○○」를 네이버 지도에서 검색했을 때 <b>위에 나오는 순서(노출)</b>와, 그 가게들의 <b>이름을 직접 검색한 횟수(검색)</b>를 메뉴별로 한 번에 · 확인 ${R.checked?md(R.checked.slice(0,10))+' '+R.checked.slice(11):'–'}`;
+  document.getElementById('rkBasis').innerHTML=`<div><span>노출</span><b style="font-family:var(--sans);font-weight:500">네이버 지도 검색 순서 · 광고 제외 · 상위 10곳</b></div><div><span>7일(회)</span><b>${to?`${md(shift(to,-6))}~${md(to)} · 증감 vs ${md(shift(to,-13))}~${md(shift(to,-7))}`:'–'}</b></div><div><span>30일(회)</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달</b></div><div><span>검색 순위</span><b style="font-family:var(--sans);font-weight:500">노출 10곳 안에서 7일 검색이 많은 순</b></div>`;
+  // 우리 가게 요약: 메뉴마다 노출·검색 순위와 각 1위
+  document.getElementById('rkMine').innerHTML=`<div class="hd">우리 가게(만선꽃게랑낙지) 한눈에${prevDay?` · 노출 변화는 ${md(prevDay)} 대비`:''}</div>`+qs.map(q=>{ const L=top(q), me=L.find(x=>x.mine), r=me?me.pos:null, p=prevDay?R.history[prevDay]?.[q]?.my_rank:undefined;
     const ch=(prevDay&&r&&p&&r!==p)?` <span class="${r<p?'up':'down'}" style="font-size:11px">${r<p?'▲':'▼'}${Math.abs(p-r)}</span>`:'';
-    return `<div class="pr"><div style="min-width:0"><div class="n">${nm(q)}</div><div class="w">1위 ${XSS(e.place[0].name)} · ${area(e.place[0].area)}</div></div><span class="vt ${r?(r<=3?'more':'keep'):'hold'}" style="font-size:12.5px">${r?r+'위':'10위 밖'}${ch}</span></div>`; }).join('');
-  if(!state.rkq||!qs.includes(state.rkq)) state.rkq=qs.find(q=>/꽃게탕/.test(q))||qs[0];
-  const seg=document.getElementById('rkSeg'); seg.innerHTML=qs.map(q=>`<button data-q="${q}" class="${q===state.rkq?'on':''}">${nm(q)}</button>`).join('');
-  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.rkq=b.dataset.q; renderRank(); });
-  const base=R.queries[state.rkq].place.slice(0,10).map((x,i)=>({...x,pos:i+1}));
-  const mode=state.rkSort||'place'; document.querySelectorAll('#rkSort button').forEach(b=>{ b.classList.toggle('on',b.dataset.s===mode); b.onclick=()=>{ state.rkSort=b.dataset.s; renderRank(); }; });
-  const key=mode==='s7'?'search7':'search30';
-  const L=mode==='place'? base : [...base].sort((a,b)=>(b[key]??-1)-(a[key]??-1));
-  const to=base.find(x=>x.to)?.to, bs=document.getElementById('rkBasis'); bs.hidden=mode==='place';
-  if(mode!=='place'&&to) bs.innerHTML=(mode==='s7'?`<div><span>최근 7일</span><b>${md(shift(to,-6))}~${md(to)}</b></div><div><span>증감</span><b>vs 직전 7일 ${md(shift(to,-13))}~${md(shift(to,-7))}</b></div><div><span>계산</span><b style="font-family:var(--sans);font-weight:500">한 달 실제 검색수 × 일별 추이 비율(추정)</b></div>`:`<div><span>30일</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달(검색광고 실측)</b></div>`)+`<div><span>무엇을 세나</span><b style="font-family:var(--sans);font-weight:500">가게 이름을 직접 검색한 횟수(회) · 「강화」 붙인 표기 포함</b></div>`;
-  const cnt={}; base.forEach(x=>{ const a=area(x.area); cnt[a]=(cnt[a]||0)+1; });
-  const val=x=>{ if(mode==='place') return x.visitor!=null?fmt(x.visitor):'–'; const v=x[key]; if(v==null) return '<span class="muted">–</span>';
-    const ch=mode==='s7'&&x.prev7? (v/x.prev7-1)*100 : null; return fmt(v)+(x.amb?'<span class="muted">*</span>':'')+(ch!=null&&Math.abs(ch)>=1?`<small style="display:block;font-size:10.5px" class="${ch>=0?'up':'down'}">${ch>=0?'▲':'▼'}${Math.abs(ch).toFixed(0)}%</small>`:''); };
-  const anyAmb=mode!=='place'&&L.some(x=>x.amb);
-  document.getElementById('rkList').innerHTML=`<div class="yg" style="grid-template-columns:30px minmax(0,1.6fr) minmax(0,.8fr) 62px"><div class="h">순위</div><div class="h" style="text-align:left">가게</div><div class="h" style="text-align:left">지역</div><div class="h">${mode==='place'?'리뷰(건)':'검색(회)'}</div>`+
-    L.map((x,i)=>{ const st=x.mine?'background:var(--cold-bg);font-weight:700;':''; return `<div class="n" style="${st}text-align:left">${i+1}</div><div style="${st}">${XSS(x.name)}${x.mine?' <span class="tag mine" style="margin-left:2px">우리</span>':''}${mode!=='place'?`<small style="display:block;font-size:10.5px;font-weight:400;color:var(--faint)">노출 ${x.pos}위</small>`:''}</div><div style="${st}color:var(--sub)">${XSS(area(x.area))}</div><div class="n" style="${st}">${val(x)}</div>`; }).join('')+`</div>
-    <div class="sub" style="margin:8px 0 0">${anyAmb?'* 이름이 짧아 다른 지역의 같은 이름 검색이 섞였을 수 있음 · ':''}지역별: ${Object.entries(cnt).sort((a,b)=>b[1]-a[1]).map(([a,c])=>`${XSS(a)} <b>${c}곳</b>`).join(' · ')}</div>`;
+    const sr=me?srank(L,me,'search7'):null; const s1=[...L].sort((a,b)=>(b.search7??-1)-(a.search7??-1))[0];
+    return `<div class="pr"><div style="min-width:0"><div class="n">${nm(q)}</div><div class="w">노출 1위 ${XSS(L[0].name)}</div><div class="w">검색 1위 ${XSS(s1.name)}${s1.amb?'*':''}</div></div>
+      <div style="text-align:right;white-space:nowrap"><span class="vt ${r?(r<=3?'more':'keep'):'hold'}" style="font-size:12.5px;margin:0">노출 ${r?r+'위':'10위 밖'}${ch}</span><div style="font-size:11.5px;color:var(--sub);margin-top:3px">${me?`검색 ${sr?sr+'위':'–'}`:''}</div></div></div>`; }).join('');
+  // 메뉴별 표: 노출 순서대로, 7일·30일 검색을 같은 줄에
+  const row=(L,x)=>{ const st=x.mine?'background:var(--cold-bg);':''; const ch=x.search7!=null&&x.prev7?(x.search7/x.prev7-1)*100:null; const lead=srank(L,x,'search7')===1;
+    return `<div class="n" style="${st}text-align:left;${x.mine?'font-weight:700':''}">${x.pos}</div>
+      <div style="${st}${x.mine?'font-weight:700':''}">${XSS(x.name)}${x.mine?' <span class="tag mine" style="margin-left:2px">우리</span>':''}<small style="display:block;font-size:10.5px;font-weight:400;color:var(--faint)">${XSS(area(x.area))} · 리뷰 ${x.visitor!=null?fmt(x.visitor):'–'}</small></div>
+      <div class="n" style="${st}${lead?'color:var(--hot);font-weight:700':''}">${x.search7!=null?fmt(x.search7)+(x.amb?'<span class="muted">*</span>':''):'<span class="muted">–</span>'}${ch!=null&&Math.abs(ch)>=1?`<small style="display:block;font-size:10.5px;font-weight:400" class="${ch>=0?'up':'down'}">${ch>=0?'▲':'▼'}${Math.abs(ch).toFixed(0)}%</small>`:''}</div>
+      <div class="n" style="${st}">${x.search30!=null?fmt(x.search30):'<span class="muted">–</span>'}</div>`; };
+  const grid=(L,rows,head)=>`<div class="yg" style="grid-template-columns:34px minmax(0,1fr) 58px 54px">${head?`<div class="h">노출</div><div class="h" style="text-align:left">가게 · 지역 · 방문자 리뷰(건)</div><div class="h">7일(회)</div><div class="h">30일(회)</div>`:''}${rows.map(x=>row(L,x)).join('')}</div>`;
+  document.getElementById('rkList').innerHTML=qs.map(q=>{ const L=top(q), a=L.slice(0,5), b=L.slice(5), me=L.find(x=>x.mine);
+    const cnt={}; L.forEach(x=>{ const k=area(x.area); cnt[k]=(cnt[k]||0)+1; });
+    const meLow=me&&me.pos>5;
+    return `<h3 class="h3" style="margin-top:20px">${nm(q)} <span style="font-weight:400;font-size:12px;color:var(--sub)">· ${Object.entries(cnt).sort((x,y)=>y[1]-x[1]).slice(0,3).map(([k,c])=>`${XSS(k)} ${c}곳`).join(', ')}</span></h3>`+grid(L,meLow?[...a,me]:a,true)+
+      (b.length?`<details class="nx" style="border-top:0;padding-top:4px;margin-top:2px"><summary style="font-size:12px;font-weight:500;color:var(--sub)">6~10위 보기</summary>${grid(L,b,false)}</details>`:''); }).join('')+
+    `<div class="sub" style="margin:12px 0 0"><span style="color:var(--hot);font-weight:700">주황 숫자</span> = 그 메뉴 10곳 중 가게 이름 검색 1위 · * = 이름이 짧아 다른 지역의 같은 이름 검색이 섞였을 수 있음 · 7일은 한 달 실제 검색수에 일별 추이를 곱한 추정</div>`;
   const by={}; qs.forEach(q=>R.queries[q].place.slice(0,10).forEach((x,i)=>{ const k=x.id||x.name; (by[k] ||= {name:x.name,area:x.area,mine:x.mine,hits:[]}).hits.push([nm(q),i+1]); }));
   const dup=Object.values(by).filter(x=>x.hits.length>=2).sort((a,b)=>b.hits.length-a.hits.length||Math.min(...a.hits.map(h=>h[1]))-Math.min(...b.hits.map(h=>h[1])));
   document.getElementById('rkDup').innerHTML=dup.length? dup.map(x=>`<div class="cr" style="padding:9px 0"><div class="ctop" style="margin-bottom:3px"><span class="nm">${XSS(x.name)}${x.mine?'<span class="tag mine">우리</span>':''}</span><span class="muted" style="font-size:12px;white-space:nowrap">${XSS(area(x.area))}</span></div><div class="sub" style="margin:0">${x.hits.map(h=>`${h[0]} <b class="mono">${h[1]}위</b>`).join(' · ')}</div></div>`).join('') : '<div class="empty">겹치는 가게가 없습니다.</div>';

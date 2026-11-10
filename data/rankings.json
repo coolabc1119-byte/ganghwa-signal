@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10 17:25",
+ "checked": "2026-11-10 17:36",
  "queries": {
   "강화도 칼국수": {
    "place": [
@@ -11,7 +11,13 @@
      "visitor": 14908,
      "blog": 1602,
      "score": "4.88",
-     "mine": false
+     "mine": false,
+     "search30": 2320,
+     "search7": 397,
+     "prev7": 438,
+     "amb": false,
+     "base": "배터지는집 동막손칼국수명가",
+     "to": "2026-11-09"
     },
     {
      "name": "일년내내칼국수맛있는집 강화도본점",
@@ -21,7 +27,13 @@
      "visitor": 6353,
      "blog": 19029,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 220,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "일년내내칼국수맛있는집",
+     "to": "2026-11-09"
     },
     {
      "name": "강화손칼국수 본점",
@@ -31,7 +43,13 @@
      "visitor": 4796,
      "blog": 4141,
      "score": "4.49",
-     "mine": false
+     "mine": false,
+     "search30": 1880,
+     "search7": 419,
+     "prev7": 467,
+     "amb": false,
+     "base": "강화손칼국수",
+     "to": "2026-11-09"
     },
     {
      "name": "도토리 바지락손칼국수",
@@ -41,7 +59,13 @@
      "visitor": 4132,
      "blog": 1125,
      "score": "4.9",
-     "mine": false
+     "mine": false,
+     "search30": 400,
+     "search7": 83,
+     "prev7": 65,
+     "amb": false,
+     "base": "도토리 바지락손칼국수",
+     "to": "2026-11-09"
     },
     {
      "name": "수라전통육개장 본점",
@@ -51,7 +75,13 @@
      "visitor": 4363,
      "blog": 2768,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1860,
+     "search7": 387,
+     "prev7": 432,
+     "amb": false,
+     "base": "수라전통육개장",
+     "to": "2026-11-09"
     },
     {
      "name": "해남회조개구이 강화도 동막해수욕장점",
@@ -61,7 +91,13 @@
      "visitor": 3937,
      "blog": 2409,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 750,
+     "search7": 165,
+     "prev7": 174,
+     "amb": false,
+     "base": "해남회조개구이",
+     "to": "2026-11-09"
     },
     {
      "name": "강화손칼국수 전등사점",
@@ -71,7 +107,13 @@
      "visitor": 946,
      "blog": 415,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1570,
+     "search7": 342,
+     "prev7": 393,
+     "amb": false,
+     "base": "강화손칼국수",
+     "to": "2026-11-09"
     },
     {
      "name": "서해촌",
@@ -81,7 +123,13 @@
      "visitor": 2926,
      "blog": 1462,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1000,
+     "search7": 238,
+     "prev7": 244,
+     "amb": true,
+     "base": "서해촌",
+     "to": "2026-11-09"
     },
     {
      "name": "바다마을",
@@ -91,7 +139,13 @@
      "visitor": 1488,
      "blog": 1262,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 2090,
+     "search7": 448,
+     "prev7": 467,
+     "amb": false,
+     "base": "바다마을",
+     "to": "2026-11-09"
     },
     {
      "name": "충무칼국수보쌈 강화점",
@@ -101,7 +155,13 @@
      "visitor": 789,
      "blog": 262,
      "score": "4.52",
-     "mine": false
+     "mine": false,
+     "search30": 1490,
+     "search7": 365,
+     "prev7": 393,
+     "amb": false,
+     "base": "충무칼국수보쌈",
+     "to": "2026-11-09"
     }
    ],
    "api": [],
@@ -118,7 +178,13 @@
      "visitor": 16328,
      "blog": 1630,
      "score": "4.87",
-     "mine": false
+     "mine": false,
+     "search30": 3010,
+     "search7": 576,
+     "prev7": 643,
+     "amb": false,
+     "base": "일오삼간장게장",
+     "to": "2026-11-09"
     },
     {
      "name": "꽃새담 강화도점",
@@ -128,7 +194,13 @@
      "visitor": 6528,
      "blog": 2784,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 2770,
+     "search7": 449,
+     "prev7": 506,
+     "amb": true,
+     "base": "꽃새담",
+     "to": "2026-11-09"
     },
     {
      "name": "진복호",
@@ -138,7 +210,13 @@
      "visitor": 2363,
      "blog": 2508,
      "score": "4.5",
-     "mine": false
+     "mine": false,
+     "search30": 4300,
+     "search7": 871,
+     "prev7": 949,
+     "amb": true,
+     "base": "진복호",
+     "to": "2026-11-09"
     },
     {
      "name": "나룻터꽃게집",
@@ -148,7 +226,13 @@
      "visitor": 5334,
      "blog": 13393,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 710,
+     "search7": 110,
+     "prev7": 166,
+     "amb": false,
+     "base": "나룻터꽃게집",
+     "to": "2026-11-09"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -158,7 +242,13 @@
      "visitor": 1066,
      "blog": 1453,
      "score": "4.59",
-     "mine": true
+     "mine": true,
+     "search30": 260,
+     "search7": 49,
+     "prev7": 50,
+     "amb": false,
+     "base": "만선꽃게랑낙지",
+     "to": "2026-11-05"
     },
     {
      "name": "충남서산집",
@@ -168,7 +258,13 @@
      "visitor": 2778,
      "blog": 1396,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 5010,
+     "search7": 1114,
+     "prev7": 1181,
+     "amb": false,
+     "base": "충남서산집",
+     "to": "2026-11-09"
     },
     {
      "name": "바다향기",
@@ -178,7 +274,13 @@
      "visitor": 726,
      "blog": 216,
      "score": "4.88",
-     "mine": false
+     "mine": false,
+     "search30": 5740,
+     "search7": 1327,
+     "prev7": 1370,
+     "amb": false,
+     "base": "바다향기",
+     "to": "2026-11-09"
     },
     {
      "name": "서해꽃게전문",
@@ -188,7 +290,13 @@
      "visitor": 493,
      "blog": 145,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 240,
+     "search7": 27,
+     "prev7": 35,
+     "amb": false,
+     "base": "서해꽃게전문",
+     "to": "2026-11-07"
     },
     {
      "name": "꽃게향",
@@ -198,7 +306,13 @@
      "visitor": 383,
      "blog": 100,
      "score": "4.61",
-     "mine": false
+     "mine": false,
+     "search30": 650,
+     "search7": 135,
+     "prev7": 110,
+     "amb": true,
+     "base": "꽃게향",
+     "to": "2026-11-09"
     },
     {
      "name": "해남회조개구이 강화도 동막해수욕장점",
@@ -208,7 +322,13 @@
      "visitor": 3937,
      "blog": 2409,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 750,
+     "search7": 165,
+     "prev7": 174,
+     "amb": false,
+     "base": "해남회조개구이",
+     "to": "2026-11-09"
     }
    ],
    "api": [],
@@ -225,7 +345,13 @@
      "visitor": 16328,
      "blog": 1630,
      "score": "4.87",
-     "mine": false
+     "mine": false,
+     "search30": 3010,
+     "search7": 576,
+     "prev7": 643,
+     "amb": false,
+     "base": "일오삼간장게장",
+     "to": "2026-11-09"
     },
     {
      "name": "편가네된장",
@@ -235,7 +361,13 @@
      "visitor": 2019,
      "blog": 1733,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 2310,
+     "search7": 783,
+     "prev7": 881,
+     "amb": false,
+     "base": "편가네된장",
+     "to": "2026-11-09"
     },
     {
      "name": "나룻터꽃게집",
@@ -245,7 +377,13 @@
      "visitor": 5334,
      "blog": 13393,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 710,
+     "search7": 110,
+     "prev7": 166,
+     "amb": false,
+     "base": "나룻터꽃게집",
+     "to": "2026-11-09"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -255,7 +393,13 @@
      "visitor": 1066,
      "blog": 1453,
      "score": "4.59",
-     "mine": true
+     "mine": true,
+     "search30": 260,
+     "search7": 49,
+     "prev7": 50,
+     "amb": false,
+     "base": "만선꽃게랑낙지",
+     "to": "2026-11-05"
     },
     {
      "name": "바다향기",
@@ -265,7 +409,13 @@
      "visitor": 726,
      "blog": 216,
      "score": "4.88",
-     "mine": false
+     "mine": false,
+     "search30": 5740,
+     "search7": 1327,
+     "prev7": 1370,
+     "amb": false,
+     "base": "바다향기",
+     "to": "2026-11-09"
     },
     {
      "name": "충남서산집",
@@ -275,7 +425,13 @@
      "visitor": 2778,
      "blog": 1396,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 5010,
+     "search7": 1114,
+     "prev7": 1181,
+     "amb": false,
+     "base": "충남서산집",
+     "to": "2026-11-09"
     },
     {
      "name": "꽃새담 강화도점",
@@ -285,7 +441,13 @@
      "visitor": 6528,
      "blog": 2784,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 2770,
+     "search7": 449,
+     "prev7": 506,
+     "amb": true,
+     "base": "꽃새담",
+     "to": "2026-11-09"
     },
     {
      "name": "꽃게향",
@@ -295,7 +457,13 @@
      "visitor": 383,
      "blog": 100,
      "score": "4.61",
-     "mine": false
+     "mine": false,
+     "search30": 650,
+     "search7": 135,
+     "prev7": 110,
+     "amb": true,
+     "base": "꽃게향",
+     "to": "2026-11-09"
     },
     {
      "name": "서해꽃게전문",
@@ -305,7 +473,13 @@
      "visitor": 493,
      "blog": 145,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 240,
+     "search7": 27,
+     "prev7": 35,
+     "amb": false,
+     "base": "서해꽃게전문",
+     "to": "2026-11-07"
     },
     {
      "name": "강화 한정식 수라정",
@@ -315,7 +489,13 @@
      "visitor": 1118,
      "blog": 473,
      "score": "4.59",
-     "mine": false
+     "mine": false,
+     "search30": 850,
+     "search7": 306,
+     "prev7": 260,
+     "amb": false,
+     "base": "강화 한정식 수라정",
+     "to": "2026-11-09"
     }
    ],
    "api": [],
@@ -332,7 +512,13 @@
      "visitor": 555,
      "blog": 283,
      "score": "4.22",
-     "mine": false
+     "mine": false,
+     "search30": 670,
+     "search7": 133,
+     "prev7": 160,
+     "amb": false,
+     "base": "용흥궁식당",
+     "to": "2026-11-09"
     },
     {
      "name": "소반정",
@@ -342,7 +528,13 @@
      "visitor": 201,
      "blog": 49,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 520,
+     "search7": 86,
+     "prev7": 152,
+     "amb": true,
+     "base": "소반정",
+     "to": "2026-11-09"
     },
     {
      "name": "왕자정묵밥",
@@ -352,7 +544,13 @@
      "visitor": 1164,
      "blog": 503,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 580,
+     "search7": 109,
+     "prev7": 124,
+     "amb": false,
+     "base": "왕자정묵밥",
+     "to": "2026-11-09"
     },
     {
      "name": "일억조식당",
@@ -362,7 +560,13 @@
      "visitor": 492,
      "blog": 258,
      "score": "4.03",
-     "mine": false
+     "mine": false,
+     "search30": 750,
+     "search7": 159,
+     "prev7": 202,
+     "amb": false,
+     "base": "일억조식당",
+     "to": "2026-11-09"
     },
     {
      "name": "빼애골 용흥궁식당",
@@ -372,7 +576,13 @@
      "visitor": 579,
      "blog": 6,
      "score": "4.99",
-     "mine": false
+     "mine": false,
+     "search30": 90,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "빼애골 용흥궁식당",
+     "to": "2026-10-25"
     },
     {
      "name": "찬우정",
@@ -382,7 +592,13 @@
      "visitor": 408,
      "blog": 193,
      "score": "4.51",
-     "mine": false
+     "mine": false,
+     "search30": 700,
+     "search7": 222,
+     "prev7": 114,
+     "amb": true,
+     "base": "찬우정",
+     "to": "2026-11-09"
     },
     {
      "name": "서내농원",
@@ -392,7 +608,13 @@
      "visitor": 150,
      "blog": 52,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 580,
+     "search7": 136,
+     "prev7": 139,
+     "amb": false,
+     "base": "서내농원",
+     "to": "2026-11-09"
     },
     {
      "name": "하가돈",
@@ -402,7 +624,13 @@
      "visitor": 346,
      "blog": 1303,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 300,
+     "search7": null,
+     "prev7": null,
+     "amb": true,
+     "base": "하가돈",
+     "to": "2026-11-09"
     },
     {
      "name": "마니산단골식당",
@@ -412,7 +640,13 @@
      "visitor": 1130,
      "blog": 859,
      "score": "4.82",
-     "mine": false
+     "mine": false,
+     "search30": 1290,
+     "search7": 268,
+     "prev7": 332,
+     "amb": false,
+     "base": "마니산단골식당",
+     "to": "2026-11-09"
     },
     {
      "name": "전등사 남문식당",
@@ -422,7 +656,13 @@
      "visitor": 1284,
      "blog": 564,
      "score": "4.37",
-     "mine": false
+     "mine": false,
+     "search30": 740,
+     "search7": 148,
+     "prev7": 160,
+     "amb": false,
+     "base": "전등사 남문식당",
+     "to": "2026-11-09"
     }
    ],
    "api": [],
@@ -439,7 +679,13 @@
      "visitor": 2926,
      "blog": 1462,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1000,
+     "search7": 238,
+     "prev7": 244,
+     "amb": true,
+     "base": "서해촌",
+     "to": "2026-11-09"
     },
     {
      "name": "한글호",
@@ -449,7 +695,13 @@
      "visitor": 191,
      "blog": 94,
      "score": "4.29",
-     "mine": false
+     "mine": false,
+     "search30": 250,
+     "search7": 24,
+     "prev7": 63,
+     "amb": true,
+     "base": "한글호",
+     "to": "2026-11-08"
     },
     {
      "name": "굴사냥조개사냥",
@@ -459,7 +711,13 @@
      "visitor": 303,
      "blog": 58,
      "score": "4.76",
-     "mine": false
+     "mine": false,
+     "search30": 840,
+     "search7": 273,
+     "prev7": 235,
+     "amb": false,
+     "base": "굴사냥조개사냥",
+     "to": "2026-11-09"
     },
     {
      "name": "대선정",
@@ -469,7 +727,13 @@
      "visitor": 159,
      "blog": 60,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 300,
+     "search7": 67,
+     "prev7": 72,
+     "amb": true,
+     "base": "대선정",
+     "to": "2026-11-09"
     },
     {
      "name": "반선",
@@ -479,7 +743,13 @@
      "visitor": 44,
      "blog": 28,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 450,
+     "search7": 123,
+     "prev7": 69,
+     "amb": true,
+     "base": "반선",
+     "to": "2026-11-09"
     },
     {
      "name": "쭈꾸미짱",
@@ -489,7 +759,13 @@
      "visitor": 634,
      "blog": 188,
      "score": "5",
-     "mine": false
+     "mine": false,
+     "search30": 310,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "쭈꾸미짱",
+     "to": "2026-11-08"
     },
     {
      "name": "오로라연어",
@@ -499,7 +775,13 @@
      "visitor": 1207,
      "blog": 1273,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 590,
+     "search7": 114,
+     "prev7": 144,
+     "amb": false,
+     "base": "오로라연어",
+     "to": "2026-11-09"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -509,7 +791,13 @@
      "visitor": 1066,
      "blog": 1453,
      "score": "4.59",
-     "mine": true
+     "mine": true,
+     "search30": 260,
+     "search7": 49,
+     "prev7": 50,
+     "amb": false,
+     "base": "만선꽃게랑낙지",
+     "to": "2026-11-05"
     },
     {
      "name": "보광호",
@@ -519,7 +807,13 @@
      "visitor": 4030,
      "blog": 2799,
      "score": "4.56",
-     "mine": false
+     "mine": false,
+     "search30": 2900,
+     "search7": 452,
+     "prev7": 586,
+     "amb": true,
+     "base": "보광호",
+     "to": "2026-11-09"
     },
     {
      "name": "토가",
@@ -529,7 +823,13 @@
      "visitor": 1257,
      "blog": 687,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 4760,
+     "search7": 896,
+     "prev7": 1201,
+     "amb": true,
+     "base": "토가",
+     "to": "2026-11-09"
     }
    ],
    "api": [],
@@ -546,7 +846,13 @@
      "visitor": 1066,
      "blog": 1453,
      "score": "4.59",
-     "mine": true
+     "mine": true,
+     "search30": 260,
+     "search7": 49,
+     "prev7": 50,
+     "amb": false,
+     "base": "만선꽃게랑낙지",
+     "to": "2026-11-05"
     },
     {
      "name": "미리내바지락칼국수",
@@ -556,7 +862,13 @@
      "visitor": 643,
      "blog": 263,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 140,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "미리내바지락칼국수",
+     "to": "2026-10-31"
     },
     {
      "name": "꽃게와낙지",
@@ -566,7 +878,13 @@
      "visitor": 297,
      "blog": 46,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 110,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "꽃게와낙지",
+     "to": "2026-11-07"
     },
     {
      "name": "강화해신탕",
@@ -576,7 +894,13 @@
      "visitor": 303,
      "blog": 141,
      "score": "4.47",
-     "mine": false
+     "mine": false,
+     "search30": 330,
+     "search7": 70,
+     "prev7": 63,
+     "amb": false,
+     "base": "강화해신탕",
+     "to": "2026-11-09"
     },
     {
      "name": "소담칼국수",
@@ -586,7 +910,13 @@
      "visitor": 200,
      "blog": 38,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1970,
+     "search7": 436,
+     "prev7": 488,
+     "amb": false,
+     "base": "소담칼국수",
+     "to": "2026-11-09"
     },
     {
      "name": "원조 강화고구마묵밥 &칼국수",
@@ -596,7 +926,13 @@
      "visitor": 91,
      "blog": 14,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 60,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "원조 강화고구마묵밥 &칼국수",
+     "to": "2026-10-15"
     },
     {
      "name": "어객",
@@ -606,7 +942,13 @@
      "visitor": 9,
      "blog": 6,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 80,
+     "search7": null,
+     "prev7": null,
+     "amb": true,
+     "base": "어객",
+     "to": "2026-09-27"
     },
     {
      "name": "동광호",
@@ -616,7 +958,13 @@
      "visitor": 16,
      "blog": 1,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 200,
+     "search7": null,
+     "prev7": null,
+     "amb": true,
+     "base": "동광호",
+     "to": "2026-11-08"
     },
     {
      "name": "이우젓갈",
@@ -626,7 +974,13 @@
      "visitor": 5,
      "blog": 1,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 1660,
+     "search7": 189,
+     "prev7": 196,
+     "amb": false,
+     "base": "이우젓갈",
+     "to": "2026-11-09"
     },
     {
      "name": "나누리포차",
@@ -636,7 +990,13 @@
      "visitor": 2,
      "blog": 0,
      "score": null,
-     "mine": false
+     "mine": false,
+     "search30": 70,
+     "search7": null,
+     "prev7": null,
+     "amb": false,
+     "base": "나누리포차",
+     "to": "2026-10-05"
     }
    ],
    "api": [],
@@ -708,5 +1068,99 @@
    }
   }
  },
- "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳."
+ "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.",
+ "debug": {
+  "probe": {
+   "len": 460819,
+   "apollo": true,
+   "parsed": true,
+   "root": [
+    "__typename",
+    "placeList({\"input\":{\"deviceType\":\"mobile",
+    "placeList({\"input\":{\"deviceType\":\"mobile"
+   ],
+   "types": [
+    "HouseBanner",
+    "NaverOrderItem",
+    "Panorama",
+    "PlaceListBusinessesItem",
+    "PlaceListFilterItem",
+    "Query",
+    "VisitorReviews"
+   ],
+   "title": "네이버 플레이스"
+  },
+  "list_keys": {
+   "__typename": "str",
+   "businessType": "str",
+   "businesses": [
+    "__typename",
+    "items",
+    "queryString",
+    "siteSort",
+    "total"
+   ],
+   "adBusinesses({\"channel\":\"openingPlace\"})": [
+    "__typename",
+    "items"
+   ]
+  },
+  "debug_keys": [
+   "__typename",
+   "address",
+   "apolloCacheId",
+   "blogCafeReviewCount",
+   "bookingBusinessId",
+   "bookingDisplayName",
+   "bookingReviewCount",
+   "broadcastInfo",
+   "broadcasts",
+   "businessCategory",
+   "category",
+   "categoryCodeList",
+   "commonAddress",
+   "coupon",
+   "dbType",
+   "detailCid",
+   "distance",
+   "fullAddress",
+   "hasBooking",
+   "hasNPay",
+   "hasWheelchairEntrance",
+   "id",
+   "imageCount",
+   "imageUrl",
+   "imageUrls",
+   "listBadges",
+   "membershipBenefit",
+   "michelinGuide",
+   "microReview",
+   "nPayConnect",
+   "name",
+   "naverBookingBusinessId",
+   "naverBookingCategory",
+   "naverOrder",
+   "newBusinessHours",
+   "newOpening",
+   "options",
+   "phone",
+   "popularMenuImages",
+   "posInfo",
+   "promotionTitle",
+   "realTimeBookingInfo",
+   "repeatVisit",
+   "roadAddress",
+   "saveCount",
+   "streetPanorama",
+   "talktalkUrl",
+   "uniqueBroadcasts",
+   "virtualPhone",
+   "visitorImages",
+   "visitorReviewCount",
+   "visitorReviewScore",
+   "visitorReviews",
+   "x",
+   "y"
+  ]
+ }
 }

@@ -1,0 +1,66 @@
+{
+ "place_id": "21202659",
+ "name": "만선꽃게랑낙지",
+ "checked": "2026-11-10 10:49",
+ "visitor": 1065.0,
+ "blog": 1453.0,
+ "score": 4.59,
+ "text": 916.0,
+ "tags": [
+  {
+   "name": "음식이 맛있어요",
+   "count": 722
+  },
+  {
+   "name": "재료가 신선해요",
+   "count": 558
+  },
+  {
+   "name": "양이 많아요",
+   "count": 323
+  },
+  {
+   "name": "친절해요",
+   "count": 275
+  },
+  {
+   "name": "특별한 메뉴가 있어요",
+   "count": 246
+  },
+  {
+   "name": "인테리어가 멋져요",
+   "count": 171
+  },
+  {
+   "name": "매장이 넓어요",
+   "count": 168
+  },
+  {
+   "name": "매장이 청결해요",
+   "count": 163
+  }
+ ],
+ "history": {
+  "2026-11-10": {
+   "visitor": 1065.0,
+   "blog": 1453.0
+  }
+ },
+ "debug": {
+  "search_len": 1663697,
+  "home_len": 452382,
+  "review_keys": [
+   "cafeBlogReviewsTotal",
+   "imageReviewCount",
+   "ratingReviewsTotal",
+   "reviewCount",
+   "reviewGroupId",
+   "reviewId",
+   "visitorReviewMediasTotal",
+   "visitorReviewsScore",
+   "visitorReviewsTextReviewTotal",
+   "visitorReviewsTotal"
+  ]
+ },
+ "url": "https://m.place.naver.com/restaurant/21202659/review/visitor"
+}

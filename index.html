@@ -371,7 +371,7 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
 
   <!-- 방문자 -->
   <section class="panel" id="p-visit">
-    <div class="controls" style="margin:12px 0 0"><div class="seg" id="vgSeg" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%"><button data-g="a" class="on">올해 vs 작년</button><button data-g="b">날씨·연휴 영향</button><button data-g="c">최근 흐름</button></div></div>
+    <div class="controls" style="margin:12px 0 0"><div class="seg" id="vgSeg" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%"><button data-g="a" class="on">올해 vs 작년</button><button data-g="b">날씨·연휴 영향</button><button data-g="c">최근 추정</button></div></div>
     <div class="card" data-vg="a">
       <h2>올해 vs 작년 — 요약 <span class="chip" id="c-vis"></span></h2>
       <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
@@ -408,13 +408,6 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <div class="chart sm"><canvas id="ytrend"></canvas></div>
       <div id="yverdict" style="margin-top:10px"></div>
     </div>
-    <div class="card" data-vg="c">
-      <h2>하루 방문자 흐름</h2>
-      <div class="sub">단위: 명/일 · 얇은 선 = 일별, 굵은 선 = 7일 평균 · 빨간 점 = 비 온 날(5mm↑) · 약 한 달 늦게 올라옴</div>
-      <div class="controls"><div class="seg" id="vrange"><button data-r="90">3개월</button><button data-r="180" class="on">6개월</button><button data-r="9999">전체</button></div>
-        <div class="seg" id="vyoy"><button data-y="0" class="on">올해</button><button data-y="1">작년 겹쳐보기</button></div></div>
-      <div class="chart"><canvas id="visitors"></canvas></div>
-    </div>
   </section>
 
   <!-- 핫키워드 -->
@@ -442,22 +435,6 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
 
   <!-- 우리 가게 -->
   <section class="panel" id="p-shop">
-    <div class="card">
-      <h2>장사 기록</h2>
-      <div class="sub">하루 10초면 됩니다. 기록이 쌓이면 <b>우리 가게 기준</b>으로 요일별 매출, 비 온 날 영향, 예측이 실제와 맞았는지를 보여 줍니다. 지금까지의 예측은 모두 강화군 전체 방문자 기준입니다.</div>
-      <form class="lg" id="logForm" autocomplete="off">
-        <div class="row2">
-          <label>날짜<input type="date" id="lgDate" required></label>
-          <label>매출(만원) · 선택<input type="number" id="lgSales" inputmode="numeric" min="0" step="1" placeholder="예: 185"></label>
-        </div>
-        <div><div style="font-size:11.5px;color:var(--sub);margin-bottom:4px">그날 손님은 어땠나요 · <b>그 요일 평소와 비교해서</b></div>
-          <div class="feel" id="lgFeel"><button type="button" data-f="1">한산</button><button type="button" data-f="2">평소</button><button type="button" data-f="3">바쁨</button><button type="button" data-f="4">매우 바쁨</button></div></div>
-        <label>메모 · 선택 (남은 재료, 모자란 재료, 단체 손님 등)<input type="text" id="lgMemo" maxlength="80" placeholder="예: 꽃게 모자람, 단체 20명"></label>
-        <button class="btn" id="lgSave" type="submit">기록 저장</button>
-        <div class="lgmsg" id="lgMsg"></div>
-      </form>
-    </div>
-    <div class="card"><h2>기록으로 본 우리 가게</h2><div class="sub" id="lgSub"></div><div id="lgStats"></div><h3 class="h3">최근 기록</h3><div id="lgList"></div></div>
     <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
       <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
       <div id="local"></div></div>
@@ -528,12 +505,11 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab4'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
+  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
   attachHow();
-  initShop();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
-  bindSeg('vrange','r',v=>{state.vrange=+v;renderVisitors();}); bindSeg('vyoy','y',v=>{state.vyoy=v==='1';renderVisitors();});
+
   bindSeg('dfilter','f',v=>{state.dfilter=v;state.vlimit=10;renderVolume();});
   bindSeg('dper','p',v=>{state.dper=v;state.vlimit=10;renderVolume();});
   bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();});
@@ -542,7 +518,7 @@ async function init(){
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
 function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b)); }
-function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderSearchVis(); renderMonthly(); renderYTrend(); renderOutlook(); renderAccuracy(); }
+function redrawAll(){ if(!D.meta) return; renderTrend(); renderSearchVis(); renderMonthly(); renderYTrend(); renderOutlook(); renderAccuracy(); }
 
 
 /* ================= 카드별 계산 방식 · 출처 ================= */
@@ -707,57 +683,6 @@ function renderHolX(){
     `<div class="sub" style="margin:10px 0 0">징검다리 평일은 같은 요일의 <b class="mono">${T.bridge.x.toFixed(2)}배</b>(${T.bridge.n}번), 연휴 전날은 <b class="mono">${T.eve_long.x.toFixed(2)}배</b>(${T.eve_long.n}번) · 명절 당일의 큰 숫자에는 귀성·성묘객이 들어 있어 식당 손님과는 다를 수 있습니다 · 사례 3번 미만은 기본값</div>`;
 }
 
-/* ================= 우리 가게: 장사 기록 ================= */
-let DBH=null, LOGS=[];
-const FEEL={1:'한산',2:'평소',3:'바쁨',4:'매우 바쁨'}, LV2F={quiet:1,normal:2,busy:3,peak:4};
-function predFor(date){ const f=D.forecast_log?.days?.[date]; if(f&&f.d0) return f.d0; const d=(D.brief?.days||[]).find(x=>x.date===date); return d?{est:d.est,vs:d.vs_normal_pct,level:d.level}:null; }
-function lgMsg(t,bad){ const el=document.getElementById('lgMsg'); el.textContent=t||''; el.style.color=bad?'var(--red)':'var(--sub)'; }
-async function initShop(){
-  const dEl=document.getElementById('lgDate'); dEl.value=KTODAY(); dEl.max=KTODAY();
-  document.querySelectorAll('#lgFeel button').forEach(b=>b.onclick=()=>{ const on=b.classList.contains('on'); document.querySelectorAll('#lgFeel button').forEach(x=>x.classList.remove('on')); if(!on) b.classList.add('on'); });
-  const save=document.getElementById('lgSave'); renderLogs();
-  let db=null; try{ db = (window.claude&&window.claude.use)? await window.claude.use('db') : null; }catch(e){ db=null; }
-  if(!db){ save.disabled=true; lgMsg('기록 저장은 Claude 앱에 로그인해서 이 페이지를 열었을 때만 됩니다.'); state.lgOff=true; renderLogs(); return; }
-  DBH=db;
-  const timer=setTimeout(()=>{ if(!state.lgLoaded){ lgMsg('기록을 불러오는 데 시간이 걸리고 있습니다. 잠시 뒤 다시 열어 주세요.',true); } },10000);
-  db.collection('daylog').onSnapshot(snap=>{ clearTimeout(timer); state.lgLoaded=true; LOGS=snap.docs.map(d=>({id:d.id,...(d.data()||{})})).sort((a,b)=>b.id.localeCompare(a.id)); renderLogs(); },
-    err=>{ clearTimeout(timer); lgMsg('기록을 불러오지 못했습니다 ('+(err&&err.code||'오류')+').',true); });
-  document.getElementById('logForm').addEventListener('submit',async e=>{ e.preventDefault();
-    const date=dEl.value, fb=document.querySelector('#lgFeel button.on'), sales=document.getElementById('lgSales').value, memo=document.getElementById('lgMemo').value.trim();
-    if(!date){ lgMsg('날짜를 골라 주세요.',true); return; }
-    if(!fb&&!sales){ lgMsg('손님 체감이나 매출 중 하나는 넣어 주세요.',true); return; }
-    const doc={date, feel:fb?+fb.dataset.f:null, sales:sales?Math.round(+sales):null, memo:memo||null, pred:predFor(date), at:new Date().toISOString()};
-    save.disabled=true; lgMsg('저장하는 중…');
-    try{ await db.doc('daylog/'+date).set(doc); lgMsg(`${md(date)} 기록을 저장했습니다.`); document.getElementById('lgSales').value=''; document.getElementById('lgMemo').value=''; document.querySelectorAll('#lgFeel button').forEach(x=>x.classList.remove('on')); }
-    catch(err){ lgMsg(err&&err.code==='invalid_argument'?'이 계정은 보기 전용이라 기록할 수 없습니다. 페이지 주인에게 편집 권한을 받아야 합니다.':'저장하지 못했습니다. 잠시 뒤 다시 눌러 주세요.',true); }
-    save.disabled=false; });
-}
-function renderLogs(){
-  const list=document.getElementById('lgList'), st=document.getElementById('lgStats'), sub=document.getElementById('lgSub');
-  const n=LOGS.length;
-  sub.innerHTML=`단위: 매출 = <b>만원</b> · 체감 = 그 요일 평소와 비교 · 예측 = 그날 아침 이 대시보드가 낸 등급`;
-  if(!n){ st.innerHTML=`<div class="empty">${state.lgOff?'이 화면에서는 기록을 볼 수 없습니다.':'아직 기록이 없습니다. 위에서 오늘 장사를 한 줄 남겨 보세요.'}<br>2주쯤 쌓이면 요일별 평균 매출이, 한 달쯤 쌓이면 예측이 우리 가게와 맞았는지가 여기에 나옵니다.</div>`; list.innerHTML=''; return; }
-  const withS=LOGS.filter(x=>x.sales!=null), both=LOGS.filter(x=>x.feel&&x.pred&&x.pred.level);
-  const hit=both.filter(x=>LV2F[x.pred.level]===x.feel).length, near=both.filter(x=>Math.abs(LV2F[x.pred.level]-x.feel)<=1).length;
-  let html=`<div class="sc"><div class="c"><div class="l">기록한 날</div><div class="p">${n}<small class="u">일</small></div><div class="b">${LOGS.at(-1).id.slice(5).replace('-','/')}부터</div></div>
-    <div class="c"><div class="l">하루 평균 매출</div><div class="p">${withS.length?fmt(avg(withS.map(x=>x.sales))):'–'}<small class="u">${withS.length?'만원':''}</small></div><div class="b">${withS.length}일 기준</div></div>
-    <div class="c"><div class="l">예측과 체감 일치</div><div class="p">${both.length>=5?Math.round(hit/both.length*100)+'%':'–'}</div><div class="b">${both.length>=5?`한 단계 차이까지 ${Math.round(near/both.length*100)}% · ${both.length}일`:`${both.length}/5일 모이면 표시`}</div></div></div>`;
-  // 요일별 평균 매출
-  const byW={}; withS.forEach(x=>{ (byW[dow(x.id)] ||= []).push(x.sales); });
-  if(withS.length>=6){ const order=[1,2,3,4,5,6,0], mx=Math.max(...order.map(w=>byW[w]?avg(byW[w]):0))||1;
-    html+=`<h3 class="h3">요일별 평균 매출</h3><div class="yg yg4" style="grid-template-columns:44px minmax(0,1fr) 70px 48px"><div class="h">요일</div><div class="h" style="text-align:left"></div><div class="h">평균(만원)</div><div class="h">기록</div>`+order.map(w=>{ const xs=byW[w]; const a=xs?avg(xs):null;
-      return `<div class="m ${w===0||w===6?'we':''}">${WD[w]}</div><div>${a?`<span style="display:inline-block;height:6px;border-radius:3px;background:var(--blue);vertical-align:middle;width:${Math.round(a/mx*100)}%"></span>`:''}</div><div class="n">${a?fmt(a):'<span class="muted">–</span>'}</div><div class="n muted">${xs?xs.length:0}일</div>`; }).join('')+`</div>`;
-    // 비 온 날: 그 요일 평균 대비
-    const wx=D.weather?.days||{}; const rr=withS.filter(x=>byW[dow(x.id)].length>=2&&wx[x.id]&&(wx[x.id].rain||0)>=5).map(x=>x.sales/avg(byW[dow(x.id)]));
-    if(rr.length>=3) html+=`<div class="basis" style="margin-top:12px"><div><span>비 온 날(5mm↑) 매출</span><b>그 요일 평균의 ${Math.round(avg(rr)*100)}% · ${rr.length}일</b></div></div>`;
-  }
-  st.innerHTML=html;
-  list.innerHTML=LOGS.slice(0,30).map(x=>`<div class="lr"><span class="d">${md(x.id)}<small>${WD[dow(x.id)]}</small></span>${x.feel?`<span class="fl f${x.feel}">${FEEL[x.feel]}</span>`:'<span class="muted" style="font-size:12px">–</span>'}
-    <span class="m">${x.sales!=null?`<b>${fmt(x.sales)}만</b>`:''}${x.pred&&x.pred.level?`예측 ${FEEL[LV2F[x.pred.level]]}`:''}${x.memo?` · ${XSS(x.memo)}`:''}</span>
-    <button class="x" data-id="${x.id}" type="button">지우기</button></div>`).join('');
-  list.querySelectorAll('.x').forEach(b=>b.onclick=async()=>{ if(!DBH) return; if(b.dataset.arm!=='1'){ b.dataset.arm='1'; b.textContent='정말 지울까요?'; b.style.color='var(--red)'; setTimeout(()=>{ b.dataset.arm=''; b.textContent='지우기'; b.style.color=''; },4000); return; }
-    try{ await DBH.doc('daylog/'+b.dataset.id).delete(); }catch(e){ lgMsg('지우지 못했습니다.',true); } });
-}
 function renderPlace(){
   const P=D.place, card=document.getElementById('plCard'); if(!P||(P.visitor==null&&P.blog==null)){ card.hidden=true; return; } card.hidden=false;
   const hs=Object.keys(P.history||{}).sort(), last=hs.at(-1), first=hs[0];
@@ -961,16 +886,6 @@ function renderMenu(){
 }
 
 /* ================= 방문자 ================= */
-function renderVisitors(){
-  const v=D.visitors; if(!v) return; const [dates,vals]=sliceRange(v.dates,[v.visitor],state.vrange);
-  const ma=vals[0].map((_,i)=>{ const seg=vals[0].slice(Math.max(0,i-6),i+1).filter(x=>x!=null); return seg.length>=4?avg(seg):null; });
-  const wx=D.weather?.days||{};
-  const ds=[{label:'일별',data:vals[0],borderColor:css('--blue'),borderWidth:1,backgroundColor:css('--blue'),spanGaps:false,order:2,
-             pointRadius:dates.map(d=>{const w=wx[d]; return w&&(w.rain||0)>=5?3:0;}),pointBackgroundColor:css('--red'),pointBorderWidth:0},
-            {label:'7일 평균',data:ma,borderColor:css('--ink'),borderWidth:2.2,backgroundColor:css('--ink'),spanGaps:true,order:1}];
-  if(state.vyoy){ const by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); ds.push({label:'작년 같은 요일',data:dates.map(d=>by[shift(d,-364)]??null),borderColor:css('--wait'),backgroundColor:css('--wait'),borderDash:[3,4],borderWidth:1.2,spanGaps:true,order:3}); }
-  mk('visitors','line',dates,ds,{unit:'명',legend:true},[bcPlugin]);
-}
 function renderSearchVis(){
   const v=D.visitors, t=D.trend_daily; if(!v||!t) return; const REF='강화도 맛집';
   const wkey=d=>shift(d,-((dow(d)+6)%7));
@@ -1136,8 +1051,7 @@ function renderAbout(){
     <b>설정</b> — 추적 키워드·재료·제철·연휴·방송 기록은 저장소 <span class="mono">keywords.json</span> 한 파일에서 관리`;
   document.getElementById('method').innerHTML=`<b>예상 방문자(명)</b> = 기준선(작년·재작년 같은 시기 같은 요일 × 최근 8주 수준) × 날 유형(연휴·명절·공휴일 실측 배율) × 날씨(비·추위 실측 배율)<br>
     <b>재료 준비</b> = 주말 손님 신호(±10%) + 메뉴 인기 신호(±15%) → 더 준비 · 평소대로 · 덜 준비 (양은 내지 않음)<br>
-    <b>검색 횟수(회/일)</b> = 네이버 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수 → 추정치<br>
-    <b>장사 기록</b> = 이 페이지의 저장소에만 보관 · 페이지를 볼 수 있는 사람만 열람`;
+    <b>검색 횟수(회/일)</b> = 네이버 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수 → 추정치`;
   document.getElementById('foot').innerHTML=`강화 시그널 v${m.version} · ${m.store.name} · 마지막 갱신 ${m.updated_at}`;
 }
 </script>

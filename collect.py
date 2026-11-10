@@ -684,21 +684,23 @@ def _store_search(names):
             except Exception as e:
                 log(f"가게 검색 추이 실패: {e}")
             time.sleep(0.3)
+    # 모든 가게에 같은 날짜 축을 씀(데이터랩은 검색이 0인 날을 빼고 돌려주기도 함)
+    alld = sorted({d for sh in shape.values() for d, x in sh.items() if x})
+    days = []
+    if alld:
+        d0, d1 = date.fromisoformat(alld[0]), date.fromisoformat(alld[-1])
+        days = [(d0 + timedelta(days=i)).isoformat() for i in range((d1 - d0).days + 1)]
     out = {}
     for nm, v in info.items():
         month = sum(vol.get(c, 0) for c in v["cands"])
         sh = shape.get(nm) or {}
-        days = sorted(d for d, x in sh.items())
-        # 집계가 끝난 마지막 날까지
-        while days and not any(shape.get(n, {}).get(days[-1]) for n in info):
-            days.pop()
         s7 = p7 = None
         if month and len(days) >= 37:
-            last30 = sum(sh[d] for d in days[-30:])
+            g = lambda ds: sum(sh.get(d, 0) for d in ds)
+            last30 = g(days[-30:])
             if last30 > 0:
-                s7 = round(month * sum(sh[d] for d in days[-7:]) / last30)
-                p7 = round(month * sum(sh[d] for d in days[-14:-7]) / last30)
-        out[nm] = {"search30": month or None, "search7": s7, "prev7": p7, "amb": v["amb"], "base": v["base"],
+                s7, p7 = round(month * g(days[-7:]) / last30), round(month * g(days[-14:-7]) / last30)
+        out[nm] = {"search30": month or None, "search7": s7, "prev7": p7, "amb": len(_NS(v["base"])) <= 4, "base": v["base"],
                    "to": days[-1] if days else None}
     return out
 

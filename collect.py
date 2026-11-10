@@ -614,6 +614,95 @@ def _apollo(html):
         return None
 
 
+_BRANCH = re.compile(r"\s*(?:강화도?\s*)?(?:본점|직영점|[가-힣A-Za-z0-9]{1,8}점)$")
+_NS = lambda x: re.sub(r"[^가-힣A-Za-z0-9]", "", x or "")
+
+
+def _store_base(name):
+    b = name.strip()
+    for _ in range(3):
+        nb = _BRANCH.sub("", b).strip()
+        nb = re.sub(r"\s*강화도?$", "", nb).strip()
+        if nb == b or len(_NS(nb)) < 2:
+            break
+        b = nb
+    return b
+
+
+def _store_search(names):
+    """가게 이름 자체가 네이버에서 얼마나 검색되는지: 검색광고 한 달 실측 + 데이터랩 일별 모양으로 최근 7일 추정"""
+    info = {}
+    for nm in names:
+        base = _store_base(nm)
+        toks = nm.split()
+        spaced = [nm, base, "강화 " + base, "강화도 " + base] + ([toks[0]] if len(toks) >= 2 and len(_NS(toks[0])) >= 4 else [])
+        cands = list(dict.fromkeys(_NS(x) for x in spaced if len(_NS(x)) >= 2))
+        info[nm] = {"base": base, "cands": cands, "spaced": list(dict.fromkeys(x for x in spaced if len(_NS(x)) >= 2)), "amb": len(_NS(base)) <= 3}
+    # ① 검색광고 월 검색수
+    vol = {}
+    if os.getenv("NAVER_AD_API_KEY") and os.getenv("NAVER_AD_SECRET") and os.getenv("NAVER_AD_CUSTOMER_ID"):
+        hints = list(dict.fromkeys(c for v in info.values() for c in v["cands"]))
+        uri = "/keywordstool"
+
+        def call(chunk):
+            q = urllib.parse.urlencode({"hintKeywords": ",".join(chunk), "showDetail": "1"})
+            res = http_json("https://api.searchad.naver.com" + uri + "?" + q, _searchad_headers("GET", uri))
+            want = set(chunk)
+            for it in res.get("keywordList", []):
+                k = it["relKeyword"].replace(" ", "")
+                if k in want:
+                    vol[k] = _qc(it.get("monthlyPcQcCnt")) + _qc(it.get("monthlyMobileQcCnt"))
+        for i in range(0, len(hints), 5):
+            chunk = hints[i:i + 5]
+            try:
+                call(chunk)
+            except Exception:
+                for h in chunk:
+                    try:
+                        call([h])
+                    except Exception:
+                        pass
+                    time.sleep(0.3)
+            time.sleep(0.4)
+    # ② 데이터랩: 가게별 최근 60일 모양
+    shape = {}
+    cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
+    if cid and csec:
+        headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+        end = datetime.now(KST).date() - timedelta(days=1)
+        start = end - timedelta(days=59)
+        nms = list(info)
+        for i in range(0, len(nms), 5):
+            chunk = nms[i:i + 5]
+            body = {"startDate": start.isoformat(), "endDate": end.isoformat(), "timeUnit": "date",
+                    "keywordGroups": [{"groupName": f"g{j}", "keywords": info[n]["spaced"][:20]} for j, n in enumerate(chunk)]}
+            try:
+                res = http_json("https://naverapihub.apigw.ntruss.com/search-trend/v1/search", headers, "POST", body)
+                for r in res.get("results", []):
+                    j = int(r["title"][1:])
+                    shape[chunk[j]] = {d["period"]: d["ratio"] for d in r.get("data", [])}
+            except Exception as e:
+                log(f"가게 검색 추이 실패: {e}")
+            time.sleep(0.3)
+    out = {}
+    for nm, v in info.items():
+        month = sum(vol.get(c, 0) for c in v["cands"])
+        sh = shape.get(nm) or {}
+        days = sorted(d for d, x in sh.items())
+        # 집계가 끝난 마지막 날까지
+        while days and not any(shape.get(n, {}).get(days[-1]) for n in info):
+            days.pop()
+        s7 = p7 = None
+        if month and len(days) >= 37:
+            last30 = sum(sh[d] for d in days[-30:])
+            if last30 > 0:
+                s7 = round(month * sum(sh[d] for d in days[-7:]) / last30)
+                p7 = round(month * sum(sh[d] for d in days[-14:-7]) / last30)
+        out[nm] = {"search30": month or None, "search7": s7, "prev7": p7, "amb": v["amb"], "base": v["base"],
+                   "to": days[-1] if days else None}
+    return out
+
+
 def fetch_rankings(cfg):
     """
     「강화도 ○○」를 네이버에서 검색했을 때 어떤 가게가 위에 나오는지.
@@ -671,12 +760,20 @@ def fetch_rankings(cfg):
                 break
         out[q] = ent
         time.sleep(0.4)
+    try:
+        sv = _store_search(sorted({r["name"] for e in out.values() for r in e["place"][:10]}))
+        for e in out.values():
+            for r in e["place"]:
+                r.update(sv.get(r["name"], {}))
+    except Exception as e:
+        log(f"가게 이름 검색량 실패: {e}")
+        dbg["store_search_err"] = f"{type(e).__name__} {str(e)[:120]}"
     if not any(e["place"] or e["api"] for e in out.values()):
         raise RuntimeError(f"순위를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:900]}")
     hist = prev.get("history", {})
     hist[today] = {q: {"my_rank": e["my_rank"], "top": [r["name"] for r in e["place"][:5]]} for q, e in out.items()}
     return {"checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"), "queries": out, "history": {k: hist[k] for k in sorted(hist)[-400:]},
-            "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳."}
+            "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.", "debug": dbg}
 
 
 def fetch_reviews(cfg):

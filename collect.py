@@ -630,7 +630,7 @@ def fetch_rankings(cfg):
         ent = {"place": [], "api": [], "my_rank": None}
         # ① 플레이스 검색 화면
         try:
-            html = http_text("https://m.place.naver.com/restaurant/list?" + urllib.parse.urlencode({"query": q}))
+            html = http_text("https://m.place.naver.com/restaurant/list?" + urllib.parse.urlencode({"query": q, "x": "126.4870", "y": "37.7460", "level": "top"}))
             st_ = _apollo(html)
             if "probe" not in dbg:
                 dbg["probe"] = {"len": len(html), "apollo": "__APOLLO_STATE__" in html, "parsed": bool(st_),
@@ -644,6 +644,7 @@ def fetch_rankings(cfg):
                     if k.startswith(("restaurants(", "restaurantList(", "places(", "placeList(")):
                         v = v or {}
                         items = v.get("items") or (v.get("businesses") or {}).get("items") or []
+                        dbg.setdefault("totals", {})[q] = [(v.get("businesses") or {}).get("total"), len(items), (v.get("businesses") or {}).get("queryString"), k[10:160]]
                         if "list_keys" not in dbg:
                             dbg["list_keys"] = {kk: (sorted(vv.keys())[:12] if isinstance(vv, dict) else type(vv).__name__) for kk, vv in v.items()}
                         if len(items) > len(refs):

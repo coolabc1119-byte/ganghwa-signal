@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10 17:39",
+ "checked": "2026-11-10 17:51",
  "queries": {
   "강화도 칼국수": {
    "place": [
@@ -120,7 +120,7 @@
      "id": "37475143",
      "category": "생선회",
      "area": "인천 강화군 화도면",
-     "visitor": 2926,
+     "visitor": 2928,
      "blog": 1462,
      "score": null,
      "mine": false,
@@ -175,7 +175,7 @@
      "id": "37269312",
      "category": "게요리",
      "area": "인천 강화군 양도면",
-     "visitor": 16328,
+     "visitor": 16329,
      "blog": 1630,
      "score": "4.87",
      "mine": false,
@@ -342,7 +342,7 @@
      "id": "37269312",
      "category": "게요리",
      "area": "인천 강화군 양도면",
-     "visitor": 16328,
+     "visitor": 16329,
      "blog": 1630,
      "score": "4.87",
      "mine": false,
@@ -676,7 +676,7 @@
      "id": "37475143",
      "category": "생선회",
      "area": "인천 강화군 화도면",
-     "visitor": 2926,
+     "visitor": 2928,
      "blog": 1462,
      "score": null,
      "mine": false,
@@ -1001,7 +1001,7 @@
    ],
    "api": [],
    "my_rank": 1,
-   "total": 1
+   "total": 16
   }
  },
  "history": {
@@ -1071,7 +1071,7 @@
  "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.",
  "debug": {
   "probe": {
-   "len": 460853,
+   "len": 460822,
    "apollo": true,
    "parsed": true,
    "root": [

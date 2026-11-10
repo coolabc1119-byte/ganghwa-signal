@@ -359,9 +359,6 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <div class="chart"><canvas id="trend"></canvas></div>
       <div class="legend" id="trendLegend"></div>
     </div>
-    <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
-      <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
-      <div id="local"></div></div>
     <div class="card"><h2>기간별 메뉴 수요 <span class="chip" id="c-cmp"></span></h2>
       <div class="sub" id="cmpSub"></div>
       <div class="controls"><div class="seg" id="perSeg"><button data-n="7">최근 7일</button><button data-n="14">최근 14일</button><button data-n="28">최근 28일</button></div></div>
@@ -461,6 +458,9 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       </form>
     </div>
     <div class="card"><h2>기록으로 본 우리 가게</h2><div class="sub" id="lgSub"></div><div id="lgStats"></div><h3 class="h3">최근 기록</h3><div id="lgList"></div></div>
+    <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
+      <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
+      <div id="local"></div></div>
     <div class="card" id="plCard" hidden><h2>네이버 플레이스 평점·후기 <span class="chip live">실데이터</span></h2><div class="sub" id="plSub"></div><div id="plBody"></div></div>
     <div class="card" id="rvCard" hidden><h2>블로그 후기 — 새로 올라온 글 <span class="chip live">실데이터</span></h2><div class="sub" id="rvSub"></div><div id="rvBody"></div></div>
   </section>

@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10 17:36",
+ "checked": "2026-11-10 17:39",
  "queries": {
   "강화도 칼국수": {
    "place": [
@@ -29,8 +29,8 @@
      "score": null,
      "mine": false,
      "search30": 220,
-     "search7": null,
-     "prev7": null,
+     "search7": 87,
+     "prev7": 83,
      "amb": false,
      "base": "일년내내칼국수맛있는집",
      "to": "2026-11-09"
@@ -61,8 +61,8 @@
      "score": "4.9",
      "mine": false,
      "search30": 400,
-     "search7": 83,
-     "prev7": 65,
+     "search7": 174,
+     "prev7": 70,
      "amb": false,
      "base": "도토리 바지락손칼국수",
      "to": "2026-11-09"
@@ -125,8 +125,8 @@
      "score": null,
      "mine": false,
      "search30": 1000,
-     "search7": 238,
-     "prev7": 244,
+     "search7": 251,
+     "prev7": 221,
      "amb": true,
      "base": "서해촌",
      "to": "2026-11-09"
@@ -143,7 +143,7 @@
      "search30": 2090,
      "search7": 448,
      "prev7": 467,
-     "amb": false,
+     "amb": true,
      "base": "바다마을",
      "to": "2026-11-09"
     },
@@ -244,11 +244,11 @@
      "score": "4.59",
      "mine": true,
      "search30": 260,
-     "search7": 49,
-     "prev7": 50,
+     "search7": 33,
+     "prev7": 107,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-05"
+     "to": "2026-11-09"
     },
     {
      "name": "충남서산집",
@@ -278,7 +278,7 @@
      "search30": 5740,
      "search7": 1327,
      "prev7": 1370,
-     "amb": false,
+     "amb": true,
      "base": "바다향기",
      "to": "2026-11-09"
     },
@@ -292,11 +292,11 @@
      "score": null,
      "mine": false,
      "search30": 240,
-     "search7": 27,
-     "prev7": 35,
+     "search7": 39,
+     "prev7": 37,
      "amb": false,
      "base": "서해꽃게전문",
-     "to": "2026-11-07"
+     "to": "2026-11-09"
     },
     {
      "name": "꽃게향",
@@ -308,8 +308,8 @@
      "score": "4.61",
      "mine": false,
      "search30": 650,
-     "search7": 135,
-     "prev7": 110,
+     "search7": 117,
+     "prev7": 165,
      "amb": true,
      "base": "꽃게향",
      "to": "2026-11-09"
@@ -395,11 +395,11 @@
      "score": "4.59",
      "mine": true,
      "search30": 260,
-     "search7": 49,
-     "prev7": 50,
+     "search7": 33,
+     "prev7": 107,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-05"
+     "to": "2026-11-09"
     },
     {
      "name": "바다향기",
@@ -413,7 +413,7 @@
      "search30": 5740,
      "search7": 1327,
      "prev7": 1370,
-     "amb": false,
+     "amb": true,
      "base": "바다향기",
      "to": "2026-11-09"
     },
@@ -459,8 +459,8 @@
      "score": "4.61",
      "mine": false,
      "search30": 650,
-     "search7": 135,
-     "prev7": 110,
+     "search7": 117,
+     "prev7": 165,
      "amb": true,
      "base": "꽃게향",
      "to": "2026-11-09"
@@ -475,11 +475,11 @@
      "score": null,
      "mine": false,
      "search30": 240,
-     "search7": 27,
-     "prev7": 35,
+     "search7": 39,
+     "prev7": 37,
      "amb": false,
      "base": "서해꽃게전문",
-     "to": "2026-11-07"
+     "to": "2026-11-09"
     },
     {
      "name": "강화 한정식 수라정",
@@ -491,8 +491,8 @@
      "score": "4.59",
      "mine": false,
      "search30": 850,
-     "search7": 306,
-     "prev7": 260,
+     "search7": 318,
+     "prev7": 270,
      "amb": false,
      "base": "강화 한정식 수라정",
      "to": "2026-11-09"
@@ -530,8 +530,8 @@
      "score": null,
      "mine": false,
      "search30": 520,
-     "search7": 86,
-     "prev7": 152,
+     "search7": 64,
+     "prev7": 72,
      "amb": true,
      "base": "소반정",
      "to": "2026-11-09"
@@ -578,11 +578,11 @@
      "score": "4.99",
      "mine": false,
      "search30": 90,
-     "search7": null,
-     "prev7": null,
+     "search7": 0,
+     "prev7": 0,
      "amb": false,
      "base": "빼애골 용흥궁식당",
-     "to": "2026-10-25"
+     "to": "2026-11-09"
     },
     {
      "name": "찬우정",
@@ -594,8 +594,8 @@
      "score": "4.51",
      "mine": false,
      "search30": 700,
-     "search7": 222,
-     "prev7": 114,
+     "search7": 258,
+     "prev7": 105,
      "amb": true,
      "base": "찬우정",
      "to": "2026-11-09"
@@ -612,7 +612,7 @@
      "search30": 580,
      "search7": 136,
      "prev7": 139,
-     "amb": false,
+     "amb": true,
      "base": "서내농원",
      "to": "2026-11-09"
     },
@@ -626,8 +626,8 @@
      "score": null,
      "mine": false,
      "search30": 300,
-     "search7": null,
-     "prev7": null,
+     "search7": 56,
+     "prev7": 122,
      "amb": true,
      "base": "하가돈",
      "to": "2026-11-09"
@@ -681,8 +681,8 @@
      "score": null,
      "mine": false,
      "search30": 1000,
-     "search7": 238,
-     "prev7": 244,
+     "search7": 251,
+     "prev7": 221,
      "amb": true,
      "base": "서해촌",
      "to": "2026-11-09"
@@ -697,11 +697,11 @@
      "score": "4.29",
      "mine": false,
      "search30": 250,
-     "search7": 24,
-     "prev7": 63,
+     "search7": 37,
+     "prev7": 45,
      "amb": true,
      "base": "한글호",
-     "to": "2026-11-08"
+     "to": "2026-11-09"
     },
     {
      "name": "굴사냥조개사냥",
@@ -729,8 +729,8 @@
      "score": null,
      "mine": false,
      "search30": 300,
-     "search7": 67,
-     "prev7": 72,
+     "search7": 73,
+     "prev7": 78,
      "amb": true,
      "base": "대선정",
      "to": "2026-11-09"
@@ -745,8 +745,8 @@
      "score": null,
      "mine": false,
      "search30": 450,
-     "search7": 123,
-     "prev7": 69,
+     "search7": 89,
+     "prev7": 110,
      "amb": true,
      "base": "반선",
      "to": "2026-11-09"
@@ -761,11 +761,11 @@
      "score": "5",
      "mine": false,
      "search30": 310,
-     "search7": null,
-     "prev7": null,
-     "amb": false,
+     "search7": 46,
+     "prev7": 128,
+     "amb": true,
      "base": "쭈꾸미짱",
-     "to": "2026-11-08"
+     "to": "2026-11-09"
     },
     {
      "name": "오로라연어",
@@ -793,11 +793,11 @@
      "score": "4.59",
      "mine": true,
      "search30": 260,
-     "search7": 49,
-     "prev7": 50,
+     "search7": 33,
+     "prev7": 107,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-05"
+     "to": "2026-11-09"
     },
     {
      "name": "보광호",
@@ -848,11 +848,11 @@
      "score": "4.59",
      "mine": true,
      "search30": 260,
-     "search7": 49,
-     "prev7": 50,
+     "search7": 33,
+     "prev7": 107,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-05"
+     "to": "2026-11-09"
     },
     {
      "name": "미리내바지락칼국수",
@@ -864,11 +864,11 @@
      "score": null,
      "mine": false,
      "search30": 140,
-     "search7": null,
-     "prev7": null,
+     "search7": 0,
+     "prev7": 77,
      "amb": false,
      "base": "미리내바지락칼국수",
-     "to": "2026-10-31"
+     "to": "2026-11-09"
     },
     {
      "name": "꽃게와낙지",
@@ -880,11 +880,11 @@
      "score": null,
      "mine": false,
      "search30": 110,
-     "search7": null,
-     "prev7": null,
+     "search7": 31,
+     "prev7": 0,
      "amb": false,
      "base": "꽃게와낙지",
-     "to": "2026-11-07"
+     "to": "2026-11-09"
     },
     {
      "name": "강화해신탕",
@@ -896,8 +896,8 @@
      "score": "4.47",
      "mine": false,
      "search30": 330,
-     "search7": 70,
-     "prev7": 63,
+     "search7": 92,
+     "prev7": 58,
      "amb": false,
      "base": "강화해신탕",
      "to": "2026-11-09"
@@ -928,11 +928,11 @@
      "score": null,
      "mine": false,
      "search30": 60,
-     "search7": null,
-     "prev7": null,
+     "search7": 0,
+     "prev7": 0,
      "amb": false,
      "base": "원조 강화고구마묵밥 &칼국수",
-     "to": "2026-10-15"
+     "to": "2026-11-09"
     },
     {
      "name": "어객",
@@ -948,7 +948,7 @@
      "prev7": null,
      "amb": true,
      "base": "어객",
-     "to": "2026-09-27"
+     "to": "2026-11-09"
     },
     {
      "name": "동광호",
@@ -960,11 +960,11 @@
      "score": null,
      "mine": false,
      "search30": 200,
-     "search7": null,
-     "prev7": null,
+     "search7": 22,
+     "prev7": 57,
      "amb": true,
      "base": "동광호",
-     "to": "2026-11-08"
+     "to": "2026-11-09"
     },
     {
      "name": "이우젓갈",
@@ -978,7 +978,7 @@
      "search30": 1660,
      "search7": 189,
      "prev7": 196,
-     "amb": false,
+     "amb": true,
      "base": "이우젓갈",
      "to": "2026-11-09"
     },
@@ -996,12 +996,12 @@
      "prev7": null,
      "amb": false,
      "base": "나누리포차",
-     "to": "2026-10-05"
+     "to": "2026-11-09"
     }
    ],
    "api": [],
    "my_rank": 1,
-   "total": 16
+   "total": 1
   }
  },
  "history": {
@@ -1071,7 +1071,7 @@
  "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.",
  "debug": {
   "probe": {
-   "len": 460819,
+   "len": 460853,
    "apollo": true,
    "parsed": true,
    "root": [

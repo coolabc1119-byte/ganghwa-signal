@@ -604,6 +604,79 @@ def fetch_place(cfg):
             "url": f"https://m.place.naver.com/restaurant/{pid}/review/visitor"}
 
 
+def _apollo(html):
+    m = re.search(r"window\.__APOLLO_STATE__\s*=\s*(\{.*?\});\s*(?:window\.|</script>)", html, re.S)
+    if not m:
+        return None
+    try:
+        return json.loads(m.group(1))
+    except Exception:
+        return None
+
+
+def fetch_rankings(cfg):
+    """
+    「강화도 ○○」를 네이버에서 검색했을 때 어떤 가게가 위에 나오는지.
+    ① 네이버 지도(플레이스) 검색 화면의 순서(광고 제외) ② 공식 지역검색 API 상위 5곳. 둘 다 저장.
+    """
+    cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid or "", "X-NCP-APIGW-API-KEY": csec or "", "X-Naver-Client-Id": cid or "", "X-Naver-Client-Secret": csec or ""}
+    prev = load_existing("rankings.json", {"history": {}})
+    queries = cfg.get("rank_queries") or [f"강화도 {m}" for m in cfg["store"].get("menus", [])]
+    mine = re.compile(r"만선\s*꽃게")
+    today = datetime.now(KST).date().isoformat()
+    out, dbg = {}, {}
+    for q in queries:
+        ent = {"place": [], "api": [], "my_rank": None}
+        # ① 플레이스 검색 화면
+        try:
+            html = http_text("https://m.place.naver.com/restaurant/list?" + urllib.parse.urlencode({"query": q}))
+            st_ = _apollo(html)
+            if st_:
+                root = st_.get("ROOT_QUERY", {})
+                refs = []
+                for k, v in root.items():
+                    if k.startswith("restaurants(") or k.startswith("restaurantList(") or k.startswith("places("):
+                        items = (v or {}).get("items") or []
+                        if len(items) > len(refs):
+                            refs = items
+                for r in refs[:20]:
+                    o = st_.get(r.get("__ref", ""), r) if isinstance(r, dict) else None
+                    if not o or not o.get("name"):
+                        continue
+                    if "debug_keys" not in dbg:
+                        dbg["debug_keys"] = sorted(o.keys())[:60]
+                    num = lambda x: int(re.sub(r"[^0-9]", "", str(x))) if x not in (None, "") and re.sub(r"[^0-9]", "", str(x)) else None
+                    ent["place"].append({"name": o.get("name"), "id": str(o.get("id") or ""), "category": o.get("category") or "",
+                                         "area": o.get("commonAddress") or o.get("address") or o.get("roadAddress") or "",
+                                         "visitor": num(o.get("visitorReviewCount")), "blog": num(o.get("blogCafeReviewCount")),
+                                         "score": o.get("visitorReviewScore"), "mine": bool(mine.search(o.get("name") or ""))})
+                ent["place"] = ent["place"][:15]
+            else:
+                dbg.setdefault("no_state", []).append(f"{q}:{len(html)}")
+        except Exception as e:
+            dbg.setdefault("place_err", []).append(f"{q}: {type(e).__name__} {str(e)[:60]}")
+        # ② 공식 지역검색 API
+        try:
+            res = http_json("https://naverapihub.apigw.ntruss.com/search/v1/local?" + urllib.parse.urlencode({"query": q, "display": 5, "sort": "random"}), headers)
+            for it in res.get("items", []):
+                addr = it.get("address") or it.get("roadAddress") or ""
+                ent["api"].append({"name": _clean(it.get("title")), "category": it.get("category", ""), "area": addr, "mine": bool(mine.search(_clean(it.get("title"))))})
+        except Exception as e:
+            dbg.setdefault("api_err", []).append(f"{q}: {type(e).__name__} {str(e)[:80]}")
+        for i, r in enumerate(ent["place"]):
+            if r["mine"]:
+                ent["my_rank"] = i + 1
+                break
+        out[q] = ent
+        time.sleep(0.4)
+    if not any(e["place"] or e["api"] for e in out.values()):
+        raise RuntimeError(f"순위를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:200]}")
+    hist = prev.get("history", {})
+    hist[today] = {q: {"my_rank": e["my_rank"], "top": [r["name"] for r in e["place"][:5]]} for q, e in out.items()}
+    return {"checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"), "queries": out, "history": {k: hist[k] for k in sorted(hist)[-400:]}, "debug": dbg}
+
+
 def fetch_reviews(cfg):
     """네이버 블로그에서 가게 이름이 들어간 최근 글 — 입소문이 늘고 있는지 보는 용도"""
     cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
@@ -991,6 +1064,11 @@ def main():
     except Exception as e:
         log(f"플레이스 실패: {e}")
         ERRORS["place"] = f"{type(e).__name__}: {str(e)[:300]}"
+    try:
+        save("rankings.json", fetch_rankings(cfg))
+    except Exception as e:
+        log(f"검색 순위 실패: {e}")
+        ERRORS["rankings"] = f"{type(e).__name__}: {str(e)[:300]}"
     try:
         rv = fetch_reviews(cfg)
         if rv:

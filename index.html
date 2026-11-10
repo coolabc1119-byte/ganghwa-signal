@@ -346,8 +346,9 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
   <!-- 메뉴 검색 -->
   <section class="panel" id="p-trend">
     <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
-      <div class="sub">단위: 최근 한 달 네이버 검색 횟수(회/월) · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지</div>
-      <table id="menu"></table></div>
+      <div class="sub">단위: <b>최근 한 달 네이버 검색 횟수(회/월)</b> · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지 · 증감은 「강화도 ○○」 검색의 30일 합계끼리 비교</div>
+      <div class="basis" id="menuBasis"></div>
+      <table id="menu" style="table-layout:fixed"></table></div>
     <div class="card">
       <h2>우리 메뉴 네이버 검색 — 주별 <span class="chip" id="c-trend"></span></h2>
       <div class="sub">단위: <b>주 평균 하루 검색 횟수(회/일, 추정)</b> · "강화도 ○○" 검색어 · 세로 점선 = 방송 · 선이 오르면 그 메뉴를 찾는 사람이 늘고 있다는 뜻</div>
@@ -560,7 +561,7 @@ const HOW={
   ytrend:{f:['<b>막대</b> = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 (두 해 모두 '+MIN_DAYS+'일 이상 있는 달)','<b>판정</b> = 비교 가능한 최근 12개월 중 증가한 달이 75% 이상 → 꾸준히 증가 · 25% 이하 → 꾸준히 감소 · 그 외 → 등락 반복','<b>연속</b> = 가장 최근 달부터 같은 방향(증가/감소)이 몇 달 이어졌나'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
   cmp:{f:[CNT,'<b>선택 기간</b> = 시작~끝 날짜의 검색 횟수 합계','<b>직전 기간</b> = 바로 앞의 같은 길이 기간 (7일 선택 → 그 앞 7일)','<b>작년 같은 기간</b> = 364일 전(요일이 맞도록)','<b>메뉴 비중</b> = 메뉴 검색 ÷ 「강화도 맛집」 검색 → 강화 오는 사람 중 그 메뉴를 찾는 비율','<b>평소</b> = 선택 기간 시작일 바로 앞 4주(28일)의 비중','<b>판정</b> = 비중이 평소보다 15% 이상 높음 → 더 준비 · 15% 이상 낮음 → 덜 준비 · 그 사이 → 평소대로 · 하루 평균 검색 3회 미만이면 판정 보류','<b>왜 검색량이 아니라 비중인가</b> = 검색 총량은 같은 주 방문자와 같이 움직이고(상관 0.79) 다음 주 방문자는 잘 못 맞힘(0.26). 반면 메뉴 비중이 평소보다 15% 이상 벗어나면 다음 주에도 같은 방향이 유지된 경우가 87%(126번 중 110번) · 2025.7~2026.11 데이터로 확인','<b>손님 수 자체</b>는 「이번 주」 탭 예측을 보세요 (요일·날씨·연휴 반영)'], s:['dlab','ad','cfg']},
-  menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)'], s:['ad']},
+  menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)','<b>전월 대비</b> = 「강화도 ○○」 한 가지 검색어의 최근 30일 합 ÷ 그 직전 30일 합 − 1 (데이터랩 일별 추이)','<b>전년 대비</b> = 최근 30일 합 ÷ 364일 전 같은 30일 합 − 1 (요일이 맞도록 364일)','<b>달력의 월이 아닌 이유</b> = 이번 달이 아직 안 끝나 달력 기준으로는 비교가 안 맞음 → 같은 길이 30일끼리 비교','<b>적음</b> = 하루 평균 3회 미만이라 증감이 의미 없음 · <b>수집 전</b> = 다음 수집부터 표시'], s:['ad','dlab']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
   wxeff:{f:[
     '<b>비 단계</b> = 조금: 1~5mm(예보는 강수확률 40% 이상) · 비: 5mm 이상 · 많은 비·눈: 20mm 이상 또는 눈',
@@ -819,7 +820,7 @@ function weekly(dates,series){ const buckets=[],idx={}; dates.forEach((d,i)=>{ c
 function sliceRange(dates,vals,range){ const n=dates.length,s=Math.max(0,n-range); return [dates.slice(s),vals.map(v=>v.slice(s))]; }
 
 /* ================= 메뉴 검색 ================= */
-function buildGroupSeg(){ const seg=document.getElementById('grpSeg'); seg.innerHTML=Object.keys(D.meta.groups).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join(''); seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();renderCmp();}); }
+function buildGroupSeg(){ const seg=document.getElementById('grpSeg'); seg.innerHTML=Object.keys(D.meta.groups).filter(g=>!g.startsWith('_')).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join(''); seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();renderCmp();}); }
 function renderTrend(){
   const kws=D.meta.groups[state.group], S=[css('--s1'),css('--s2'),css('--s3'),css('--s4'),css('--sub'),css('--wait')], all=D.trend_daily.dates, N=all.length;
   let [dates,vals]=sliceRange(all,kws.map(k=>D.trend_daily.series[k]||[]),state.range); let ly=[];
@@ -881,8 +882,18 @@ function bindPeriod(){
 }
 function renderMenu(){
   const o=D.menu_demand||[]; if(!o.length){document.getElementById('menu').innerHTML='<tr><td class="empty">데이터 없음</td></tr>';return;}
-  const max=Math.max(1,...o.map(r=>r.monthly_search));
-  document.getElementById('menu').innerHTML=`<tr><th>메뉴</th><th class="n">월 검색(회)</th></tr>`+o.map(r=>`<tr class="${r.mine?'mine':''}"><td>${r.menu}${r.mine?'<span class="tag mine">우리 메뉴</span>':''}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':`<span class="bar" style="width:${Math.round(r.monthly_search/max*90)}px"></span>${fmt(r.monthly_search)}`}</td></tr>`).join('');
+  const t=D.trend_daily, dd=t.dates, n=dd.length, idx=Object.fromEntries(dd.map((d,i)=>[d,i]));
+  // 증감: 데이터랩 일별 「강화도 ○○」 검색의 30일 합계끼리 비교
+  const sum=(k,a,b)=>{ const v=t.series[k]; if(!v) return null; let s=0,c=0; for(let d=a; d<=b; d=shift(d,1)){ const i=idx[d]; if(i!=null&&v[i]!=null){s+=v[i];c++;} } return c>=25?s:null; };
+  const T=dd[n-1], F=shift(T,-29), pT=shift(F,-1), pF=shift(F,-30), yT=shift(T,-364), yF=shift(F,-364);
+  const chg=k=>{ const c=sum(k,F,T), p=sum(k,pF,pT), y=sum(k,yF,yT); const small=c!=null&&c/30<3; return {mom:c!=null&&p&&!small?(c/p-1)*100:null, yoy:c!=null&&y&&!small?(c/y-1)*100:null, has:!!t.series[k], small}; };
+  const cell=(p,x)=> p==null? `<td class="n muted">${x.has?(x.small?'적음':'–'):'수집 전'}</td>` : `<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</td>`;
+  const R=(a,b)=>`${md(a)}~${md(b)}`;
+  document.getElementById('menuBasis').innerHTML=`<div><span>월 검색(회)</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달</b></div><div><span>이번 30일</span><b>${R(F,T)}</b></div><div><span>전월 대비</span><b>vs 직전 30일 ${R(pF,pT)}</b></div><div><span>전년 대비</span><b>vs 작년 같은 30일 ${yF.slice(2,4)}.${R(yF,yT)}</b></div>`;
+  const ref=(D.volume_monthly?.rows||[]).find(r=>r.keyword.replace(/\s/g,'')==='강화도맛집');
+  const rows=[...(ref?[{menu:'강화도 맛집',monthly_search:ref.total,ref:true,kw:'강화도 맛집'}]:[]), ...o.map(r=>({...r,kw:'강화도 '+r.menu}))];
+  document.getElementById('menu').innerHTML=`<tr><th>메뉴</th><th class="n">월 검색(회)</th><th class="n">전월 대비</th><th class="n">전년 대비</th></tr>`+rows.map(r=>{ const x=chg(r.kw);
+    return `<tr class="${r.mine?'mine':''}"><td class="kw">${r.menu}${r.ref?'<span class="tag">전체</span>':r.mine?'<span class="tag mine">우리</span>':''}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':fmt(r.monthly_search)}</td>${cell(x.mom,x)}${cell(x.yoy,x)}</tr>`; }).join('');
 }
 
 /* ================= 방문자 ================= */

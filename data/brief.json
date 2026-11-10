@@ -4,15 +4,13 @@
  "last_visitor_data": "2026-10-11",
  "lag_days": 30,
  "weather_live": true,
- "summary": "토요일 보통보다 -15% (비) · 일요일 보통 수준",
+ "summary": "토요일 보통보다 -12% (비) · 일요일 보통 수준",
  "more": [],
  "less": [
   "꽃게",
-  "칼국수 재료",
-  "돼지갈비(젓국갈비)",
-  "낙지"
+  "돼지갈비(젓국갈비)"
  ],
- "weekend_pct": -10,
+ "weekend_pct": -9,
  "weekday_pct": 0,
  "days": [
   {
@@ -21,10 +19,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 31658,
-   "lo": 24852,
-   "hi": 37832,
-   "normal": 31658,
+   "est": 32833,
+   "lo": 26792,
+   "hi": 38874,
+   "normal": 32833,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -47,13 +45,13 @@
     "prev_month": {
      "base": 29909,
      "n": 5,
-     "pct": 5.8,
+     "pct": 9.8,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 32666,
      "n": 4,
-     "pct": -3.1,
+     "pct": 0.5,
      "ym": "2025-11"
     }
    }
@@ -64,10 +62,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 30876,
-   "lo": 24238,
-   "hi": 36897,
-   "normal": 30876,
+   "est": 32022,
+   "lo": 26130,
+   "hi": 37914,
+   "normal": 32022,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -90,13 +88,13 @@
     "prev_month": {
      "base": 30356,
      "n": 4,
-     "pct": 1.7,
+     "pct": 5.5,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 33952,
      "n": 4,
-     "pct": -9.1,
+     "pct": -5.7,
      "ym": "2025-11"
     }
    }
@@ -107,10 +105,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 32546,
-   "lo": 25548,
-   "hi": 38892,
-   "normal": 32546,
+   "est": 33753,
+   "lo": 27543,
+   "hi": 39964,
+   "normal": 33753,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -133,13 +131,13 @@
     "prev_month": {
      "base": 32184,
      "n": 3,
-     "pct": 1.1,
+     "pct": 4.9,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 35163,
      "n": 4,
-     "pct": -7.4,
+     "pct": -4.0,
      "ym": "2025-11"
     }
    }
@@ -150,10 +148,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 40494,
-   "lo": 31788,
-   "hi": 48390,
-   "normal": 40494,
+   "est": 41996,
+   "lo": 34269,
+   "hi": 49724,
+   "normal": 41996,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -176,13 +174,13 @@
     "prev_month": {
      "base": 38137,
      "n": 3,
-     "pct": 6.2,
+     "pct": 10.1,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 43727,
      "n": 4,
-     "pct": -7.4,
+     "pct": -4.0,
      "ym": "2025-11"
     }
    }
@@ -193,17 +191,17 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 68501,
-   "lo": 58431,
-   "hi": 77954,
-   "normal": 80589,
-   "vs_normal_pct": -15,
+   "est": 73225,
+   "lo": 64072,
+   "hi": 81280,
+   "normal": 83305,
+   "vs_normal_pct": -12,
    "level": "normal",
    "tags": [
     "비"
    ],
    "sat_x": null,
-   "wx_pct": -15,
+   "wx_pct": -12,
    "rain_level": 2,
    "wx_applied": true,
    "weather": {
@@ -221,13 +219,13 @@
     "prev_month": {
      "base": 82324,
      "n": 3,
-     "pct": -16.8,
+     "pct": -11.1,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 81338,
      "n": 5,
-     "pct": -15.8,
+     "pct": -10.0,
      "ym": "2025-11"
     }
    }
@@ -238,10 +236,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 67704,
-   "lo": 57752,
-   "hi": 77047,
-   "normal": 71268,
+   "est": 70059,
+   "lo": 61302,
+   "hi": 77766,
+   "normal": 73669,
    "vs_normal_pct": -5,
    "level": "normal",
    "tags": [
@@ -266,13 +264,13 @@
     "prev_month": {
      "base": 73114,
      "n": 3,
-     "pct": -7.4,
+     "pct": -4.2,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 72382,
      "n": 5,
-     "pct": -6.5,
+     "pct": -3.2,
      "ym": "2025-11"
     }
    }
@@ -283,10 +281,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 30177,
-   "lo": 23689,
-   "hi": 36062,
-   "normal": 30177,
+   "est": 31297,
+   "lo": 25538,
+   "hi": 37055,
+   "normal": 31297,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -309,13 +307,13 @@
     "prev_month": {
      "base": 32194,
      "n": 3,
-     "pct": -6.3,
+     "pct": -2.8,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 34235,
      "n": 4,
-     "pct": -11.9,
+     "pct": -8.6,
      "ym": "2025-11"
     }
    }
@@ -326,17 +324,17 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24670,
-   "lo": 19366,
-   "hi": 29481,
-   "normal": 29024,
-   "vs_normal_pct": -15,
-   "level": "quiet",
+   "est": 26278,
+   "lo": 21443,
+   "hi": 31113,
+   "normal": 30101,
+   "vs_normal_pct": -13,
+   "level": "normal",
    "tags": [
     "비"
    ],
    "sat_x": null,
-   "wx_pct": -15,
+   "wx_pct": -13,
    "rain_level": 2,
    "wx_applied": true,
    "weather": {
@@ -354,13 +352,13 @@
     "prev_month": {
      "base": 29909,
      "n": 5,
-     "pct": -17.5,
+     "pct": -12.1,
      "ym": "2026-09"
     },
     "yoy_month": {
      "base": 32666,
      "n": 4,
-     "pct": -24.5,
+     "pct": -19.6,
      "ym": "2025-11"
     }
    }
@@ -372,8 +370,8 @@
    "type_label": "",
    "holiday": null,
    "est": 27920,
-   "lo": 21917,
-   "hi": 33365,
+   "lo": 22783,
+   "hi": 33057,
    "normal": 27920,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -415,8 +413,8 @@
    "type_label": "",
    "holiday": null,
    "est": 29390,
-   "lo": 23071,
-   "hi": 35121,
+   "lo": 23982,
+   "hi": 34797,
    "normal": 29390,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -458,8 +456,8 @@
    "type_label": "",
    "holiday": null,
    "est": 37181,
-   "lo": 29187,
-   "hi": 44432,
+   "lo": 30340,
+   "hi": 44023,
    "normal": 37181,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -501,8 +499,8 @@
    "type_label": "",
    "holiday": null,
    "est": 73112,
-   "lo": 62364,
-   "hi": 83201,
+   "lo": 63973,
+   "hi": 81154,
    "normal": 73112,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -544,8 +542,8 @@
    "type_label": "",
    "holiday": null,
    "est": 65173,
-   "lo": 55593,
-   "hi": 74167,
+   "lo": 57027,
+   "hi": 72343,
    "normal": 65173,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -587,8 +585,8 @@
    "type_label": "",
    "holiday": null,
    "est": 28600,
-   "lo": 22451,
-   "hi": 34177,
+   "lo": 23338,
+   "hi": 33862,
    "normal": 28600,
    "vs_normal_pct": 0,
    "level": "normal",
@@ -633,7 +631,7 @@
    ],
    "verdict": "less",
    "mixed": false,
-   "cust_pct": -10,
+   "cust_pct": -9,
    "share": {
     "now": 6.01,
     "usual": 7.15,
@@ -653,9 +651,9 @@
    "menus": [
     "칼국수"
    ],
-   "verdict": "less",
+   "verdict": "keep",
    "mixed": false,
-   "cust_pct": -10,
+   "cust_pct": -9,
    "share": {
     "now": 3.08,
     "usual": 3.53,
@@ -675,7 +673,7 @@
    ],
    "verdict": "less",
    "mixed": false,
-   "cust_pct": -10,
+   "cust_pct": -9,
    "share": {
     "now": 3.35,
     "usual": 4.04,
@@ -694,9 +692,9 @@
     "연포탕",
     "낙지"
    ],
-   "verdict": "less",
+   "verdict": "keep",
    "mixed": false,
-   "cust_pct": -10,
+   "cust_pct": -9,
    "share": null,
    "reasons": [
     "제철",
@@ -795,381 +793,390 @@
   "cats": {
    "all": {
     "n": 365,
-    "mape": 11.7,
-    "median": 9.0,
-    "bias": 0.4,
-    "p10": -0.184,
-    "p90": 0.177,
-    "within10": 55,
-    "within20": 84
+    "mape": 11.4,
+    "median": 8.5,
+    "bias": -0.1,
+    "p10": -0.167,
+    "p90": 0.174,
+    "within10": 58,
+    "within20": 86
    },
    "weekday": {
     "n": 240,
-    "mape": 12.9,
-    "median": 10.0,
-    "bias": 0.6,
-    "p10": -0.215,
-    "p90": 0.195,
-    "within10": 50,
-    "within20": 80
+    "mape": 12.6,
+    "median": 9.8,
+    "bias": -0.3,
+    "p10": -0.184,
+    "p90": 0.184,
+    "within10": 51,
+    "within20": 84
    },
    "weekend": {
     "n": 91,
-    "mape": 8.6,
-    "median": 7.5,
-    "bias": -0.7,
-    "p10": -0.147,
-    "p90": 0.138,
-    "within10": 64,
-    "within20": 97
+    "mape": 8.0,
+    "median": 6.4,
+    "bias": -0.2,
+    "p10": -0.125,
+    "p90": 0.11,
+    "within10": 75,
+    "within20": 95
    },
    "holiday": {
     "n": 34,
-    "mape": 11.7,
-    "median": 5.9,
-    "bias": 1.9,
-    "p10": -0.238,
-    "p90": 0.193,
-    "within10": 65,
-    "within20": 79
+    "mape": 11.8,
+    "median": 6.9,
+    "bias": 1.7,
+    "p10": -0.163,
+    "p90": 0.155,
+    "within10": 62,
+    "within20": 82
    },
-   "rain": null
+   "rain": {
+    "n": 56,
+    "mape": 13.5,
+    "median": 8.7,
+    "bias": -3.9,
+    "p10": -0.148,
+    "p90": 0.278,
+    "within10": 59,
+    "within20": 80
+   }
   },
   "recent": [
    {
     "date": "2026-08-17",
     "act": 82971,
-    "est": 70496,
+    "est": 64017,
     "type": "long_last"
    },
    {
     "date": "2026-08-18",
     "act": 33912,
-    "est": 34143,
+    "est": 35437,
     "type": "normal"
    },
    {
     "date": "2026-08-19",
     "act": 31514,
-    "est": 30819,
+    "est": 29827,
     "type": "normal"
    },
    {
     "date": "2026-08-20",
     "act": 30992,
-    "est": 31800,
+    "est": 28640,
     "type": "normal"
    },
    {
     "date": "2026-08-21",
     "act": 33880,
-    "est": 39360,
+    "est": 32839,
     "type": "normal"
    },
    {
     "date": "2026-08-22",
     "act": 64862,
-    "est": 76554,
+    "est": 68800,
     "type": "normal"
    },
    {
     "date": "2026-08-23",
     "act": 70301,
-    "est": 70341,
+    "est": 69247,
     "type": "normal"
    },
    {
     "date": "2026-08-24",
     "act": 32392,
-    "est": 31450,
+    "est": 32686,
     "type": "normal"
    },
    {
     "date": "2026-08-25",
     "act": 31118,
-    "est": 32068,
+    "est": 31062,
     "type": "normal"
    },
    {
     "date": "2026-08-26",
     "act": 31787,
-    "est": 30358,
+    "est": 31545,
     "type": "normal"
    },
    {
     "date": "2026-08-27",
     "act": 36460,
-    "est": 30551,
+    "est": 29589,
     "type": "normal"
    },
    {
     "date": "2026-08-28",
     "act": 40268,
-    "est": 37789,
+    "est": 34057,
     "type": "normal"
    },
    {
     "date": "2026-08-29",
     "act": 76041,
-    "est": 78086,
+    "est": 80701,
     "type": "normal"
    },
    {
     "date": "2026-08-30",
     "act": 68744,
-    "est": 72231,
+    "est": 70993,
     "type": "normal"
    },
    {
     "date": "2026-08-31",
     "act": 24927,
-    "est": 32208,
+    "est": 26856,
     "type": "normal"
    },
    {
     "date": "2026-09-01",
     "act": 19964,
-    "est": 32641,
+    "est": 27218,
     "type": "normal"
    },
    {
     "date": "2026-09-02",
     "act": 28542,
-    "est": 31443,
+    "est": 30465,
     "type": "normal"
    },
    {
     "date": "2026-09-03",
     "act": 29586,
-    "est": 33683,
+    "est": 35017,
     "type": "normal"
    },
    {
     "date": "2026-09-04",
     "act": 37754,
-    "est": 39663,
+    "est": 41238,
     "type": "normal"
    },
    {
     "date": "2026-09-05",
     "act": 80689,
-    "est": 76742,
+    "est": 79321,
     "type": "normal"
    },
    {
     "date": "2026-09-06",
     "act": 72940,
-    "est": 75564,
+    "est": 78103,
     "type": "normal"
    },
    {
     "date": "2026-09-07",
     "act": 33330,
-    "est": 34506,
+    "est": 35849,
     "type": "normal"
    },
    {
     "date": "2026-09-08",
     "act": 29754,
-    "est": 35142,
+    "est": 36509,
     "type": "normal"
    },
    {
     "date": "2026-09-09",
     "act": 29516,
-    "est": 33199,
+    "est": 34487,
     "type": "normal"
    },
    {
     "date": "2026-09-10",
     "act": 30933,
-    "est": 34545,
+    "est": 32571,
     "type": "normal"
    },
    {
     "date": "2026-09-11",
     "act": 38619,
-    "est": 39907,
+    "est": 41452,
     "type": "normal"
    },
    {
     "date": "2026-09-12",
     "act": 85690,
-    "est": 79716,
+    "est": 82419,
     "type": "normal"
    },
    {
     "date": "2026-09-13",
     "act": 75260,
-    "est": 75458,
+    "est": 78016,
     "type": "normal"
    },
    {
     "date": "2026-09-14",
     "act": 32382,
-    "est": 33470,
+    "est": 34765,
     "type": "normal"
    },
    {
     "date": "2026-09-15",
     "act": 32714,
-    "est": 34092,
+    "est": 35412,
     "type": "normal"
    },
    {
     "date": "2026-09-16",
     "act": 32560,
-    "est": 31428,
+    "est": 32644,
     "type": "normal"
    },
    {
     "date": "2026-09-17",
     "act": 36032,
-    "est": 33579,
+    "est": 34865,
     "type": "normal"
    },
    {
     "date": "2026-09-18",
     "act": 38038,
-    "est": 38573,
+    "est": 40062,
     "type": "normal"
    },
    {
     "date": "2026-09-19",
     "act": 80594,
-    "est": 81796,
+    "est": 84569,
     "type": "normal"
    },
    {
     "date": "2026-09-20",
     "act": 71141,
-    "est": 76973,
+    "est": 79582,
     "type": "normal"
    },
    {
     "date": "2026-09-21",
     "act": 30870,
-    "est": 34473,
+    "est": 35824,
     "type": "normal"
    },
    {
     "date": "2026-09-22",
     "act": 32484,
-    "est": 34763,
+    "est": 36125,
     "type": "normal"
    },
    {
     "date": "2026-09-23",
     "act": 39522,
-    "est": 32915,
+    "est": 34205,
     "type": "eve_long"
    },
    {
     "date": "2026-09-24",
     "act": 118822,
-    "est": 91362,
+    "est": 94487,
     "type": "mj_first"
    },
    {
     "date": "2026-09-25",
     "act": 156194,
-    "est": 163872,
+    "est": 148970,
     "type": "mj_day"
    },
    {
     "date": "2026-09-26",
     "act": 131358,
-    "est": 120447,
+    "est": 124566,
     "type": "mj_mid"
    },
    {
     "date": "2026-09-27",
     "act": 75652,
-    "est": 120447,
+    "est": 124566,
     "type": "mj_mid"
    },
    {
     "date": "2026-09-28",
     "act": 33940,
-    "est": 91924,
+    "est": 95050,
     "type": "mj_last"
    },
    {
     "date": "2026-09-29",
     "act": 34629,
-    "est": 34982,
+    "est": 36343,
     "type": "normal"
    },
    {
     "date": "2026-09-30",
     "act": 30807,
-    "est": 32405,
+    "est": 33679,
     "type": "normal"
    },
    {
     "date": "2026-10-01",
     "act": 29838,
-    "est": 36293,
+    "est": 34269,
     "type": "normal"
    },
    {
     "date": "2026-10-02",
     "act": 39784,
-    "est": 40225,
+    "est": 37989,
     "type": "normal"
    },
    {
     "date": "2026-10-03",
     "act": 98280,
-    "est": 100622,
+    "est": 104023,
     "type": "long_first"
    },
    {
     "date": "2026-10-04",
     "act": 109907,
-    "est": 112189,
+    "est": 110762,
     "type": "long_mid"
    },
    {
     "date": "2026-10-05",
     "act": 75859,
-    "est": 79349,
+    "est": 74492,
     "type": "long_last"
    },
    {
     "date": "2026-10-06",
     "act": 30832,
-    "est": 35141,
+    "est": 36508,
     "type": "normal"
    },
    {
     "date": "2026-10-07",
     "act": 34828,
-    "est": 34292,
+    "est": 35623,
     "type": "normal"
    },
    {
     "date": "2026-10-08",
     "act": 40145,
-    "est": 41263,
+    "est": 42864,
     "type": "eve_long"
    },
    {
     "date": "2026-10-09",
     "act": 101311,
-    "est": 107144,
+    "est": 110819,
     "type": "long_first"
    },
    {
     "date": "2026-10-10",
     "act": 102949,
-    "est": 118857,
+    "est": 122934,
     "type": "long_mid"
    },
    {
     "date": "2026-10-11",
     "act": 76184,
-    "est": 79066,
+    "est": 81778,
     "type": "long_last"
    }
   ]
@@ -1262,57 +1269,57 @@
    "eve_long": "연휴 전날"
   },
   "dry_boost": {
-   "we": 1.0,
-   "wd": 1.0
+   "we": 1.0337,
+   "wd": 1.0371
   },
   "cold": {
-   "factor": 1.0,
-   "n": 0,
-   "measured": false
+   "factor": 0.909,
+   "n": 42,
+   "measured": true
   },
   "recent_from": "2026-08-18",
   "recent_to": "2026-10-07"
  },
  "weather_effect": {
   "we1": {
-   "factor": 0.95,
-   "n": 0,
-   "measured": false
+   "factor": 0.951,
+   "n": 29,
+   "measured": true
   },
   "we2": {
-   "factor": 0.85,
-   "n": 0,
-   "measured": false
+   "factor": 0.879,
+   "n": 27,
+   "measured": true
   },
   "we3": {
-   "factor": 0.75,
-   "n": 0,
-   "measured": false
+   "factor": 0.865,
+   "n": 22,
+   "measured": true
   },
   "wd1": {
-   "factor": 0.95,
-   "n": 0,
-   "measured": false
+   "factor": 0.943,
+   "n": 82,
+   "measured": true
   },
   "wd2": {
-   "factor": 0.85,
-   "n": 0,
-   "measured": false
+   "factor": 0.873,
+   "n": 46,
+   "measured": true
   },
   "wd3": {
-   "factor": 0.75,
-   "n": 0,
-   "measured": false
+   "factor": 0.803,
+   "n": 63,
+   "measured": true
   }
  },
  "rain_timing": {
   "night": {
-   "pct": null,
-   "n": 0
+   "pct": -13,
+   "n": 29
   },
   "day": {
-   "pct": null,
-   "n": 0
+   "pct": -18,
+   "n": 105
   }
  },
  "broadcast_auto": [

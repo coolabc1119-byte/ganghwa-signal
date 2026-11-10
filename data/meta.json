@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "4.2",
- "updated_at": "2026-11-10 11:00 KST",
+ "updated_at": "2026-11-10 11:07 KST",
  "range": [
   "2025-07-13",
   "2026-11-09"
@@ -35,8 +35,7 @@
    "2026-10-17~2026-11-09: 접속 실패 URLError: <urlopen error timed out>",
    "2026-09-17~2026-10-16: 접속 실패 URLError: <urlopen error timed out>"
   ],
-  "tour_api_calls": 2,
-  "weather_archive": "TimeoutError: The read operation timed out"
+  "tour_api_calls": 2
  },
  "mode": "live",
  "store": {

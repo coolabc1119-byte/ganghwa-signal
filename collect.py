@@ -430,24 +430,39 @@ def fetch_visitors(start, end):
 GANGHWA_LAT, GANGHWA_LON = 37.63, 126.48  # 길상면 선두리 부근
 
 
+def _daytime_rain(hourly):
+    """시간별 강수량에서 손님이 움직이는 시간대(09~19시) 합계만 뽑음"""
+    out = {}
+    for t, v in zip(hourly.get("time", []), hourly.get("precipitation", [])):
+        if v is None:
+            continue
+        day, hh = t[:10], int(t[11:13])
+        if 9 <= hh <= 18:
+            out[day] = round(out.get(day, 0) + v, 1)
+        else:
+            out.setdefault(day, 0)
+    return out
+
+
 def fetch_weather(start, end):
     daily = "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max"
     out = {}
     # 과거(archive): 어제까지
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "start_date": start.isoformat(),
                                 "end_date": (datetime.now(KST).date() - timedelta(days=2)).isoformat(),
-                                "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max", "timezone": "Asia/Seoul"})
+                                "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max", "hourly": "precipitation", "timezone": "Asia/Seoul"})
     try:
-        res = http_json("https://archive-api.open-meteo.com/v1/archive?" + q, timeout=60)
+        res = http_json("https://archive-api.open-meteo.com/v1/archive?" + q, timeout=120)
         d = res.get("daily", {})
+        day_rain = _daytime_rain(res.get("hourly", {}))
         for i, day in enumerate(d.get("time", [])):
             out[day] = {"code": d["weathercode"][i], "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i],
-                        "rain": d["precipitation_sum"][i], "pop": None, "wind": (d.get("windspeed_10m_max") or [None] * 9999)[i], "src": "past"}
+                        "rain": d["precipitation_sum"][i], "pop": None, "wind": (d.get("windspeed_10m_max") or [None] * 9999)[i], "rain_day": day_rain.get(day), "src": "past"}
     except Exception as e:
         ERRORS["weather_archive"] = f"{type(e).__name__}: {str(e)[:120]}"
     # 예보: 최근 7일(과거 보정) + 앞 7일
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "daily": daily, "timezone": "Asia/Seoul",
-                                "past_days": 7, "forecast_days": 14})
+                                "past_days": 7, "forecast_days": 14, "hourly": "precipitation"})
     res = None
     for attempt in range(4):  # Open-Meteo가 가끔 503(과부하) → 재시도
         try:
@@ -458,11 +473,12 @@ def fetch_weather(start, end):
                 raise
             time.sleep(8 * (attempt + 1))
     d = res.get("daily", {})
+    day_rain = _daytime_rain(res.get("hourly", {}))
     today = datetime.now(KST).date().isoformat()
     for i, day in enumerate(d.get("time", [])):
         out[day] = {"code": d["weathercode"][i], "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i],
                     "rain": d["precipitation_sum"][i], "pop": (d.get("precipitation_probability_max") or [None] * 99)[i],
-                    "wind": (d.get("windspeed_10m_max") or [None] * 99)[i], "src": "forecast" if day >= today else "past"}
+                    "wind": (d.get("windspeed_10m_max") or [None] * 99)[i], "rain_day": day_rain.get(day), "src": "forecast" if day >= today else "past"}
     if not out:
         raise RuntimeError("날씨 응답 비어 있음")
     return {"days": out, "note": "Open-Meteo 일별 날씨 (강화군 길상면 기준). 과거는 관측 재분석, 앞 7일은 예보.", "live": True}

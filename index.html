@@ -461,8 +461,8 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
     <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
       <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
       <div id="local"></div></div>
-    <div class="card" id="plCard" hidden><h2>네이버 플레이스 평점·후기 <span class="chip live">실데이터</span></h2><div class="sub" id="plSub"></div><div id="plBody"></div></div>
     <div class="card" id="rvCard" hidden><h2>블로그 후기 — 새로 올라온 글 <span class="chip live">실데이터</span></h2><div class="sub" id="rvSub"></div><div id="rvBody"></div></div>
+    <div class="card" id="plCard" hidden><h2>네이버 플레이스 평점·후기 <span class="chip live">실데이터</span></h2><div class="sub" id="plSub"></div><div id="plBody"></div></div>
   </section>
 
   <details class="how" style="margin-top:22px;border-top:1px solid var(--line)">
@@ -1080,14 +1080,16 @@ function renderLocal(){
   const dd=t.dates, R=(a,b)=>`${md(dd[Math.max(0,a)])}(${WD[dow(dd[Math.max(0,a)])]})~${md(dd[b-1])}(${WD[dow(dd[b-1])]})`;
   const upd=(D.meta.updated_at||'').slice(0,10);
   const basis=`<div class="basis"><div><span>최근 7일</span><b>${R(n-7,n)}</b></div><div><span>직전 7일 (증감 비교 대상)</span><b>${R(n-14,n-7)}</b></div><div><span>최근 30일</span><b>${R(n-30,n)}</b></div><div><span>검색광고 월(실측)</span><b>${upd?md(upd)+' 수집 시점의 최근 한 달':'최근 한 달'}</b></div><div><span>회/일</span><b>최근 7일 합계 ÷ 7</b></div></div>`;
-  el.innerHTML=basis+kws.map(k=>{ const v=t.series[k]; const ours=/만선/.test(k); const nm=`${XSS(k)}${ours?'<span class="tag mine">직접</span>':'<span class="tag">간접</span>'}`;
+  const rowOf=k=>{ const v=t.series[k]; const ours=/만선/.test(k); const nm=`${XSS(k)}${ours?'<span class="tag mine">직접</span>':'<span class="tag">간접</span>'}`;
     const ad=vol[k.replace(/\s/g,'')]; const adTxt=!ad?'–':ad.under10||!ad.total?'10회 미만':fmt(ad.total)+'회';
     if(!v) return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="muted" style="font-size:12px">다음 수집부터 표시</span></div></div>`;
     const w=sum(v,n-7,n), pw=sum(v,n-14,n-7), m=sum(v,n-30,n);
     if(!m){ const mo=ad&&!ad.under10?ad.total:0; return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="val">${mo?(mo/30).toFixed(1)+'<small>회/일</small>':'<small>10회 미만/월</small>'}</span></div><div class="sub" style="margin:0">일별 추이는 없음(데이터랩 집계 기준 미달) · 검색광고 한 달 ${adTxt} ÷ 30</div></div>`; }
     const p=pw?(w/pw-1)*100:null;
     return `<div class="cr ${ours?'ref':''}"><div class="ctop"><span class="nm">${nm}</span><span class="val">${(w/7).toFixed(1)}<small>회/일</small></span></div>
-      <div class="g3">${box('최근 7일 합계',fmt(w)+'회',p==null?'직전 7일 –':`직전 7일 ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`)}${box('최근 30일 합계',fmt(m)+'회','하루 '+(m/30).toFixed(1)+'회')}${box('검색광고 월(실측)',adTxt,ad?.aliases?ad.aliases.length+'개 표기 합':'PC+모바일')}</div></div>`; }).join('');
+      <div class="g3">${box('최근 7일 합계',fmt(w)+'회',p==null?'직전 7일 –':`직전 7일 ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`)}${box('최근 30일 합계',fmt(m)+'회','하루 '+(m/30).toFixed(1)+'회')}${box('검색광고 월(실측)',adTxt,ad?.aliases?ad.aliases.length+'개 표기 합':'PC+모바일')}</div></div>`; };
+  const mine=kws.filter(k=>/만선/.test(k)), near=kws.filter(k=>!/만선/.test(k));
+  el.innerHTML=basis+mine.map(rowOf).join('')+(near.length?`<details class="nx"><summary>간접 검색어 ${near.length}개 펼치기 (가게 바로 옆 펜션·캠핑장)</summary><div style="margin-top:6px">${near.map(rowOf).join('')}</div></details>`:'');
 }
 /* ---------- 숙박 vs 당일치기 (참고) ---------- */
 function renderStay(){

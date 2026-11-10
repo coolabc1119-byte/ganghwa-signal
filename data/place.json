@@ -1,31 +1,31 @@
 {
  "place_id": "21202659",
  "name": "만선꽃게랑낙지",
- "checked": "2026-11-10 11:06",
- "visitor": 1065.0,
+ "checked": "2026-11-10 16:39",
+ "visitor": 1066.0,
  "blog": 1453.0,
  "score": 4.59,
- "text": 916.0,
+ "text": 917.0,
  "tags": [
   {
    "name": "음식이 맛있어요",
-   "count": 722
+   "count": 724
   },
   {
    "name": "재료가 신선해요",
-   "count": 558
+   "count": 560
   },
   {
    "name": "양이 많아요",
-   "count": 323
+   "count": 324
   },
   {
    "name": "친절해요",
-   "count": 275
+   "count": 276
   },
   {
    "name": "특별한 메뉴가 있어요",
-   "count": 246
+   "count": 247
   },
   {
    "name": "인테리어가 멋져요",
@@ -33,7 +33,7 @@
   },
   {
    "name": "매장이 넓어요",
-   "count": 168
+   "count": 169
   },
   {
    "name": "매장이 청결해요",
@@ -42,12 +42,12 @@
  ],
  "history": {
   "2026-11-10": {
-   "visitor": 1065.0,
+   "visitor": 1066.0,
    "blog": 1453.0
   }
  },
  "debug": {
-  "home_len": 452382,
+  "home_len": 453023,
   "review_keys": [
    "cafeBlogReviewsTotal",
    "imageReviewCount",

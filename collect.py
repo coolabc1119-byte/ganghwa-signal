@@ -632,6 +632,11 @@ def fetch_rankings(cfg):
         try:
             html = http_text("https://m.place.naver.com/restaurant/list?" + urllib.parse.urlencode({"query": q}))
             st_ = _apollo(html)
+            if "probe" not in dbg:
+                dbg["probe"] = {"len": len(html), "apollo": "__APOLLO_STATE__" in html, "parsed": bool(st_),
+                                "root": [k[:40] for k in (st_ or {}).get("ROOT_QUERY", {}).keys()][:12],
+                                "types": sorted({str(v.get("__typename")) for v in (st_ or {}).values() if isinstance(v, dict)})[:25],
+                                "title": (re.search(r"<title>(.*?)</title>", html, re.S) or [None, ""])[1][:40]}
             if st_:
                 root = st_.get("ROOT_QUERY", {})
                 refs = []
@@ -663,7 +668,7 @@ def fetch_rankings(cfg):
                 addr = it.get("address") or it.get("roadAddress") or ""
                 ent["api"].append({"name": _clean(it.get("title")), "category": it.get("category", ""), "area": addr, "mine": bool(mine.search(_clean(it.get("title"))))})
         except Exception as e:
-            dbg.setdefault("api_err", []).append(f"{q}: {type(e).__name__} {str(e)[:80]}")
+            dbg["api_err"] = f"{type(e).__name__} {str(e)[:40]}"
         for i, r in enumerate(ent["place"]):
             if r["mine"]:
                 ent["my_rank"] = i + 1
@@ -671,7 +676,7 @@ def fetch_rankings(cfg):
         out[q] = ent
         time.sleep(0.4)
     if not any(e["place"] or e["api"] for e in out.values()):
-        raise RuntimeError(f"순위를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:200]}")
+        raise RuntimeError(f"순위를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:900]}")
     hist = prev.get("history", {})
     hist[today] = {q: {"my_rank": e["my_rank"], "top": [r["name"] for r in e["place"][:5]]} for q, e in out.items()}
     return {"checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"), "queries": out, "history": {k: hist[k] for k in sorted(hist)[-400:]}, "debug": dbg}
@@ -1068,7 +1073,7 @@ def main():
         save("rankings.json", fetch_rankings(cfg))
     except Exception as e:
         log(f"검색 순위 실패: {e}")
-        ERRORS["rankings"] = f"{type(e).__name__}: {str(e)[:300]}"
+        ERRORS["rankings"] = f"{type(e).__name__}: {str(e)[:1000]}"
     try:
         rv = fetch_reviews(cfg)
         if rv:

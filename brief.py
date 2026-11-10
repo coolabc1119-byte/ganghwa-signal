@@ -1,35 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-주간 준비 브리핑 v2 — 사장님의 세 가지 질문에 답한다.
-  1) 이번 주 며칠이 얼마나 바쁠까?           → 날짜별 예상 외지인 + 평소 같은 요일 대비 %
-  2) 재료를 평소보다 얼마나 더/덜 받을까?      → 재료별 "평소 대비 배율" + 기준량을 넣으면 kg 환산
-  3) 사람을 며칠 더 부를까?                    → 평소 같은 요일 대비 20%↑ 날만 표시
-  + 앞으로 4주 전망(작년 같은 주 + 연휴 + 계절)  → 미리 발주·휴무·알바 계획
+주간 준비 브리핑 v4 — 사장님의 질문에 답한다.
+  1) 오늘·이번 주 며칠이 얼마나 바쁠까?   → 날짜별 예상 외지인 + 이맘때 보통 같은 요일 대비 % + 오차 범위
+  2) 재료를 더 받을까 덜 받을까?          → 손님 수 신호 × 메뉴 인기 신호
+  3) 앞으로 6주 흐름, 연휴는 얼마나 붐빌까 → 작년 실제 + 예상
+  4) 이 예측을 얼마나 믿어도 되나?        → 과거를 같은 조건으로 다시 맞혀 본 성적표
 
-예측 = 요일 기본값(최근 8주 중앙값, 연휴 제외)
-       × 계절(작년 같은 시기 변화, 0.7~1.3)
-       × 추세(최근 4주 ÷ 그 전 4주, ±10%)
-       × 연휴(연휴=토요일, 전날=금요일)
-       × 날씨(비·눈 예보 — 과거 데이터에서 비 오는 날 실제로 얼마나 줄었는지 계산해 적용)
-       × 방송(최근 10일 내 강화 맛집 방송 → 첫 주말 1.3배)
+예측 식은 forecast.py 참고.
 """
-import csv
 import json
 import os
-import statistics
+import statistics as st
 from datetime import date, datetime, timedelta, timezone
+
+import forecast
+from forecast import Model, rain_level, TYPE_LABEL, SAT_BASED
 
 KST = timezone(timedelta(hours=9))
 WD = ["월", "화", "수", "목", "금", "토", "일"]
+I = lambda d: d.isoformat()
 
 WX = {0: "맑음", 1: "맑음", 2: "구름", 3: "흐림", 45: "안개", 48: "안개", 51: "이슬비", 53: "이슬비", 55: "이슬비",
       61: "비", 63: "비", 65: "큰비", 66: "진눈깨비", 67: "진눈깨비", 71: "눈", 73: "눈", 75: "큰눈", 77: "눈",
       80: "소나기", 81: "소나기", 82: "폭우", 85: "눈", 86: "큰눈", 95: "뇌우", 96: "뇌우", 99: "뇌우"}
-
-
-def _median(xs):
-    xs = [x for x in xs if x is not None]
-    return statistics.median(xs) if xs else 0
+RAIN_TAG = {1: "비 조금", 2: "비", 3: "많은 비·눈"}
 
 
 def _mean(xs):
@@ -45,310 +39,268 @@ def _in_window(d, win):
     return b <= a <= c if b <= c else (a >= b or a <= c)
 
 
-def load_sales(path):
-    if not os.path.exists(path):
-        return {}
-    out = {}
-    with open(path, encoding="utf-8-sig") as f:
-        for row in csv.reader(f):
-            if len(row) < 2:
-                continue
-            try:
-                d = datetime.strptime(row[0].strip()[:10].replace(".", "-").replace("/", "-"), "%Y-%m-%d").date().isoformat()
-                out[d] = float(str(row[1]).replace(",", ""))
-            except Exception:
-                continue
-    return out
+def _q(xs, p):
+    xs = sorted(xs)
+    if not xs:
+        return None
+    return xs[min(len(xs) - 1, max(0, int(round(p * (len(xs) - 1)))))]
 
 
-def rain_level(w):
-    """0 없음 / 1 약간(1~5mm 또는 확률 40~59%) / 2 비(5mm↑ 또는 확률 60%↑) / 3 많은 비·눈(20mm↑ 또는 눈)"""
-    if not w:
-        return 0
-    rain, pop, code = w.get("rain") or 0, w.get("pop"), w.get("code") or 0
-    snow = code in (71, 73, 75, 77, 85, 86, 66, 67)
-    if snow or rain >= 20:
-        return 3
-    if rain >= 5 or (pop is not None and pop >= 60):
-        return 2
-    if rain >= 1 or (pop is not None and pop >= 40):
-        return 1
-    return 0
+def backtest(by, H, wx, lag, span=365):
+    """방문자 통계가 lag일 늦게 나오는 조건 그대로, 지난 span일을 하루씩 다시 맞혀 본다."""
+    last = date.fromisoformat(max(by))
+    rows, cache = [], {}
+    d = last - timedelta(days=span - 1)
+    while d <= last:
+        s = I(d)
+        if s in by:
+            cut = I(d - timedelta(days=lag))
+            if cut not in cache:
+                if len(cache) > 2:
+                    cache.pop(next(iter(cache)))
+                cache[cut] = Model(by, H, wx, cutoff=cut)
+            p = cache[cut].predict(d)
+            if p:
+                rows.append({"date": s, "act": by[s], "est": round(p["est"]), "type": p["type"], "wd": d.weekday(), "rl": p["rain_level"]})
+        d += timedelta(1)
+
+    def stat(sel):
+        r = [x for x in rows if sel(x)]
+        if len(r) < 5:
+            return None
+        e = [x["act"] / x["est"] - 1 for x in r]
+        a = [abs(v) for v in e]
+        return {"n": len(r), "mape": round(st.mean(a) * 100, 1), "median": round(st.median(a) * 100, 1), "bias": round(-st.mean(e) * 100, 1),
+                "p10": round(_q(e, 0.1), 3), "p90": round(_q(e, 0.9), 3),
+                "within10": round(sum(1 for v in a if v <= 0.10) / len(a) * 100), "within20": round(sum(1 for v in a if v <= 0.20) / len(a) * 100)}
+    cats = {"all": stat(lambda x: True), "weekday": stat(lambda x: x["type"] == "normal" and x["wd"] < 5),
+            "weekend": stat(lambda x: x["type"] == "normal" and x["wd"] >= 5), "holiday": stat(lambda x: x["type"] != "normal"),
+            "rain": stat(lambda x: x["type"] == "normal" and x["rl"] >= 2)}
+    return {"lag": lag, "from": rows[0]["date"] if rows else None, "to": rows[-1]["date"] if rows else None, "cats": cats,
+            "recent": [{"date": x["date"], "act": x["act"], "est": x["est"], "type": x["type"]} for x in rows[-56:]]}
 
 
-def build(cfg, visitors, compare, news=None, weather=None, today=None):
+def menu_share(trend, kws, ref="강화도 맛집"):
+    """최근 7일 메뉴 비중(메뉴 검색 ÷ 강화도 맛집 검색)이 그 앞 4주보다 얼마나 높은가"""
+    if not trend or not trend.get("series") or ref not in trend["series"]:
+        return None
+    ser, n = trend["series"], len(trend["dates"])
+    while n > 0 and not any((v[n - 1] or 0) for v in ser.values()):
+        n -= 1
+    kws = [k for k in kws if k in ser]
+    if not kws or n < 40:
+        return None
+    s = lambda k, a, b: sum((ser[k][i] or 0) for i in range(max(0, a), b))
+    cur_m, cur_r = sum(s(k, n - 7, n) for k in kws), s(ref, n - 7, n)
+    use_m, use_r = sum(s(k, n - 35, n - 7) for k in kws), s(ref, n - 35, n - 7)
+    if not cur_r or not use_r or not use_m or cur_m / 7 < 3:
+        return None
+    now, usual = cur_m / cur_r * 100, use_m / use_r * 100
+    return {"now": round(now, 2), "usual": round(usual, 2), "pct": round((now / usual - 1) * 100, 1), "per_day": round(cur_m / 7, 1),
+            "from": trend["dates"][n - 7], "to": trend["dates"][n - 1]}
+
+
+def build(cfg, visitors, compare=None, news=None, weather=None, today=None, trend=None):
     today = today or datetime.now(KST).date()
     rules = cfg.get("brief_rules", {})
-    lb = rules.get("lookback_weeks", 8)
-    holidays = cfg.get("holidays", {})
+    H = cfg.get("holidays", {})
     bc = cfg.get("broadcast_log", [])
     wx = (weather or {}).get("days", {})
-    compare = compare or []
     visitors = visitors or {}
-    sample = not visitors.get("live")
-
     dates, vis = visitors.get("dates", []), visitors.get("visitor", [])
     by = {d: v for d, v in zip(dates, vis) if v is not None}
-    hol = set(holidays) | {(date.fromisoformat(h) - timedelta(days=1)).isoformat() for h in holidays}
-    recent = [(date.fromisoformat(d), v) for d, v in zip(dates, vis) if v is not None and d not in hol][-7 * lb:]
-    by_wd = {i: _median([v for d, v in recent if d.weekday() == i]) for i in range(7)}
-    weekday_base = _median([v for d, v in recent if d.weekday() < 4]) or 1
-    last4 = [v for d, v in recent[-28:]]
-    prev4 = [v for d, v in recent[-56:-28]]
-    trend = (sum(last4) / len(last4)) / (sum(prev4) / len(prev4)) if last4 and prev4 else 1.0
-    trend = max(0.9, min(1.1, trend))
-    last_data = dates[-1] if dates else None
-    base_center = recent[len(recent) // 2][0] if recent else today
+    last_data = max(by) if by else None
+    lag = (today - date.fromisoformat(last_data)).days if last_data else 30
+    lag = max(7, min(45, lag))
 
-    # ---- 날씨 효과: 과거에서 "비 온 날 ÷ 그 주변(±4주) 같은 요일 비 안 온 날" 실측 ----
-    #  주변 날짜와 비교해야 계절 차이(여름 vs 가을)가 비 효과에 섞이지 않음
-    def local_dry_base(dt):
-        xs = []
-        for k in (-28, -21, -14, -7, 7, 14, 21, 28):
-            o = (dt + timedelta(days=k)).isoformat()
-            if o in by and o not in hol and o in wx and rain_level(wx[o]) == 0:
-                xs.append(by[o])
-        return statistics.median(xs) if len(xs) >= 2 else None
+    m = Model(by, H, wx)
+    acc = backtest(by, H, wx, lag)
+    cats = acc["cats"]
 
-    def wx_effect():
-        eff = {(k, l): [] for k in ("we", "wd") for l in (1, 2, 3)}
-        for d, v in by.items():
-            if d in hol or d not in wx:
-                continue
-            dt = date.fromisoformat(d)
-            lvl = rain_level(wx[d])
-            if lvl == 0:
-                continue
-            base = local_dry_base(dt)
-            if not base:
-                continue
-            eff[("we" if dt.weekday() >= 5 else "wd", lvl)].append(v / base)
-        default = {1: 0.95, 2: 0.80, 3: 0.65}
-        out = {}
-        for (k, lvl), xs in eff.items():
-            out[f"{k}{lvl}"] = {"factor": round(max(0.4, min(1.05, statistics.median(xs))), 3) if len(xs) >= 4 else default[lvl],
-                                "n": len(xs), "measured": len(xs) >= 4}
-        return out
-    wxe = wx_effect()
+    def band(t, wd):
+        c = cats.get("holiday" if t != "normal" else "weekend" if wd >= 5 else "weekday") or cats.get("all") or {"p10": -0.15, "p90": 0.2}
+        return c["p10"], c["p90"]
 
-    def wx_factor(d):
-        w = wx.get(d.isoformat())
-        lvl = rain_level(w)
-        if lvl == 0:
-            return 1.0, None, w
-        k = ("we" if d.weekday() >= 5 else "wd") + str(lvl)
-        return wxe[k]["factor"], {1: "비 조금", 2: "비 예보", 3: "많은 비·눈"}[lvl], w
-
-    # ---- 계절 ----
-    def ly_avg(wd, center, half=14):
-        xs = [by[(center + timedelta(days=k)).isoformat()] for k in range(-half, half + 1)
-              if (center + timedelta(days=k)).weekday() == wd and (center + timedelta(days=k)).isoformat() in by
-              and (center + timedelta(days=k)).isoformat() not in hol]
-        return (_mean(xs), len(xs))
-
-    def seasonal(wd, target):
-        a, na = ly_avg(wd, target - timedelta(days=364))
-        b, nb = ly_avg(wd, base_center - timedelta(days=364))
-        if a and b and na >= 2 and nb >= 2:
-            return max(0.7, min(1.3, a / b))
-        return 1.0
-
-    # ---- 실제값 비교 ----
-    true_hol = set(holidays)
-
+    # ---- 실제값 비교(지난달·작년 같은 달 같은 요일) ----
     def month_wd_avg(ym, wd):
-        # 연휴·연휴 전날 제외 → 없으면 연휴 당일만 제외하고 다시
-        xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and d not in hol]
-        if not xs:
-            xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and d not in true_hol]
-        return (_mean(xs), len(xs))
+        xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and m.dtype(date.fromisoformat(d)) == "normal"]
+        return _mean(xs), len(xs)
 
     def ym_shift(d, k):
-        y, m = d.year, d.month - k
-        while m <= 0:
-            m += 12
+        y, mo = d.year, d.month - k
+        while mo <= 0:
+            mo += 12
             y -= 1
-        return f"{y}-{m:02d}"
+        return f"{y}-{mo:02d}"
 
     def cmp_block(d, est):
+        """보통날이 2일 이상 있는 가장 최근 달 / 작년 같은 달의 같은 요일 실제 평균과 비교"""
         out = {}
-        for key, k in (("prev_month", 1), ("yoy_month", 12)):
-            ym = ym_shift(d, k)
-            a, n = month_wd_avg(ym, d.weekday())
-            out[key] = {"base": round(a) if a else None, "n": n, "pct": round((est / a - 1) * 100, 1) if a else None, "ym": ym}
+        for key, ks in (("prev_month", (1, 2, 3)), ("yoy_month", (12,))):
+            out[key] = {"base": None, "n": 0, "pct": None, "ym": ym_shift(d, ks[0])}
+            for k in ks:
+                ym = ym_shift(d, k)
+                a, n = month_wd_avg(ym, d.weekday())
+                if a and n >= 2:
+                    out[key] = {"base": round(a), "n": n, "pct": round((est / a - 1) * 100, 1), "ym": ym}
+                    break
         return out
-
-    # ---- 가게 매출 비율(선택) ----
-    sales = load_sales(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "store_sales.csv"))
-    capture = None
-    if sales:
-        pairs = [(by[d], s) for d, s in sales.items() if d in by and by[d] > 0]
-        if len(pairs) >= 14:
-            capture = statistics.median([s / v * 10000 for v, s in pairs])
 
     # ---- 방송 ----
     auto_bc = []
     for it in (news or {}).get("items", []):
         if it.get("tv") and any(w in it["title"] for w in ("맛집", "꽃게", "낙지", "젓국", "식당", "밥상", "먹방", "게장", "칼국수")):
             auto_bc.append({"date": it["date"], "program": it["tv"], "note": it["title"][:60], "link": it.get("link"), "auto": True})
-    seen = {b["date"] for b in bc}
-    all_bc = bc + [b for b in auto_bc if b["date"] not in seen and not seen.add(b["date"])]
-    recent_bc = [b for b in all_bc if 0 <= (today - date.fromisoformat(b["date"])).days <= rules.get("broadcast_boost_days", 10)]
 
-    # ---- 날짜별 예측 ----
-    def forecast_day(d, detail=True):
-        wd = d.weekday()
-        tags, base_wd = [], wd
-        if d.isoformat() in holidays:
-            base_wd = 5
-            tags.append(holidays[d.isoformat()])
-        elif (d + timedelta(days=1)).isoformat() in holidays and wd not in (4, 5):
-            base_wd = 4
-            tags.append("연휴 전날")
-        sf = seasonal(base_wd, d)
-        est = by_wd.get(base_wd, weekday_base) * trend * sf
-        wf, wtag, w = wx_factor(d)
-        if detail and wtag:
-            est *= wf
-            tags.append(wtag)
-        if recent_bc and wd in (5, 6) and detail:
-            est *= rules.get("broadcast_boost", 1.3)
-            tags.append("방송 후 첫 주말")
-        vs_wd = (est / by_wd[wd] - 1) * 100 if by_wd.get(wd) else 0
-        x_weekday = est / weekday_base
-        level = "quiet" if vs_wd <= -20 else "peak" if vs_wd >= 20 else "busy" if vs_wd >= 8 else "normal"
-        row = {"date": d.isoformat(), "wd": WD[wd], "est_visitors": round(est), "level": level,
-               "vs_weekday_pct": round(vs_wd), "x_weekday": round(x_weekday, 2), "tags": tags,
-               "weather": None if not w else {"code": w.get("code"), "text": WX.get(w.get("code"), ""), "tmax": w.get("tmax"), "tmin": w.get("tmin"),
-                                              "rain": w.get("rain"), "pop": w.get("pop"), "src": w.get("src")}}
-        if detail:
-            row["cmp"] = cmp_block(d, est)
-            row["est_store"] = round(est / 10000 * capture) if capture else None
-            row["seasonal"] = round(sf, 3)
-            row["weather_factor"] = round(wf, 3)
-        return row
+    # ---- 날짜별 예측 (14일) ----
+    def day_row(d, i):
+        use_wx = i < 8 and I(d) in wx          # 8일 뒤부터는 예보가 자주 바뀌어 날씨를 반영하지 않음
+        p = m.predict(d, use_weather=use_wx)
+        if not p:
+            return None
+        wd, t = d.weekday(), p["type"]
+        w = wx.get(I(d))
+        # 보통 = 이맘때 같은 요일, 연휴 아님, 비 안 오는 날
+        normal = (p["normal_same_wd"] or p["base"]) * (m.dry_boost["we" if wd >= 5 else "wd"] if use_wx else 1.0)
+        est = p["est"]
+        lo, hi = band(t, wd)
+        vs = (est / normal - 1) * 100 if normal else 0
+        tags = []
+        if I(d) in H:
+            tags.append(H[I(d)])
+        if TYPE_LABEL.get(t) and TYPE_LABEL[t] not in tags:
+            tags.append(TYPE_LABEL[t])
+        if p["rain_level"]:
+            tags.append(RAIN_TAG[p["rain_level"]])
+        if p.get("cold"):
+            tags.append("갑자기 추움")
+        level = "quiet" if vs <= -15 else "peak" if vs >= 25 else "busy" if vs >= 10 else "normal"
+        sat_x = None
+        if t in SAT_BASED:
+            sat_x = round(p["type_mult"], 2)
+        return {"date": I(d), "wd": WD[wd], "type": t, "type_label": TYPE_LABEL.get(t, ""), "holiday": H.get(I(d)),
+                "est": round(est), "lo": round(est * (1 + lo)), "hi": round(est * (1 + hi)), "normal": round(normal) if normal else None,
+                "vs_normal_pct": round(vs), "level": level, "tags": tags, "sat_x": sat_x,
+                "wx_pct": round((p["wx_factor"] / (m.dry_boost["we" if m.off(d) else "wd"]) - 1) * 100) if use_wx else None,
+                "rain_level": p["rain_level"], "wx_applied": use_wx,
+                "weather": None if not w else {"code": w.get("code"), "text": WX.get(w.get("code"), ""), "tmax": w.get("tmax"), "tmin": w.get("tmin"),
+                                               "rain": w.get("rain"), "pop": w.get("pop"), "wind": w.get("wind"), "src": w.get("src")},
+                "last_year": by.get(I(d - timedelta(days=364))),
+                "cmp": cmp_block(d, est)}
 
-    days = [forecast_day(today + timedelta(days=i)) for i in range(7)]
+    days = [r for r in (day_row(today + timedelta(days=i), i) for i in range(14)) if r]
+    week = days[:7]
 
-    # ---- 4주 전망 ----
-    outlook = []
-    for wk in range(4):
-        ws = today + timedelta(days=7 * wk)
-        rows = [forecast_day(ws + timedelta(days=i), detail=(wk == 0)) for i in range(7)]
-        sat = next((r for r in rows if r["wd"] == "토"), None)
-        sun = next((r for r in rows if r["wd"] == "일"), None)
-        wkd = [r for r in rows if r["wd"] in ("월", "화", "수", "목")]
-        hols = [t for r in rows for t in r["tags"] if t in holidays.values()]
-        ly = [by.get((ws + timedelta(days=i) - timedelta(days=364)).isoformat()) for i in range(7)]
-        ly = [x for x in ly if x]
-        outlook.append({"start": ws.isoformat(), "end": (ws + timedelta(days=6)).isoformat(),
-                        "sat": sat["est_visitors"] if sat else None, "sun": sun["est_visitors"] if sun else None,
-                        "weekday": round(_mean([r["est_visitors"] for r in wkd])) if wkd else None,
-                        "week_total": sum(r["est_visitors"] for r in rows),
-                        "last_year_total": round(sum(ly)) if len(ly) >= 5 else None,
-                        "holidays": hols, "weather_applied": wk == 0})
-
-    # ---- 재료 ----
-    cmp = {r["keyword"]: r for r in compare}
-    we = [d for d in days if d["wd"] in ("토", "일") or (d["tags"] and d["tags"][0] in holidays.values())]
-    we_ratio = _mean([1 + d["vs_weekday_pct"] / 100 for d in we]) or 1.0
-    wk_ratio = _mean([1 + d["vs_weekday_pct"] / 100 for d in days if d not in we]) or 1.0
-    cold = any((d["weather"] or {}).get("tmax") is not None and d["weather"]["tmax"] <= 5 for d in days)
-    ingredients = []
+    # ---- 재료: 손님 수 신호 × 메뉴 인기 신호 ----
+    def ratio(rows):
+        a, b = sum(r["est"] for r in rows), sum(r["normal"] or r["est"] for r in rows)
+        return (a / b - 1) * 100 if b else 0
+    is_peak_day = lambda r: r["wd"] in ("토", "일") or r["type"] in SAT_BASED
+    we_rows = [r for r in week if is_peak_day(r)]
+    wk_rows = [r for r in week if not is_peak_day(r)]
+    we_pct, wk_pct = ratio(we_rows) if we_rows else 0, ratio(wk_rows) if wk_rows else 0
+    cold_days = [r for r in week if (r["weather"] or {}).get("tmax") is not None and r["weather"]["tmax"] <= 5]
+    prep = []
     for name, ing in cfg["store"].get("ingredients", {}).items():
-        kws = [cmp[k] for k in ing.get("keywords", []) if k in cmp and not cmp[k].get("tiny")]
-        wk_pct = _mean([k["week"]["pct"] for k in kws if k["week"]["pct"] is not None])
-        mo_pct = _mean([k["month"]["pct"] for k in kws if k["month"]["pct"] is not None])
+        sh = menu_share(trend, ing.get("keywords", []))
         se = ing.get("season", {})
-        reasons = []
-        mult = we_ratio
-        if we_ratio >= 1.08:
-            reasons.append(f"주말 손님 평소보다 +{(we_ratio-1)*100:.0f}%")
-        elif we_ratio <= 0.92:
-            reasons.append(f"주말 손님 평소보다 {(we_ratio-1)*100:.0f}%")
-        if wk_pct is not None and abs(wk_pct) >= 15:
-            mult *= 1 + max(-0.15, min(0.15, wk_pct / 100 * 0.5))
-            reasons.append(f"검색 전주 대비 {wk_pct:+.0f}%")
-        if mo_pct is not None and mo_pct <= -25:
-            reasons.append(f"검색 전월 대비 {mo_pct:.0f}%" + (" (제철 끝물)" if se.get("peak") and _in_window(today, se.get("peak")) else ""))
-        if cold and ing.get("hot_menu"):
-            mult *= 1.08
-            reasons.append("추위 예보 — 탕 수요 ↑")
-        if recent_bc:
-            reasons.append("방송 효과 기간")
-        action = "keep"
+        score, reasons = 0, []
+        if we_pct >= 10:
+            score += 1
+        elif we_pct <= -10:
+            score -= 1
+        if sh:
+            if sh["pct"] >= 15:
+                score += 1
+            elif sh["pct"] <= -15:
+                score -= 1
+        verdict = "more" if score >= 1 else "less" if score <= -1 else "keep"
+        mixed = bool(sh) and ((we_pct >= 10 and sh["pct"] <= -15) or (we_pct <= -10 and sh["pct"] >= 15))
         if _in_window(today, se.get("closed")):
-            action = "frozen"
-            reasons.insert(0, "금어기 — 생물 수급 어려움, 냉동·비축분 운영")
-        elif mult >= 1.10:
-            action = "more"
-        elif mult <= 0.90:
-            action = "less"
-        if not kws:
-            reasons.append("검색량 적어 손님 수만으로 판단")
-        ingredients.append({"name": name, "menus": ing.get("menus", []), "action": action, "mult_weekend": round(mult, 2), "mult_weekday": round(wk_ratio, 2),
-                            "reasons": reasons[:3], "note": ing.get("note", ""), "in_season": _in_window(today, se.get("peak")),
-                            "week_pct": None if wk_pct is None else round(wk_pct, 1), "month_pct": None if mo_pct is None else round(mo_pct, 1)})
+            verdict = "frozen"
+            reasons.append("금어기 — 생물 수급 어려움, 냉동·비축분 운영")
+        if _in_window(today, se.get("peak")):
+            reasons.append("제철")
+        if cold_days and ing.get("hot_menu"):
+            reasons.append(f"최고 5℃ 이하 {len(cold_days)}일 — 탕·면 찾는 손님이 늘 수 있음")
+        if not sh:
+            reasons.append("메뉴 검색이 적어 손님 수만으로 판단")
+        prep.append({"name": name, "menus": ing.get("menus", []), "verdict": verdict, "mixed": mixed, "cust_pct": round(we_pct), "share": sh,
+                     "reasons": reasons, "note": ing.get("note", ""), "in_season": _in_window(today, se.get("peak"))})
 
-    # ---- 인력 ----
-    staff = []
-    for x in days:
-        is_hol = bool(x["tags"]) and x["tags"][0] in holidays.values()
-        if x["vs_weekday_pct"] >= 20 or is_hol:
-            staff.append({"date": x["date"], "wd": x["wd"], "advice": "홀 +1, 주방 +1" if x["x_weekday"] >= 2.5 else "홀 +1",
-                          "why": ", ".join(x["tags"]) or f"평소 {x['wd']}요일보다 +{x['vs_weekday_pct']}%"})
-        elif x["vs_weekday_pct"] <= -25:
-            staff.append({"date": x["date"], "wd": x["wd"], "advice": "인원 줄여도 됨", "why": ", ".join(x["tags"]) or f"평소보다 {x['vs_weekday_pct']}%"})
+    # ---- 앞으로 6주 흐름 (주말·평일 하루 평균: 예상 vs 작년 같은 주 실제) ----
+    outlook = []
+    mon = today - timedelta(days=today.weekday())
+    for k in range(6):
+        ws = mon + timedelta(days=7 * k)
+        rows = []
+        for i in range(7):
+            d = ws + timedelta(i)
+            p = m.predict(d, use_weather=False)
+            if p:
+                rows.append((d, p))
+        we = [p["est"] for d, p in rows if m.off(d)]
+        wk = [p["est"] for d, p in rows if not m.off(d)]
+        ly = [(ws + timedelta(i - 364)) for i in range(7)]
+        ly_we = [by[I(d)] for d in ly if I(d) in by and m.off(d)]
+        ly_wk = [by[I(d)] for d in ly if I(d) in by and not m.off(d)]
+        hol = sorted({H[I(d)] for d, _ in rows if I(d) in H})
+        outlook.append({"start": I(ws), "end": I(ws + timedelta(6)), "we": round(_mean(we)) if we else None, "wk": round(_mean(wk)) if wk else None,
+                        "ly_we": round(_mean(ly_we)) if ly_we else None, "ly_wk": round(_mean(ly_wk)) if ly_wk else None,
+                        "week_total": round(sum(p["est"] for _, p in rows)), "holidays": hol, "current": k == 0})
 
-    # ---- 알림 30일 ----
+    # ---- 알림 45일 ----
     alerts = []
-    for i in range(30):
+    for i in range(45):
         d = today + timedelta(days=i)
-        if d.isoformat() in holidays:
-            alerts.append({"date": d.isoformat(), "wd": WD[d.weekday()], "kind": "holiday", "text": holidays[d.isoformat()] + " — 토요일 수준 손님 예상"})
+        if I(d) in H:
+            t = m.dtype(d)
+            mult = m.type_mult.get(t)
+            txt = H[I(d)]
+            if mult and t in SAT_BASED:
+                txt += f" — {TYPE_LABEL[t]}, 과거 {mult['n']}번 평균 보통 토요일의 {mult['x']:.2f}배"
+            alerts.append({"date": I(d), "wd": WD[d.weekday()], "kind": "holiday", "text": txt})
     for name, ing in cfg["store"].get("ingredients", {}).items():
         for key, label in (("closed", "금어기 시작"), ("peak", "제철 시작")):
             w = ing.get("season", {}).get(key)
             if not w:
                 continue
-            start = date(today.year, w[0][0], w[0][1])
-            if start < today:
-                start = date(today.year + 1, w[0][0], w[0][1])
-            if 0 <= (start - today).days <= 30:
-                alerts.append({"date": start.isoformat(), "wd": WD[start.weekday()], "kind": "season", "text": f"{name} {label}"})
+            for edge, lab in ((0, label), (1, label.replace("시작", "끝"))):
+                dd = date(today.year, w[edge][0], w[edge][1])
+                if dd < today:
+                    dd = date(today.year + 1, w[edge][0], w[edge][1])
+                if 0 <= (dd - today).days <= 45:
+                    alerts.append({"date": I(dd), "wd": WD[dd.weekday()], "kind": "season", "text": f"{name} {lab}"})
     for b in bc:
         bd = date.fromisoformat(b["date"])
-        if 0 <= (bd - today).days <= 30:
-            alerts.append({"date": b["date"], "wd": WD[bd.weekday()], "kind": "tv", "text": f"📺 {b['program']} 방송 예정 — 다음 주말 1.3배 준비"})
+        if 0 <= (bd - today).days <= 45:
+            alerts.append({"date": b["date"], "wd": WD[bd.weekday()], "kind": "tv", "text": f"📺 {b.get('program', '방송')} 방송 예정"})
     alerts.sort(key=lambda a: a["date"])
 
-    # ---- 한 줄 요약 ----
-    sat = next((d for d in days if d["wd"] == "토"), None)
-    sun = next((d for d in days if d["wd"] == "일"), None)
-    parts = []
-    for lab, x in (("토요일", sat), ("일요일", sun)):
-        if not x:
-            continue
-        p = x["vs_weekday_pct"]
-        txt = f"{lab} 평소보다 {p:+d}%" if abs(p) >= 8 else f"{lab} 평소 수준"
-        if x["tags"]:
-            txt += f" ({', '.join(x['tags'])})"
-        parts.append(txt)
-    more = [i["name"] for i in ingredients if i["action"] == "more"]
-    less = [i["name"] for i in ingredients if i["action"] == "less"]
-    if more:
-        parts.append("더 받기: " + ", ".join(more))
-    if less:
-        parts.append("줄이기: " + ", ".join(less))
-    summary = " · ".join(parts) if parts else "이번 주는 평소 수준 — 주말 기본 준비"
+    # ---- 한 줄 결론 ----
+    def phrase(r):
+        p = r["vs_normal_pct"]
+        s = "보통 수준" if abs(p) < 8 else f"보통보다 {p:+d}%"
+        why = [t for t in r["tags"]]
+        return s + (f" ({', '.join(why[:2])})" if why and abs(p) >= 8 else "")
+    sat = next((r for r in week if r["wd"] == "토"), None)
+    sun = next((r for r in week if r["wd"] == "일"), None)
+    parts = [f"{lab} {phrase(r)}" for lab, r in (("토요일", sat), ("일요일", sun)) if r]
+    more = [p["name"] for p in prep if p["verdict"] == "more"]
+    less = [p["name"] for p in prep if p["verdict"] == "less"]
+    summary = " · ".join(parts)
 
+    lv = m.level
     return {
-        "generated": today.isoformat(), "sample": sample, "last_visitor_data": last_data, "weather_live": bool((weather or {}).get("live")),
-        "trend_factor": round(trend, 3), "weekday_median": {WD[i]: round(by_wd[i]) for i in range(7)}, "weekday_base": round(weekday_base),
-        "weather_effect": wxe, "capture_per_10k": round(capture, 2) if capture else None, "sales_days": len(sales),
-        "summary": summary, "days": days, "outlook": outlook, "ingredients": ingredients, "staff": staff, "alerts": alerts[:12],
-        "weekend_ratio": round(we_ratio, 3), "weekday_ratio": round(wk_ratio, 3),
-        "broadcast_recent": recent_bc, "broadcast_auto": sorted(auto_bc, key=lambda b: b["date"], reverse=True)[:10],
+        "version": 4, "generated": I(today), "last_visitor_data": last_data, "lag_days": lag, "weather_live": bool((weather or {}).get("live")),
+        "summary": summary, "more": more, "less": less, "weekend_pct": round(we_pct), "weekday_pct": round(wk_pct),
+        "days": days, "prep": prep, "outlook": outlook, "alerts": alerts[:14], "accuracy": acc,
+        "model": {"level_vs_last_year": {"weekend": round((lv["we"][0] - 1) * 100, 1) if lv["we"][0] else None,
+                                          "weekday": round((lv["wd"][0] - 1) * 100, 1) if lv["wd"][0] else None},
+                  "type_mult": m.type_mult, "type_label": TYPE_LABEL, "dry_boost": m.dry_boost, "cold": m.cold_eff,
+                  "recent_from": I(min(m.recent)) if m.recent else None, "recent_to": I(max(m.recent)) if m.recent else None},
+        "weather_effect": m.wx_eff,
+        "broadcast_auto": sorted(auto_bc, key=lambda b: b["date"], reverse=True)[:10],
     }
 
 
@@ -359,14 +311,15 @@ if __name__ == "__main__":
         p = os.path.join(root, "data", n)
         return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
     cfg = json.load(open(os.path.join(root, "keywords.json"), encoding="utf-8"))
-    out = build(cfg, L("visitors.json"), L("compare.json"), L("news_log.json"), L("weather.json"))
+    out = build(cfg, L("visitors.json"), L("compare.json"), L("news_log.json"), L("weather.json"), trend=L("trend_daily.json"))
     json.dump(out, open(os.path.join(root, "data", "brief.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(out["summary"])
-    print("weather_effect", out["weather_effect"])
+    print(out["summary"], "| 주말", out["weekend_pct"], "평일", out["weekday_pct"], "| 더", out["more"], "덜", out["less"])
     for d in out["days"]:
-        print(d["date"], d["wd"], d["est_visitors"], d["level"], d["vs_weekday_pct"], d["tags"], (d["weather"] or {}).get("text"))
+        print(d["date"], d["wd"], d["est"], f"({d['lo']}~{d['hi']})", "보통", d["normal"], f"{d['vs_normal_pct']:+d}%", d["level"], d["tags"], (d["weather"] or {}).get("text"), "작년", d["last_year"])
+    for p in out["prep"]:
+        print(p["name"], p["verdict"], p["cust_pct"], p["share"], p["reasons"])
     for o in out["outlook"]:
         print(o)
-    for i in out["ingredients"]:
-        print(i["name"], i["action"], i["mult_weekend"], i["reasons"])
-    print(out["staff"])
+    print(out["alerts"])
+    print(json.dumps(out["accuracy"]["cats"], ensure_ascii=False))
+    print(out["model"]["level_vs_last_year"], out["model"]["cold"])

@@ -3,134 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
 <title>강화 시그널</title>
-<meta name="description" content="선두리 만선꽃게랑낙지 — 강화도 핫키워드·뉴스·방문자와 이번 주 손님·재료 준비 브리핑">
+<meta name="description" content="선두리 만선꽃게랑낙지 — 이번 주 손님 예상과 재료 준비, 강화도 검색·방문자 흐름">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
+/* 배치: 맨 위에 결론(짙은 바다색 판) → 아래로 근거. 중립색은 서해 갯벌의 푸른 회색, 강조는 익은 꽃게 주황 하나만. */
 :root{
   color-scheme:light;
-  --bg:#f4f5f7;--card:#ffffff;--ink:#15191e;--ink2:#2a2f36;--sub:#5b6470;--faint:#8a919a;
-  --line:#dde1e6;--line2:#e9ecef;--soft:#f4f5f7;--soft2:#eceff3;
-  --blue:#2563eb;--red:#d9485f;--hot:#c2410c;--cold:#1d4ed8;--ok:#15803d;--warn:#b45309;--wait:#9aa1a9;
-  --s1:#2563eb;--s2:#d9485f;--s3:#0f9f7a;--s4:#c78a25;
-  --ok-bg:#e8f5ec;--warn-bg:#fdf1e2;--hot-bg:#fde8e3;--cold-bg:#e6edfb;--wait-bg:#eef0f2;
+  --bg:#edf1f3;--card:#ffffff;--ink:#0f1c24;--ink2:#22323c;--sub:#566670;--faint:#8593a0;
+  --line:#d5dde2;--line2:#e6ebee;--soft:#f1f4f6;--soft2:#e6ecef;
+  --sea:#0d5f72;--blue:#2a78d6;--red:#d6455c;--hot:#d2501e;--cold:#1d5fbf;--ok:#12805c;--warn:#a8650a;--wait:#98a3ad;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;
+  --ok-bg:#e3f4ee;--warn-bg:#fbf0dc;--hot-bg:#fde9e0;--cold-bg:#e4eefb;--wait-bg:#ebeff2;
+  --hero:#0e2c38;--hero2:#134556;--hero-ink:#f1f7f9;--hero-sub:#a9c3cc;--hero-line:rgba(255,255,255,.14);--hero-tile:rgba(255,255,255,.07);
   --sans:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --r:12px;--shadow:0 1px 2px rgba(21,25,30,.04),0 8px 24px -16px rgba(21,25,30,.18);
+  --mono:"IBM Plex Sans Condensed","IBM Plex Sans KR","Noto Sans KR",sans-serif;
+  --r:14px;--shadow:0 1px 2px rgba(15,28,36,.04),0 10px 26px -18px rgba(15,28,36,.22);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  color-scheme:dark;--bg:#0b0d10;--card:#14171c;--ink:#e9ecef;--ink2:#cfd4da;--sub:#9aa3ad;--faint:#6b7480;
-  --line:#262b33;--line2:#1d2127;--soft:#1a1e24;--soft2:#20252c;
-  --blue:#5b8dff;--red:#ef6b7b;--hot:#ff8a5c;--cold:#7aa2ff;--ok:#3fbf6f;--warn:#e0a24a;--wait:#6b7480;
-  --s1:#5b8dff;--s2:#ef6b7b;--s3:#2fcf9f;--s4:#e0a24a;
-  --ok-bg:#12301d;--warn-bg:#3a2a10;--hot-bg:#3d1f17;--cold-bg:#162440;--wait-bg:#20252c;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.6);
+  color-scheme:dark;--bg:#0a0f12;--card:#12191e;--ink:#e8eef1;--ink2:#cbd5db;--sub:#97a6b0;--faint:#687883;
+  --line:#243038;--line2:#1b252c;--soft:#18222a;--soft2:#1f2b33;
+  --sea:#4fb3c7;--blue:#3987e5;--red:#ee6b7c;--hot:#ff8a55;--cold:#7aa6ff;--ok:#3ec291;--warn:#e3a54a;--wait:#687883;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;
+  --ok-bg:#0f2f25;--warn-bg:#392a10;--hot-bg:#3c1f14;--cold-bg:#14243f;--wait-bg:#1f2b33;
+  --hero:#0c222b;--hero2:#103744;--hero-ink:#f1f7f9;--hero-sub:#9bb7c1;--hero-line:rgba(255,255,255,.12);--hero-tile:rgba(255,255,255,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -18px rgba(0,0,0,.7);
 }}
 :root[data-theme="dark"]{
-  color-scheme:dark;--bg:#0b0d10;--card:#14171c;--ink:#e9ecef;--ink2:#cfd4da;--sub:#9aa3ad;--faint:#6b7480;
-  --line:#262b33;--line2:#1d2127;--soft:#1a1e24;--soft2:#20252c;
-  --blue:#5b8dff;--red:#ef6b7b;--hot:#ff8a5c;--cold:#7aa2ff;--ok:#3fbf6f;--warn:#e0a24a;--wait:#6b7480;
-  --s1:#5b8dff;--s2:#ef6b7b;--s3:#2fcf9f;--s4:#e0a24a;
-  --ok-bg:#12301d;--warn-bg:#3a2a10;--hot-bg:#3d1f17;--cold-bg:#162440;--wait-bg:#20252c;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.6);
+  color-scheme:dark;--bg:#0a0f12;--card:#12191e;--ink:#e8eef1;--ink2:#cbd5db;--sub:#97a6b0;--faint:#687883;
+  --line:#243038;--line2:#1b252c;--soft:#18222a;--soft2:#1f2b33;
+  --sea:#4fb3c7;--blue:#3987e5;--red:#ee6b7c;--hot:#ff8a55;--cold:#7aa6ff;--ok:#3ec291;--warn:#e3a54a;--wait:#687883;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;
+  --ok-bg:#0f2f25;--warn-bg:#392a10;--hot-bg:#3c1f14;--cold-bg:#14243f;--wait-bg:#1f2b33;
+  --hero:#0c222b;--hero2:#103744;--hero-ink:#f1f7f9;--hero-sub:#9bb7c1;--hero-line:rgba(255,255,255,.12);--hero-tile:rgba(255,255,255,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -18px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px 56px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 small.u{font-size:.6em;font-weight:500;color:var(--sub);margin-left:3px;font-family:var(--sans)}
+button{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 /* 상단 */
-.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
-.topin{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.topin{max-width:1080px;margin:0 auto;padding-block:9px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand svg{width:30px;height:30px;flex:none}
-.brand .t{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
-.brand .v{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:6px}
-.brand .st{font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .t{font-weight:700;font-size:16px;letter-spacing:-.01em;white-space:nowrap;line-height:1.2}
+.brand .v{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:6px;font-weight:500}
+.brand .st{font-size:11.5px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .spacer{flex:1}
-.fresh{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sub);white-space:nowrap}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 20%,transparent)}
+.fresh{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--sub);white-space:nowrap;font-family:var(--mono)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 20%,transparent);flex:none}
 .dot.warn{background:var(--warn);box-shadow:0 0 0 3px color-mix(in srgb,var(--warn) 20%,transparent)}
 .dot.bad{background:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 20%,transparent)}
-.ibtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer}
+.ibtn{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:9px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer;flex:none}
 .ibtn svg{width:16px;height:16px}
-@media(max-width:720px){.brand .st,.fresh,.brand .v{display:none}}
-@media(max-width:560px){.tabs .tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible} .tabs .tab{padding:7px 2px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+#freshnext{display:none}
+@media(min-width:721px){#freshnext{display:inline}}
 
-.health{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:9px 14px;margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:var(--sub)}
+.health{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12px;color:var(--sub);margin:0 0 10px}
 .health b{color:var(--ink);font-weight:600}
 .src{display:inline-flex;align-items:center;gap:6px}
 .src i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
 .src i.off{background:var(--wait)} .src i.err{background:var(--red)}
-.health .right{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
-.health .upd{display:none}@media(max-width:720px){.health .upd{display:inline-flex}.health .right{margin-left:0}}
+.health .right{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.health .upd{display:inline-flex}
 .sample-note{margin-top:10px;padding:10px 14px;border-radius:var(--r);background:var(--warn-bg);color:var(--warn);font-size:13px;border:1px solid color-mix(in srgb,var(--warn) 25%,transparent)}
 
 /* 탭 */
-.tabs{position:sticky;top:53px;z-index:15;margin:14px 0 0;background:var(--bg);padding:4px 0}
-.tablist{display:flex;gap:4px;background:var(--soft2);border:1px solid var(--line);border-radius:12px;padding:4px;overflow-x:auto;scrollbar-width:none}
-.tablist::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:0;border:0;background:transparent;color:var(--sub);font:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.tabs{position:sticky;top:calc(51px + env(safe-area-inset-top,0px));z-index:15;margin:10px 0 0;background:var(--bg);padding:4px 0}
+.tablist{display:flex;gap:3px;background:var(--soft2);border:1px solid var(--line);border-radius:13px;padding:3px}
+.tab{flex:1;min-width:0;border:0;background:transparent;color:var(--sub);font:inherit;font-weight:600;font-size:13px;padding:8px 10px;border-radius:10px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tab.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
-.panel{display:none;animation:fade .18s ease} .panel.on{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media(max-width:560px){.tabs .tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))} .tabs .tab{padding:6px 2px;font-size:13px}}
+.panel{display:none} .panel.on{display:block}
 
 /* 카드 */
 .grid{display:grid;gap:14px} .grid>*{min-width:0} .chart{min-width:0}
-.g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:repeat(3,1fr)}
-@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);margin-top:12px}
 @media(max-width:560px){.card{padding:16px 14px}}
-.card h2{font-size:15px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;letter-spacing:-.01em}
+.card h2{font-size:15.5px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;letter-spacing:-.015em;text-wrap:balance}
 .card .sub{color:var(--sub);font-size:12px;margin:4px 0 14px;line-height:1.55}
-.chip{display:inline-block;font-size:11px;font-weight:500;color:var(--sub);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-family:var(--mono)}
-.chip.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,transparent);background:var(--ok-bg)}
+.chip{display:inline-block;font-size:10.5px;font-weight:600;color:var(--sub);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.chip.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 30%,transparent);background:var(--ok-bg)}
 .chip.sample{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent);background:var(--warn-bg)}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--soft)}
-.seg button{background:transparent;border:0;color:var(--sub);padding:6px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--soft);max-width:100%}
+.seg button{background:transparent;border:0;color:var(--sub);padding:6px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
 .seg button.on{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.chart{position:relative;height:300px} .chart.sm{height:220px}
+.chart{position:relative;height:300px} .chart.sm{height:220px} .chart.xs{height:170px}
 .legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--sub);margin-top:10px}
 .legend span i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:8px 8px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:middle}
+th,td{padding:8px 8px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:middle;white-space:nowrap}
 th{color:var(--faint);font-weight:600;font-size:11px;letter-spacing:.02em}
 td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 td.kw{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-left:6px;vertical-align:2px}
-th,td{white-space:nowrap}
-@media(max-width:560px){.bar{display:none!important} table{font-size:12px} th,td{padding:8px 4px}  small.thd{font-size:9px} #volume td:first-child,#volume th:first-child{padding-left:0;width:18px} #cmp td .base{font-size:10px} #cmp td.n{font-size:11.5px}  #cmp .base i{display:none} #cmp td:first-child{white-space:normal;word-break:keep-all}}
+@media(max-width:560px){.bar{display:none!important} table{font-size:12.5px} th,td{padding:8px 4px} small.thd{font-size:9px} #volume td:first-child,#volume th:first-child{padding-left:0;width:18px}}
 .basis{display:grid;gap:4px;margin:0 0 12px;padding:10px 12px;border-radius:10px;background:var(--cold-bg);font-size:12.5px}
 .basis div{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
-.basis span{color:var(--sub)} .basis b{font-family:var(--mono);font-weight:600;color:var(--ink)}
+.basis span{color:var(--sub)} .basis b{font-family:var(--mono);font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
 small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-family:var(--mono);letter-spacing:0;margin-top:1px}
 .cr{padding:12px 0;border-bottom:1px solid var(--line2)} .cr:last-child{border-bottom:0}
 .cr.ref{background:var(--soft);margin:0 -10px;padding:12px 10px;border-radius:10px}
 .cr .ctop{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
 .cr .nm{font-weight:600;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cr .val{font-family:var(--mono);font-size:17px;font-weight:700;white-space:nowrap} .cr .val small{font-size:11px;font-weight:400;color:var(--faint);margin-left:2px}
+.cr .val{font-family:var(--mono);font-size:18px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums} .cr .val small{font-size:11px;font-weight:400;color:var(--faint);margin-left:2px}
 .cr .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
 .cr .c{background:var(--soft);border-radius:8px;padding:6px 8px;min-width:0} .cr.ref .c{background:var(--card)}
 .cr .c .l{font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cr .c .p{font-family:var(--mono);font-size:14px;font-weight:700;white-space:nowrap} .cr .c .b{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
+.cr .c .p{font-family:var(--mono);font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums} .cr .c .b{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #volume{table-layout:fixed;width:100%} #volume td,#volume th{overflow:hidden;text-overflow:ellipsis}
 #volume th:nth-child(1){width:9%} #volume th:nth-child(3){width:22%} #volume th:nth-child(4){width:22%} #volume th:nth-child(5){width:15%}
 #volume td.kw{max-width:none}
 .wxg{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:6px;align-items:center}
 .wxg .h{font-size:11px;color:var(--faint);font-weight:600;text-align:center}
 .wxg .lab b{display:block;font-size:13px} .wxg .lab small{display:block;font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wxg .c{background:var(--soft);border-radius:8px;padding:7px 6px;text-align:center;min-width:0} .wxg .c .p{font-family:var(--mono);font-size:15px;font-weight:700} .wxg .c .b{font-size:10.5px;color:var(--faint)}
+.wxg .c{background:var(--soft);border-radius:8px;padding:7px 6px;text-align:center;min-width:0} .wxg .c .p{font-family:var(--mono);font-size:16px;font-weight:700} .wxg .c .b{font-size:10.5px;color:var(--faint)}
 .ng{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line2)} .ng:last-child{border-bottom:0}
-.ng .nd{font-family:var(--mono);font-size:12px;color:var(--ink2);font-weight:600;padding-top:1px} .ng .nl{min-width:0;display:grid;gap:6px} .ng .nd span{display:block;font-family:var(--sans);font-weight:400;color:var(--faint);font-size:11px}
+.ng .nd{font-family:var(--mono);font-size:13px;color:var(--ink2);font-weight:600;padding-top:1px} .ng .nl{min-width:0;display:grid;gap:6px} .ng .nd span{display:block;font-family:var(--sans);font-weight:400;color:var(--faint);font-size:11px}
 .ni{display:block;font-size:13.5px;line-height:1.45;color:var(--ink2);text-decoration:none;padding:2px 0;word-break:keep-all;overflow-wrap:anywhere} .ni:hover{color:var(--blue)}
-.tvb.up{color:#fff;background:var(--red)} .tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
+.tvb{display:inline-block;font-size:11px;font-weight:600;color:var(--hot);background:var(--hot-bg);border-radius:5px;padding:0 6px;margin-right:6px}
+.tvb.up{color:var(--hero-ink);background:var(--red)}
 .ys{display:grid;grid-template-columns:1fr 1fr;gap:10px} @media(max-width:560px){.ys{grid-template-columns:1fr}}
 .yc{background:var(--soft);border-radius:12px;padding:12px 14px} .yc .l{font-size:12px;color:var(--sub)} .yc .l span{display:block;font-size:11px;color:var(--faint)}
-.yc .v{font-family:var(--mono);font-size:28px;font-weight:700;margin:4px 0 2px;letter-spacing:-.02em} .yc .v.sm{font-family:var(--sans);font-size:22px}
+.yc .v{font-family:var(--mono);font-size:30px;font-weight:700;margin:4px 0 2px;letter-spacing:-.01em} .yc .v.sm{font-family:var(--sans);font-size:22px}
 .yc .d{font-size:13px;font-family:var(--mono)} .yc .d .muted{font-family:var(--sans);font-size:12px}
 .cover{margin-top:10px;font-size:12px;color:var(--sub)} .cover b{font-family:var(--mono);color:var(--ink2)}
 .yg{display:grid;gap:0;font-size:13px} .yg4{grid-template-columns:44px minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr)}
@@ -138,7 +143,7 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 .yg .h{font-size:11px;color:var(--faint);font-weight:600} .yg .h:not(:first-child){text-align:right}
 .yg5{grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) minmax(0,.7fr) minmax(0,.7fr)} .yg .k{font-weight:600}
 .h3{font-size:14px;margin:18px 0 4px}
-.yg .m{font-weight:600} .yg .m.we{color:var(--red)} .yg .n{text-align:right;font-family:var(--mono)}
+.yg .m{font-weight:600} .yg .m.we{color:var(--red)} .yg .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
 .rk{display:inline-block;font-size:10px;font-family:var(--sans);color:var(--sub);background:var(--soft2);border-radius:4px;padding:0 4px;margin-left:3px;vertical-align:1px} .rk.top{background:var(--hot-bg);color:var(--hot);font-weight:700}
 .more{display:block;width:100%;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink2);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
 .evg{display:grid;grid-template-columns:48px minmax(0,1fr) auto 40px;gap:0;font-size:13px}
@@ -147,142 +152,202 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
-.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:5px;background:var(--soft2);color:var(--sub);margin-left:6px}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:5px;background:var(--soft2);color:var(--sub);margin-left:6px;font-weight:500}
 .tag.mine{background:var(--cold-bg);color:var(--cold)}
-input[type=search],input[type=number]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink)}
+input[type=search],input[type=number],input[type=text],input[type=date]{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
 input[type=search]{width:240px;max-width:100%}
 .empty{color:var(--faint);font-size:13px;padding:10px 0}
-details.how{margin-top:14px;font-size:12px;color:var(--sub);border-top:1px solid var(--line);padding-top:10px}
-details.how summary{cursor:pointer;font-weight:600;color:var(--ink2);list-style:none}
+details.how{margin-top:14px;font-size:12px;color:var(--sub);border-top:1px solid var(--line2);padding-top:10px}
+details.how summary{cursor:pointer;font-weight:600;color:var(--sub);list-style:none}
 details.how summary::-webkit-details-marker{display:none}
 details.how summary::before{content:"▸ ";color:var(--faint)} details.how[open] summary::before{content:"▾ "}
 details.how ul{margin:8px 0 0;padding-left:18px;line-height:1.75}
 details.how .srcs{margin-top:8px;padding:8px 10px;background:var(--soft);border-radius:8px;font-size:11.5px;line-height:1.7;color:var(--sub)}
 details.how .srcs::before{content:'데이터 출처';display:block;font-weight:700;color:var(--ink2);margin-bottom:2px}
-
-/* 브리핑 */
-.hero{margin-top:14px;padding:22px 24px;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 10%,var(--card)),var(--card) 60%);border:1px solid var(--line);box-shadow:var(--shadow)}
-@media(max-width:560px){.hero{padding:18px 14px}}
-.hero .eyebrow{font-size:12px;color:var(--sub);font-weight:600;letter-spacing:.04em;font-family:var(--mono)}
-.hero h1{font-size:21px;margin:4px 0 2px;letter-spacing:-.02em;line-height:1.35}
-.hero .meta{color:var(--sub);font-size:13px}
-.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:16px}
-@media(max-width:600px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:380px){.days{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.day{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;padding:10px 6px 8px;text-align:center;background:var(--card);position:relative}
-.day.today{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
-.day.we .d{color:var(--red)}
-.day .w{font-size:11px;color:var(--faint);font-family:var(--mono)} .day .d{font-size:14px;font-weight:700;margin:1px 0 6px}
-.day .wx{font-size:11px;color:var(--sub);min-height:30px;line-height:1.3;margin-bottom:6px}
-.day .wx b{display:block;font-size:16px;line-height:1}
-.pct-l{font-size:10px;color:var(--faint);margin-bottom:2px}
-.pct{font-size:16px;font-weight:700;font-family:var(--mono);border-radius:7px;padding:4px 0}
-.pct.quiet{background:var(--wait-bg);color:var(--sub)} .pct.normal{background:var(--ok-bg);color:var(--ok)} .pct.busy{background:var(--warn-bg);color:var(--warn)} .pct.peak{background:var(--hot-bg);color:var(--hot)}
-.day .v{font-size:11px;color:var(--sub);margin-top:6px;font-family:var(--mono)}
-.day .tg{font-size:10px;color:var(--hot);margin-top:4px;min-height:12px;line-height:1.2}
-.day .cp{margin-top:6px;border-top:1px dashed var(--line);padding-top:5px;display:grid;gap:1px}
-.day .cp div{display:flex;justify-content:space-between;gap:2px;font-size:10px;font-family:var(--mono);padding:0 1px;white-space:nowrap} .day .cp div span{white-space:nowrap} .day .cp div span:first-child{overflow:hidden;text-overflow:ellipsis;letter-spacing:-.03em}
-.day .cp span:first-child{color:var(--faint);font-family:var(--sans)}
-.kpi .l{font-size:12px;color:var(--sub)} .kpi .v{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:6px 0 4px;font-family:var(--mono)}
-.kpi .dd{display:inline-block;margin-right:10px;font-size:12px;font-family:var(--mono)}
-
-/* 재료 */
-.ingr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line2)} .ingr:last-child{border-bottom:0}
-.ingr .act{flex:none;margin-top:1px} .ingr .nm{font-weight:600;font-size:14px} .ingr .nm span{font-weight:400;font-size:12px;color:var(--faint);margin-left:6px} .ingr .rs{font-size:12px;color:var(--sub);margin-top:2px}
-.prep th{font-size:11px} .prep td{vertical-align:middle}
-.act{display:inline-block;min-width:68px;text-align:center;font-size:12px;font-weight:700;border-radius:7px;padding:4px 8px}
-.act.more{background:var(--hot-bg);color:var(--hot)} .act.keep{background:var(--ok-bg);color:var(--ok)} .act.less{background:var(--wait-bg);color:var(--sub)} .act.frozen{background:var(--warn-bg);color:var(--warn)}
-.prep .nm{font-weight:600} .prep .nm span{font-weight:400;font-size:12px;color:var(--faint);margin-left:6px;display:block}
-.prep .rs{font-size:12px;color:var(--sub)}
-.prep input{width:64px;text-align:right;padding:5px 7px;font-family:var(--mono)}
-.prep .rec{font-family:var(--mono);font-weight:700;font-size:15px;white-space:nowrap}
-.prep .rec small{font-weight:400;font-size:11px;color:var(--faint)}
-.al{display:flex;gap:10px;font-size:13px;padding:7px 0;border-bottom:1px solid var(--line2)} .al:last-child{border-bottom:0}
-.al .d{flex:0 0 78px;color:var(--faint);font-family:var(--mono);font-size:12px;padding-top:1px}
-.stf{font-size:13px;padding:5px 0}
-.ev{border-left:3px solid var(--s2);padding:7px 12px;margin-bottom:8px;background:var(--soft);border-radius:0 8px 8px 0}
-.ev .news{font-size:12px;color:var(--sub);margin-top:3px} .ev .news a{color:var(--blue);text-decoration:none}
-
-/* 4주 전망 */
-.ol{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:900px){.ol{grid-template-columns:1fr 1fr}} @media(max-width:560px){.ol{grid-template-columns:1fr}}
-.olw{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
-.olw .h{font-size:12px;color:var(--faint);font-family:var(--mono)} .olw .t{font-size:15px;font-weight:700;margin:2px 0 8px}
-.olw .row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dashed var(--line2)} .olw .row:last-child{border-bottom:0}
-.olw .row b{font-family:var(--mono)} .olw .hol{color:var(--hot);font-size:12px;margin-top:6px}
-.foot{margin-top:28px;color:var(--faint);font-size:12px;line-height:1.8}
+.foot{margin-top:22px;color:var(--faint);font-size:12px;line-height:1.8}
 .method{font-size:12px;color:var(--sub);line-height:1.75} .method b{color:var(--ink)}
 .dr{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:end;margin:0 0 12px}
 .dr label{display:grid;gap:3px;font-size:11px;color:var(--faint);min-width:0}
-.dr input{font:inherit;font-family:var(--mono);font-size:13px;padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);min-width:0;width:100%;box-sizing:border-box}
+.dr input{font-family:var(--mono);font-size:14px;padding:7px 8px;width:100%}
 .dr>span{padding-bottom:9px;color:var(--faint)}
-.vt{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;white-space:nowrap;margin-left:6px;vertical-align:1px}
-.vt.more{color:var(--ok);background:var(--ok-bg)} .vt.less{color:var(--red);background:var(--hot-bg)} .vt.same{color:var(--sub);background:var(--wait-bg)} .vt.hold{color:var(--faint);background:var(--wait-bg)}
+.vt{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;white-space:nowrap;margin-left:6px;vertical-align:1px}
+.vt.more{color:var(--hot);background:var(--hot-bg)} .vt.less{color:var(--cold);background:var(--cold-bg)} .vt.same,.vt.keep{color:var(--ok);background:var(--ok-bg)} .vt.hold{color:var(--faint);background:var(--wait-bg)} .vt.frozen{color:var(--warn);background:var(--warn-bg)}
 .prep{display:grid;gap:0;margin:0 0 6px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .prep .pr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line2)} .prep .pr:last-child{border-bottom:0}
 .prep .pr .n{font-weight:600;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prep .pr .w{font-size:11.5px;color:var(--sub);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .prep .hd{padding:8px 12px;font-size:12px;color:var(--sub);background:var(--soft);border-bottom:1px solid var(--line2)}
-.daypick{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding:2px 0 12px}
-.dp{min-width:0;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:9px;padding:5px 0;font:inherit;font-size:11px;cursor:pointer;text-align:center}
-.dp b{display:block;font-family:var(--mono);font-size:12px;color:var(--ink);letter-spacing:-.02em} .dp.we{color:var(--red)} .dp.on{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
-@media(max-width:560px){td.big small{display:none} #cmp th,#cmp td{padding:8px 4px}}
-td.big{font-family:var(--mono);font-size:15px;font-weight:600;text-align:right;white-space:nowrap} td.big small{font-size:11px;color:var(--faint);font-weight:400}
-td .base{display:block;font-size:11px;color:var(--faint);font-family:var(--mono)}
-tr.ref td{color:var(--sub);background:var(--soft)}
+.al{display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line2)} .al:last-child{border-bottom:0}
+.al .d{color:var(--ink2);font-family:var(--mono);font-size:13px;font-weight:600}
+
+/* ===== 결론 판 ===== */
+.hero{margin-top:12px;padding:20px 20px 18px;border-radius:18px;color:var(--hero-ink);border:1px solid var(--hero-line);
+  background:radial-gradient(120% 90% at 100% 0%,var(--hero2) 0%,transparent 60%),var(--hero);box-shadow:var(--shadow)}
+@media(max-width:560px){.hero{padding:18px 14px 14px}}
+.hero .eyebrow{font-size:12px;color:var(--hero-sub);font-weight:500}
+.hero h1{font-size:22px;margin:6px 0 0;letter-spacing:-.02em;line-height:1.35;font-weight:700;text-wrap:balance;word-break:keep-all}
+.hero h1 em{font-style:normal;color:#ffb48a;white-space:nowrap}
+.focus{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.fx{min-width:0;background:var(--hero-tile);border:1px solid var(--hero-line);border-radius:12px;padding:10px 10px 9px}
+.fx .k{display:flex;justify-content:space-between;align-items:center;gap:4px;font-size:12px;color:var(--hero-sub);white-space:nowrap}
+.fx .k b{color:var(--hero-ink);font-weight:600}
+.fx .big{font-family:var(--mono);font-size:25px;font-weight:700;line-height:1.15;margin-top:5px;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fx .big.word{font-family:var(--sans);font-size:20px;line-height:1.44}
+.fx .big.dn{color:#9fd0ff} .fx .big.upx{color:#ffb48a}
+.fx .s{font-size:11.5px;color:var(--hero-sub);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--mono)}
+.hp{margin-top:12px;border-top:1px solid var(--hero-line);padding-top:10px;display:grid;gap:5px;font-size:13px}
+.hp div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;align-items:baseline}
+.hp span{color:var(--hero-sub);font-size:12px} .hp b{font-weight:600;word-break:keep-all}
+.hnote{margin-top:10px;font-size:11.5px;color:var(--hero-sub);line-height:1.55}
+
+/* ===== 7일 ===== */
+.dl{display:grid;gap:0}
+.dy{display:grid;grid-template-columns:42px 46px minmax(0,1fr) 58px;gap:8px;align-items:center;padding:10px 0 4px}
+.dyw{border-bottom:1px solid var(--line2);padding-bottom:9px} .dyw:last-child{border-bottom:0}
+.dy .wd{font-weight:700;font-size:15px;line-height:1.15} .dy .wd small{display:block;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--faint)}
+.dyw.we .wd,.dyw.hol .wd{color:var(--red)}
+.dyw.today .wd::after{content:"오늘";display:inline-block;font-size:9.5px;font-weight:700;color:var(--card);background:var(--ink);border-radius:4px;padding:0 4px;margin-left:4px;vertical-align:2px}
+.dy .wx{font-size:12px;color:var(--sub);font-family:var(--mono);line-height:1.2;white-space:nowrap} .dy .wx b{display:block;font-size:17px;line-height:1.1;font-weight:400}
+.dy .wx i{font-style:normal;color:var(--cold)}
+.track{position:relative;height:22px;border-radius:6px;background:var(--soft)}
+.track .rg{position:absolute;top:8px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 16%,transparent)}
+.track .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px 4px 4px 6px;background:var(--wait)}
+.track .fill.normal{background:color-mix(in srgb,var(--sea) 55%,var(--card))} .track .fill.busy{background:var(--s4)} .track .fill.peak{background:var(--s2)} .track .fill.quiet{background:var(--wait)}
+.track .nm{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);border-radius:1px}
+.track .lab{position:absolute;right:6px;top:0;line-height:22px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dy .pc{text-align:center;font-family:var(--mono);font-size:15px;font-weight:700;border-radius:8px;padding:3px 0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pc.quiet{background:var(--cold-bg);color:var(--cold)} .pc.normal{background:var(--ok-bg);color:var(--ok)} .pc.busy{background:var(--warn-bg);color:var(--warn)} .pc.peak{background:var(--hot-bg);color:var(--hot)}
+.dx{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:11.5px;color:var(--sub);padding-left:50px;line-height:1.5}
+.dx b{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums} .dx .tg{color:var(--hot);font-weight:600}
+.key{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--sub);margin:0 0 6px}
+.key i{display:inline-block;vertical-align:-1px;margin-right:5px}
+.key .k1{width:14px;height:10px;border-radius:3px;background:color-mix(in srgb,var(--sea) 55%,var(--card))} .key .k2{width:2px;height:12px;background:var(--ink)} .key .k3{width:16px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 16%,transparent);vertical-align:1px}
+details.nx{margin-top:8px;border-top:1px solid var(--line2);padding-top:10px}
+details.nx summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--ink2);list-style:none}
+details.nx summary::-webkit-details-marker{display:none}
+details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] summary::before{content:"▾ "}
+
+/* ===== 재료 ===== */
+.pp{padding:12px 0;border-bottom:1px solid var(--line2)} .pp:last-child{border-bottom:0}
+.pp .ph{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.pp .nm{font-weight:700;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .pp .nm span{font-weight:400;font-size:12px;color:var(--faint);margin-left:6px}
+.act{display:inline-block;min-width:72px;text-align:center;font-size:12.5px;font-weight:700;border-radius:8px;padding:5px 10px;white-space:nowrap}
+.act.more{background:var(--hot-bg);color:var(--hot)} .act.keep{background:var(--ok-bg);color:var(--ok)} .act.less{background:var(--cold-bg);color:var(--cold)} .act.frozen{background:var(--warn-bg);color:var(--warn)}
+.pf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}
+.pf .c{background:var(--soft);border-radius:8px;padding:6px 9px;min-width:0}
+.pf .l{font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pf .p{font-family:var(--mono);font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums} .pf .p small{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--faint);margin-left:5px}
+.pp .rs{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.5}
+
+/* ===== 성적표 ===== */
+.sc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.sc .c{background:var(--soft);border-radius:10px;padding:9px 10px;min-width:0}
+.sc .l{font-size:11px;color:var(--sub);white-space:nowrap} .sc .p{font-family:var(--mono);font-size:21px;font-weight:700;white-space:nowrap;line-height:1.25;font-variant-numeric:tabular-nums}
+.sc .b{font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.say{font-size:13.5px;line-height:1.6;color:var(--ink2);margin:0 0 12px;word-break:keep-all}
+.say b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ===== 우리 가게 기록 ===== */
+.lg{display:grid;gap:10px}
+.lg label{display:grid;gap:4px;font-size:11.5px;color:var(--sub);min-width:0}
+.lg .row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.lg input{width:100%;font-size:15px}
+.feel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.feel button{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:10px;padding:10px 0;font:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.feel button.on{border-color:var(--ink);background:var(--ink);color:var(--card)}
+.btn{border:0;background:var(--sea);color:var(--hero-ink);border-radius:10px;padding:11px 16px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+:root[data-theme="dark"] .btn{color:#06181d} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#06181d}}
+.btn:disabled{opacity:.5;cursor:default}
+.lgmsg{font-size:12.5px;color:var(--sub);min-height:18px}
+.lr{display:grid;grid-template-columns:62px 58px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line2);font-size:13px} .lr:last-child{border-bottom:0}
+.lr .d{font-family:var(--mono);font-weight:600} .lr .d small{color:var(--faint);font-weight:400;margin-left:3px;font-family:var(--sans)}
+.lr .m{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--sub);font-size:12px}
+.lr .m b{font-family:var(--mono);color:var(--ink);font-size:13px;margin-right:6px}
+.lr .x{border:0;background:transparent;color:var(--faint);font:inherit;font-size:12px;cursor:pointer;padding:4px}
+.fl{display:inline-block;font-size:11.5px;font-weight:700;border-radius:6px;padding:2px 0;width:58px;text-align:center}
+.fl.f1{background:var(--cold-bg);color:var(--cold)} .fl.f2{background:var(--ok-bg);color:var(--ok)} .fl.f3{background:var(--warn-bg);color:var(--warn)} .fl.f4{background:var(--hot-bg);color:var(--hot)}
+.rvb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;align-items:end;height:92px;margin:4px 0 4px}
+.rvb div{display:grid;align-content:end;justify-items:center;gap:3px;height:100%;min-width:0}
+.rvb i{display:block;width:100%;max-width:34px;border-radius:5px 5px 2px 2px;background:var(--s1);min-height:2px}
+.rvb b{font-family:var(--mono);font-size:12px;font-weight:600} .rvb span{font-size:10.5px;color:var(--faint);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="top"><div class="topin">
   <div class="brand">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#0f9f7a"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="8" fill="url(#g)"/><path d="M7 21c3-6 5-6 7-2s4 4 7-3 3-7 4-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="9" r="2.2" fill="#fff"/></svg>
-    <div><div class="t">강화 시그널<span class="v" id="ver"></span></div><div class="st" id="store"></div></div>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="#0e2c38"/><path d="M6 21c3.2-5.6 5.2-5.6 7.2-2s4 3.6 7-3 3-6.4 5.8-6.4" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25.4" cy="9.4" r="2.3" fill="#ff8a55"/></svg>
+    <div style="min-width:0"><div class="t">강화 시그널<span class="v" id="ver"></span></div><div class="st" id="store"></div></div>
   </div>
   <div class="spacer"></div>
   <div class="fresh"><span class="dot" id="fdot"></span><span id="fresh"></span><span id="freshnext"></span></div>
-  <button class="ibtn" id="theme" title="밝게/어둡게"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg></button>
+  <button class="ibtn" id="theme" title="밝게/어둡게" aria-label="밝게/어둡게"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg></button>
 </div></div>
 
 <div class="wrap">
-  <div class="health" id="health"></div>
   <div class="sample-note" id="notice" hidden></div>
 
   <div class="tabs"><div class="tablist">
-    <button class="tab on" data-p="disc">핫키워드</button>
+    <button class="tab on" data-p="brief">이번 주</button>
+    <button class="tab" data-p="disc">핫키워드</button>
     <button class="tab" data-p="news">뉴스/방송</button>
-    <button class="tab" data-p="brief">이번 주</button>
     <button class="tab" data-p="trend">메뉴 검색</button>
     <button class="tab" data-p="visit">방문자</button>
-    <button class="tab" data-p="about">기준</button>
+    <button class="tab" data-p="shop">우리 가게</button>
   </div></div>
 
   <!-- 이번 주 -->
-  <section class="panel" id="p-brief">
+  <section class="panel on" id="p-brief">
     <div class="hero">
-      <div class="eyebrow" id="bweek"></div>
-      <h1 id="bsum"></h1>
-      <div class="meta" id="bmeta"></div>
-      <div class="days" id="bdays"></div>
-      <details class="how"><summary>이 숫자들은 어떻게 나왔나</summary><ul id="bhow"></ul></details>
+      <div class="eyebrow" id="heye"></div>
+      <h1 id="hsum"></h1>
+      <div class="focus" id="hfocus"></div>
+      <div class="hp" id="hprep"></div>
+      <div class="hnote" id="hnote"></div>
     </div>
 
     <div class="card">
-      <h2>재료 신호 <span class="chip" id="c-ing"></span></h2>
-      <div class="sub">이번 주 손님 예상 · 네이버 검색 변화 · 날씨 · 제철·금어기를 합친 판단</div>
+      <h2>7일 손님 예상 <span class="chip" id="c-days"></span></h2>
+      <div class="sub" id="daysSub"></div>
+      <div class="key"><span><i class="k1"></i>예상</span><span><i class="k2"></i>이맘때 보통(비 없는 날)</span><span><i class="k3"></i>오차 범위</span></div>
+      <div class="dl" id="bdays"></div>
+      <details class="nx"><summary>그다음 7일 미리 보기</summary><div class="sub" style="margin:8px 0 4px">8일 뒤부터는 날씨 예보가 자주 바뀌어 <b>날씨를 반영하지 않은</b> 값입니다. 연휴·계절만 반영.</div><div class="dl" id="bdays2"></div></details>
+    </div>
+
+    <div class="card">
+      <h2>재료 준비 <span class="chip" id="c-ing"></span></h2>
+      <div class="sub" id="prepSub"></div>
       <div id="ing"></div>
     </div>
-    <div class="card"><h2>숙박 vs 당일치기 검색 <span class="tag">참고</span> <span class="chip" id="c-stay"></span></h2>
-      <div class="sub">펜션 손님이 많으면 일요일 점심 손님이 늘지 않을까? — 이번 주 검색과 과거 실제 결과를 같이 보여 줌</div>
-      <div id="stay"></div></div>
 
-    <div class="card"><h2>앞으로 30일 알림</h2><div class="sub">연휴 · 금어기·제철 시작 · 방송 예정</div><div id="balerts"></div></div>
+    <div class="card">
+      <h2>앞으로 6주 흐름</h2>
+      <div class="sub">단위: <b>하루 평균 외지인(명)</b> · 실선 = 예상(날씨 미반영), 점선 = 작년 같은 주 실제 · 주말에는 공휴일 포함</div>
+      <p class="say" id="olSay"></p>
+      <div class="chart sm"><canvas id="olChart"></canvas></div>
+      <div class="legend" id="olLegend"></div>
+      <h3 class="h3">챙길 날짜</h3>
+      <div id="balerts"></div>
+    </div>
+
+    <div class="card">
+      <h2>이 예측, 얼마나 맞았나</h2>
+      <div class="sub" id="accSub"></div>
+      <div class="sc" id="accTiles"></div>
+      <div class="chart xs" style="margin-top:12px"><canvas id="accChart"></canvas></div>
+      <div class="legend" id="accLegend"></div>
+    </div>
+
+    <div class="card"><h2>숙박 vs 당일치기 검색 <span class="tag" style="margin-left:0">참고</span> <span class="chip" id="c-stay"></span></h2>
+      <div class="sub">펜션 손님이 많으면 일요일 점심 손님이 늘지 않을까? 이번 주 검색과 과거 실제 결과를 같이 보여 줍니다.</div>
+      <div id="stay"></div></div>
   </section>
 
-    <!-- 메뉴 검색 -->
+  <!-- 메뉴 검색 -->
   <section class="panel" id="p-trend">
     <div class="card">
       <h2>우리 메뉴 네이버 검색 — 주별 <span class="chip" id="c-trend"></span></h2>
-      <div class="sub">단위: <b>주 평균 하루 검색 횟수(회/일, 추정)</b> · "강화도 ○○" 검색어 · 세로 점선 = 방송 · 선이 오르면 그 메뉴를 찾아 오는 손님이 늘고 있다는 뜻</div>
+      <div class="sub">단위: <b>주 평균 하루 검색 횟수(회/일, 추정)</b> · "강화도 ○○" 검색어 · 세로 점선 = 방송 · 선이 오르면 그 메뉴를 찾는 사람이 늘고 있다는 뜻</div>
       <div class="controls">
         <div class="seg" id="grpSeg"></div>
         <div class="seg" id="rangeSeg"><button data-r="90">3개월</button><button data-r="180" class="on">6개월</button><button data-r="365">1년</button></div>
@@ -294,7 +359,7 @@ tr.ref td{color:var(--sub);background:var(--soft)}
     <div class="card"><h2>우리 가게 검색어 <span class="chip" id="c-local"></span></h2>
       <div class="sub">단위: <b>네이버 검색 횟수(회, 추정)</b> · 띄어쓰기·「강화」 붙인 표기까지 합산 · 간접 = 가게 바로 옆 펜션·캠핑장 · 하루 10회 안팎의 작은 검색어라 <b>7일 증감은 흔들림이 큼, 30일 값 위주로</b></div>
       <div id="local"></div></div>
-    <div class="card"><h2>기간별 메뉴 수요 — 이번 주 준비 <span class="chip" id="c-cmp"></span></h2>
+    <div class="card"><h2>기간별 메뉴 수요 <span class="chip" id="c-cmp"></span></h2>
       <div class="sub" id="cmpSub"></div>
       <div class="controls"><div class="seg" id="perSeg"><button data-n="7">최근 7일</button><button data-n="14">최근 14일</button><button data-n="28">최근 28일</button></div></div>
       <div class="dr"><label>시작<input type="date" id="pFrom"></label><span>~</span><label>끝<input type="date" id="pTo"></label></div>
@@ -314,7 +379,10 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
       <div id="ysum"></div>
     </div>
-    <div class="card"><h2>비 오는 날 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">과거 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됨</div><div id="wxeff"></div></div>
+    <div class="card"><h2>비·추위에 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">2024년부터의 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됩니다</div><div id="wxeff"></div></div>
+    <div class="card"><h2>연휴에는 얼마나 붐볐나 <span class="chip" id="c-hol"></span></h2>
+      <div class="sub">단위: <b>배(×)</b> · 그 시기 <b>보통 토요일</b> 대비 실제 방문자 · 2024년부터 실측 · 연휴 예측에 그대로 적용</div>
+      <div id="holx"></div></div>
     <div class="card"><h2>검색으로 보는 최근 방문자 <span class="chip" id="c-sv"></span></h2>
       <div class="sub" id="svSub"></div>
       <div class="basis" id="svBasis"></div>
@@ -351,8 +419,8 @@ tr.ref td{color:var(--sub);background:var(--soft)}
     </div>
   </section>
 
-  <!-- 키워드 발굴 -->
-  <section class="panel on" id="p-disc">
+  <!-- 핫키워드 -->
+  <section class="panel" id="p-disc">
     <div class="card">
       <h2>핫키워드 — 강화도 검색어 순위 <span class="chip" id="c-disc"></span></h2>
       <div class="sub" id="discSub"></div>
@@ -374,18 +442,32 @@ tr.ref td{color:var(--sub);background:var(--soft)}
       <div id="newslist"></div></div>
   </section>
 
-  <!-- 기준 -->
-  <section class="panel" id="p-about">
-    <div class="card"><h2>데이터 출처와 갱신</h2><div class="method" id="about"></div></div>
-    <div class="card"><h2>예측 계산 방식</h2>
-      <div class="method">
-        <b>예상 방문자(명)</b> = 요일 기본값(최근 8주 같은 요일 중앙값, 연휴 제외) × 계절(작년 같은 시기 변화, 0.7~1.3) × 추세(최근 4주 ÷ 그 전 4주, ±10%) × 연휴(연휴=토요일, 전날=금요일) × 날씨(비·눈 예보 → 과거 실측 배율) × 방송(최근 10일 내 강화 맛집 방송 → 첫 주말 1.3배)<br>
-        <b>날짜 카드 큰 %</b> = 예상 ÷ 평소 같은 요일(최근 8주 중앙값) − 1 → "평소 토요일보다 얼마나" · <b>아래 두 줄</b> = 지난달·작년 같은 달 같은 요일 실제 평균 대비<br>
-        <b>재료 신호</b> = 이번 주말 예상 손님(평소 대비) + 검색 전주 ±15% 이상 변화 + 추위(최고 5℃↓, 탕·면) → 평소보다 10%↑ 더 받기 · 10%↓ 줄이기 · 금어기 = 냉동 운영<br>
-        <b>검색 횟수(회/일)</b> = 네이버 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수 → 추정치<br>
-      </div></div>
+  <!-- 우리 가게 -->
+  <section class="panel" id="p-shop">
+    <div class="card">
+      <h2>장사 기록</h2>
+      <div class="sub">하루 10초면 됩니다. 기록이 쌓이면 <b>우리 가게 기준</b>으로 요일별 매출, 비 온 날 영향, 예측이 실제와 맞았는지를 보여 줍니다. 지금까지의 예측은 모두 강화군 전체 방문자 기준입니다.</div>
+      <form class="lg" id="logForm" autocomplete="off">
+        <div class="row2">
+          <label>날짜<input type="date" id="lgDate" required></label>
+          <label>매출(만원) · 선택<input type="number" id="lgSales" inputmode="numeric" min="0" step="1" placeholder="예: 185"></label>
+        </div>
+        <div><div style="font-size:11.5px;color:var(--sub);margin-bottom:4px">그날 손님은 어땠나요 · <b>그 요일 평소와 비교해서</b></div>
+          <div class="feel" id="lgFeel"><button type="button" data-f="1">한산</button><button type="button" data-f="2">평소</button><button type="button" data-f="3">바쁨</button><button type="button" data-f="4">매우 바쁨</button></div></div>
+        <label>메모 · 선택 (남은 재료, 모자란 재료, 단체 손님 등)<input type="text" id="lgMemo" maxlength="80" placeholder="예: 꽃게 모자람, 단체 20명"></label>
+        <button class="btn" id="lgSave" type="submit">기록 저장</button>
+        <div class="lgmsg" id="lgMsg"></div>
+      </form>
+    </div>
+    <div class="card"><h2>기록으로 본 우리 가게</h2><div class="sub" id="lgSub"></div><div id="lgStats"></div><h3 class="h3">최근 기록</h3><div id="lgList"></div></div>
+    <div class="card" id="rvCard" hidden><h2>블로그 후기 <span class="chip live">실데이터</span></h2><div class="sub" id="rvSub"></div><div id="rvBody"></div></div>
   </section>
 
+  <details class="how" style="margin-top:22px;border-top:1px solid var(--line)">
+    <summary>데이터 출처 · 계산 방식 · 수집 상태</summary>
+    <div style="margin-top:12px"><div class="health" id="health"></div><div class="method" id="about"></div>
+      <div class="method" style="margin-top:12px" id="method"></div></div>
+  </details>
   <div class="foot" id="foot"></div>
 </div>
 
@@ -411,13 +493,13 @@ let D={}, charts={}, state={ group:null, range:180, yoy:false, vrange:180, vyoy:
 (function(){ try{ const t=localStorage.getItem('gs-theme'); if(t) document.documentElement.dataset.theme=t; }catch(e){} })();
 document.getElementById('theme').onclick=()=>{ const cur=document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); const nx=cur==='dark'?'light':'dark'; document.documentElement.dataset.theme=nx; try{localStorage.setItem('gs-theme',nx);}catch(e){} redrawAll(); };
 const tabs=[...document.querySelectorAll('.tab')];
-function showTab(p){ tabs.forEach(t=>t.classList.toggle('on',t.dataset.p===p)); document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('on',s.id==='p-'+p)); try{localStorage.setItem('gs-tab',p);}catch(e){} setTimeout(redrawAll,20); }
+function showTab(p){ tabs.forEach(t=>t.classList.toggle('on',t.dataset.p===p)); document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('on',s.id==='p-'+p)); try{localStorage.setItem('gs-tab4',p);}catch(e){} setTimeout(redrawAll,20); }
 tabs.forEach(t=>t.onclick=()=>showTab(t.dataset.p));
 
 init().catch(e => { const n=document.getElementById('notice'); n.hidden=false; n.textContent='데이터를 불러오지 못했습니다: '+e.message; });
 
 async function init(){
-  const names=['meta','trend_daily','compare','events','menu_demand','volume_monthly','visitors','news_log','brief','weather','discovery_daily'];
+  const names=['meta','trend_daily','compare','events','menu_demand','volume_monthly','visitors','news_log','brief','weather','discovery_daily','reviews','forecast_log'];
   const res=await Promise.all(names.map(n=>J(n+'.json').catch(()=>null)));
   names.forEach((n,i)=>D[n]=res[i]);
   ['trend_daily','discovery_daily'].forEach(n=>{ D[n]=trimTail(D[n]); });
@@ -428,24 +510,25 @@ async function init(){
   const upd=m.updated_at.replace(' KST','');
   const ageH=(Date.now()-new Date(upd.replace(' ','T')+'+09:00').getTime())/36e5;
   document.getElementById('fdot').className='dot '+(ageH>30?'bad':ageH>26?'warn':'');
-  document.getElementById('fresh').textContent='업데이트 '+upd+(ageH<1?' (방금)':ageH<24?` (${Math.round(ageH)}시간 전)`:` (${Math.round(ageH/24)}일 전)`);
-  document.getElementById('freshnext').textContent='· 매일 07:30 자동 갱신';
+  document.getElementById('fresh').textContent=md(upd.slice(0,10))+' '+upd.slice(11,16);
+  document.getElementById('freshnext').textContent=' 갱신 · 매일 07:30';
   const S=m.sources, L={datalab:'네이버 검색',keyword_tool:'검색광고',tour_api:'방문자',naver_news:'뉴스',weather:'날씨'};
   const lastV=D.visitors?.dates?.at(-1), lastT=D.trend_daily?.dates?.at(-1);
   document.getElementById('health').innerHTML=`<span class="src upd"><i class="${ageH>30?'err':ageH>26?'off':''}"></i><b>업데이트 ${upd.slice(5)}</b></span>`+Object.keys(L).map(k=>`<span class="src"><i class="${S[k]==='live'?'':S[k]==='stale'?'off':'err'}"></i>${L[k]} <b>${S[k]==='live'?'실데이터':S[k]==='stale'?'직전 실데이터':'샘플'}</b></span>`).join('')+`<span class="right">검색 ~${lastT?md(lastT):'–'} · 방문자 ~${lastV?md(lastV):'–'}</span>`;
   const sampleSrc=Object.keys(L).filter(k=>S[k]==='sample');
   if(sampleSrc.length){ const n=document.getElementById('notice'); n.hidden=false; n.textContent='⚠ '+sampleSrc.map(k=>L[k]).join(', ')+'은(는) 아직 샘플 수치입니다.'; }
   const chip=(id,keys)=>{ const el=document.getElementById(id); if(!el) return; const live=keys.every(k=>S[k]==='live'||S[k]==='stale'); el.textContent=live?'실데이터':'샘플'; el.className='chip '+(live?'live':'sample'); };
-  chip('c-sv',['tour_api','datalab']); chip('c-local',['datalab','keyword_tool']); chip('c-stay',['datalab','tour_api']); chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
+  chip('c-sv',['tour_api','datalab']); chip('c-days',['tour_api','weather']); chip('c-hol',['tour_api']); chip('c-local',['datalab','keyword_tool']); chip('c-stay',['datalab','tour_api']); chip('c-ing',['tour_api','datalab','weather']); chip('c-trend',['datalab','keyword_tool']); chip('c-cmp',['datalab']); chip('c-menu',['keyword_tool']); chip('c-vis',['tour_api']); chip('c-disc',['keyword_tool','discovery']); chip('c-ev',['datalab']); chip('c-news',['naver_news']); chip('c-wx',['tour_api','weather']);
 
   // 방문자: 연속 날짜로
   if(D.visitors?.dates?.length){ const v=D.visitors, by=Object.fromEntries(v.dates.map((d,i)=>[d,v.visitor[i]])); const out=[],vals=[]; let d=v.dates[0]; const end=v.dates.at(-1); while(d<=end){ out.push(d); vals.push(by[d]??null); d=shift(d,1); } D.visitors={...v,dates:out,visitor:vals}; }
   const seenBc=new Set((m.broadcast_log||[]).map(b=>b.date));
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
-  try{ const t=localStorage.getItem('gs-tab'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderBrief(); renderPrep(); renderStaffAlerts(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
+  try{ const t=localStorage.getItem('gs-tab4'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
+  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderVisitors(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
   attachHow();
+  initShop();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
   bindSeg('vrange','r',v=>{state.vrange=+v;renderVisitors();}); bindSeg('vyoy','y',v=>{state.vyoy=v==='1';renderVisitors();});
@@ -456,7 +539,7 @@ async function init(){
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
 function sel(b){ [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b)); }
-function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderSearchVis(); renderMonthly(); renderYTrend(); }
+function redrawAll(){ if(!D.meta) return; renderTrend(); renderVisitors(); renderSearchVis(); renderMonthly(); renderYTrend(); renderOutlook(); renderAccuracy(); }
 
 
 /* ================= 카드별 계산 방식 · 출처 ================= */
@@ -469,24 +552,28 @@ const SRC={
   cfg:'keywords.json — 직접 입력한 연휴·제철·금어기·방송 기록',
 };
 const CNT='<b>하루 검색 횟수(추정)</b> = 데이터랩 하루 상대지수 × (검색광고 한 달 실제 횟수 ÷ 최근 30일 상대지수 합)';
-const BASE='<b>평소 같은 요일</b> = 최근 8주 같은 요일 실제 방문자의 중앙값 (연휴·연휴 전날 제외)';
 const HOW={
   bdays:{f:[
-    '<b>예상 방문자</b> = 평소 같은 요일 × 계절 × 추세 × 연휴 × 날씨 × 방송', BASE,
-    '<b>계절</b> = 작년 그 날짜 ±2주 같은 요일 평균 ÷ 작년 기준기간 같은 요일 평균 (0.7~1.3 제한)',
-    '<b>추세</b> = 최근 4주 평균 ÷ 그 전 4주 평균 (±10% 제한)',
-    '<b>연휴</b> = 연휴 당일은 토요일 값, 연휴 전날은 금요일 값으로 계산',
-    '<b>날씨</b> = 예보 강수량·확률로 비 단계 판정 → 방문자 탭 「비 오는 날」 실측 배율 곱함',
-    '<b>방송</b> = 최근 10일 안에 강화 맛집 방송 감지 시 토·일 × 1.3',
-    '<b>큰 %</b> = 예상 ÷ 평소 같은 요일 − 1 · <b>10월 / 작년</b> = 예상 ÷ 지난달(작년 같은 달) 같은 요일 실제 평균 − 1'],
-    s:['tour','wx','cfg','news']},
+    '<b>예상</b> = 기준선 × 날 유형 × 날씨',
+    '<b>기준선</b> = 작년·재작년 같은 시기(±2주) 같은 요일 보통날 평균 × 최근 8주 수준(올해 ÷ 작년, 주말·평일 따로) — 방문자 실제값이 한 달 늦게 나와도 계절 변화를 따라가도록',
+    '<b>날 유형</b> = 연휴 첫날·가운데·마지막 날, 평일 공휴일, 명절, 징검다리 등 → 방문자 탭 「연휴에는 얼마나 붐볐나」의 실측 배율',
+    '<b>날씨</b> = 예보로 비 단계 판정 → 방문자 탭 「비·추위」 실측 배율 · 8일 뒤부터는 반영하지 않음',
+    '<b>이맘때 보통</b> = 같은 날짜가 연휴도 아니고 비도 안 올 때의 예상 (검은 세로선)',
+    '<b>오차 범위</b> = 과거 1년을 같은 조건으로 다시 맞혀 봤을 때 10번 중 8번 실제값이 들어온 범위 (주말·평일·연휴 따로)',
+    '<b>색</b> = 보통 대비 −15% 이하 한산 · +10% 이상 붐빔 · +25% 이상 매우 붐빔',
+    '<b>아래 줄</b> = 같은 예상을 지난달·작년 같은 달 같은 요일 실제 평균과 비교',
+    '<b>검색량은 예측에 쓰지 않음</b> = 주중 검색이 그 주말 방문자를 미리 알려 주는지 61주를 확인했으나 연관 없음(상관 −0.1)'],
+    s:['tour','wx','cfg']},
   ing:{f:[
-    '<b>주말 배율</b> = 이번 주 토·일(·연휴) 예상 ÷ 평소 같은 요일의 평균',
-    '<b>검색 보정</b> = 메뉴 검색이 전주 대비 ±15% 이상이면 그 변화의 절반을 곱함 (최대 ±15%)',
-    '<b>추위 보정</b> = 7일 중 최고기온 5℃ 이하인 날이 있으면 탕·면 재료 × 1.08',
-    '<b>판단</b> = 최종 배율 1.10 이상 「더 받기」 · 0.90 이하 「줄이기」 · 그 사이 「평소대로」 · 금어기 기간 「냉동 운영」'],
+    '<b>주말 손님</b> = 이번 주 토·일·공휴일 예상 합 ÷ 이맘때 보통 합 − 1',
+    '<b>메뉴 인기</b> = 최근 7일 (메뉴 검색 ÷ 「강화도 맛집」 검색) ÷ 그 앞 4주의 같은 비율 − 1',
+    '<b>판정</b> = 주말 손님 ±10% 이상이면 ±1점, 메뉴 인기 ±15% 이상이면 ±1점 → 합이 +1 이상 「더 준비」, −1 이하 「덜 준비」, 0 「평소대로」 · 금어기에는 「냉동 운영」',
+    '<b>왜 메뉴 비중인가</b> = 메뉴 비중이 평소에서 15% 넘게 벗어나면 다음 주에도 같은 방향이었던 경우가 126번 중 110번(87%)',
+    '<b>양(kg)은 내지 않음</b> = 가게 판매 기록이 없어 손님 수가 몇 % 변하면 재료가 몇 % 달라지는지 확인할 수 없음 → 방향만 표시'],
     s:['tour','dlab','ad','wx','cfg']},
-  balerts:{f:['<b>알림</b> = 오늘부터 30일 안의 연휴(토요일 수준 손님), 금어기·제철 시작일, 직접 입력한 방송 예정일'], s:['cfg']},
+  olSay:{f:['<b>예상</b> = 위와 같은 식에서 날씨만 뺀 값의 주말(토·일·공휴일) / 평일 하루 평균','<b>작년</b> = 364일 전 같은 주의 실제 방문자','<b>챙길 날짜</b> = 45일 안의 공휴일(과거 실측 배율 포함), 재료 제철·금어기 시작과 끝, 직접 입력한 방송 예정'], s:['tour','cfg']},
+  accTiles:{f:['<b>방법</b> = 과거 각 날짜를, 그날보다 통계 지연일수만큼 앞선 실제값까지만 써서 예측한 뒤 실제와 비교 (최근 1년)','<b>±</b> = |실제 ÷ 예측 − 1| 의 평균','<b>±20% 안 ○%</b> = 차이가 20% 이내였던 날의 비율 · 뒤의 숫자는 검증한 날 수','<b>한계</b> = 날씨는 실제 날씨를 넣어 계산 → 예보가 틀린 날은 반영되지 않음 · 가게 매출이 아니라 강화군 전체 기준'], s:['tour','wx','cfg']},
+  holx:{f:['<b>배율</b> = 그날 실제 방문자 ÷ 그 시기(앞뒤 4주) 보통 토요일 중앙값','<b>연휴</b> = 주말·공휴일이 3일 이상 이어진 묶음 · 첫날/가운데/마지막 날로 구분','<b>명절</b> = 설·추석 당일과 그 연휴','<b>평균</b> = 사례들의 중앙값 · 3번 미만이면 기본값 사용'], s:['tour','cfg']},
   events:{f:['<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회','<b>대상</b> = 우리 메뉴 키워드 + 「강화도 맛집」 · 그날 연휴·방송·뉴스를 같이 표시', CNT], s:['dlab','ad','news','cfg']},
   ysum:{f:['<b>올해 하루 평균</b> = 올해 데이터가 있는 날 중 작년 같은 날짜(월·일)도 있는 날만 모아 평균','<b>증감</b> = 올해 평균 ÷ 작년 같은 날짜 평균 − 1','<b>흐름 판정</b> = 아래 「꾸준히 늘고 있나」 카드의 규칙'], s:['tour']},
   mchart:{f:['<b>월 하루 평균</b> = 그달 실제 외지인 합 ÷ 데이터가 있는 일수 (연휴 포함 실제값)','<b>순위</b> = 작년 12개월을 하루 평균 순으로 줄 세운 순서 (1~3위 강조)','<b>증감</b> = 올해 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1','<b>수집 중</b> = 그달 데이터가 '+MIN_DAYS+'일 미만이라 평균을 내지 않음'], s:['tour']},
@@ -497,9 +584,10 @@ const HOW={
   menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)'], s:['ad']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
   wxeff:{f:[
-    '<b>비 단계</b> = 조금: 1~5mm 또는 강수확률 40~59% · 비: 5mm 이상 또는 60% 이상 · 많은 비·눈: 20mm 이상 또는 눈',
+    '<b>비 단계</b> = 조금: 1~5mm(예보는 강수확률 40% 이상) · 비: 5mm 이상 · 많은 비·눈: 20mm 이상 또는 눈',
+    '<b>갑자기 추워진 날</b> = 최고기온이 직전 14일 평균보다 5℃ 이상 낮고 비는 없는 날',
     '<b>비교 기준</b> = 그 비 온 날의 앞뒤 1~4주 같은 요일 중 <b>비 안 온 날</b> 실제 방문자의 중앙값 (연휴 제외) — 계절 차이가 섞이지 않도록 주변 날짜와만 비교',
-    '<b>표의 %</b> = 중앙값(비 온 날 실제 ÷ 비교 기준) − 1, 주말·평일 따로 · 4일 이상 있을 때만 실측값 사용',
+    '<b>표의 %</b> = 중앙값(비 온 날 실제 ÷ 비교 기준) − 1, 주말·평일 따로 · 5일 이상 있을 때만 실측값 사용',
     '<b>예측 적용</b> = 이번 주 예보가 해당 단계면 이 배율을 그날 예상에 곱함'],
     s:['tour','wx','cfg']},
   volume:{f:[CNT,'<b>하루</b> = 집계가 끝난 가장 최근 하루의 검색 횟수(네이버는 보통 1~2일 늦게 집계) · 증감은 지난주 같은 요일 대비','<b>최근 7일</b> = 7일 합계 · 증감은 직전 7일 대비','<b>최근 30일</b> = 검색광고 한 달 실제 횟수 · 증감은 직전 30일 대비(일별 데이터가 있는 상위 60개)','<b>순위 변동</b> = 직전 같은 기간 순위 − 지금 순위','<b>대상</b> = 검색광고가 돌려준 강화 관련 연관 검색어(월 100회 이상 상위 60개는 일별까지)'], s:['ad','dlab']},
@@ -510,49 +598,173 @@ const HOW={
 };
 function attachHow(){
   for(const [id,h] of Object.entries(HOW)){
-    const el=document.getElementById(id); if(!el) continue;
-    const host=id==='bdays'? el.parentElement : el.closest('.card'); if(!host) continue;
-    let det = id==='bdays'? host.querySelector('details.how') : null;
-    if(!det){ det=document.createElement('details'); det.className='how'; host.appendChild(det); }
+    const el=document.getElementById(id); if(!el) continue; const host=el.closest('.card'); if(!host) continue;
+    let det=host.querySelector(':scope > details.how'); if(!det){ det=document.createElement('details'); det.className='how'; host.appendChild(det); }
     det.innerHTML=`<summary>계산 방식 · 데이터 출처</summary><ul>${h.f.map(x=>'<li>'+x+'</li>').join('')}</ul><div class="srcs">${h.s.map(k=>'<div>· '+SRC[k]+'</div>').join('')}</div>`;
   }
 }
 
-/* ================= 이번 주 ================= */
-const LV={quiet:'한산',normal:'평소',busy:'많음',peak:'매우 많음'};
-function renderBrief(){
-  const b=D.brief; if(!b) return;
-  document.getElementById('bweek').textContent=`이번 주 준비 브리핑 · ${md(b.days[0].date)} ~ ${md(b.days[6].date)}`;
-  document.getElementById('bsum').textContent=b.summary;
-  document.getElementById('bmeta').innerHTML=`<b>큰 %</b> = 그날 예상 손님 ÷ <b>평소 같은 요일</b>(최근 8주 보통 수준) · <b>아래 두 줄</b> = 같은 예상을 <b>지난달 같은 요일 평균</b>, <b>작년 같은 달 같은 요일 평균</b>(실제값)과 비교<br>평소 평일 <b class="mono">${fmt(b.weekday_base)}명</b> · 평소 토 <b class="mono">${fmt(b.weekday_median['토'])}명</b> · 강화군 외지인 기준`+(b.last_visitor_data?` · 방문자 실제값 ~${md(b.last_visitor_data)}`:'');
-  const cp=(c,wd)=>{ if(!c) return ''; const r=(lab,x)=>{ const m=x&&x.ym?+x.ym.slice(5)+'월':''; if(!x||x.pct==null) return `<div><span>${lab}</span><span class="muted">–</span></div>`; const p=x.pct; return `<div title="${x.ym} ${wd}요일 평균 ${fmt(x.base)}명"><span>${lab}</span><span class="${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</span></div>`; };
-    const lm=c.prev_month?.ym?+c.prev_month.ym.slice(5)+'월':'전월';
-    return `<div class="cp">${r('vs'+lm,c.prev_month)}${r('vs작년',c.yoy_month)}</div>`; };
-  document.getElementById('bdays').innerHTML=b.days.map((d,i)=>{ const w=d.weather||{}; const we=d.wd==='토'||d.wd==='일';
-    return `<div class="day ${i===0?'today':''} ${we?'we':''}"><div class="w">${d.wd}</div><div class="d">${d.date.slice(5).replace('-','/')}</div>
-      <div class="wx">${w.code!=null?`<b>${WXI(w.code)}</b>${w.tmax!=null?Math.round(w.tmax)+'°':''}${w.pop!=null&&w.pop>=30?` 비${w.pop}%`:''}`:''}</div>
-      <div class="pct-l">vs 평소 ${d.wd}</div>
-      <div class="pct ${d.level}">${d.vs_weekday_pct>0?'+':''}${d.vs_weekday_pct}%</div>
-      <div class="v">${fmt(d.est_visitors)}명${d.est_store!=null?` · 가게≈${fmt(d.est_store)}`:''}</div>
-      ${cp(d.cmp,d.wd)}<div class="tg">${d.tags.join(', ')}</div></div>`; }).join('');
-  const we=b.weather_effect||{};
-  const sat=b.days.find(d=>d.wd==='토');
-  const ex = sat? `<b>예:</b> 토요일 ${sat.vs_weekday_pct>0?'+':''}${sat.vs_weekday_pct}% = 이번 토요일 예상 ${fmt(sat.est_visitors)}명 ÷ 평소 토요일 ${fmt(b.weekday_median['토'])}명 − 1` : '';
-  HOW.bdays.f=[ex,
-    `<b>명</b> = 강화군 전체 외지인 예상 인원(통신사 집계) — 가게 손님 수가 아님`,
-    `<b>– 표시</b> = 관광공사 실제값이 약 한 달 늦게 올라와 비교할 날이 아직 없음 (매일 아침 자동으로 채워짐)`,
-    `<b>색</b> = 평소 대비 −20%↓ 한산 · ±8% 평소 · +8%↑ 많음 · +20%↑ 매우 많음`,
-    ...HOW.bdays.f].filter(Boolean);
+/* ================= 이번 주 (v4) ================= */
+const man = n => n==null ? '–' : n>=10000 ? (n/10000).toFixed(1)+'만' : fmt(n);
+const sgn = p => (p>0?'+':p<0?'−':'')+Math.abs(p)+'%';
+const arw = (p,d=0) => p==null ? '–' : `${p>=0?'▲':'▼'}${Math.abs(p).toFixed(d)}%`;
+const PEAKT = new Set(['hol_weekday','newyear','long_first','long_mid','long_last','mj_first','mj_mid','mj_day','mj_last']);
+const isPeakDay = d => d.wd==='토'||d.wd==='일'||PEAKT.has(d.type);
+const ACT={more:'더 준비',keep:'평소대로',less:'덜 준비',frozen:'냉동 운영'};
+
+function renderHero(){
+  const b=D.brief; if(!b||!b.days) return; const wk=b.days.slice(0,7), t0=wk[0];
+  document.getElementById('heye').textContent=`${md(b.generated)}(${t0.wd}) 아침 기준 · 강화군 외지인 예상`;
+  const p=b.weekend_pct, hasHol=wk.some(d=>PEAKT.has(d.type));
+  const word = p>=25?'많이 붐빕니다': p>=10?'붐빕니다': p>-10?'보통 수준입니다': p>-25?'조금 한산합니다':'한산합니다';
+  const peaks=wk.filter(isPeakDay);
+  const cause=[...new Set(peaks.flatMap(d=>d.tags.map(t=>(d.holiday||PEAKT.has(d.type))&&t===d.holiday?t:`${d.wd}요일 ${t}`)))].slice(0,2).join(', ');
+  const head = hasHol? '이번 주 연휴·주말은' : (t0.wd==='일'&&peaks.length===1)? '오늘은' : '이번 주말은';
+  document.getElementById('hsum').innerHTML=`${head} <em>${word}</em>`+(Math.abs(p)>=5?`<span style="display:block;font-size:.64em;font-weight:500;color:var(--hero-sub);margin-top:5px">이맘때 보통 주말보다 ${sgn(p)}${cause?' · '+cause:''}</span>`:'');
+  // 초점 3칸: 오늘 + 다가오는 붐비는 날 2개
+  const pick=[t0, ...wk.slice(1).filter(isPeakDay)].slice(0,3); for(const d of wk.slice(1)){ if(pick.length>=3) break; if(!pick.includes(d)) pick.push(d); }
+  pick.sort((a,b)=>a.date<b.date?-1:1);
+  document.getElementById('hfocus').innerHTML=pick.map(d=>{ const v=d.vs_normal_pct, w=d.weather||{}; const flat=Math.abs(v)<5;
+    return `<div class="fx"><div class="k"><span><b>${d===t0?'오늘':d.wd+'요일'}</b> ${d===t0?d.wd:md(d.date)}</span><span>${w.code!=null?WXI(w.code):''}</span></div>
+      <div class="big ${flat?'word':v>0?'upx':'dn'}">${flat?'보통':sgn(v)}</div>
+      <div class="s">${man(d.est)}명</div><div class="s">${man(d.lo)}~${man(d.hi)}</div></div>`; }).join('');
+  const names=k=>b.prep.filter(x=>x.verdict===k).map(x=>x.name.replace(/\(.*\)/,''));
+  const more=names('more'), less=names('less'), fr=names('frozen');
+  document.getElementById('hprep').innerHTML=`<div><span>더 준비</span><b>${more.length?more.join(' · '):'없음'}</b></div><div><span>덜 준비</span><b>${less.length?less.join(' · '):'없음'}</b></div>`+(fr.length?`<div><span>냉동 운영</span><b>${fr.join(' · ')}</b></div>`:'');
+  document.getElementById('hnote').innerHTML=`숫자는 가게 손님이 아니라 <b>강화군 전체 외지인</b>(통신사 집계)입니다. 방향과 크기를 보는 용도 · 둘째 줄 = 10번 중 8번 들어온 범위`;
 }
-/* 재료 신호 */
-const ACT={more:'더 받기',keep:'평소대로',less:'줄이기',frozen:'냉동 운영'};
-function renderPrep(){
-  const b=D.brief;
-  document.getElementById('ing').innerHTML=b.ingredients.map(i=>`<div class="ingr"><span class="act ${i.action}">${ACT[i.action]}</span><div><div class="nm">${i.name}<span>${i.menus.join('·')}</span></div><div class="rs">${i.reasons.join(' · ')||'특이 신호 없음'}</div></div></div>`).join('');
+
+function dayRows(rows, today){
+  const max=Math.max(...rows.map(d=>Math.max(d.hi,d.normal||0)))||1, W=x=>Math.max(0,Math.min(100,x/max*68)), LC=v=>v>=25?'peak':v>=5?'busy':v<=-5?'quiet':'normal';
+  return rows.map(d=>{ const w=d.weather||{}, v=d.vs_normal_pct, flat=Math.abs(v)<5; const we=d.wd==='토'||d.wd==='일';
+    const c=d.cmp||{}, mo=x=>x&&x.ym?+x.ym.slice(5)+'월':'';
+    const cmp=(lab,x)=> x&&x.pct!=null? `<span>${lab} <b class="${x.pct>=0?'up':'down'}">${arw(x.pct)}</b></span>` : '';
+    const extra=[ d.tags.length?`<span class="tg">${d.tags.join(' · ')}</span>`:'',
+      d.sat_x?`<span>보통 토요일의 <b>${d.sat_x.toFixed(2)}배</b></span>`:'',
+      cmp(`${mo(c.prev_month)} ${d.wd} 평균 대비`,c.prev_month), cmp(`작년 ${mo(c.yoy_month)} ${d.wd} 대비`,c.yoy_month) ].filter(Boolean).join('');
+    return `<div class="dyw ${we?'we':''} ${d.holiday?'hol':''} ${d.date===today?'today':''}"><div class="dy">
+      <div class="wd">${d.wd}<small>${md(d.date)}</small></div>
+      <div class="wx">${w.code!=null?`<b>${WXI(w.code)}</b>${w.tmax!=null?Math.round(w.tmax)+'°':''}${w.pop!=null&&w.pop>=40?`<i> ${w.pop}%</i>`:''}`:'<span class="muted">–</span>'}</div>
+      <div class="track"><span class="fill ${LC(v)}" style="width:${W(d.est)}%"></span><span class="rg" style="left:${W(d.lo)}%;width:${Math.max(1,W(d.hi)-W(d.lo))}%"></span>${d.normal?`<span class="nm" style="left:${W(d.normal)}%"></span>`:''}<span class="lab">${man(d.est)}</span></div>
+      <div class="pc ${LC(v)}" ${flat?'style="font-family:var(--sans);font-size:13px"':''}>${flat?'보통':sgn(v)}</div></div>
+      ${extra?`<div class="dx">${extra}</div>`:''}</div>`; }).join('');
 }
-function renderStaffAlerts(){
-  const b=D.brief;
-  document.getElementById('balerts').innerHTML=b.alerts.length? b.alerts.map(a=>`<div class="al"><span class="d">${a.date.slice(5).replace('-','/')} ${a.wd}</span><span>${a.text}</span></div>`).join('') : '<div class="al muted">30일 안에 연휴·금어기·방송 예정 없음</div>';
+function renderDays(){
+  const b=D.brief; if(!b||!b.days) return;
+  document.getElementById('daysSub').innerHTML=`단위: <b>강화군 하루 외지인(명)</b> · 오른쪽 % = 예상 ÷ <b>이맘때 보통 같은 요일</b>(연휴 아님·비 없는 날) − 1 · 방문자 실제값이 ${b.last_visitor_data?md(b.last_visitor_data):'–'}까지만 있어 그 뒤는 모두 예측`;
+  document.getElementById('bdays').innerHTML=dayRows(b.days.slice(0,7), b.generated);
+  document.getElementById('bdays2').innerHTML=dayRows(b.days.slice(7,14), b.generated);
+}
+
+function renderPrepV4(){
+  const b=D.brief; if(!b||!b.prep) return; const sh=b.prep.find(x=>x.share)?.share;
+  document.getElementById('prepSub').innerHTML=`<b>주말 손님</b> = 이번 주 토·일(연휴 포함) 예상 ÷ 이맘때 보통 − 1 → ±10% 넘으면 신호 · <b>메뉴 인기</b> = 최근 7일${sh?`(${md(sh.from)}~${md(sh.to)})`:''} 「강화도 맛집」 검색 중 그 메뉴 비율이 그 앞 4주보다 ±15% 넘게 달라지면 신호`;
+  document.getElementById('ing').innerHTML=b.prep.map(x=>{ const s=x.share, c=x.cust_pct;
+    const rs=[...(x.mixed?['손님 수와 메뉴 인기가 반대로 움직여 평소대로']:[]),...x.reasons];
+    return `<div class="pp"><div class="ph"><div class="nm">${x.name}<span>${x.menus.join('·')}</span></div><span class="act ${x.verdict}">${ACT[x.verdict]}</span></div>
+      <div class="pf"><div class="c"><div class="l">주말 손님 · 이맘때 보통 대비</div><div class="p ${Math.abs(c)<10?'':c>0?'up':'down'}">${arw(c)}</div></div>
+      <div class="c"><div class="l">메뉴 인기 · 앞 4주 대비</div><div class="p ${!s||Math.abs(s.pct)<15?'':s.pct>0?'up':'down'}">${s?arw(s.pct):'–'}<small>${s?`비중 ${s.usual.toFixed(1)}→${s.now.toFixed(1)}%`:'검색 적음'}</small></div></div></div>
+      ${rs.length?`<div class="rs">${rs.join(' · ')}</div>`:''}</div>`; }).join('');
+}
+
+function renderOutlook(){
+  const b=D.brief; if(!b||!b.outlook) return; const o=b.outlook, a=o[0], z=o.at(-1);
+  const pc=(x,y)=>x&&y?Math.round((y/x-1)*100):null; const pw=pc(a.we,z.we), pk=pc(a.wk,z.wk), lw=pc(a.ly_we,z.ly_we);
+  const hol=o.flatMap(w=>w.holidays.map(h=>`${h}(${md(w.start)}주)`));
+  document.getElementById('olSay').innerHTML=`주말 하루 손님은 이번 주 <b>${man(a.we)}</b>명에서 ${md(z.start)} 주 <b>${man(z.we)}</b>명으로 <b class="${pw>=0?'up':'down'}">${arw(pw)}</b>, 평일은 <b>${man(a.wk)}</b> → <b>${man(z.wk)}</b>명 <b class="${pk>=0?'up':'down'}">${arw(pk)}</b>.`+(lw!=null?` 작년 같은 기간 주말은 ${arw(lw)}였습니다.`:'')+(hol.length?` 연휴: ${hol.join(', ')}.`:'');
+  const labels=o.map(w=>w.start+' 주');
+  mk('olChart','line',labels,[
+    {label:'주말 예상',data:o.map(w=>w.we),borderColor:css('--s2'),backgroundColor:css('--s2'),borderWidth:2.4,pointRadius:3},
+    {label:'평일 예상',data:o.map(w=>w.wk),borderColor:css('--s1'),backgroundColor:css('--s1'),borderWidth:2.4,pointRadius:3},
+    {label:'작년 주말',data:o.map(w=>w.ly_we),borderColor:css('--s2'),backgroundColor:css('--s2'),borderDash:[3,4],borderWidth:1.3},
+    {label:'작년 평일',data:o.map(w=>w.ly_wk),borderColor:css('--s1'),backgroundColor:css('--s1'),borderDash:[3,4],borderWidth:1.3}],{unit:'명'});
+  document.getElementById('olLegend').innerHTML=`<span><i style="background:var(--s2)"></i>주말 예상</span><span><i style="background:var(--s1)"></i>평일 예상</span><span><i style="background:none;border-top:2px dashed var(--sub);height:0;margin-top:5px"></i>작년 같은 주 실제</span>`;
+  document.getElementById('balerts').innerHTML=b.alerts.length? b.alerts.map(x=>`<div class="al"><span class="d">${md(x.date)} ${x.wd}</span><span>${x.text}</span></div>`).join('') : '<div class="empty">45일 안에 연휴·제철 변화가 없습니다.</div>';
+}
+
+function renderAccuracy(){
+  const a=D.brief?.accuracy; if(!a||!a.cats) return; const c=a.cats;
+  document.getElementById('accSub').innerHTML=`방문자 통계가 <b>${a.lag}일</b> 늦게 나오는 지금 조건 그대로, ${a.from?.slice(2).replace(/-/g,'.')}~${a.to?.slice(2).replace(/-/g,'.')}의 하루하루를 다시 맞혀 본 결과 · <b>±</b> = 실제와의 평균 차이 · 날씨는 그날 실제 날씨를 넣었으므로 예보가 빗나가면 더 벌어집니다`;
+  const tile=(lab,x)=> x? `<div class="c"><div class="l">${lab}</div><div class="p">±${x.mape.toFixed(0)}%</div><div class="b">±20% 안 ${x.within20}% · ${x.n}일</div></div>` : `<div class="c"><div class="l">${lab}</div><div class="p muted">–</div><div class="b">사례 부족</div></div>`;
+  document.getElementById('accTiles').innerHTML=tile('보통 주말',c.weekend)+tile('보통 평일',c.weekday)+tile('연휴·공휴일',c.holiday);
+  const r=a.recent||[];
+  mk('accChart','line',r.map(x=>x.date),[
+    {label:'실제',data:r.map(x=>x.act),borderColor:css('--ink'),backgroundColor:css('--ink'),borderWidth:1.8,tension:.25},
+    {label:'예측',data:r.map(x=>x.est),borderColor:css('--s2'),backgroundColor:css('--s2'),borderWidth:1.6,borderDash:[4,3],tension:.25}],{unit:'명'});
+  document.getElementById('accLegend').innerHTML=`<span><i style="background:var(--ink)"></i>실제 방문자 (최근 8주)</span><span><i style="background:none;border-top:2px dashed var(--s2);height:0;margin-top:5px"></i>${a.lag}일 전 정보만으로 한 예측</span>`;
+}
+
+function renderHolX(){
+  const m=D.brief?.model; const el=document.getElementById('holx'); if(!m||!m.type_mult){ el.innerHTML='<div class="empty">데이터 없음</div>'; return; }
+  const T=m.type_mult, L=m.type_label||{};
+  const row=k=>{ const x=T[k]; if(!x) return ''; const top=x.x>=1.3;
+    return `<div class="k">${L[k]||k}</div><div class="n" ${top?'style="color:var(--hot)"':''}><b>${x.x.toFixed(2)}×</b></div><div class="n">${x.lo!=null?x.lo.toFixed(2)+'~'+x.hi.toFixed(2):'–'}</div><div class="n ${x.n<3?'muted':''}">${x.n}번</div>`; };
+  const g=(keys)=>`<div class="yg" style="grid-template-columns:minmax(0,1.5fr) 58px 84px 44px"><div class="h">날 유형</div><div class="h">평균</div><div class="h">범위</div><div class="h">사례</div>${keys.map(row).join('')}</div>`;
+  el.innerHTML=g(['long_first','long_mid','long_last','hol_weekday','newyear','mj_first','mj_mid','mj_day','mj_last'])+
+    `<div class="sub" style="margin:10px 0 0">징검다리 평일은 같은 요일의 <b class="mono">${T.bridge.x.toFixed(2)}배</b>(${T.bridge.n}번), 연휴 전날은 <b class="mono">${T.eve_long.x.toFixed(2)}배</b>(${T.eve_long.n}번) · 명절 당일의 큰 숫자에는 귀성·성묘객이 들어 있어 식당 손님과는 다를 수 있습니다 · 사례 3번 미만은 기본값</div>`;
+}
+
+/* ================= 우리 가게: 장사 기록 ================= */
+let DBH=null, LOGS=[];
+const FEEL={1:'한산',2:'평소',3:'바쁨',4:'매우 바쁨'}, LV2F={quiet:1,normal:2,busy:3,peak:4};
+function predFor(date){ const f=D.forecast_log?.days?.[date]; if(f&&f.d0) return f.d0; const d=(D.brief?.days||[]).find(x=>x.date===date); return d?{est:d.est,vs:d.vs_normal_pct,level:d.level}:null; }
+function lgMsg(t,bad){ const el=document.getElementById('lgMsg'); el.textContent=t||''; el.style.color=bad?'var(--red)':'var(--sub)'; }
+async function initShop(){
+  const dEl=document.getElementById('lgDate'); dEl.value=KTODAY(); dEl.max=KTODAY();
+  document.querySelectorAll('#lgFeel button').forEach(b=>b.onclick=()=>{ const on=b.classList.contains('on'); document.querySelectorAll('#lgFeel button').forEach(x=>x.classList.remove('on')); if(!on) b.classList.add('on'); });
+  const save=document.getElementById('lgSave'); renderLogs();
+  let db=null; try{ db = (window.claude&&window.claude.use)? await window.claude.use('db') : null; }catch(e){ db=null; }
+  if(!db){ save.disabled=true; lgMsg('기록 저장은 Claude 앱에 로그인해서 이 페이지를 열었을 때만 됩니다.'); state.lgOff=true; renderLogs(); return; }
+  DBH=db;
+  const timer=setTimeout(()=>{ if(!state.lgLoaded){ lgMsg('기록을 불러오는 데 시간이 걸리고 있습니다. 잠시 뒤 다시 열어 주세요.',true); } },10000);
+  db.collection('daylog').onSnapshot(snap=>{ clearTimeout(timer); state.lgLoaded=true; LOGS=snap.docs.map(d=>({id:d.id,...(d.data()||{})})).sort((a,b)=>b.id.localeCompare(a.id)); renderLogs(); },
+    err=>{ clearTimeout(timer); lgMsg('기록을 불러오지 못했습니다 ('+(err&&err.code||'오류')+').',true); });
+  document.getElementById('logForm').addEventListener('submit',async e=>{ e.preventDefault();
+    const date=dEl.value, fb=document.querySelector('#lgFeel button.on'), sales=document.getElementById('lgSales').value, memo=document.getElementById('lgMemo').value.trim();
+    if(!date){ lgMsg('날짜를 골라 주세요.',true); return; }
+    if(!fb&&!sales){ lgMsg('손님 체감이나 매출 중 하나는 넣어 주세요.',true); return; }
+    const doc={date, feel:fb?+fb.dataset.f:null, sales:sales?Math.round(+sales):null, memo:memo||null, pred:predFor(date), at:new Date().toISOString()};
+    save.disabled=true; lgMsg('저장하는 중…');
+    try{ await db.doc('daylog/'+date).set(doc); lgMsg(`${md(date)} 기록을 저장했습니다.`); document.getElementById('lgSales').value=''; document.getElementById('lgMemo').value=''; document.querySelectorAll('#lgFeel button').forEach(x=>x.classList.remove('on')); }
+    catch(err){ lgMsg(err&&err.code==='invalid_argument'?'이 계정은 보기 전용이라 기록할 수 없습니다. 페이지 주인에게 편집 권한을 받아야 합니다.':'저장하지 못했습니다. 잠시 뒤 다시 눌러 주세요.',true); }
+    save.disabled=false; });
+}
+function renderLogs(){
+  const list=document.getElementById('lgList'), st=document.getElementById('lgStats'), sub=document.getElementById('lgSub');
+  const n=LOGS.length;
+  sub.innerHTML=`단위: 매출 = <b>만원</b> · 체감 = 그 요일 평소와 비교 · 예측 = 그날 아침 이 대시보드가 낸 등급`;
+  if(!n){ st.innerHTML=`<div class="empty">${state.lgOff?'이 화면에서는 기록을 볼 수 없습니다.':'아직 기록이 없습니다. 위에서 오늘 장사를 한 줄 남겨 보세요.'}<br>2주쯤 쌓이면 요일별 평균 매출이, 한 달쯤 쌓이면 예측이 우리 가게와 맞았는지가 여기에 나옵니다.</div>`; list.innerHTML=''; return; }
+  const withS=LOGS.filter(x=>x.sales!=null), both=LOGS.filter(x=>x.feel&&x.pred&&x.pred.level);
+  const hit=both.filter(x=>LV2F[x.pred.level]===x.feel).length, near=both.filter(x=>Math.abs(LV2F[x.pred.level]-x.feel)<=1).length;
+  let html=`<div class="sc"><div class="c"><div class="l">기록한 날</div><div class="p">${n}<small class="u">일</small></div><div class="b">${LOGS.at(-1).id.slice(5).replace('-','/')}부터</div></div>
+    <div class="c"><div class="l">하루 평균 매출</div><div class="p">${withS.length?fmt(avg(withS.map(x=>x.sales))):'–'}<small class="u">${withS.length?'만원':''}</small></div><div class="b">${withS.length}일 기준</div></div>
+    <div class="c"><div class="l">예측과 체감 일치</div><div class="p">${both.length>=5?Math.round(hit/both.length*100)+'%':'–'}</div><div class="b">${both.length>=5?`한 단계 차이까지 ${Math.round(near/both.length*100)}% · ${both.length}일`:`${both.length}/5일 모이면 표시`}</div></div></div>`;
+  // 요일별 평균 매출
+  const byW={}; withS.forEach(x=>{ (byW[dow(x.id)] ||= []).push(x.sales); });
+  if(withS.length>=6){ const order=[1,2,3,4,5,6,0], mx=Math.max(...order.map(w=>byW[w]?avg(byW[w]):0))||1;
+    html+=`<h3 class="h3">요일별 평균 매출</h3><div class="yg yg4" style="grid-template-columns:44px minmax(0,1fr) 70px 48px"><div class="h">요일</div><div class="h" style="text-align:left"></div><div class="h">평균(만원)</div><div class="h">기록</div>`+order.map(w=>{ const xs=byW[w]; const a=xs?avg(xs):null;
+      return `<div class="m ${w===0||w===6?'we':''}">${WD[w]}</div><div>${a?`<span style="display:inline-block;height:6px;border-radius:3px;background:var(--blue);vertical-align:middle;width:${Math.round(a/mx*100)}%"></span>`:''}</div><div class="n">${a?fmt(a):'<span class="muted">–</span>'}</div><div class="n muted">${xs?xs.length:0}일</div>`; }).join('')+`</div>`;
+    // 비 온 날: 그 요일 평균 대비
+    const wx=D.weather?.days||{}; const rr=withS.filter(x=>byW[dow(x.id)].length>=2&&wx[x.id]&&(wx[x.id].rain||0)>=5).map(x=>x.sales/avg(byW[dow(x.id)]));
+    if(rr.length>=3) html+=`<div class="basis" style="margin-top:12px"><div><span>비 온 날(5mm↑) 매출</span><b>그 요일 평균의 ${Math.round(avg(rr)*100)}% · ${rr.length}일</b></div></div>`;
+  }
+  st.innerHTML=html;
+  list.innerHTML=LOGS.slice(0,30).map(x=>`<div class="lr"><span class="d">${md(x.id)}<small>${WD[dow(x.id)]}</small></span>${x.feel?`<span class="fl f${x.feel}">${FEEL[x.feel]}</span>`:'<span class="muted" style="font-size:12px">–</span>'}
+    <span class="m">${x.sales!=null?`<b>${fmt(x.sales)}만</b>`:''}${x.pred&&x.pred.level?`예측 ${FEEL[LV2F[x.pred.level]]}`:''}${x.memo?` · ${XSS(x.memo)}`:''}</span>
+    <button class="x" data-id="${x.id}" type="button">지우기</button></div>`).join('');
+  list.querySelectorAll('.x').forEach(b=>b.onclick=async()=>{ if(!DBH) return; if(b.dataset.arm!=='1'){ b.dataset.arm='1'; b.textContent='정말 지울까요?'; b.style.color='var(--red)'; setTimeout(()=>{ b.dataset.arm=''; b.textContent='지우기'; b.style.color=''; },4000); return; }
+    try{ await DBH.doc('daylog/'+b.dataset.id).delete(); }catch(e){ lgMsg('지우지 못했습니다.',true); } });
+}
+function renderReviews(){
+  const r=D.reviews, card=document.getElementById('rvCard'); if(!r||!r.items||!r.items.length){ card.hidden=true; return; } card.hidden=false;
+  const today=KTODAY(), it=r.items; const cnt=(a,b)=>it.filter(x=>x.date>shift(today,-b)&&x.date<=shift(today,-a)).length;
+  const c30=cnt(0,30), p30=cnt(30,60);
+  document.getElementById('rvSub').innerHTML=`네이버 블로그에서 제목·요약에 가게 이름이 들어간 글 · 단위: <b>건</b> · 확인 ${r.checked?md(r.checked.slice(0,10))+' '+r.checked.slice(11):'–'} · 검색 API가 최근 글 위주로 돌려줘 오래된 달은 실제보다 적게 잡힐 수 있음`;
+  const months=[]; let y=+today.slice(0,4), m=+today.slice(5,7); for(let i=0;i<6;i++){ months.unshift(`${y}-${String(m).padStart(2,'0')}`); m--; if(!m){m=12;y--;} }
+  const mc=months.map(k=>it.filter(x=>x.date.startsWith(k)).length), mx=Math.max(1,...mc);
+  document.getElementById('rvBody').innerHTML=`<div class="basis"><div><span>최근 30일 새 글</span><b>${c30}건</b></div><div><span>그 앞 30일</span><b>${p30}건</b></div></div>
+    <div class="rvb">${months.map((k,i)=>`<div><b>${mc[i]}</b><i style="height:${Math.round(mc[i]/mx*52)}px"></i><span>${+k.slice(5)}월</span></div>`).join('')}</div>
+    <h3 class="h3">최근 글</h3>`+it.slice(0,6).map(x=>`<div class="ng"><div class="nd">${md(x.date)} <span>${WD[dow(x.date)]}</span></div><div class="nl"><a class="ni" href="${XSS(x.link)}" target="_blank" rel="noopener">${XSS(x.title)}${x.blogger?` <span class="muted" style="font-size:12px">· ${XSS(x.blogger)}</span>`:''}</a></div></div>`).join('');
 }
 function renderEvents(){
   const ev=(D.events||[]).filter(e=>D.meta.groups[Object.keys(D.meta.groups)[0]].includes(e.keyword)||e.keyword==='강화도 맛집').slice(0,8), r=D.meta;
@@ -776,10 +988,11 @@ function renderSearchVis(){
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}
   const c=k=>{ const x=e[k]; if(!x) return '<div class="c"><div class="p muted">–</div></div>'; const p=(x.factor-1)*100; return `<div class="c"><div class="p ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</div><div class="b">${x.measured?x.n+'일 실측':'자료 부족'}</div></div>`; };
-  const rows=[['비 조금','1~5mm 또는 확률 40%↑','1'],['비','5mm↑ 또는 확률 60%↑','2'],['많은 비·눈','20mm↑ 또는 눈','3']];
+  const cold=D.brief?.model?.cold; const rows=[['비 조금','1~5mm','1'],['비','5mm 이상','2'],['많은 비·눈','20mm 이상 또는 눈','3']];
   document.getElementById('wxeff').innerHTML=`<div class="basis"><div><span>증감 비교 대상</span><b style="font-family:var(--sans)">같은 시기(앞뒤 4주) 같은 요일 비 안 온 날</b></div></div>
     <div class="wxg"><div class="h"></div><div class="h">주말 손님</div><div class="h">평일 손님</div>
-    ${rows.map(r=>`<div class="lab"><b>${r[0]}</b><small>${r[1]}</small></div>${c('we'+r[2])}${c('wd'+r[2])}`).join('')}</div>`;
+    ${rows.map(r=>`<div class="lab"><b>${r[0]}</b><small>${r[1]}</small></div>${c('we'+r[2])}${c('wd'+r[2])}`).join('')}</div>`+
+    (cold&&cold.measured?`<div class="basis" style="margin:12px 0 0"><div><span>갑자기 추워진 날 (비 없음)</span><b class="down">${((cold.factor-1)*100).toFixed(0)}% · ${cold.n}일 실측</b></div></div>`:'');
 }
 
 /* ================= 키워드 발굴 ================= */
@@ -890,11 +1103,15 @@ function renderAbout(){
     · <b>네이버 데이터랩</b> — 키워드별 일별 검색 등락(전날까지). 단위 없는 상대지수라 검색광고의 한 달 실제 횟수로 환산해 <b>회/일</b>로 표시<br>
     · <b>네이버 검색광고 키워드도구</b> — 최근 한 달 실제 검색 횟수(회/월, PC+모바일) + 연관 키워드<br>
     · <b>한국관광공사 관광빅데이터</b> — 강화군 하루 외지인 방문자(통신사). 약 한 달 늦게 올라옴<br>
-    · <b>Open-Meteo</b> — 강화 길상면 일별 날씨(과거 실측·7일 예보)<br>
+    · <b>Open-Meteo</b> — 강화 길상면 일별 날씨(2024년부터 과거 실측·14일 예보)<br>
     · <b>네이버 뉴스</b> — 강화 관련 기사, 방송 프로그램 자동 감지<br><br>
     <b>단위</b> — 검색 = 회(하루 또는 한 달) · 방문자 = 명(하루) · 증감 = %<br>
     <b>갱신</b> — 매일 07:30(KST) 자동 수집. 마지막: <span class="mono">${m.updated_at}</span> · 수집 기간 <span class="mono">${m.range[0]} ~ ${m.range[1]}</span><br>
     <b>설정</b> — 추적 키워드·재료·제철·연휴·방송 기록은 저장소 <span class="mono">keywords.json</span> 한 파일에서 관리`;
+  document.getElementById('method').innerHTML=`<b>예상 방문자(명)</b> = 기준선(작년·재작년 같은 시기 같은 요일 × 최근 8주 수준) × 날 유형(연휴·명절·공휴일 실측 배율) × 날씨(비·추위 실측 배율)<br>
+    <b>재료 준비</b> = 주말 손님 신호(±10%) + 메뉴 인기 신호(±15%) → 더 준비 · 평소대로 · 덜 준비 (양은 내지 않음)<br>
+    <b>검색 횟수(회/일)</b> = 네이버 데이터랩 일별 등락 × 검색광고 최근 한 달 실제 검색 횟수 → 추정치<br>
+    <b>장사 기록</b> = 이 페이지의 저장소에만 보관 · 페이지를 볼 수 있는 사람만 열람`;
   document.getElementById('foot').innerHTML=`강화 시그널 v${m.version} · ${m.store.name} · 마지막 갱신 ${m.updated_at}`;
 }
 </script>

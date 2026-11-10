@@ -10,6 +10,8 @@ on:
       - "keywords.json"
       - "collect.py"
       - ".github/workflows/collect.yml"
+      - "brief.py"
+      - "forecast.py"
       - ".run"                  # 이 파일만 바꿔 올려도 즉시 수집(재확인용)
 
 permissions:

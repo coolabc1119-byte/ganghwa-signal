@@ -523,6 +523,35 @@ def fetch_news_log(cfg):
 # 방송 예정은 '방송사 이름'만으로는 드라마·예능 기사까지 걸려서, 맛집·여행 프로그램명 + 먹거리·여행 맥락이 있을 때만 인정
 SHOW_RE = re.compile(r"생생정보|오늘\s?N|생활의\s?달인|6시\s?내\s?고향|백반기행|맛있는\s?녀석들|줄서는\s?식당|전지적\s?참견|나\s?혼자|1박\s?2일|놀면\s?뭐하니|VJ특공대|생방송\s?투데이|2TV\s?저녁|저녁\s?생생|토요일\s?저녁|신상출시|수요미식회|맛있는\s?이야기|고향\s?민국|한국인의\s?밥상|동네\s?한\s?바퀴|극한\s?직업|서민갑부|생방송\s?오늘\s?저녁|모닝와이드|섬총사|나의\s?외사친|맛\s?따라|어영차|굿모닝\s?대한민국|아침마당|체험\s?삶의|전현무계획|현지에서|토밥|노포의\s?영업|뛰어야|사장님\s?귀는|맛있을\s?지도|식객|허영만")
 FOODTRIP_RE = re.compile(r"맛집|식당|음식|먹방|요리|밥상|꽃게|게장|젓국|갈비|칼국수|낙지|밴댕이|장어|새우젓|순무|해산물|여행|나들이|가볼|명소|섬|펜션|캠핑")
+def fetch_reviews(cfg):
+    """네이버 블로그에서 가게 이름이 들어간 최근 글 — 입소문이 늘고 있는지 보는 용도"""
+    cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
+    if not (cid and csec):
+        return None
+    headers = {"X-NCP-APIGW-API-KEY-ID": cid, "X-NCP-APIGW-API-KEY": csec, "X-Naver-Client-Id": cid, "X-Naver-Client-Secret": csec}
+    name = cfg["store"]["name"].replace("선두리 ", "")
+    must = re.compile(r"만선\s*꽃게")
+    prev = load_existing("reviews.json", {"items": []})
+    items = {it["link"]: it for it in prev.get("items", [])}
+    total = None
+    for q in (name, "강화 " + name, "만선 꽃게랑 낙지 강화"):
+        params = urllib.parse.urlencode({"query": q, "display": 100, "sort": "date"})
+        res = http_json("https://naverapihub.apigw.ntruss.com/search/v1/blog?" + params, headers)
+        total = max(total or 0, int(res.get("total") or 0))
+        for it in res.get("items", []):
+            title, desc = _clean(it.get("title")), _clean(it.get("description"))
+            if not must.search(title + " " + desc):
+                continue
+            pd = it.get("postdate") or ""
+            if len(pd) != 8:
+                continue
+            items[it["link"]] = {"date": f"{pd[:4]}-{pd[4:6]}-{pd[6:]}", "title": title, "link": it["link"], "blogger": it.get("bloggername", "")}
+        time.sleep(0.2)
+    out = sorted(items.values(), key=lambda x: x["date"], reverse=True)[:400]
+    return {"items": out, "total_hint": total, "checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"),
+            "note": "네이버 블로그 검색에서 제목·요약에 가게 이름이 들어간 글(누적)."}
+
+
 UPCOMING_RE = re.compile(r"예정|예고|방송된다|방영된다|전파를\s?탄다|공개된다|출연한다|찾아간다|소개된다|오늘\s?\(|오늘\s?밤|오늘\s?저녁|내일|이번\s?주")
 AIR_RE = re.compile(r"(?:오는\s?)?(\d{1,2})일\s*(?:\([월화수목금토일]\)\s*)?(?:오전|오후|저녁|밤)?\s*(?:\d{1,2}시\s*(?:\d{1,2}분)?\s*)?(?:에\s*)?(?:방송|방영|전파|공개)")
 
@@ -877,6 +906,13 @@ def main():
     visitors = run("tour_api", lambda: fetch_visitors(v_start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
     try:
+        rv = fetch_reviews(cfg)
+        if rv:
+            save("reviews.json", rv)
+    except Exception as e:
+        log(f"블로그 후기 실패: {e}")
+        ERRORS["reviews"] = f"{type(e).__name__}: {str(e)[:160]}"
+    try:
         news = dict(news or {})
         news["upcoming"] = fetch_upcoming(cfg)
         news["upcoming_checked"] = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
@@ -902,7 +938,15 @@ def main():
     save("menu_demand.json", menu_demand(volume, cfg))
     try:
         import brief
-        save("brief.json", brief.build(cfg, visitors, compare(trend, volume), news, weather))
+        _b = brief.build(cfg, visitors, compare(trend, volume), news, weather, trend=trend)
+        save("brief.json", _b)
+        # 그날 아침에 낸 예측을 남겨 둠 → 나중에 실제값·가게 기록과 맞춰 볼 수 있게
+        _fl = load_existing("forecast_log.json", {"days": {}})
+        for _i, _r in enumerate(_b["days"][:7]):
+            _fl["days"].setdefault(_r["date"], {})[f"d{_i}"] = {"est": _r["est"], "vs": _r["vs_normal_pct"], "level": _r["level"], "made": _b["generated"]}
+        _keep = sorted(_fl["days"])[-500:]
+        _fl["days"] = {k: _fl["days"][k] for k in _keep}
+        save("forecast_log.json", _fl)
     except Exception as e:
         log(f"brief 실패: {e}")
         ERRORS["brief"] = f"{type(e).__name__}: {str(e)[:200]}"

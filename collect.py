@@ -641,8 +641,11 @@ def fetch_rankings(cfg):
                 root = st_.get("ROOT_QUERY", {})
                 refs = []
                 for k, v in root.items():
-                    if k.startswith("restaurants(") or k.startswith("restaurantList(") or k.startswith("places("):
-                        items = (v or {}).get("items") or []
+                    if k.startswith(("restaurants(", "restaurantList(", "places(", "placeList(")):
+                        v = v or {}
+                        items = v.get("items") or (v.get("businesses") or {}).get("items") or []
+                        if "list_keys" not in dbg:
+                            dbg["list_keys"] = {kk: (sorted(vv.keys())[:12] if isinstance(vv, dict) else type(vv).__name__) for kk, vv in v.items()}
                         if len(items) > len(refs):
                             refs = items
                 for r in refs[:20]:
@@ -650,7 +653,8 @@ def fetch_rankings(cfg):
                     if not o or not o.get("name"):
                         continue
                     if "debug_keys" not in dbg:
-                        dbg["debug_keys"] = sorted(o.keys())[:60]
+                        dbg["debug_keys"] = sorted(o.keys())[:80]
+                        dbg["sample"] = {kk: (vv if isinstance(vv, (str, int, float, bool, type(None))) else str(vv)[:80]) for kk, vv in list(o.items())[:80]}
                     num = lambda x: int(re.sub(r"[^0-9]", "", str(x))) if x not in (None, "") and re.sub(r"[^0-9]", "", str(x)) else None
                     ent["place"].append({"name": o.get("name"), "id": str(o.get("id") or ""), "category": o.get("category") or "",
                                          "area": o.get("commonAddress") or o.get("address") or o.get("roadAddress") or "",

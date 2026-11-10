@@ -322,12 +322,8 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
     </div>
 
     <div class="card">
-      <h2>앞으로 6주 흐름</h2>
-      <div class="sub">단위: <b>하루 평균 외지인(명)</b> · 실선 = 예상(날씨 미반영), 점선 = 작년 같은 주 실제 · 주말에는 공휴일 포함</div>
-      <p class="say" id="olSay"></p>
-      <div class="chart sm"><canvas id="olChart"></canvas></div>
-      <div class="legend" id="olLegend"></div>
-      <h3 class="h3">챙길 날짜</h3>
+      <h2>챙길 날짜</h2>
+      <div class="sub">45일 안의 연휴(과거 실측 배율 포함), 재료 제철·금어기, 직접 입력한 방송 예정</div>
       <div id="balerts"></div>
     </div>
 
@@ -348,6 +344,7 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
   <section class="panel" id="p-trend">
     <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
       <div class="sub">단위: <b>최근 한 달 네이버 검색 횟수(회/월)</b> · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지 · 증감은 「강화도 ○○」 검색의 30일 합계끼리 비교 · <b>파란 줄 = 우리 메뉴</b>, 맨 윗줄 = 강화도 전체 맛집 검색</div>
+      <div class="controls"><div class="seg" id="mperSeg"><button data-n="7">증감 기준 7일</button><button data-n="30" class="on">30일</button></div></div>
       <div class="basis" id="menuBasis"></div>
       <table id="menu" style="table-layout:fixed"></table></div>
     <div class="card">
@@ -361,19 +358,11 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <div class="chart"><canvas id="trend"></canvas></div>
       <div class="legend" id="trendLegend"></div>
     </div>
-    <div class="card"><h2>기간별 메뉴 수요 <span class="chip" id="c-cmp"></span></h2>
-      <div class="sub" id="cmpSub"></div>
-      <div class="controls"><div class="seg" id="perSeg"><button data-n="7">최근 7일</button><button data-n="14">최근 14일</button><button data-n="28">최근 28일</button></div></div>
-      <div class="dr"><label>시작<input type="date" id="pFrom"></label><span>~</span><label>끝<input type="date" id="pTo"></label></div>
-      <div class="basis" id="cmpBasis"></div>
-      <div class="prep" id="prepSig"></div>
-      <div id="cmp"></div>
-    </div>
   </section>
 
   <!-- 방문자 -->
   <section class="panel" id="p-visit">
-    <div class="controls" style="margin:12px 0 0"><div class="seg" id="vgSeg" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%"><button data-g="a" class="on">올해 vs 작년</button><button data-g="b">날씨·연휴 영향</button><button data-g="c">최근 추정</button></div></div>
+    <div class="controls" style="margin:12px 0 0"><div class="seg" id="vgSeg" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%"><button data-g="a" class="on">올해 vs 작년</button><button data-g="b">날씨·연휴 영향</button><button data-g="c">최근·앞으로</button></div></div>
     <div class="card" data-vg="a">
       <h2>올해 vs 작년 — 요약 <span class="chip" id="c-vis"></span></h2>
       <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
@@ -383,6 +372,13 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
     <div class="card" data-vg="b"><h2>연휴에는 얼마나 붐볐나 <span class="chip" id="c-hol"></span></h2>
       <div class="sub">단위: <b>배(×)</b> · 그 시기 <b>보통 토요일</b> 대비 실제 방문자 · 2024년부터 실측 · 연휴 예측에 그대로 적용</div>
       <div id="holx"></div></div>
+    <div class="card" data-vg="c">
+      <h2>앞으로 6주 흐름</h2>
+      <div class="sub">단위: <b>하루 평균 외지인(명)</b> · 실선 = 예상(날씨 미반영), 점선 = 작년 같은 주 실제 · 주말에는 공휴일 포함</div>
+      <p class="say" id="olSay"></p>
+      <div class="chart sm"><canvas id="olChart"></canvas></div>
+      <div class="legend" id="olLegend"></div>
+    </div>
     <div class="card" data-vg="c"><h2>검색으로 보는 최근 방문자 <span class="chip" id="c-sv"></span></h2>
       <div class="sub" id="svSub"></div>
       <div class="basis" id="svBasis"></div>
@@ -507,14 +503,14 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab4'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); bindPeriod(); renderCmp(); renderMenu(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
+  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderMenu(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
 
   bindSeg('dfilter','f',v=>{state.dfilter=v;state.vlimit=10;renderVolume();});
   bindSeg('dper','p',v=>{state.dper=v;state.vlimit=10;renderVolume();});
-  bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();});
+  bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();}); bindSeg('mperSeg','n',v=>{state.mper=+v;renderMenu();});
   const vg=g=>{ document.querySelectorAll('#p-visit [data-vg]').forEach(c=>c.hidden=c.dataset.vg!==g); setTimeout(redrawAll,20); }; bindSeg('vgSeg','g',vg); vg('a');
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redrawAll);
 }
@@ -552,7 +548,8 @@ const HOW={
     '<b>왜 메뉴 비중인가</b> = 메뉴 비중이 평소에서 15% 넘게 벗어나면 다음 주에도 같은 방향이었던 경우가 126번 중 110번(87%)',
     '<b>양(kg)은 내지 않음</b> = 가게 판매 기록이 없어 손님 수가 몇 % 변하면 재료가 몇 % 달라지는지 확인할 수 없음 → 방향만 표시'],
     s:['tour','dlab','ad','wx','cfg']},
-  olSay:{f:['<b>예상</b> = 위와 같은 식에서 날씨만 뺀 값의 주말(토·일·공휴일) / 평일 하루 평균','<b>작년</b> = 364일 전 같은 주의 실제 방문자','<b>챙길 날짜</b> = 45일 안의 공휴일(과거 실측 배율 포함), 재료 제철·금어기 시작과 끝, 직접 입력한 방송 예정'], s:['tour','cfg']},
+  olSay:{f:['<b>예상</b> = 위와 같은 식에서 날씨만 뺀 값의 주말(토·일·공휴일) / 평일 하루 평균','<b>작년</b> = 364일 전 같은 주의 실제 방문자'], s:['tour','cfg']},
+  balerts:{f:['<b>연휴</b> = keywords.json의 공휴일 목록 · 배율은 방문자 탭 「연휴에는 얼마나 붐볐나」 실측값','<b>제철·금어기</b> = 재료별로 적어 둔 기간의 시작과 끝','<b>방송</b> = broadcast_log에 적은 오늘 이후 날짜'], s:['cfg','tour']},
   accTiles:{f:['<b>방법</b> = 과거 각 날짜를, 그날보다 통계 지연일수만큼 앞선 실제값까지만 써서 예측한 뒤 실제와 비교 (최근 1년)','<b>±</b> = |실제 ÷ 예측 − 1| 의 평균','<b>±20% 안 ○%</b> = 차이가 20% 이내였던 날의 비율 · 뒤의 숫자는 검증한 날 수','<b>한계</b> = 날씨는 실제 날씨를 넣어 계산 → 예보가 틀린 날은 반영되지 않음 · 가게 매출이 아니라 강화군 전체 기준'], s:['tour','wx','cfg']},
   holx:{f:['<b>배율</b> = 그날 실제 방문자 ÷ 그 시기(앞뒤 4주) 보통 토요일 중앙값','<b>연휴</b> = 주말·공휴일이 3일 이상 이어진 묶음 · 첫날/가운데/마지막 날로 구분','<b>명절</b> = 설·추석 당일과 그 연휴','<b>평균</b> = 사례들의 중앙값 · 3번 미만이면 기본값 사용'], s:['tour','cfg']},
   events:{f:['<b>검색 급등</b> = 그날 하루 검색 횟수 ≥ 같은 요일 직전 4주 평균 × 2 그리고 ≥ 100회','<b>대상</b> = 우리 메뉴 키워드 + 「강화도 맛집」 · 그날 연휴·방송·뉴스를 같이 표시', CNT], s:['dlab','ad','news','cfg']},
@@ -561,8 +558,7 @@ const HOW={
   yweek:{f:['<b>작년 요일 평균</b> = 작년 1년 중 그 요일 실제값 평균 (연휴·연휴 전날 제외)','<b>배율</b> = 그 요일 평균 ÷ 작년 월~목 평균','<b>증감</b> = 올해 그 요일 평균 ÷ 작년 같은 기간(올해 데이터 첫날~마지막 날과 같은 월·일 범위) 그 요일 평균 − 1'], s:['tour','cfg']},
   ytrend:{f:['<b>막대</b> = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 (두 해 모두 '+MIN_DAYS+'일 이상 있는 달)','<b>판정</b> = 비교 가능한 최근 12개월 중 증가한 달이 75% 이상 → 꾸준히 증가 · 25% 이하 → 꾸준히 감소 · 그 외 → 등락 반복','<b>연속</b> = 가장 최근 달부터 같은 방향(증가/감소)이 몇 달 이어졌나'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
-  cmp:{f:[CNT,'<b>선택 기간</b> = 시작~끝 날짜의 검색 횟수 합계','<b>직전 기간</b> = 바로 앞의 같은 길이 기간 (7일 선택 → 그 앞 7일)','<b>작년 같은 기간</b> = 364일 전(요일이 맞도록)','<b>메뉴 비중</b> = 메뉴 검색 ÷ 「강화도 맛집」 검색 → 강화 오는 사람 중 그 메뉴를 찾는 비율','<b>평소</b> = 선택 기간 시작일 바로 앞 4주(28일)의 비중','<b>판정</b> = 비중이 평소보다 15% 이상 높음 → 더 준비 · 15% 이상 낮음 → 덜 준비 · 그 사이 → 평소대로 · 하루 평균 검색 3회 미만이면 판정 보류','<b>왜 검색량이 아니라 비중인가</b> = 검색 총량은 같은 주 방문자와 같이 움직이고(상관 0.79) 다음 주 방문자는 잘 못 맞힘(0.26). 반면 메뉴 비중이 평소보다 15% 이상 벗어나면 다음 주에도 같은 방향이 유지된 경우가 87%(126번 중 110번) · 2025.7~2026.11 데이터로 확인','<b>손님 수 자체</b>는 「이번 주」 탭 예측을 보세요 (요일·날씨·연휴 반영)'], s:['dlab','ad','cfg']},
-  menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)','<b>전월 대비</b> = 「강화도 ○○」 한 가지 검색어의 최근 30일 합 ÷ 그 직전 30일 합 − 1 (데이터랩 일별 추이)','<b>전년 대비</b> = 최근 30일 합 ÷ 364일 전 같은 30일 합 − 1 (요일이 맞도록 364일)','<b>달력의 월이 아닌 이유</b> = 이번 달이 아직 안 끝나 달력 기준으로는 비교가 안 맞음 → 같은 길이 30일끼리 비교','<b>적음</b> = 하루 평균 3회 미만이라 증감이 의미 없음 · <b>수집 전</b> = 다음 수집부터 표시'], s:['ad','dlab']},
+  menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)','<b>전월(전주) 대비</b> = 「강화도 ○○」 한 가지 검색어의 최근 30일(7일) 합 ÷ 그 직전 같은 길이 기간 합 − 1 (데이터랩 일별 추이)','<b>전년 대비</b> = 최근 30일(7일) 합 ÷ 364일 전 같은 기간 합 − 1 (요일이 맞도록 364일)','<b>달력의 월이 아닌 이유</b> = 이번 달이 아직 안 끝나 달력 기준으로는 비교가 안 맞음 → 같은 길이 30일끼리 비교','<b>적음</b> = 하루 평균 3회 미만이라 증감이 의미 없음 · <b>수집 전</b> = 다음 수집부터 표시'], s:['ad','dlab']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
   wxeff:{f:[
     '<b>비 단계</b> = 조금: 1~5mm(예보는 강수확률 40% 이상) · 비: 5mm 이상 · 많은 비·눈: 20mm 이상 또는 눈',
@@ -821,7 +817,7 @@ function weekly(dates,series){ const buckets=[],idx={}; dates.forEach((d,i)=>{ c
 function sliceRange(dates,vals,range){ const n=dates.length,s=Math.max(0,n-range); return [dates.slice(s),vals.map(v=>v.slice(s))]; }
 
 /* ================= 메뉴 검색 ================= */
-function buildGroupSeg(){ const seg=document.getElementById('grpSeg'); seg.innerHTML=Object.keys(D.meta.groups).filter(g=>!g.startsWith('_')).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join(''); seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();renderCmp();}); }
+function buildGroupSeg(){ const seg=document.getElementById('grpSeg'); seg.innerHTML=Object.keys(D.meta.groups).filter(g=>!g.startsWith('_')).map(g=>`<button data-g="${g}" class="${g===state.group?'on':''}">${g}</button>`).join(''); seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{sel(b);state.group=b.dataset.g;renderTrend();}); }
 function renderTrend(){
   const kws=D.meta.groups[state.group], S=[css('--s1'),css('--s2'),css('--s3'),css('--s4'),css('--sub'),css('--wait')], all=D.trend_daily.dates, N=all.length;
   let [dates,vals]=sliceRange(all,kws.map(k=>D.trend_daily.series[k]||[]),state.range); let ly=[];
@@ -835,65 +831,19 @@ function renderTrend(){
 const short=k=>k.replace(/^강화도\s/,'');
 function sameWdAvg(series,dates,wd,ym){ const xs=[]; dates.forEach((d,i)=>{ if(d.startsWith(ym)&&dow(d)===wd&&series[i]!=null) xs.push(series[i]); }); return xs.length?{v:avg(xs),n:xs.length}:null; }
 function prevYm(ym,k){ let [y,m]=ym.split('-').map(Number); m-=k; while(m<=0){m+=12;y--;} return `${y}-${String(m).padStart(2,'0')}`; }
-function renderCmp(){
-  const dates=D.trend_daily.dates, ser=D.trend_daily.series, first=dates[0], last=dates.at(-1), ref='강화도 맛집';
-  const kws=D.meta.groups['우리 가게 메뉴']||Object.values(D.meta.groups)[0];
-  if(!state.pTo){ state.pTo=last; state.pFrom=shift(last,-6); }
-  const fI=document.getElementById('pFrom'), tI=document.getElementById('pTo');
-  [fI,tI].forEach(x=>{x.min=first;x.max=last;}); fI.value=state.pFrom; tI.value=state.pTo;
-  const N=Math.round((Date.parse(state.pTo+'T00:00:00Z')-Date.parse(state.pFrom+'T00:00:00Z'))/864e5)+1;
-  document.querySelectorAll('#perSeg button').forEach(b=>b.classList.toggle('on',state.pTo===last&&+b.dataset.n===N));
-  const idx=Object.fromEntries(dates.map((d,i)=>[d,i]));
-  // 기간 합계: 80% 이상 날짜가 있어야 인정
-  const tot=(k,a,b)=>{ const v=ser[k]||[]; let s=0,n=0,len=0; for(let d=a; d<=b; d=shift(d,1)){ len++; const i=idx[d]; if(i!=null&&v[i]!=null){s+=v[i];n++;} } return n>=len*0.8&&n>0? s*len/n : null; };
-  const totK=(ks,a,b)=>{ const xs=ks.map(k=>tot(k,a,b)); return xs.some(x=>x==null)?null:xs.reduce((x,y)=>x+y,0); };
-  const F=state.pFrom, T=state.pTo, pF=shift(F,-N), pT=shift(F,-1), yF=shift(F,-364), yT=shift(T,-364);
-  const shareK=(ks,a,b)=>{ const m=totK(ks,a,b), r=tot(ref,a,b); return m!=null&&r? m/r*100 : null; };
-  const usualK=ks=>shareK(ks,shift(F,-28),shift(F,-1)); // 평소 = 시작일 직전 4주(기간 길이와 무관 → 28일을 골라도 계절이 섞이지 않음)
-  const pc=(a,b)=>a==null||!b?null:(a/b-1)*100;
-  const verdict=(ks)=>{ const cur=totK(ks,F,T); if(cur==null) return {c:'hold',t:'데이터 부족'}; if(cur/N<3) return {c:'hold',t:'판정 보류',why:'검색 적음'};
-    const s=shareK(ks,F,T), u=usualK(ks), r=pc(s,u); if(r==null) return {c:'hold',t:'판정 보류',why:'비교 기간 없음'};
-    return r>=15?{c:'more',t:'더 준비',r,s,u}:r<=-15?{c:'less',t:'덜 준비',r,s,u}:{c:'same',t:'평소대로',r,s,u}; };
-  const arrow=p=>p==null?'–':`${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`;
-  const rng=(a,b)=>`${md(a)}(${WD[dow(a)]})~${md(b)}(${WD[dow(b)]})`;
-  document.getElementById('cmpSub').innerHTML=`단위: <b>기간 합계 검색 횟수(회, 추정)</b> · 네이버 · 판정은 검색량이 아니라 <b>메뉴 비중</b>(강화도 맛집 검색 중 그 메뉴 비율)이 평소보다 높은지로 봄`;
-  document.getElementById('cmpBasis').innerHTML=`<div><span>선택 기간</span><b>${rng(F,T)} · ${N}일</b></div><div><span>직전 기간</span><b>${rng(pF,pT)}</b></div><div><span>작년 같은 기간</span><b>${yF.slice(2,4)}.${rng(yF,yT)}</b></div><div><span>준비 반영</span><b>${rng(shift(T,1),shift(T,7))}</b></div>`;
-  // 재료별 준비 신호
-  const ING=D.meta.store?.ingredients||{}; const has=k=>!!ser[k];
-  const rows=Object.entries(ING).map(([name,o])=>{ const ks=(o.keywords||[]).filter(has); return {name,ks,menus:o.menus||[]}; });
-  const crab=rows.find(r=>/꽃게/.test(r.name)); const crabV=crab&&crab.ks.length?verdict(crab.ks):null;
-  document.getElementById('prepSig').innerHTML=`<div class="hd">재료 준비 신호 · ${rng(shift(T,1),shift(T,7))} 참고</div>`+rows.map(r=>{
-    if(!r.ks.length) return `<div class="pr"><div style="min-width:0"><div class="n">${r.name}</div><div class="w">검색 데이터 없음 · 꽃게 신호를 따라감</div></div><span class="vt ${crabV?crabV.c:'hold'}">${crabV?crabV.t:'–'}</span></div>`;
-    const v=verdict(r.ks); const w=v.r!=null?`평소 대비 ${arrow(v.r)} · 비중 ${v.s.toFixed(1)}% (평소 ${v.u.toFixed(1)}%)`:`${r.menus.join('·')} · ${v.why||''}`;
-    return `<div class="pr"><div style="min-width:0"><div class="n">${r.name}</div><div class="w">${w}</div></div><span class="vt ${v.c}">${v.t}</span></div>`; }).join('');
-  // 메뉴별 상세
-  const box=(lab,p,b)=>`<div class="c"><div class="l">${lab}</div><div class="p ${p==null?'muted':p>=0?'up':'down'}">${arrow(p)}</div><div class="b">${b}</div></div>`;
-  const line=(k,isRef)=>{ const cur=tot(k,F,T), pv=tot(k,pF,pT), ly=tot(k,yF,yT);
-    const name=isRef?`강화도 맛집 <span class="tag">전체 기준</span>`:short(k);
-    const top=`<div class="ctop"><span class="nm">${name}${isRef?'':` <span class="vt ${verdict([k]).c}">${verdict([k]).t}</span>`}</span><span class="val">${cur==null?'–':fmt(cur)}<small>회</small></span></div>`;
-    let third; if(isRef) third=`<div class="c"><div class="l">하루 평균</div><div class="p">${cur==null?'–':fmt(cur/N)}</div><div class="b">회/일</div></div>`;
-    else { const v=verdict([k]); third=box('비중 vs 평소',v.r??null,v.s!=null?`${v.u.toFixed(1)}→${v.s.toFixed(1)}%`:'–'); }
-    return `<div class="cr ${isRef?'ref':''}">${top}<div class="g3">${box(`직전 ${N}일`,pc(cur,pv),pv==null?'–':fmt(pv)+'회')}${box('작년 같은 기간',pc(cur,ly),ly==null?'–':fmt(ly)+'회')}${third}</div></div>`; };
-  document.getElementById('cmp').innerHTML=`<div class="sub" style="margin:14px 0 4px">메뉴별 상세 — 칸 안 작은 숫자 = 비교 기간 합계(회)</div>`+line(ref,true)+kws.map(k=>line(k,false)).join('');
-}
-function bindPeriod(){
-  document.querySelectorAll('#perSeg button').forEach(b=>b.onclick=()=>{ const last=D.trend_daily.dates.at(-1); state.pTo=last; state.pFrom=shift(last,-(+b.dataset.n-1)); renderCmp(); });
-  const on=()=>{ let f=document.getElementById('pFrom').value, t=document.getElementById('pTo').value; if(!f||!t) return; if(f>t) [f,t]=[t,f]; state.pFrom=f; state.pTo=t; renderCmp(); };
-  document.getElementById('pFrom').onchange=on; document.getElementById('pTo').onchange=on;
-}
 function renderMenu(){
   const o=D.menu_demand||[]; if(!o.length){document.getElementById('menu').innerHTML='<tr><td class="empty">데이터 없음</td></tr>';return;}
   const t=D.trend_daily, dd=t.dates, n=dd.length, idx=Object.fromEntries(dd.map((d,i)=>[d,i]));
   // 증감: 데이터랩 일별 「강화도 ○○」 검색의 30일 합계끼리 비교
-  const sum=(k,a,b)=>{ const v=t.series[k]; if(!v) return null; let s=0,c=0; for(let d=a; d<=b; d=shift(d,1)){ const i=idx[d]; if(i!=null&&v[i]!=null){s+=v[i];c++;} } return c>=25?s:null; };
-  const T=dd[n-1], F=shift(T,-29), pT=shift(F,-1), pF=shift(F,-30), yT=shift(T,-364), yF=shift(F,-364);
-  const chg=k=>{ const c=sum(k,F,T), p=sum(k,pF,pT), y=sum(k,yF,yT); const small=c!=null&&c/30<3; return {mom:c!=null&&p&&!small?(c/p-1)*100:null, yoy:c!=null&&y&&!small?(c/y-1)*100:null, has:!!t.series[k], small}; };
+  const sum=(k,a,b)=>{ const v=t.series[k]; if(!v) return null; let s=0,c=0,L=0; for(let d=a; d<=b; d=shift(d,1)){ L++; const i=idx[d]; if(i!=null&&v[i]!=null){s+=v[i];c++;} } return c>=L*0.8?s:null; };
+  const N=state.mper||30; const T=dd[n-1], F=shift(T,-(N-1)), pT=shift(F,-1), pF=shift(F,-N), yT=shift(T,-364), yF=shift(F,-364);
+  const chg=k=>{ const c=sum(k,F,T), p=sum(k,pF,pT), y=sum(k,yF,yT); const small=c!=null&&c/N<3; return {mom:c!=null&&p&&!small?(c/p-1)*100:null, yoy:c!=null&&y&&!small?(c/y-1)*100:null, has:!!t.series[k], small}; };
   const cell=(p,x)=> p==null? `<td class="n muted">${x.has?(x.small?'적음':'–'):'수집 전'}</td>` : `<td class="n ${p>=0?'up':'down'}">${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%</td>`;
   const R=(a,b)=>`${md(a)}~${md(b)}`;
-  document.getElementById('menuBasis').innerHTML=`<div><span>월 검색(회)</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달</b></div><div><span>이번 30일</span><b>${R(F,T)}</b></div><div><span>전월 대비</span><b>vs 직전 30일 ${R(pF,pT)}</b></div><div><span>전년 대비</span><b>vs 작년 같은 30일 ${yF.slice(2,4)}.${R(yF,yT)}</b></div>`;
+  document.getElementById('menuBasis').innerHTML=`<div><span>월 검색(회)</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달</b></div><div><span>이번 ${N}일</span><b>${R(F,T)}</b></div><div><span>${N===30?'전월':'전주'} 대비</span><b>vs 직전 ${N}일 ${R(pF,pT)}</b></div><div><span>전년 대비</span><b>vs 작년 같은 ${N}일 ${yF.slice(2,4)}.${R(yF,yT)}</b></div>`;
   const ref=(D.volume_monthly?.rows||[]).find(r=>r.keyword.replace(/\s/g,'')==='강화도맛집');
   const rows=[...(ref?[{menu:'강화도 맛집',monthly_search:ref.total,ref:true,kw:'강화도 맛집'}]:[]), ...o.map(r=>({...r,kw:'강화도 '+r.menu}))];
-  document.getElementById('menu').innerHTML=`<tr><th style="width:31%">메뉴</th><th class="n" style="width:25%">월 검색(회)</th><th class="n" style="width:22%">전월 대비</th><th class="n" style="width:22%">전년 대비</th></tr>`+rows.map(r=>{ const x=chg(r.kw);
+  document.getElementById('menu').innerHTML=`<tr><th style="width:31%">메뉴</th><th class="n" style="width:25%">월 검색(회)</th><th class="n" style="width:22%">${N===30?'전월':'전주'} 대비</th><th class="n" style="width:22%">전년 대비</th></tr>`+rows.map(r=>{ const x=chg(r.kw);
     return `<tr class="${r.mine?'mine':''}"><td class="kw" style="max-width:none;${r.ref?'font-weight:700':''}">${r.menu}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':fmt(r.monthly_search)}</td>${cell(x.mom,x)}${cell(x.yoy,x)}</tr>`; }).join('');
 }
 

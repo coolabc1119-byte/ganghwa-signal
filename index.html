@@ -964,8 +964,8 @@ function renderLocal(){
     const w=sum(v,n-7,n), pw=sum(v,n-14,n-7), m=sum(v,n-30,n);
     if(!m) return `<div class="cr"><div class="ctop"><span class="nm">${nm}</span><span class="val">${e.ad?(e.ad/30).toFixed(1)+'<small>회/일</small>':'<small>10회 미만/월</small>'}</span></div><div class="sub" style="margin:0">일별 추이는 없음(데이터랩 집계 기준 미달) · 검색광고 한 달 ${adTxt} ÷ 30</div></div>`;
     const p=pw?(w/pw-1)*100:null;
-    return `<div class="cr ${e.ours?'ref':''}"><div class="ctop"><span class="nm">${nm}</span><span class="val">${(w/7).toFixed(1)}<small>회/일</small></span></div>
-      <div class="g3">${box('최근 7일 합계',fmt(w)+'회',p==null?'직전 7일 –':`직전 7일 ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`)}${box('최근 30일 합계',fmt(m)+'회','하루 '+(m/30).toFixed(1)+'회')}${box('검색광고 월(실측)',adTxt,e.adNote)}</div>${e.sub?`<div class="sub" style="margin:8px 0 0">${e.sub}</div>`:''}</div>`; };
+    return `<div class="cr ${e.ours?'ref':''}"><div class="ctop"><span class="nm">${nm}</span><span class="val">${w/7>=100?fmt(w/7):(w/7).toFixed(1)}<small>회/일</small></span></div>
+      <div class="g3">${box('최근 7일 합계',fmt(w)+'회',p==null?'직전 7일 –':`직전 7일 ${p>=0?'▲':'▼'}${Math.abs(p).toFixed(0)}%`)}${box('최근 30일 합계',fmt(m)+'회','하루 '+(m/30>=100?fmt(m/30):(m/30).toFixed(1))+'회')}${box('검색광고 월(실측)',adTxt,e.adNote)}</div>${e.sub?`<div class="sub" style="margin:8px 0 0">${e.sub}</div>`:''}</div>`; };
   const isLodge=k=>/펜션|캠핑/.test(k);
   const mine=kws.filter(k=>/만선/.test(k)).map(one), lodge=kws.filter(isLodge).map(one), etc=kws.filter(k=>!/만선/.test(k)&&!isLodge(k)).map(one);
   const near=[];

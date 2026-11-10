@@ -1312,6 +1312,16 @@
    "measured": true
   }
  },
+ "rain_timing": {
+  "night": {
+   "pct": -13,
+   "n": 29
+  },
+  "day": {
+   "pct": -18,
+   "n": 105
+  }
+ },
  "broadcast_auto": [
   {
    "date": "2026-10-27",

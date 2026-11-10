@@ -121,6 +121,24 @@ def build(cfg, visitors, compare=None, news=None, weather=None, today=None, tren
         c = cats.get("holiday" if t != "normal" else "weekend" if wd >= 5 else "weekday") or cats.get("all") or {"p10": -0.15, "p90": 0.2}
         return c["p10"], c["p90"]
 
+    # ---- 참고: 낮에 온 비 vs 밤에만 온 비 ----
+    def rain_timing():
+        g = {"night": [], "day": []}
+        for sdt, val in by.items():
+            d0 = date.fromisoformat(sdt)
+            w = wx.get(sdt)
+            if not w or w.get("rain_day") is None or m.dtype(d0) != "normal" or (w.get("rain") or 0) < 5:
+                continue
+            xs = []
+            for k in (-28, -21, -14, -7, 7, 14, 21, 28):
+                o = I(d0 + timedelta(k))
+                if o in by and m.dtype(d0 + timedelta(k)) == "normal" and (wx.get(o, {}).get("rain") or 0) < 1:
+                    xs.append(by[o])
+            if len(xs) >= 2:
+                g["night" if w["rain_day"] < 1 else "day"].append(val / st.median(xs))
+        return {k: {"pct": round((st.median(v) - 1) * 100) if len(v) >= 8 else None, "n": len(v)} for k, v in g.items()}
+    timing = rain_timing()
+
     # ---- 실제값 비교(지난달·작년 같은 달 같은 요일) ----
     def month_wd_avg(ym, wd):
         xs = [v for d, v in by.items() if d.startswith(ym) and date.fromisoformat(d).weekday() == wd and m.dtype(date.fromisoformat(d)) == "normal"]
@@ -299,7 +317,7 @@ def build(cfg, visitors, compare=None, news=None, weather=None, today=None, tren
                                           "weekday": round((lv["wd"][0] - 1) * 100, 1) if lv["wd"][0] else None},
                   "type_mult": m.type_mult, "type_label": TYPE_LABEL, "dry_boost": m.dry_boost, "cold": m.cold_eff,
                   "recent_from": I(min(m.recent)) if m.recent else None, "recent_to": I(max(m.recent)) if m.recent else None},
-        "weather_effect": m.wx_eff,
+        "weather_effect": m.wx_eff, "rain_timing": timing,
         "broadcast_auto": sorted(auto_bc, key=lambda b: b["date"], reverse=True)[:10],
     }
 

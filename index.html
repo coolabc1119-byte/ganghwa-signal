@@ -374,16 +374,17 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
 
   <!-- 방문자 -->
   <section class="panel" id="p-visit">
-    <div class="card">
+    <div class="controls" style="margin:12px 0 0"><div class="seg" id="vgSeg" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%"><button data-g="a" class="on">올해 vs 작년</button><button data-g="b">날씨·연휴 영향</button><button data-g="c">최근 흐름</button></div></div>
+    <div class="card" data-vg="a">
       <h2>올해 vs 작년 — 요약 <span class="chip" id="c-vis"></span></h2>
       <div class="sub">강화군 하루 외지인 방문자(명) · 한국관광공사 실제값 · 증감은 모두 <b>작년 같은 기간</b> 대비</div>
       <div id="ysum"></div>
     </div>
-    <div class="card"><h2>비·추위에 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">2024년부터의 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됩니다</div><div id="wxeff"></div></div>
-    <div class="card"><h2>연휴에는 얼마나 붐볐나 <span class="chip" id="c-hol"></span></h2>
+    <div class="card" data-vg="b"><h2>비·추위에 손님은 얼마나 줄었나 <span class="chip" id="c-wx"></span></h2><div class="sub">2024년부터의 실측 · 이 값이 이번 주 날씨 예보에 그대로 적용됩니다</div><div id="wxeff"></div></div>
+    <div class="card" data-vg="b"><h2>연휴에는 얼마나 붐볐나 <span class="chip" id="c-hol"></span></h2>
       <div class="sub">단위: <b>배(×)</b> · 그 시기 <b>보통 토요일</b> 대비 실제 방문자 · 2024년부터 실측 · 연휴 예측에 그대로 적용</div>
       <div id="holx"></div></div>
-    <div class="card"><h2>검색으로 보는 최근 방문자 <span class="chip" id="c-sv"></span></h2>
+    <div class="card" data-vg="c"><h2>검색으로 보는 최근 방문자 <span class="chip" id="c-sv"></span></h2>
       <div class="sub" id="svSub"></div>
       <div class="basis" id="svBasis"></div>
       <div id="svTable"></div>
@@ -393,24 +394,24 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <div class="sub">숫자 = 상관계수(−1~1) · 1에 가까울수록 검색과 방문자가 같이 오르내림 · 0.7 이상 강함, 0.4~0.7 보통, 0.4 미만 약함</div>
       <div id="scorr"></div>
     </div>
-    <div class="card">
+    <div class="card" data-vg="a">
       <h2>월별 — 작년 실적과 올해 증감</h2>
       <div class="sub" id="ymSub"></div>
       <div class="chart sm"><canvas id="mchart"></canvas></div>
       <div id="ymonth" style="margin-top:12px"></div>
     </div>
-    <div class="card">
+    <div class="card" data-vg="a">
       <h2>요일별 — 작년 실적과 올해 증감</h2>
       <div class="sub" id="ywSub"></div>
       <div id="yweek"></div>
     </div>
-    <div class="card">
+    <div class="card" data-vg="a">
       <h2>꾸준히 늘고 있나 — 월별 전년 대비 증감</h2>
       <div class="sub" id="ytSub"></div>
       <div class="chart sm"><canvas id="ytrend"></canvas></div>
       <div id="yverdict" style="margin-top:10px"></div>
     </div>
-    <div class="card">
+    <div class="card" data-vg="c">
       <h2>하루 방문자 흐름</h2>
       <div class="sub">단위: 명/일 · 얇은 선 = 일별, 굵은 선 = 7일 평균 · 빨간 점 = 비 온 날(5mm↑) · 약 한 달 늦게 올라옴</div>
       <div class="controls"><div class="seg" id="vrange"><button data-r="90">3개월</button><button data-r="180" class="on">6개월</button><button data-r="9999">전체</button></div>
@@ -535,6 +536,7 @@ async function init(){
   bindSeg('dfilter','f',v=>{state.dfilter=v;state.vlimit=10;renderVolume();});
   bindSeg('dper','p',v=>{state.dper=v;state.vlimit=10;renderVolume();});
   bindSeg('nfilter','f',v=>{state.nfilter=v;renderNews();});
+  const vg=g=>{ document.querySelectorAll('#p-visit [data-vg]').forEach(c=>c.hidden=c.dataset.vg!==g); setTimeout(redrawAll,20); }; bindSeg('vgSeg','g',vg); vg('a');
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redrawAll);
 }
 function bindSeg(id,attr,fn){ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{sel(b);fn(b.dataset[attr]);}); }
@@ -988,11 +990,12 @@ function renderSearchVis(){
 function renderWx(){
   const e=D.brief?.weather_effect; if(!e){document.getElementById('wxeff').innerHTML='<div class="empty">날씨 데이터 없음</div>';return;}
   const c=k=>{ const x=e[k]; if(!x) return '<div class="c"><div class="p muted">–</div></div>'; const p=(x.factor-1)*100; return `<div class="c"><div class="p ${p<0?'down':'up'}">${p>=0?'+':''}${p.toFixed(0)}%</div><div class="b">${x.measured?x.n+'일 실측':'자료 부족'}</div></div>`; };
-  const cold=D.brief?.model?.cold; const rows=[['비 조금','1~5mm','1'],['비','5mm 이상','2'],['많은 비·눈','20mm 이상 또는 눈','3']];
+  const cold=D.brief?.model?.cold, rt=D.brief?.rain_timing; const rows=[['비 조금','1~5mm','1'],['비','5mm 이상','2'],['많은 비·눈','20mm 이상 또는 눈','3']];
   document.getElementById('wxeff').innerHTML=`<div class="basis"><div><span>증감 비교 대상</span><b style="font-family:var(--sans)">같은 시기(앞뒤 4주) 같은 요일 비 안 온 날</b></div></div>
     <div class="wxg"><div class="h"></div><div class="h">주말 손님</div><div class="h">평일 손님</div>
     ${rows.map(r=>`<div class="lab"><b>${r[0]}</b><small>${r[1]}</small></div>${c('we'+r[2])}${c('wd'+r[2])}`).join('')}</div>`+
-    (cold&&cold.measured?`<div class="basis" style="margin:12px 0 0"><div><span>갑자기 추워진 날 (비 없음)</span><b class="down">${((cold.factor-1)*100).toFixed(0)}% · ${cold.n}일 실측</b></div></div>`:'');
+    `<div class="basis" style="margin:12px 0 0">`+(cold&&cold.measured?`<div><span>갑자기 추워진 날 (비 없음)</span><b class="down">${((cold.factor-1)*100).toFixed(0)}% · ${cold.n}일</b></div>`:'')+
+    (rt&&rt.night&&rt.night.pct!=null&&rt.day.pct!=null?`<div><span>낮(9~19시)에 온 비 5mm↑</span><b class="down">${rt.day.pct}% · ${rt.day.n}일</b></div><div><span>밤·새벽에만 온 비 5mm↑</span><b class="down">${rt.night.pct}% · ${rt.night.n}일</b></div><div><span>읽는 법</span><b style="font-family:var(--sans);font-weight:500">밤에만 와도 꽤 줄어서 예측에서는 시간대를 따로 구분하지 않음</b></div>`:'')+`</div>`;
 }
 
 /* ================= 키워드 발굴 ================= */

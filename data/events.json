@@ -20,6 +20,24 @@
   "holiday": null
  },
  {
+  "date": "2026-10-09",
+  "keyword": "전등사",
+  "value": 2633.9,
+  "baseline": 1292.6,
+  "ratio": 2.04,
+  "broadcast": null,
+  "news": [
+   {
+    "date": "2026-10-09",
+    "title": "반려동물과 인천 갈까…산책하기 좋은 소래포구·전등사·차이나타운",
+    "link": "https://n.news.naver.com/mnews/article/421/0009219400?sid=102",
+    "query": "강화도 맛집",
+    "tv": null
+   }
+  ],
+  "holiday": "한글날"
+ },
+ {
   "date": "2026-10-07",
   "keyword": "강화도 젓국갈비",
   "value": 237.6,
@@ -28,6 +46,16 @@
   "broadcast": null,
   "news": [],
   "holiday": null
+ },
+ {
+  "date": "2026-10-05",
+  "keyword": "전등사",
+  "value": 1687.5,
+  "baseline": 840.4,
+  "ratio": 2.01,
+  "broadcast": null,
+  "news": [],
+  "holiday": "개천절 대체"
  },
  {
   "date": "2026-10-05",
@@ -65,6 +93,16 @@
   "value": 334.0,
   "baseline": 156.1,
   "ratio": 2.14,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-10-04",
+  "keyword": "전등사",
+  "value": 2798.1,
+  "baseline": 1201.7,
+  "ratio": 2.33,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -151,6 +189,16 @@
  },
  {
   "date": "2026-09-25",
+  "keyword": "전등사",
+  "value": 1912.3,
+  "baseline": 838.9,
+  "ratio": 2.28,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석"
+ },
+ {
+  "date": "2026-09-25",
   "keyword": "강화도 젓국갈비",
   "value": 153.5,
   "baseline": 65.5,
@@ -195,6 +243,16 @@
   "value": 1270.7,
   "baseline": 601.5,
   "ratio": 2.11,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2026-09-24",
+  "keyword": "전등사",
+  "value": 1699.8,
+  "baseline": 748.0,
+  "ratio": 2.27,
   "broadcast": null,
   "news": [],
   "holiday": "추석 연휴"
@@ -355,6 +413,16 @@
   "value": 4719.4,
   "baseline": 2161.1,
   "ratio": 2.18,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-07-17",
+  "keyword": "전등사",
+  "value": 1423.7,
+  "baseline": 648.5,
+  "ratio": 2.2,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -540,6 +608,16 @@
   "holiday": "부처님오신날"
  },
  {
+  "date": "2026-05-24",
+  "keyword": "전등사",
+  "value": 4793.6,
+  "baseline": 1375.2,
+  "ratio": 3.49,
+  "broadcast": null,
+  "news": [],
+  "holiday": "부처님오신날"
+ },
+ {
   "date": "2026-05-05",
   "keyword": "강화도 맛집",
   "value": 4162.7,
@@ -654,6 +732,16 @@
   "keyword": "강화도 맛집",
   "value": 7084.8,
   "baseline": 2350.4,
+  "ratio": 3.01,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2026-05-01",
+  "keyword": "전등사",
+  "value": 2598.0,
+  "baseline": 863.2,
   "ratio": 3.01,
   "broadcast": null,
   "news": [],
@@ -831,6 +919,16 @@
  },
  {
   "date": "2026-03-01",
+  "keyword": "전등사",
+  "value": 1884.6,
+  "baseline": 916.4,
+  "ratio": 2.06,
+  "broadcast": null,
+  "news": [],
+  "holiday": "삼일절"
+ },
+ {
+  "date": "2026-03-01",
   "keyword": "전등사 맛집",
   "value": 255.3,
   "baseline": 117.7,
@@ -931,6 +1029,16 @@
  },
  {
   "date": "2026-02-18",
+  "keyword": "전등사",
+  "value": 1256.4,
+  "baseline": 449.6,
+  "ratio": 2.79,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-18",
   "keyword": "전등사 맛집",
   "value": 106.2,
   "baseline": 37.8,
@@ -981,6 +1089,16 @@
  },
  {
   "date": "2026-02-17",
+  "keyword": "전등사",
+  "value": 1705.0,
+  "baseline": 528.6,
+  "ratio": 3.23,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설날"
+ },
+ {
+  "date": "2026-02-17",
   "keyword": "강화도 꽃게탕",
   "value": 176.8,
   "baseline": 52.0,
@@ -1025,6 +1143,16 @@
   "value": 385.5,
   "baseline": 186.5,
   "ratio": 2.07,
+  "broadcast": null,
+  "news": [],
+  "holiday": "설 연휴"
+ },
+ {
+  "date": "2026-02-16",
+  "keyword": "전등사",
+  "value": 1592.0,
+  "baseline": 498.9,
+  "ratio": 3.19,
   "broadcast": null,
   "news": [],
   "holiday": "설 연휴"
@@ -1383,6 +1511,16 @@
   "holiday": null
  },
  {
+  "date": "2026-01-22",
+  "keyword": "전등사",
+  "value": 2273.6,
+  "baseline": 939.5,
+  "ratio": 2.42,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2026-01-11",
   "keyword": "강화도 젓국갈비",
   "value": 488.9,
@@ -1454,6 +1592,16 @@
  },
  {
   "date": "2026-01-01",
+  "keyword": "전등사",
+  "value": 2195.6,
+  "baseline": 467.1,
+  "ratio": 4.7,
+  "broadcast": null,
+  "news": [],
+  "holiday": "신정"
+ },
+ {
+  "date": "2026-01-01",
   "keyword": "전등사 맛집",
   "value": 343.1,
   "baseline": 58.2,
@@ -1478,6 +1626,16 @@
   "value": 133.4,
   "baseline": 48.9,
   "ratio": 2.73,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-12-31",
+  "keyword": "전등사",
+  "value": 1335.4,
+  "baseline": 441.6,
+  "ratio": 3.02,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -1601,6 +1759,16 @@
   "holiday": null
  },
  {
+  "date": "2025-11-04",
+  "keyword": "전등사",
+  "value": 2948.0,
+  "baseline": 1280.5,
+  "ratio": 2.3,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
   "date": "2025-10-25",
   "keyword": "강화도 순무",
   "value": 230.4,
@@ -1700,6 +1868,16 @@
  },
  {
   "date": "2025-10-09",
+  "keyword": "전등사",
+  "value": 1961.6,
+  "baseline": 905.3,
+  "ratio": 2.17,
+  "broadcast": null,
+  "news": [],
+  "holiday": "한글날"
+ },
+ {
+  "date": "2025-10-09",
   "keyword": "강화도 카페",
   "value": 1680.3,
   "baseline": 713.4,
@@ -1764,6 +1942,16 @@
   "value": 242.7,
   "baseline": 68.5,
   "ratio": 3.54,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 대체"
+ },
+ {
+  "date": "2025-10-08",
+  "keyword": "전등사",
+  "value": 3329.8,
+  "baseline": 843.5,
+  "ratio": 3.95,
   "broadcast": null,
   "news": [],
   "holiday": "추석 대체"
@@ -1864,6 +2052,16 @@
   "value": 185.6,
   "baseline": 56.6,
   "ratio": 3.28,
+  "broadcast": null,
+  "news": [],
+  "holiday": "추석 연휴"
+ },
+ {
+  "date": "2025-10-07",
+  "keyword": "전등사",
+  "value": 2498.4,
+  "baseline": 747.0,
+  "ratio": 3.34,
   "broadcast": null,
   "news": [],
   "holiday": "추석 연휴"
@@ -2300,10 +2498,30 @@
  },
  {
   "date": "2025-09-06",
+  "keyword": "전등사",
+  "value": 3776.4,
+  "baseline": 1112.7,
+  "ratio": 3.39,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-06",
   "keyword": "강화도 젓국갈비",
   "value": 1534.9,
   "baseline": 43.4,
   "ratio": 35.41,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-05",
+  "keyword": "전등사",
+  "value": 5547.0,
+  "baseline": 918.9,
+  "ratio": 6.04,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -2324,6 +2542,16 @@
   "value": 207.0,
   "baseline": 60.3,
   "ratio": 3.43,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-09-04",
+  "keyword": "전등사",
+  "value": 2927.5,
+  "baseline": 680.3,
+  "ratio": 4.3,
   "broadcast": null,
   "news": [],
   "holiday": null
@@ -2550,6 +2778,16 @@
  },
  {
   "date": "2025-08-16",
+  "keyword": "전등사",
+  "value": 1670.1,
+  "baseline": 819.4,
+  "ratio": 2.04,
+  "broadcast": null,
+  "news": [],
+  "holiday": null
+ },
+ {
+  "date": "2025-08-16",
   "keyword": "강화도 드라이브",
   "value": 101.8,
   "baseline": 47.5,
@@ -2584,6 +2822,16 @@
   "value": 694.7,
   "baseline": 321.2,
   "ratio": 2.16,
+  "broadcast": null,
+  "news": [],
+  "holiday": "광복절"
+ },
+ {
+  "date": "2025-08-15",
+  "keyword": "전등사",
+  "value": 1555.1,
+  "baseline": 647.7,
+  "ratio": 2.4,
   "broadcast": null,
   "news": [],
   "holiday": "광복절"

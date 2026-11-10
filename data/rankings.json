@@ -1,0 +1,244 @@
+{
+ "checked": "2026-11-10 17:18",
+ "queries": {
+  "강화도 칼국수": {
+   "place": [
+    {
+     "name": "메주꽃이랑",
+     "id": "2062130814",
+     "category": "한식",
+     "area": "인천 강화군 강화읍",
+     "visitor": 35,
+     "blog": 14,
+     "score": null,
+     "mine": false
+    },
+    {
+     "name": "강화칼국수상회",
+     "id": "2045973413",
+     "category": "칼국수,만두",
+     "area": "인천 강화군 강화읍",
+     "visitor": 26,
+     "blog": 0,
+     "score": null,
+     "mine": false
+    }
+   ],
+   "api": [],
+   "my_rank": null
+  },
+  "강화도 꽃게탕": {
+   "place": [],
+   "api": [],
+   "my_rank": null
+  },
+  "강화도 간장게장": {
+   "place": [],
+   "api": [],
+   "my_rank": null
+  },
+  "강화도 젓국갈비": {
+   "place": [],
+   "api": [],
+   "my_rank": null
+  },
+  "강화도 연포탕": {
+   "place": [],
+   "api": [],
+   "my_rank": null
+  },
+  "강화도 낙지": {
+   "place": [
+    {
+     "name": "유니정원",
+     "id": "2067473100",
+     "category": "한식",
+     "area": "인천 강화군 삼산면",
+     "visitor": 52,
+     "blog": 3,
+     "score": null,
+     "mine": false
+    }
+   ],
+   "api": [],
+   "my_rank": null
+  }
+ },
+ "history": {
+  "2026-11-10": {
+   "강화도 칼국수": {
+    "my_rank": null,
+    "top": [
+     "메주꽃이랑",
+     "강화칼국수상회"
+    ]
+   },
+   "강화도 꽃게탕": {
+    "my_rank": null,
+    "top": []
+   },
+   "강화도 간장게장": {
+    "my_rank": null,
+    "top": []
+   },
+   "강화도 젓국갈비": {
+    "my_rank": null,
+    "top": []
+   },
+   "강화도 연포탕": {
+    "my_rank": null,
+    "top": []
+   },
+   "강화도 낙지": {
+    "my_rank": null,
+    "top": [
+     "유니정원"
+    ]
+   }
+  }
+ },
+ "debug": {
+  "probe": {
+   "len": 198417,
+   "apollo": true,
+   "parsed": true,
+   "root": [
+    "__typename",
+    "placeList({\"input\":{\"deviceType\":\"mobile"
+   ],
+   "types": [
+    "Panorama",
+    "PlaceListBusinessesItem",
+    "Query",
+    "VisitorReviews"
+   ],
+   "title": "네이버 플레이스"
+  },
+  "list_keys": {
+   "__typename": "str",
+   "businessType": "str",
+   "businesses": [
+    "__typename",
+    "items",
+    "queryString",
+    "siteSort",
+    "total"
+   ]
+  },
+  "debug_keys": [
+   "__typename",
+   "address",
+   "apolloCacheId",
+   "blogCafeReviewCount",
+   "bookingBusinessId",
+   "bookingDisplayName",
+   "bookingReviewCount",
+   "broadcastInfo",
+   "broadcasts",
+   "businessCategory",
+   "category",
+   "categoryCodeList",
+   "commonAddress",
+   "coupon",
+   "dbType",
+   "detailCid",
+   "distance",
+   "fullAddress",
+   "hasBooking",
+   "hasNPay",
+   "hasWheelchairEntrance",
+   "id",
+   "imageCount",
+   "imageUrl",
+   "imageUrls",
+   "listBadges",
+   "membershipBenefit",
+   "michelinGuide",
+   "microReview",
+   "nPayConnect",
+   "name",
+   "naverBookingBusinessId",
+   "naverBookingCategory",
+   "naverOrder",
+   "newBusinessHours",
+   "newOpening",
+   "options",
+   "phone",
+   "popularMenuImages",
+   "posInfo",
+   "promotionTitle",
+   "realTimeBookingInfo",
+   "repeatVisit",
+   "roadAddress",
+   "saveCount",
+   "streetPanorama",
+   "talktalkUrl",
+   "uniqueBroadcasts",
+   "virtualPhone",
+   "visitorImages",
+   "visitorReviewCount",
+   "visitorReviewScore",
+   "visitorReviews",
+   "x",
+   "y"
+  ],
+  "sample": {
+   "__typename": "PlaceListBusinessesItem",
+   "apolloCacheId": "2062130814",
+   "coupon": null,
+   "id": "2062130814",
+   "dbType": "drt",
+   "name": "메주꽃이랑",
+   "businessCategory": "restaurant",
+   "category": "한식",
+   "hasBooking": null,
+   "hasNPay": false,
+   "x": "126.5135921",
+   "y": "37.7369501",
+   "distance": "45km",
+   "imageUrl": "https://ldb-phinf.pstatic.net/20260831_95/1788146012822DLy3g_JPEG/KakaoTalk_20260831_121256805.jpg",
+   "imageCount": 4,
+   "phone": null,
+   "virtualPhone": "0507-1463-1237",
+   "streetPanorama": "{'__ref': 'Panorama:0+xOMROE3FKuSOh3CjpoEQ=='}",
+   "roadAddress": "해안동로 1381 1층",
+   "address": "갑곳리 965-7",
+   "commonAddress": "인천 강화군 강화읍",
+   "blogCafeReviewCount": "14",
+   "bookingReviewCount": "0",
+   "bookingBusinessId": null,
+   "talktalkUrl": null,
+   "detailCid": "{'__typename': 'DetailCid', 'c0': '220036/220037/220053', 'c1': None, 'c2': None",
+   "options": "단체 이용 가능,예약,남/녀 화장실 구분,지역화폐 (카드형),주차",
+   "promotionTitle": null,
+   "newOpening": true,
+   "hasWheelchairEntrance": null,
+   "fullAddress": "인천광역시 강화군 강화읍 갑곳리 965-7 1층",
+   "categoryCodeList": "['220036', '220037', '220053']",
+   "visitorReviewCount": "35",
+   "visitorReviewScore": null,
+   "imageUrls": "['https://ldb-phinf.pstatic.net/20260831_95/1788146012822DLy3g_JPEG/KakaoTalk_20",
+   "visitorImages": "[{'__typename': 'VisitorImages', 'reviewId': '6ab4af429d73b76d5ee92c3e', 'imageU",
+   "visitorReviews": "[{'__ref': 'VisitorReviews:6ab49284eb588e2e834e6193_1'}, {'__ref': 'VisitorRevie",
+   "microReview": "고소한 들깨의 풍미 칼제비 한 그릇",
+   "broadcastInfo": null,
+   "michelinGuide": null,
+   "broadcasts": null,
+   "naverBookingCategory": null,
+   "saveCount": "~100",
+   "uniqueBroadcasts": null,
+   "naverOrder": "{'__typename': 'NaverOrder', 'items': [], 'isDelivery': False, 'isTableOrder': F",
+   "bookingDisplayName": "방문자 리뷰",
+   "popularMenuImages": null,
+   "newBusinessHours": "{'__typename': 'NewBusinessHours', 'status': '영업 중', 'description': '19:00에 영업 종",
+   "repeatVisit": null,
+   "listBadges": "[{'__typename': 'RestaurantListBadge', 'key': 'NEW_OPENING', 'group': 3, 'text':",
+   "naverBookingBusinessId": null,
+   "realTimeBookingInfo": null,
+   "posInfo": "{'__typename': 'POSInfo', 'isPOS': False, 'items': []}",
+   "nPayConnect": null,
+   "membershipBenefit": null
+  },
+  "api_err": "HTTPError HTTP Error 401: Unauthorized"
+ }
+}

@@ -1,0 +1,36 @@
+name: 상권 조사(일회성)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "research.py"
+      - "research/.run"
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 조사 실행
+        env:
+          NAVER_AD_API_KEY: ${{ secrets.NAVER_AD_API_KEY }}
+          NAVER_AD_SECRET: ${{ secrets.NAVER_AD_SECRET }}
+          NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
+        run: python research.py
+      - name: 결과 커밋
+        run: |
+          git config user.name "ganghwa-signal-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add research/
+          git diff --cached --quiet || git commit -m "research: 상권 조사 결과"
+          git pull --rebase origin main || true
+          git push

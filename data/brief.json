@@ -16,33 +16,33 @@
  "weekday_base": 32438,
  "weather_effect": {
   "we1": {
-   "factor": 0.953,
-   "n": 12,
+   "factor": 0.947,
+   "n": 32,
    "measured": true
   },
   "we2": {
-   "factor": 0.873,
-   "n": 13,
+   "factor": 0.876,
+   "n": 28,
    "measured": true
   },
   "we3": {
    "factor": 0.854,
-   "n": 11,
+   "n": 23,
    "measured": true
   },
   "wd1": {
-   "factor": 0.896,
-   "n": 34,
+   "factor": 0.934,
+   "n": 83,
    "measured": true
   },
   "wd2": {
-   "factor": 0.877,
-   "n": 30,
+   "factor": 0.874,
+   "n": 51,
    "measured": true
   },
   "wd3": {
-   "factor": 0.806,
-   "n": 29,
+   "factor": 0.8,
+   "n": 66,
    "measured": true
   }
  },
@@ -193,10 +193,10 @@
   {
    "date": "2026-11-14",
    "wd": "토",
-   "est_visitors": 78926,
+   "est_visitors": 79197,
    "level": "normal",
    "vs_weekday_pct": -2,
-   "x_weekday": 2.43,
+   "x_weekday": 2.44,
    "tags": [
     "비 예보"
    ],
@@ -213,27 +213,27 @@
     "prev_month": {
      "base": 102949,
      "n": 1,
-     "pct": -23.3,
+     "pct": -23.1,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 81338,
      "n": 5,
-     "pct": -3.0,
+     "pct": -2.6,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 1.096,
-   "weather_factor": 0.873
+   "weather_factor": 0.876
   },
   {
    "date": "2026-11-15",
    "wd": "일",
-   "est_visitors": 68962,
+   "est_visitors": 68528,
    "level": "normal",
-   "vs_weekday_pct": -4,
-   "x_weekday": 2.13,
+   "vs_weekday_pct": -5,
+   "x_weekday": 2.11,
    "tags": [
     "비 조금"
    ],
@@ -250,19 +250,19 @@
     "prev_month": {
      "base": 76184,
      "n": 1,
-     "pct": -9.5,
+     "pct": -10.0,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 72382,
      "n": 5,
-     "pct": -4.7,
+     "pct": -5.3,
      "ym": "2025-11"
     }
    },
    "est_store": null,
    "seasonal": 0.982,
-   "weather_factor": 0.953
+   "weather_factor": 0.947
   },
   {
    "date": "2026-11-16",
@@ -304,10 +304,10 @@
   {
    "start": "2026-11-10",
    "end": "2026-11-16",
-   "sat": 78926,
-   "sun": 68962,
+   "sat": 79197,
+   "sun": 68528,
    "weekday": 35693,
-   "week_total": 333653,
+   "week_total": 333490,
    "last_year_total": 361380,
    "holidays": [],
    "weather_applied": true
@@ -354,15 +354,15 @@
     "간장게장"
    ],
    "action": "keep",
-   "mult_weekend": 0.97,
+   "mult_weekend": 0.96,
    "mult_weekday": 1.1,
    "reasons": [
-    "검색 전월 대비 -35% (제철 끝물)"
+    "검색 전월 대비 -39% (제철 끝물)"
    ],
    "note": "서해 꽃게 금어기 6/21~8/20(인천). 가을 수꽃게 9~11월, 봄 암꽃게 4~6월. 추석 전주 제수·선물 수요",
    "in_season": true,
-   "week_pct": -4.6,
-   "month_pct": -34.8
+   "week_pct": -5.6,
+   "month_pct": -39.3
   },
   {
    "name": "칼국수 재료",
@@ -370,15 +370,15 @@
     "칼국수"
    ],
    "action": "keep",
-   "mult_weekend": 0.97,
+   "mult_weekend": 0.96,
    "mult_weekday": 1.1,
    "reasons": [
-    "검색 전월 대비 -32%"
+    "검색 전월 대비 -37%"
    ],
    "note": "면·육수 재료. 추울수록 수요 ↑",
    "in_season": false,
-   "week_pct": -9.7,
-   "month_pct": -32.1
+   "week_pct": -7.1,
+   "month_pct": -37.4
   },
   {
    "name": "돼지갈비(젓국갈비)",
@@ -386,13 +386,13 @@
     "젓국갈비"
    ],
    "action": "keep",
-   "mult_weekend": 0.97,
+   "mult_weekend": 0.96,
    "mult_weekday": 1.1,
    "reasons": [],
    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
    "in_season": false,
-   "week_pct": -7.4,
-   "month_pct": -10.3
+   "week_pct": 1.4,
+   "month_pct": -17.2
   },
   {
    "name": "낙지",
@@ -401,7 +401,7 @@
     "낙지"
    ],
    "action": "keep",
-   "mult_weekend": 0.97,
+   "mult_weekend": 0.96,
    "mult_weekday": 1.1,
    "reasons": [
     "검색량 적어 손님 수만으로 판단"
@@ -414,7 +414,7 @@
  ],
  "staff": [],
  "alerts": [],
- "weekend_ratio": 0.97,
+ "weekend_ratio": 0.965,
  "weekday_ratio": 1.102,
  "broadcast_recent": [],
  "broadcast_auto": [

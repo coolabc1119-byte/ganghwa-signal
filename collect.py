@@ -627,7 +627,7 @@ def fetch_rankings(cfg):
     today = datetime.now(KST).date().isoformat()
     out, dbg = {}, {}
     for q in queries:
-        ent = {"place": [], "api": [], "my_rank": None}
+        ent = {"place": [], "api": [], "my_rank": None, "total": None}
         # ① 플레이스 검색 화면
         try:
             html = http_text("https://m.place.naver.com/restaurant/list?" + urllib.parse.urlencode({"query": q, "x": "126.4870", "y": "37.7460", "level": "top"}))
@@ -644,7 +644,7 @@ def fetch_rankings(cfg):
                     if k.startswith(("restaurants(", "restaurantList(", "places(", "placeList(")):
                         v = v or {}
                         items = v.get("items") or (v.get("businesses") or {}).get("items") or []
-                        dbg.setdefault("totals", {})[q] = [(v.get("businesses") or {}).get("total"), len(items), (v.get("businesses") or {}).get("queryString"), k[10:160]]
+                        ent["total"] = (v.get("businesses") or {}).get("total")
                         if "list_keys" not in dbg:
                             dbg["list_keys"] = {kk: (sorted(vv.keys())[:12] if isinstance(vv, dict) else type(vv).__name__) for kk, vv in v.items()}
                         if len(items) > len(refs):
@@ -655,7 +655,6 @@ def fetch_rankings(cfg):
                         continue
                     if "debug_keys" not in dbg:
                         dbg["debug_keys"] = sorted(o.keys())[:80]
-                        dbg["sample"] = {kk: (vv if isinstance(vv, (str, int, float, bool, type(None))) else str(vv)[:80]) for kk, vv in list(o.items())[:80]}
                     num = lambda x: int(re.sub(r"[^0-9]", "", str(x))) if x not in (None, "") and re.sub(r"[^0-9]", "", str(x)) else None
                     ent["place"].append({"name": o.get("name"), "id": str(o.get("id") or ""), "category": o.get("category") or "",
                                          "area": o.get("commonAddress") or o.get("address") or o.get("roadAddress") or "",
@@ -666,14 +665,6 @@ def fetch_rankings(cfg):
                 dbg.setdefault("no_state", []).append(f"{q}:{len(html)}")
         except Exception as e:
             dbg.setdefault("place_err", []).append(f"{q}: {type(e).__name__} {str(e)[:60]}")
-        # ② 공식 지역검색 API
-        try:
-            res = http_json("https://naverapihub.apigw.ntruss.com/search/v1/local?" + urllib.parse.urlencode({"query": q, "display": 5, "sort": "random"}), headers)
-            for it in res.get("items", []):
-                addr = it.get("address") or it.get("roadAddress") or ""
-                ent["api"].append({"name": _clean(it.get("title")), "category": it.get("category", ""), "area": addr, "mine": bool(mine.search(_clean(it.get("title"))))})
-        except Exception as e:
-            dbg["api_err"] = f"{type(e).__name__} {str(e)[:40]}"
         for i, r in enumerate(ent["place"]):
             if r["mine"]:
                 ent["my_rank"] = i + 1
@@ -684,7 +675,8 @@ def fetch_rankings(cfg):
         raise RuntimeError(f"순위를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:900]}")
     hist = prev.get("history", {})
     hist[today] = {q: {"my_rank": e["my_rank"], "top": [r["name"] for r in e["place"][:5]]} for q, e in out.items()}
-    return {"checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"), "queries": out, "history": {k: hist[k] for k in sorted(hist)[-400:]}, "debug": dbg}
+    return {"checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"), "queries": out, "history": {k: hist[k] for k in sorted(hist)[-400:]},
+            "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳."}
 
 
 def fetch_reviews(cfg):

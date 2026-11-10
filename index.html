@@ -344,6 +344,15 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
       <div class="controls"><div class="seg" id="mperSeg"><button data-n="7">증감 기준 7일</button><button data-n="30" class="on">30일</button></div></div>
       <div class="basis" id="menuBasis"></div>
       <table id="menu" style="table-layout:fixed"></table></div>
+    <div class="card" id="rkCard" hidden><h2>메뉴를 검색하면 누가 먼저 나오나 <span class="chip live">실데이터</span></h2>
+      <div class="sub" id="rkSub"></div>
+      <div class="prep" id="rkMine"></div>
+      <div class="controls" style="margin-top:12px"><div class="seg" id="rkSeg"></div></div>
+      <div id="rkList"></div>
+      <h3 class="h3">여러 메뉴에서 겹치는 가게</h3>
+      <div class="sub">우리 메뉴 검색 2개 이상에서 10위 안에 든 가게 · 숫자 = 그 검색에서의 순위</div>
+      <div id="rkDup"></div>
+    </div>
     <div class="card">
       <h2>우리 메뉴 네이버 검색 — 주별 <span class="chip" id="c-trend"></span></h2>
       <div class="sub">단위: <b>주 평균 하루 검색 횟수(회/일, 추정)</b> · "강화도 ○○" 검색어 · 세로 점선 = 방송 · 선이 오르면 그 메뉴를 찾는 사람이 늘고 있다는 뜻</div>
@@ -476,7 +485,7 @@ tabs.forEach(t=>t.onclick=()=>showTab(t.dataset.p));
 init().catch(e => { const n=document.getElementById('notice'); n.hidden=false; n.textContent='데이터를 불러오지 못했습니다: '+e.message; });
 
 async function init(){
-  const names=['meta','trend_daily','compare','events','menu_demand','volume_monthly','visitors','news_log','brief','weather','discovery_daily','reviews','forecast_log','place'];
+  const names=['meta','trend_daily','compare','events','menu_demand','volume_monthly','visitors','news_log','brief','weather','discovery_daily','reviews','forecast_log','place','rankings'];
   const res=await Promise.all(names.map(n=>J(n+'.json').catch(()=>null)));
   names.forEach((n,i)=>D[n]=res[i]);
   ['trend_daily','discovery_daily'].forEach(n=>{ D[n]=trimTail(D[n]); });
@@ -503,7 +512,7 @@ async function init(){
   (D.brief?.broadcast_auto||[]).forEach(b=>{ if(!seenBc.has(b.date)){ seenBc.add(b.date); m.broadcast_log.push({date:b.date,program:b.program}); } });
   state.group=Object.keys(m.groups)[0];
   try{ const t=localStorage.getItem('gs-tab4'); if(t&&document.getElementById('p-'+t)&&document.querySelector(`.tab[data-p="${t}"]`)) showTab(t); }catch(e){}
-  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderMenu(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
+  renderHero(); renderDays(); renderPrepV4(); renderOutlook(); renderAccuracy(); renderHolX(); renderReviews(); renderPlace(); renderRank(); renderEvents(); renderYearSummary(); renderMonthly(); renderWd(); renderYTrend(); buildGroupSeg(); renderTrend(); renderMenu(); renderSearchVis(); renderWx(); renderVolume(); renderNews(); renderLocal(); renderStay(); renderAbout();
   attachHow();
   document.getElementById('q').addEventListener('input',()=>{state.vlimit=10;renderVolume();});
   bindSeg('rangeSeg','r',v=>{state.range=+v;renderTrend();}); bindSeg('yoySeg','y',v=>{state.yoy=v==='1';renderTrend();});
@@ -521,6 +530,7 @@ function redrawAll(){ if(!D.meta) return; renderTrend(); renderSearchVis(); rend
 
 /* ================= 카드별 계산 방식 · 출처 ================= */
 const SRC={
+  place:'<b>네이버 지도(플레이스) 공개 화면</b> — 가게 검색 순서·방문자 리뷰 수(공식 API 없음, 하루 한 번 읽음)',
   tour:'한국관광공사 관광빅데이터 「기초지자체 지역방문자수」(공공데이터포털 API) — 통신사 휴대폰 위치 기반 강화군(인천 28710) 하루 외지인 수. 약 한 달 늦게 공개',
   dlab:'네이버 데이터랩 「검색어 트렌드」 API — 키워드별 하루 검색 상대지수(전날까지)',
   ad:'네이버 검색광고 「키워드도구」 API — 키워드별 최근 한 달 실제 검색 횟수(PC+모바일)',
@@ -558,6 +568,7 @@ const HOW={
   yweek:{f:['<b>작년 요일 평균</b> = 작년 1년 중 그 요일 실제값 평균 (연휴·연휴 전날 제외)','<b>배율</b> = 그 요일 평균 ÷ 작년 월~목 평균','<b>증감</b> = 올해 그 요일 평균 ÷ 작년 같은 기간(올해 데이터 첫날~마지막 날과 같은 월·일 범위) 그 요일 평균 − 1'], s:['tour','cfg']},
   ytrend:{f:['<b>막대</b> = 그달 하루 평균 ÷ 작년 같은 달 하루 평균 − 1 (두 해 모두 '+MIN_DAYS+'일 이상 있는 달)','<b>판정</b> = 비교 가능한 최근 12개월 중 증가한 달이 75% 이상 → 꾸준히 증가 · 25% 이하 → 꾸준히 감소 · 그 외 → 등락 반복','<b>연속</b> = 가장 최근 달부터 같은 방향(증가/감소)이 몇 달 이어졌나'], s:['tour']},
   trend:{f:[CNT,'<b>주별 선</b> = 월요일 시작 주의 하루 평균','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값','<b>방송 점선</b> = 뉴스 자동 감지 + 직접 입력'], s:['dlab','ad','news']},
+  rkList:{f:['<b>순서</b> = 네이버 지도(플레이스)의 식당 검색 결과 순서 그대로, 광고 칸 제외','<b>검색 위치</b> = 강화군 가운데 좌표로 고정 · 실제로는 검색하는 사람 위치·시간에 따라 순서가 조금씩 다름','<b>10위 밖</b> = 첫 화면 10곳 안에 없음(그 뒤 순위는 읽지 않음)','<b>리뷰</b> = 그 가게의 방문자 리뷰 누적 건수','<b>겹치는 가게</b> = 우리 메뉴 검색어 2개 이상에서 10위 안','<b>한계</b> = 공식 API가 없어 공개 화면을 하루 한 번 읽는 방식 → 네이버가 화면을 바꾸면 멈출 수 있음'], s:['place']},
   menu:{f:['<b>월 검색</b> = 「강화도○○」「강화○○」「강화도○○맛집」「강화○○맛집」 검색어의 최근 한 달 실제 검색 횟수 합 (검색광고에 없으면 월 10회 미만)','<b>전월(전주) 대비</b> = 「강화도 ○○」 한 가지 검색어의 최근 30일(7일) 합 ÷ 그 직전 같은 길이 기간 합 − 1 (데이터랩 일별 추이)','<b>전년 대비</b> = 최근 30일(7일) 합 ÷ 364일 전 같은 기간 합 − 1 (요일이 맞도록 364일)','<b>달력의 월이 아닌 이유</b> = 이번 달이 아직 안 끝나 달력 기준으로는 비교가 안 맞음 → 같은 길이 30일끼리 비교','<b>적음</b> = 하루 평균 3회 미만이라 증감이 의미 없음 · <b>수집 전</b> = 다음 수집부터 표시'], s:['ad','dlab']},
   visitors:{f:['<b>일별</b> = 그날 강화군 외지인 실제 방문자','<b>7일 평균</b> = 그날 포함 직전 7일 평균(4일 이상 있을 때)','<b>빨간 점</b> = 그날 강수량 5mm 이상','<b>작년 겹쳐보기</b> = 364일 전(같은 요일) 값'], s:['tour','wx']},
   wxeff:{f:[
@@ -681,6 +692,27 @@ function renderHolX(){
     `<div class="sub" style="margin:10px 0 0">징검다리 평일은 같은 요일의 <b class="mono">${T.bridge.x.toFixed(2)}배</b>(${T.bridge.n}번), 연휴 전날은 <b class="mono">${T.eve_long.x.toFixed(2)}배</b>(${T.eve_long.n}번) · 명절 당일의 큰 숫자에는 귀성·성묘객이 들어 있어 식당 손님과는 다를 수 있습니다 · 사례 3번 미만은 기본값</div>`;
 }
 
+function renderRank(){
+  const R=D.rankings, card=document.getElementById('rkCard'); if(!R||!R.queries){ card.hidden=true; return; } card.hidden=false;
+  const qs=Object.keys(R.queries).filter(q=>R.queries[q].place.length); if(!qs.length){ card.hidden=true; return; }
+  const nm=q=>q.replace(/^강화도\s*/,''), area=a=>(a||'').replace(/^인천\s*/,'').replace(/^강화군\s*/,'')||'–';
+  const hs=Object.keys(R.history||{}).sort(), prevDay=hs.length>=2?hs.at(-2):null;
+  document.getElementById('rkSub').innerHTML=`네이버 지도에서 「강화도 ○○」를 검색했을 때 나오는 순서 · <b>광고 제외, 상위 10곳</b> · 강화 한가운데에서 검색한 것으로 계산(검색하는 사람 위치에 따라 순서가 조금 달라짐) · 확인 ${R.checked?md(R.checked.slice(0,10))+' '+R.checked.slice(11):'–'} · 리뷰 = 방문자 리뷰 누적(건)`;
+  document.getElementById('rkMine').innerHTML=`<div class="hd">우리 가게(만선꽃게랑낙지) 순위${prevDay?` · 변화는 ${md(prevDay)} 대비`:''}</div>`+qs.map(q=>{ const e=R.queries[q], r=e.my_rank, p=prevDay?R.history[prevDay]?.[q]?.my_rank:undefined;
+    const ch=(prevDay&&r&&p&&r!==p)?` <span class="${r<p?'up':'down'}" style="font-size:11px">${r<p?'▲':'▼'}${Math.abs(p-r)}</span>`:'';
+    return `<div class="pr"><div style="min-width:0"><div class="n">${nm(q)}</div><div class="w">1위 ${XSS(e.place[0].name)} · ${area(e.place[0].area)}</div></div><span class="vt ${r?(r<=3?'more':'keep'):'hold'}" style="font-size:12.5px">${r?r+'위':'10위 밖'}${ch}</span></div>`; }).join('');
+  if(!state.rkq||!qs.includes(state.rkq)) state.rkq=qs.find(q=>/꽃게탕/.test(q))||qs[0];
+  const seg=document.getElementById('rkSeg'); seg.innerHTML=qs.map(q=>`<button data-q="${q}" class="${q===state.rkq?'on':''}">${nm(q)}</button>`).join('');
+  seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{ state.rkq=b.dataset.q; renderRank(); });
+  const L=R.queries[state.rkq].place.slice(0,10);
+  const cnt={}; L.forEach(x=>{ const a=area(x.area); cnt[a]=(cnt[a]||0)+1; });
+  document.getElementById('rkList').innerHTML=`<div class="yg" style="grid-template-columns:30px minmax(0,1.6fr) minmax(0,.8fr) 58px"><div class="h">순위</div><div class="h" style="text-align:left">가게</div><div class="h" style="text-align:left">지역</div><div class="h">리뷰(건)</div>`+
+    L.map((x,i)=>{ const st=x.mine?'background:var(--cold-bg);font-weight:700;':''; return `<div class="n" style="${st}text-align:left">${i+1}</div><div style="${st}">${XSS(x.name)}${x.mine?' <span class="tag mine" style="margin-left:2px">우리</span>':''}</div><div style="${st}color:var(--sub)">${XSS(area(x.area))}</div><div class="n" style="${st}">${x.visitor!=null?fmt(x.visitor):'–'}</div>`; }).join('')+`</div>
+    <div class="sub" style="margin:8px 0 0">지역별: ${Object.entries(cnt).sort((a,b)=>b[1]-a[1]).map(([a,c])=>`${XSS(a)} <b>${c}곳</b>`).join(' · ')}</div>`;
+  const by={}; qs.forEach(q=>R.queries[q].place.slice(0,10).forEach((x,i)=>{ const k=x.id||x.name; (by[k] ||= {name:x.name,area:x.area,mine:x.mine,hits:[]}).hits.push([nm(q),i+1]); }));
+  const dup=Object.values(by).filter(x=>x.hits.length>=2).sort((a,b)=>b.hits.length-a.hits.length||Math.min(...a.hits.map(h=>h[1]))-Math.min(...b.hits.map(h=>h[1])));
+  document.getElementById('rkDup').innerHTML=dup.length? dup.map(x=>`<div class="cr" style="padding:9px 0"><div class="ctop" style="margin-bottom:3px"><span class="nm">${XSS(x.name)}${x.mine?'<span class="tag mine">우리</span>':''}</span><span class="muted" style="font-size:12px;white-space:nowrap">${XSS(area(x.area))}</span></div><div class="sub" style="margin:0">${x.hits.map(h=>`${h[0]} <b class="mono">${h[1]}위</b>`).join(' · ')}</div></div>`).join('') : '<div class="empty">겹치는 가게가 없습니다.</div>';
+}
 function renderPlace(){
   const P=D.place, card=document.getElementById('plCard'); if(!P||(P.visitor==null&&P.blog==null)){ card.hidden=true; return; } card.hidden=false;
   const hs=Object.keys(P.history||{}).sort(), last=hs.at(-1), first=hs[0];

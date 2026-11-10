@@ -446,8 +446,14 @@ def _daytime_rain(hourly):
 
 def fetch_weather(start, end):
     daily = "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max"
-    out = {}
-    # 과거(archive): 어제까지
+    # 이미 받아 둔 과거 날씨는 그대로 두고, 빠진 구간과 최근 10일만 다시 받음(3년치를 매번 받으면 자주 시간 초과)
+    prev = load_existing("weather.json", {"days": {}}).get("days", {})
+    out = {d: w for d, w in prev.items() if w.get("src") == "past" and w.get("rain_day") is not None and d >= start.isoformat()}
+    if out:
+        have = sorted(out)
+        full = (date.fromisoformat(have[-1]) - date.fromisoformat(have[0])).days + 1 == len(have) and have[0] <= (start + timedelta(days=3)).isoformat()
+        if full:
+            start = max(start, date.fromisoformat(have[-1]) - timedelta(days=10))
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "start_date": start.isoformat(),
                                 "end_date": (datetime.now(KST).date() - timedelta(days=2)).isoformat(),
                                 "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max", "hourly": "precipitation", "timezone": "Asia/Seoul"})

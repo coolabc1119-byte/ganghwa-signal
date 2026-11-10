@@ -539,6 +539,65 @@ def fetch_news_log(cfg):
 # 방송 예정은 '방송사 이름'만으로는 드라마·예능 기사까지 걸려서, 맛집·여행 프로그램명 + 먹거리·여행 맥락이 있을 때만 인정
 SHOW_RE = re.compile(r"생생정보|오늘\s?N|생활의\s?달인|6시\s?내\s?고향|백반기행|맛있는\s?녀석들|줄서는\s?식당|전지적\s?참견|나\s?혼자|1박\s?2일|놀면\s?뭐하니|VJ특공대|생방송\s?투데이|2TV\s?저녁|저녁\s?생생|토요일\s?저녁|신상출시|수요미식회|맛있는\s?이야기|고향\s?민국|한국인의\s?밥상|동네\s?한\s?바퀴|극한\s?직업|서민갑부|생방송\s?오늘\s?저녁|모닝와이드|섬총사|나의\s?외사친|맛\s?따라|어영차|굿모닝\s?대한민국|아침마당|체험\s?삶의|전현무계획|현지에서|토밥|노포의\s?영업|뛰어야|사장님\s?귀는|맛있을\s?지도|식객|허영만")
 FOODTRIP_RE = re.compile(r"맛집|식당|음식|먹방|요리|밥상|꽃게|게장|젓국|갈비|칼국수|낙지|밴댕이|장어|새우젓|순무|해산물|여행|나들이|가볼|명소|섬|펜션|캠핑")
+MOBILE_UA = "Mozilla/5.0 (Linux; Android 13; SM-S918N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36"
+
+
+def http_text(url, timeout=25):
+    req = urllib.request.Request(url, headers={"User-Agent": MOBILE_UA, "Accept-Language": "ko-KR,ko;q=0.9"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "ignore")
+
+
+def fetch_place(cfg):
+    """
+    네이버 플레이스의 우리 가게 공개 화면에서 리뷰 수를 하루 한 번 읽음.
+    공식 API가 없어 화면을 읽는 방식 → 네이버가 화면을 바꾸거나 접속을 막으면 멈춤(그때는 직전 값 유지).
+    """
+    prev = load_existing("place.json", {"history": {}})
+    pid = cfg["store"].get("naver_place_id") or prev.get("place_id")
+    name = cfg["store"]["name"].replace("선두리 ", "")
+    dbg = {}
+    if not pid:
+        html = http_text("https://m.search.naver.com/search.naver?" + urllib.parse.urlencode({"query": "강화 " + name}))
+        ids = re.findall(r"place\.naver\.com/(?:restaurant|place)/(\d{6,})", html)
+        dbg["search_len"] = len(html)
+        if not ids:
+            raise RuntimeError(f"플레이스 번호를 찾지 못함 (검색 화면 {len(html)}자)")
+        pid = max(set(ids), key=ids.count)
+    html = http_text(f"https://m.place.naver.com/restaurant/{pid}/home")
+    dbg["home_len"] = len(html)
+
+    def num(*keys):
+        for k in keys:
+            m = re.search(r'"%s"\s*:\s*"?([\d,.]+)"?' % k, html)
+            if m:
+                try:
+                    return float(m.group(1).replace(",", ""))
+                except ValueError:
+                    pass
+        return None
+    title = re.search(r'"name"\s*:\s*"([^"]{2,40})"', html)
+    out = {"visitor": num("visitorReviewsTotal", "visitorReviewCount"), "blog": num("cafeBlogReviewsTotal", "blogCafeReviewCount", "fsasReviewsTotal"),
+           "score": num("visitorReviewsScore"), "text": num("visitorReviewsTextReviewTotal")}
+    # 키워드 리뷰("음식이 맛있어요" 등)
+    tags = []
+    for m in re.finditer(r'"displayName"\s*:\s*"([^"]{2,30})"[^{}]{0,200}?"count"\s*:\s*(\d+)', html):
+        tags.append({"name": m.group(1), "count": int(m.group(2))})
+    if not tags:
+        for m in re.finditer(r'"count"\s*:\s*(\d+)[^{}]{0,200}?"displayName"\s*:\s*"([^"]{2,30})"', html):
+            tags.append({"name": m.group(2), "count": int(m.group(1))})
+    dbg["review_keys"] = sorted(set(re.findall(r'"(\w*[Rr]eview\w*)"\s*:\s*"?\d', html)))[:30]
+    if out["visitor"] is None and out["blog"] is None:
+        raise RuntimeError(f"리뷰 수를 읽지 못함 {json.dumps(dbg, ensure_ascii=False)[:160]}")
+    today = datetime.now(KST).date().isoformat()
+    hist = prev.get("history", {})
+    hist[today] = {"visitor": out["visitor"], "blog": out["blog"]}
+    return {"place_id": pid, "name": title.group(1) if title else name, "checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"),
+            "visitor": out["visitor"], "blog": out["blog"], "score": out["score"], "text": out["text"],
+            "tags": sorted(tags, key=lambda t: -t["count"])[:8], "history": {k: hist[k] for k in sorted(hist)[-800:]}, "debug": dbg,
+            "url": f"https://m.place.naver.com/restaurant/{pid}/review/visitor"}
+
+
 def fetch_reviews(cfg):
     """네이버 블로그에서 가게 이름이 들어간 최근 글 — 입소문이 늘고 있는지 보는 용도"""
     cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
@@ -921,6 +980,11 @@ def main():
     v_start = min(start, date(2024, 1, 1))
     visitors = run("tour_api", lambda: fetch_visitors(v_start, end), lambda: sample_visitors(cfg, start, end))
     news = run("naver_news", lambda: fetch_news_log(cfg), lambda: sample_news(cfg))
+    try:
+        save("place.json", fetch_place(cfg))
+    except Exception as e:
+        log(f"플레이스 실패: {e}")
+        ERRORS["place"] = f"{type(e).__name__}: {str(e)[:300]}"
     try:
         rv = fetch_reviews(cfg)
         if rv:

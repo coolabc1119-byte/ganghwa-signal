@@ -346,7 +346,7 @@ details.nx summary::before{content:"▸ ";color:var(--faint)} details.nx[open] s
   <!-- 메뉴 검색 -->
   <section class="panel" id="p-trend">
     <div class="card"><h2>메뉴별 월 검색 수요 <span class="chip" id="c-menu"></span></h2>
-      <div class="sub">단위: <b>최근 한 달 네이버 검색 횟수(회/월)</b> · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지 · 증감은 「강화도 ○○」 검색의 30일 합계끼리 비교</div>
+      <div class="sub">단위: <b>최근 한 달 네이버 검색 횟수(회/월)</b> · 강화도에 와서 이 메뉴를 찾는 사람이 얼마나 되는지 · 증감은 「강화도 ○○」 검색의 30일 합계끼리 비교 · <b>파란 줄 = 우리 메뉴</b>, 맨 윗줄 = 강화도 전체 맛집 검색</div>
       <div class="basis" id="menuBasis"></div>
       <table id="menu" style="table-layout:fixed"></table></div>
     <div class="card">
@@ -892,8 +892,8 @@ function renderMenu(){
   document.getElementById('menuBasis').innerHTML=`<div><span>월 검색(회)</span><b>${(D.meta.updated_at||'').slice(5,10).replace('-','/')} 수집 시점의 최근 한 달</b></div><div><span>이번 30일</span><b>${R(F,T)}</b></div><div><span>전월 대비</span><b>vs 직전 30일 ${R(pF,pT)}</b></div><div><span>전년 대비</span><b>vs 작년 같은 30일 ${yF.slice(2,4)}.${R(yF,yT)}</b></div>`;
   const ref=(D.volume_monthly?.rows||[]).find(r=>r.keyword.replace(/\s/g,'')==='강화도맛집');
   const rows=[...(ref?[{menu:'강화도 맛집',monthly_search:ref.total,ref:true,kw:'강화도 맛집'}]:[]), ...o.map(r=>({...r,kw:'강화도 '+r.menu}))];
-  document.getElementById('menu').innerHTML=`<tr><th>메뉴</th><th class="n">월 검색(회)</th><th class="n">전월 대비</th><th class="n">전년 대비</th></tr>`+rows.map(r=>{ const x=chg(r.kw);
-    return `<tr class="${r.mine?'mine':''}"><td class="kw">${r.menu}${r.ref?'<span class="tag">전체</span>':r.mine?'<span class="tag mine">우리</span>':''}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':fmt(r.monthly_search)}</td>${cell(x.mom,x)}${cell(x.yoy,x)}</tr>`; }).join('');
+  document.getElementById('menu').innerHTML=`<tr><th style="width:31%">메뉴</th><th class="n" style="width:25%">월 검색(회)</th><th class="n" style="width:22%">전월 대비</th><th class="n" style="width:22%">전년 대비</th></tr>`+rows.map(r=>{ const x=chg(r.kw);
+    return `<tr class="${r.mine?'mine':''}"><td class="kw" style="max-width:none;${r.ref?'font-weight:700':''}">${r.menu}</td><td class="n">${(r.under10||!r.monthly_search)?'<span class="muted">10 미만</span>':fmt(r.monthly_search)}</td>${cell(x.mom,x)}${cell(x.yoy,x)}</tr>`; }).join('');
 }
 
 /* ================= 방문자 ================= */

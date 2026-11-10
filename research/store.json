@@ -1,0 +1,5202 @@
+{
+ "types": {
+  "home": {
+   "HouseBanner": 3,
+   "Panorama": 1,
+   "PlaceDetailBase": 1,
+   "PlaceMenuItem": 15,
+   "PlaceMenuCategory": 2,
+   "FsasReview": 3,
+   "VisitorReviewStatsResult": 1,
+   "InnerRoute": 3,
+   "BusStation": 6,
+   "InformationFacilities": 4,
+   "PlaceDetailTopPhotoItem": 10,
+   "PhotoViewerItemAuthor": 3,
+   "Query": 1
+  },
+  "menu/list": {
+   "HouseBanner": 3,
+   "Panorama": 1,
+   "PlaceDetailBase": 1,
+   "PlaceMenuItem": 15,
+   "PlaceMenuCategory": 2,
+   "FsasReview": 3,
+   "VisitorReviewStatsResult": 1,
+   "InnerRoute": 3,
+   "BusStation": 6,
+   "InformationFacilities": 4,
+   "PlaceDetailTopPhotoItem": 10,
+   "PhotoViewerItemAuthor": 3,
+   "Query": 1
+  },
+  "review/visitor": {
+   "HouseBanner": 3,
+   "Panorama": 1,
+   "PlaceDetailBase": 1,
+   "PlaceMenuItem": 15,
+   "PlaceMenuCategory": 2,
+   "FsasReview": 3,
+   "VisitorReviewStatsResult": 1,
+   "InnerRoute": 3,
+   "BusStation": 6,
+   "InformationFacilities": 4,
+   "PlaceDetailTopPhotoItem": 10,
+   "PhotoViewerItemAuthor": 8,
+   "Query": 1,
+   "VisitorReviewAuthor": 20,
+   "ReactionStat": 20,
+   "HasViewerReacted": 20,
+   "VisitorReview": 20
+  },
+  "information": {
+   "HouseBanner": 3,
+   "Panorama": 1,
+   "PlaceDetailBase": 1,
+   "PlaceMenuItem": 15,
+   "PlaceMenuCategory": 2,
+   "FsasReview": 3,
+   "VisitorReviewStatsResult": 1,
+   "InnerRoute": 3,
+   "BusStation": 6,
+   "InformationFacilities": 4,
+   "PlaceDetailTopPhotoItem": 10,
+   "PhotoViewerItemAuthor": 3,
+   "Query": 1
+  }
+ },
+ "PlaceDetailBase": [
+  {
+   "__typename": "PlaceDetailBase",
+   "id": "21202659",
+   "name": "만선꽃게랑낙지",
+   "reviewSettings": {
+    "__typename": "ReviewSettings",
+    "keyword": null,
+    "blog": 1,
+    "cafe": 1,
+    "showVisitorReviewScore": true
+   },
+   "siteId": "sp_967880f055c188",
+   "road": "",
+   "conveniences": [
+    "단체 이용 가능",
+    "주차",
+    "포장",
+    "무선 인터넷",
+    "남/녀 화장실 구분"
+   ],
+   "category": "게요리",
+   "categoryCode": "221642",
+   "categoryCodeList": [
+    "220036",
+    "220037",
+    "220076",
+    "220794",
+    "221642",
+    "1004760",
+    "1004498"
+   ],
+   "defaultCategoryCodeList": [
+    "220036",
+    "220037",
+    "220076",
+    "220794",
+    "221642"
+   ],
+   "categoryCount": 2,
+   "rcode": "1171033022",
+   "roadAddress": "인천 강화군 길상면 해안남로 779 만선꽃게랑 낙지",
+   "address": "인천 강화군 길상면 선두리 901-2",
+   "streetPanorama": {
+    "__typename": "Panorama",
+    "id": "CJfpNIv2mKafKVdRP2hwIA==",
+    "pan": "144.00",
+    "tilt": "18.13",
+    "lon": "126.4802017",
+    "lat": "37.6062002",
+    "fov": "42"
+   },
+   "isKtis": false,
+   "visitorReviewsTotal": 1066,
+   "visitorReviewsScore": 4.59,
+   "cafeBlogReviewsTotal": 1453,
+   "missingInfo": {
+    "__typename": "MissingInfo",
+    "businessType": "restaurant",
+    "isBizHourMissing": true,
+    "isMenuImageMissing": false,
+    "isAccessorMissing": false,
+    "isDescriptionMissing": false,
+    "isConveniencesMissing": false,
+    "needLargeSuggestionBanner": true,
+    "isBoss": false
+   },
+   "hideBusinessHours": false,
+   "hidePrice": false,
+   "microReviews": [
+    "가족과 함께 즐기는 푸짐한 정식"
+   ],
+   "paymentInfo": null,
+   "openingHours": null,
+   "isGoodStore": false,
+   "coordinate": {
+    "__typename": "Coordinate",
+    "x": "126.4802092",
+    "y": "37.6059861",
+    "mapZoomLevel": 12
+   },
+   "poiInfo": {
+    "__typename": "PoiInfo",
+    "polyline": null,
+    "land": null,
+    "polygon": null,
+    "relation": null,
+    "parentRelation": null
+   },
+   "routeUrl": "https://m.search.naver.com/search.naver?where=m&query=%EB%B9%A0%EB%A5%B8%EA%B8%B8%EC%B0%BE%EA%B8%B0&nso_path=placeType%5Eplace%3Bname%5E%3Baddress%5E%3Blatitude%5E%3Blongitude%5E%3Bcode%5E%7Ctype%5Eplace%3Bname%5E%EB%A7%8C%EC%84%A0%EA%BD%83%EA%B2%8C%EB%9E%91%EB%82%99%EC%A7%80%3Baddress%5E%3Bcode%5E21202659%3Blongitude%5E126.4802092%3Blatitude%5E37.6059861%7Cobjtype%5Epath%3Bby%5Epubtrans",
+   "virtualPhone": null,
+   "phone": "032-937-5958",
+   "hasMobilePhoneNumber": false,
+   "talktalkUrl": null,
+   "chatBotUrl": null,
+   "naverBlog": null,
+   "visitorReviewsTextReviewTotal": 917,
+   "beLocalWeek": null,
+   "indoorInfo": null
+  }
+ ],
+ "PlaceMenuItem": [
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "TbF7bGRQPHcLmJjQdKr9",
+   "type": "normal",
+   "name": "젓국갈비(1인)",
+   "description": "새우젓으로 끓여낸 강화식 돼지갈비탕",
+   "badges": [
+    "new",
+    "repr"
+   ],
+   "labels": [
+    "2인이상"
+   ],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261023_140/1792751572890goK35_JPEG/111.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "16,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261023_140/1792751572890goK35_JPEG/111.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261109_64/17942029626756jjxF_JPEG/2G3A0297.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "MLjdBjmzJdHjphHB98Lh",
+   "type": "normal",
+   "name": "꽃.낙.새 탕 2인~4인",
+   "description": "꽃게 + 낙지 + 대하새우",
+   "badges": [
+    "repr"
+   ],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20260420_142/1776677118533sD4sm_JPEG/%B2%C9%B3%AB%BB%F51.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "amountRange",
+    "displayText": "70,000~130,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_142/1776677118533sD4sm_JPEG/%B2%C9%B3%AB%BB%F51.jpg",
+     "width": 2992,
+     "height": 2992
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_188/1776677086695xsxIf_JPEG/KakaoTalk_20260420_181244221.jpg",
+     "width": 2992,
+     "height": 2992
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "9CJthJJ78PFTbpRQJMhz",
+   "type": "normal",
+   "name": "만선정식 2인~4인",
+   "description": "꽃게탕 + 간장게장 + 양념게장 + 새우장 + 콘치즈",
+   "badges": [
+    "repr"
+   ],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261109_201/1794202906537DhzxT_JPEG/2G3A0323.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "amountRange",
+    "displayText": "90,000~160,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261109_201/1794202906537DhzxT_JPEG/2G3A0323.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_134/17766721514676NLdB_JPEG/%C1%A4%BD%C4.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_206/1729479941310LTUwG_JPEG/IMG_0073.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_8/1729479941354BEvvQ_JPEG/IMG_0219.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "Fg97hJB69cz6LqRjBCNF",
+   "type": "normal",
+   "name": "생선구이백반(1인)",
+   "description": "고등어 1마리 + 해물된장찌개 + 반찬 6종류 (셀프바)",
+   "badges": [
+    "repr"
+   ],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20260420_75/1776671930676vEpQF_JPEG/%BB%FD%BC%B1%B1%B8%C0%CC.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "18,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_75/1776671930676vEpQF_JPEG/%BB%FD%BC%B1%B1%B8%C0%CC.jpg",
+     "width": 2992,
+     "height": 2992
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "PhGCTRtQjdcQWJpDctKR",
+   "type": "normal",
+   "name": "낙지 연포탕 (2인)",
+   "description": "살아있는 강화도 뻘낙지 2마리가 통채로 들어간 몸보신 연포탕",
+   "badges": [
+    "repr"
+   ],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261109_36/1794202921354Aa77r_JPEG/2G3A0059.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "60,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261109_36/1794202921354Aa77r_JPEG/2G3A0059.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20250316_170/1742116338091A507X_JPEG/KakaoTalk_20250316_180737196_05.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20250316_89/1742116328614EwRDh_JPEG/KakaoTalk_20250316_180737196_03.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20250316_91/1742116324164lMmnE_JPEG/KakaoTalk_20250316_180737196_07.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_272/1729480132862HciBX_JPEG/IMG_0412.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_252/1729480122200zWsaM_JPEG/IMG_0353.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "qjf9JcpPCCwzdBGrwgnT",
+   "type": "normal",
+   "name": "간장게장정식 (1인)",
+   "description": "간장게장 1마리 + 해물된장찌개 + 반찬 6종류",
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261109_92/1794202935643qpIUF_JPEG/2G3A0332.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "33,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261109_92/1794202935643qpIUF_JPEG/2G3A0332.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_285/1776672021913pOESC_JPEG/%B0%A3%C0%E5%B0%D4%C0%E5.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20250316_203/1742116393366L0DaN_JPEG/KakaoTalk_20250316_180737196_02.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20250316_180/1742116390001hCfUf_JPEG/KakaoTalk_20250316_180737196.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20231027_168/1698374466304Rg8TV_JPEG/20230918_132952.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20231027_97/1698374451549WI757_JPEG/20230918_133007.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "TfcfCTCKW7bDrqrdBQbq",
+   "type": "normal",
+   "name": "양념게장정식 (1인)",
+   "description": "양념게장 1마리반 + 해물된장찌개 + 반찬 6종류",
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261109_121/1794202946261zGxbC_JPEG/2G3A0328.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "25,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20261109_121/1794202946261zGxbC_JPEG/2G3A0328.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_23/1776672111805JNtHA_JPEG/%BE%E7%B3%E4%B0%D4%C0%E5%C1%A4%BD%C4.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20240830_205/1724983984746npgRt_JPEG/20240826_165452.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20240613_48/17182660293021W661_JPEG/KakaoTalk_20240613_155001179.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20240613_295/1718261254594FrQdF_JPEG/KakaoTalk_20240613_154500746.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "QgBFLPrBzMFJGNb8bMBg",
+   "type": "normal",
+   "name": "꽃게탕 (2인)",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20260420_209/1776676972883qNFAh_JPEG/%B2%C9%B0%D4%C5%C1.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "60,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260420_209/1776676972883qNFAh_JPEG/%B2%C9%B0%D4%C5%C1.jpg",
+     "width": 2992,
+     "height": 2992
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_124/1729480227727S1jHK_JPEG/IMG_0027.jpg",
+     "width": 4160,
+     "height": 2768
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_138/1729480198294qI9JL_JPEG/IMG_0009.jpg",
+     "width": 4160,
+     "height": 2768
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20241021_5/1729480198184A77th_JPEG/IMG_0060.jpg",
+     "width": 4160,
+     "height": 2768
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20200707_240/1594082744762iQpvY_JPEG/0ewrDsLMHfOwIytcOYmK2jnp.JPG.jpg",
+     "width": 5472,
+     "height": 3648
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "KLnJd7qKkktBmdg7Nh7M",
+   "type": "normal",
+   "name": "꽃게찜(중)",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20260920_283/17898705340923kIWO_JPEG/37970.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "60,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260920_283/17898705340923kIWO_JPEG/37970.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260920_188/1789870538336M5vdm_JPEG/37973.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "W8pHcQhLfd6khjLHwjnL",
+   "type": "normal",
+   "name": "꽃게찜(대)",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20260512_42/17785708694325xblO_JPEG/KakaoTalk_20260512_162544178.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "100,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260512_42/17785708694325xblO_JPEG/KakaoTalk_20260512_162544178.jpg",
+     "width": null,
+     "height": null
+    },
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20260512_36/1778570861347DMa4L_JPEG/KakaoTalk_20260512_123822007_08.jpg",
+     "width": null,
+     "height": null
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "QfNFCHqrGQNNRzrKDfFt",
+   "type": "normal",
+   "name": "밴댕이 무침",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20200731_132/15961561047951IoKr_JPEG/0FMeSLYVgZIA0pXjtYCqYBdF.JPG.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "30,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20200731_132/15961561047951IoKr_JPEG/0FMeSLYVgZIA0pXjtYCqYBdF.JPG.jpg",
+     "width": 5472,
+     "height": 3648
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "bgwmqgkpBnBwHbzjRJmN",
+   "type": "normal",
+   "name": "메밀 전병",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20200731_112/1596156064485hHEet_JPEG/w3Z2GjYXEm3FPySL45_xdekR.JPG.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "10,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20200731_112/1596156064485hHEet_JPEG/w3Z2GjYXEm3FPySL45_xdekR.JPG.jpg",
+     "width": 5472,
+     "height": 3648
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "kCmm6zpNJn6gTrdm8mWk",
+   "type": "normal",
+   "name": "도토리묵",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20200731_118/15961560398059LWTC_JPEG/GaNwNQOKsiMQnI9wgPRURq6r.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "12,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20200731_118/15961560398059LWTC_JPEG/GaNwNQOKsiMQnI9wgPRURq6r.jpg",
+     "width": 4032,
+     "height": 3024
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "pJnMbPhKcqpNcRWzdzBW",
+   "type": "normal",
+   "name": "낙지전골 2인",
+   "description": null,
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20210727_122/1627352637903n5W9x_JPEG/_BMjUwn_7_9vX_vuXSYgYVOX.jpg",
+   "hasImage": true,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "fixed",
+    "displayText": "60,000원"
+   },
+   "images": [
+    {
+     "__typename": "PlaceMenuImage",
+     "url": "https://ldb-phinf.pstatic.net/20210727_122/1627352637903n5W9x_JPEG/_BMjUwn_7_9vX_vuXSYgYVOX.jpg",
+     "width": 3840,
+     "height": 2560
+    }
+   ],
+   "optionGroups": [],
+   "course": null
+  },
+  {
+   "__typename": "PlaceMenuItem",
+   "id": "nbbPw7B8rfRBh8PrPHG9",
+   "type": "normal",
+   "name": "산낙지",
+   "description": "싯가",
+   "badges": [],
+   "labels": [],
+   "thumbnailUrl": null,
+   "hasImage": false,
+   "isSetMenu": false,
+   "price": {
+    "__typename": "PlaceMenuPrice",
+    "priceType": "dynamic",
+    "displayText": "가격 변동"
+   },
+   "images": [],
+   "optionGroups": [],
+   "course": null
+  }
+ ],
+ "PlaceMenuCategory": [
+  {
+   "__typename": "PlaceMenuCategory",
+   "id": "recommend",
+   "name": "추천 메뉴",
+   "kind": "recommend",
+   "showInNavigation": true,
+   "itemIds": [
+    "TbF7bGRQPHcLmJjQdKr9",
+    "MLjdBjmzJdHjphHB98Lh",
+    "9CJthJJ78PFTbpRQJMhz",
+    "Fg97hJB69cz6LqRjBCNF",
+    "PhGCTRtQjdcQWJpDctKR"
+   ]
+  },
+  {
+   "__typename": "PlaceMenuCategory",
+   "id": "u.p.21202659",
+   "name": "",
+   "kind": "uncategorized",
+   "showInNavigation": false,
+   "itemIds": [
+    "TbF7bGRQPHcLmJjQdKr9",
+    "MLjdBjmzJdHjphHB98Lh",
+    "9CJthJJ78PFTbpRQJMhz",
+    "Fg97hJB69cz6LqRjBCNF",
+    "PhGCTRtQjdcQWJpDctKR",
+    "qjf9JcpPCCwzdBGrwgnT",
+    "TfcfCTCKW7bDrqrdBQbq",
+    "QgBFLPrBzMFJGNb8bMBg",
+    "KLnJd7qKkktBmdg7Nh7M",
+    "W8pHcQhLfd6khjLHwjnL",
+    "QfNFCHqrGQNNRzrKDfFt",
+    "bgwmqgkpBnBwHbzjRJmN",
+    "kCmm6zpNJn6gTrdm8mWk",
+    "pJnMbPhKcqpNcRWzdzBW",
+    "nbbPw7B8rfRBh8PrPHG9"
+   ]
+  }
+ ],
+ "FsasReview": [
+  {
+   "__typename": "FsasReview",
+   "name": "세종시닷컴",
+   "type": "cafe",
+   "typeName": "카페",
+   "url": "https://m.cafe.naver.com/1sejongcity/1969483?query=%EC%84%B8%EC%A2%85%EC%8B%9C%EB%8B%B7%EC%BB%B4",
+   "home": "https://m.cafe.naver.com/1sejongcity/1969483?query=%EC%84%B8%EC%A2%85%EC%8B%9C%EB%8B%B7%EC%BB%B4",
+   "id": "cafe_세종시닷컴_1969483_동막해수욕장 맛집 우수해요",
+   "title": "동막해수욕장 맛집 우수해요",
+   "rank": "1",
+   "contents": "나들이를 갔다가 점심만큼은 현지에서 유명한 메뉴를 먹어보고 싶어 이곳저곳 찾아봤어요. 여행 중에는 지역 특색이 담긴 음식을 즐기는 편이라 자연스럽게 강동막해수욕장 맛집으로 알려진 곳을 방문하게 됐는데, 기대했던 것보다 훨씬 정갈한 상차림과 깊은 손맛 덕분에 만족스러운 식사를 할 수 있었어요. 만선꽃게랑낙지 주소 : 인천 강화군 길상면 해안남로 779 만선꽃게랑 낙지 전화번호 : 0507-1418-5958 영업시간 : 평일 10:00~20:00 / 주말 09:30~20:00 라스트오더 : 마감 1시간 전 식당은 동막해수욕장과 가까운 곳에 있어 이동하기 편했어요. 넓은 주차장이 마련되어 있어 차량을 세우는 것도 수월했고 여행 동선에 넣기 좋은 위치였답니다. 자리에 앉자마자 기본 반찬과 모둠장이 차례로 준비됐어요. 한눈에 봐도 상이 풍성해 보였고 반찬 하나하나가 정갈하게 담겨 있어 동막해수욕장 맛집 다운 첫인상을 느낄 수 있었어요. 메인으로 나온 간장게장은 윤기가 흐르는 비주얼부터 남달랐어요. 게살이 속까지 꽉 차 있었고 짠맛보다 은은한 감칠맛이 먼저 느껴져 부담 없이 즐기기 좋았답니다. 게딱지를 열어보니 알과 내장이 가득 들어 있었어요. 고소한 향이 진하게 올라오면서 밥과 함께 먹으면 얼마나 맛있을지 기대감이 커지더라고요. 따뜻한 밥 위에 내장을 듬뿍 올려 비벼 먹으니 깊은 풍미가 입안을 가득 채웠어요. 짭조름한 간장과 고소한 내장이 자연스럽게 어우러져 동막해수욕장 맛집을 찾은 이유를 알겠더라고요. 양념게장도 함께 맛봤는데 매콤하면서도 달큰한 양념이 속살에 잘 스며들어 있었어요. 자극적이지 않은 맛이라 계속 손이 갔고 게살의 부드러운 식감도 인상적이었어요. 양념은 과하지 않아 끝맛이 깔끔했어요. 비린내 없이 담백한 풍미가 살아 있었고 밥과 함께 먹으니 한 공기를 금세 비우게 될 만큼 만족스러웠답니다. 함께 주문한 꽃낙새탕은 큼직한 꽃게와 낙지, 새우가 푸짐하게 들어 있었어요. 냄비를 가득 채운 재료를 보니 동막해수욕장 맛집 답게 인심도 넉넉하다는 생각이 들었어요. 국물이 끓기 시작하면서 해산물의 시원한 향과 채소의 은은한 향이 함께 올라왔어요. 한 숟갈 떠먹어보니 깊고 개운한 국물 맛이 속까지 따뜻하게 채워주더라고요. 통통한 낙지와 꽃게를 함께 건져 먹으니 식감도 풍성하고 감칠맛도 진했어요. 해산물이 듬뿍 들어 있어 마지막까지 만족스럽게 즐길 수 있었고, 가족들과 함께 방문하기 좋은 동막해수욕장 맛집 이라는 생각이 들었어요.",
+   "thumbnailUrl": "http://cafefiles.naver.net/MjAyNjA2MjZfMzkg/MDAxNzgyNDczMjM4ODY0.L-UQ-yADkl9T2ffdGVhh3D3wFryFuiX0BiJ5MSktwFIg.UCk1bEoCEcuzbFgkN0hOj5FpNcTI8iZs7Fk30CTG1dYg.JPEG/2.jpg#800x533",
+   "thumbnailUrlList": [
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMzkg/MDAxNzgyNDczMjM4ODY0.L-UQ-yADkl9T2ffdGVhh3D3wFryFuiX0BiJ5MSktwFIg.UCk1bEoCEcuzbFgkN0hOj5FpNcTI8iZs7Fk30CTG1dYg.JPEG/2.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjAy/MDAxNzgyNDczMjM4MTY2.nS3JhoLAZhzc1_FS1a0mupgQRLvA6hRANAQQngF1sGQg.abC0CIgc24HKa0uLF4j2ZGyE_Wh9QQ9Cyh9aS9JMyfAg.JPEG/1.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMTYx/MDAxNzgyNDczMjM4OTUx.zyqhXi01Qmwrfse67Z3F1PsL3WBTo-m6gqwBmO-gi1cg.pYybBI6IcSMVTOZhNN_WRUFKCGjgZHxqmhz_AN8JD3gg.JPEG/3.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjE4/MDAxNzgyNDczMjM5MDc1.VKak-uCbTTtwfPCbw5mNPOBAIuMW0Ig7yxbnOITQcsog.XryWplVUvnt2QKPJd8rIQKIZKW-2TQbokTc7xkewtGwg.JPEG/4.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjc0/MDAxNzgyNDczMjM4MjQx.acS_6xzI1NXdYLuCEo6RveEawMvALNmuj0w6kqvJAKsg.K1TK9MM9wTkc30w_KAxqAYvR2x7BKLCL85M178i0gdIg.JPEG/5.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjk1/MDAxNzgyNDczMjM4MjU3.y3uUxaG7Kjn9Fi68dMFVYJ4BsT-uQ9xPsYNrkGiKuRYg.-TuCv3q7tgPCLCqDMAcdmERcAqvPYn1p47jajSC1degg.JPEG/6.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfODYg/MDAxNzgyNDczMjM4MjU3.MU_OX7OQyT9s2hhTZH4H7xik49nP4zRNSuzMWYPzH0Eg.3AH0mEAIu8xnBg7nTOg1NVs2Na-yYJGZF9LFkds2HmMg.JPEG/7.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjUz/MDAxNzgyNDczMjM4MzQy.5d52Rq-VR1Q274ROekYGxFkrNer4K3pDiok1P34jcdMg.VK4_PuHuZ0cXZXWVhF-8-kvPaqIm9-zdPMO0cdBU1xMg.JPEG/8.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMTUz/MDAxNzgyNDczMjM4NjQz.W8LUGJYxAmyBJJqgwqyRCeyD7NHosTmQ6OAERDaCgR0g.2BgbL8VZZfVApvzYK0Qilgrq96fhWey9MIUKPIXVVuog.JPEG/9.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjE3/MDAxNzgyNDczMjM4MjUz.EomWEpkwCNEEqhCJh5kxHqit-u4lGJjE0mOq2DqsmLMg.4WXByftA04CCF843JHd7923EM-ixOTeC6FO5qpWYi2Yg.JPEG/10.jpg#800x533"
+   ],
+   "thumbnailCount": "10",
+   "date": "2026.06.26.",
+   "isRepresentative": false,
+   "profileImageUrl": "http://cafefiles.naver.net/20160106_280/iskky_1452042021146awBg4_PNG/로고,선명.png",
+   "isVideoThumbnail": false,
+   "reviewId": "1969483",
+   "authorName": "로라밍",
+   "createdString": "6.26.금",
+   "bypassToken": "ZXh0ZXJuYWwtc2VydmljZS1wbGFjZS1zZWFyY2g=.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYWZlVHlwZSI6IkNBRkVfVVJMIiwiY2FmZVVybCI6IjFzZWpvbmdjaXR5IiwiYXJ0aWNsZUlkIjoxOTY5NDgzLCJpc3N1ZWRBdCI6MTc5NDMwNTI2OTQ5NX0.7RQhCw6w4bjYpn9JQkWlqpAtW4w-CJEYKIPEqrtTvrI",
+   "buyWithMyMoneyType": false
+  },
+  {
+   "__typename": "FsasReview",
+   "name": "다혜네 집",
+   "type": "blog",
+   "typeName": "블로그",
+   "url": "https://m.blog.naver.com/hyeda_png/224315891790",
+   "home": "https://m.blog.naver.com/hyeda_png",
+   "id": "blog_다혜네 집_224315891790_강화도 나들이 부모님 모시고 가기 좋은 곳 | 해물탕 맛집 + 바다뷰 카페 추천",
+   "title": "강화도 나들이 부모님 모시고 가기 좋은 곳 | 해물탕 맛집 + 바다뷰 카페 추천",
+   "rank": "2",
+   "contents": "시부모님이랑 강화도 나들이를 다녀왔어요~~ 해산물 몸보신 하려고 강화도를 가게 됐는데, 식당-카페 코스 만족도가 높아서 공유드려요>< 첫 번째 목적지는 만선꽃게랑낙지. 주차는 식당 앞에 편하게 주차하시고 들어가면 돼요! 창이 많아서 환기도 잘되고 내부도 엄청 깔끔해요! 포구에 들어오는 배에서 꽃게랑 낙지를 바로 가져오고 직접 지은 농산물을 재료로 사용하신다고 하더라구요. 저희는 꽃낙새탕 2인 + 연포탕 2인을 주문했어요. 밑반찬이 나왔는데 밑반찬으로도 밥 한기 뚝딱 할 수 있을 정도였어요 꽃낙새탕은 꽃게, 낙지, 대하새우가 다 들어가는 탕인데 비주얼부터 압도적이었어요. 꽃게가 제대로 들어있고 국물이 칼칼하면서 시원한 게 딱 제가 좋아하는 스타일이었고요. 대하새우는 탱탱하고 낙지도 질기지 않고 부드러워서 몸보신 제대로 하는 기분이었어요! 연포탕은 낙지를 맑은 육수에 끓여낸 건데 담백하고 깔끔해서 자극적인 거 싫어하시는 분들한테 딱 맞는 메뉴예요. 시아버지가 드시기 딱 좋으셨던 것 같아요. 추가반찬 샐러드바도 이용할 수 있어서 생각보다 배가 많이 찼고요. 4명이서 탕 2가지씩 시켰으니 넉넉하게 잘 먹었어요. 사장님이 고양이를 키우신대요. 저 조그만 솜뭉치 좀 보세요. 아기 고양이도 있었어요 ㅠㅠㅠ 너무 작은데 덩그러니 있어서 처음에 고양이인줄도 몰랐어요 ㅠ 사장님과 담소 후 이제 이동합니다! 식사 후엔 카페 트라몬토로 이동했는데, 여기가 진짜 이번 나들이의 하이라이트였어요. 2층에 올라가니 뷰가 너무 좋아서 모두 우와우와 하면서 들어갔어요~~ 바다 위로 배가 지나가고 멀리 섬들이 보이는 뷰인데, 날씨까지 맑아서 완전 최고의 타이밍이었어요. 사진 찍기도 진짜 좋은 곳이라 시부모님도 사진 많이 찍으셨어요. 어딜 앉아도 바다 뷰인 카페는 흔치 않은데 이곳은 어느 테이블에 앉아도 바다가 잘 보여서 좋더라구요. 1층 한편에는 족욕할 수 있는 공간도 있어서 바다 보면서 힐링할 수 있습니다~~ 족욕은 별도로 금액을 결제해야 이용 할 수 있습니다. 커피 가격대가 좀 있지만 이제 바다뷰 카페가면 흔한 가격대 ㅎㅎ.. 아메리카노랑 디저트로 로투스와플 주문했어요 ! 디저트에다가 커피 마시면서 그냥 멍하니 바다 보는 시간이 너무 좋았고, 시어머니가 엄청 좋아하셔서 내심 뿌듯했답니다 ㅎㅎ 강화도 당일치기로 해물밥상 + 뷰 카페 코스는 진짜 추천드려요. 치열한 평일을 보내고 여유로운 주말 나들이로 딱입니다 ㅎㅎ 특히 어른들 모시고 가기 좋은 코스라서 부모님이나 시부모님... ",
+   "thumbnailUrl": "http://blogfiles.naver.net/MjAyNjA2MTVfNDAg/MDAxNzgxNDUwMzM5MTkw.blViRkgJcj9TpyHRgxy_ml94H5U7Mt2wcfPV2xydCxUg.xPf9BqDO_dQTQJ8kJPcwLgE4_38Kdth7G-yA2HamNPgg.JPEG/E37A6096-D051-4A3A-8A3B-DB62EF0C52BF_1_102_o.jpeg#2048x1536",
+   "thumbnailUrlList": [
+    "http://blogfiles.naver.net/MjAyNjA2MTVfNDAg/MDAxNzgxNDUwMzM5MTkw.blViRkgJcj9TpyHRgxy_ml94H5U7Mt2wcfPV2xydCxUg.xPf9BqDO_dQTQJ8kJPcwLgE4_38Kdth7G-yA2HamNPgg.JPEG/E37A6096-D051-4A3A-8A3B-DB62EF0C52BF_1_102_o.jpeg#2048x1536",
+    "http://blogfiles.naver.net/MjAyNjA2MTRfMjQy/MDAxNzgxNDQ4NzczNTUw.RCj5JXe6DzHALrJq5U0Q6i5S5wQbKij82AqwnCx7vjwg.Qq9_TLZ87cpLdtwdKhoLpLMWPFYoLIrkNg3jTmHQTHgg.JPEG/5458B7C0-9F1F-4345-9480-A6F610A2FC63_1_105_c.jpeg#768x1024",
+    "http://blogfiles.naver.net/MjAyNjA2MTRfMjgz/MDAxNzgxNDQ4ODczNzU2.H25rwluvlj1CM-T204W6Gb-GJ-nvEmZBxlFdedJArbEg.bbnHgkaFMrsDXYEeqnxWHed6E7AhzQ3z5gaB4yBYGhsg.JPEG/676FA3EE-5C92-4A46-8D93-4BFCD2EFFF21_1_105_c.jpeg#768x1024",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMTMy/MDAxNzgxNDQ5NjQ4NTk0.iLZj_ObkybDFwbZ2YiluyaBzcrl1x4q2zNpQbKImZEog.1keCV34HRauV6bD0zHwhZy8WNQrb8sGNkG0lUXuU5oIg.JPEG/EA156820-212D-45A1-AFC7-E8713B32D8EF_1_105_c.jpeg#1024x768",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMTE3/MDAxNzgxNDQ5MjU1NTM0.j4YID4kiFNWDsNxWgONzG8pQYs7eAbwUagvrvAzAqJIg.BIdNA36-EvPqhKRRFRgoSlL9kqf-cdqds3gDedF9ze0g.JPEG/1D348BBD-7CAE-45AA-998C-B027511AB8B1_1_105_c.jpeg#1024x768",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMjky/MDAxNzgxNDQ5NjY4OTg0.RgylK6wlpNZVTKCdVveXCM4YMT81uhYwVx1j1FLwEHcg.tXKmlcMDpKKkJNK2cRLL6Tr1XzUnC3WE9HDXbp4O7f4g.JPEG/F0326301-D9E0-43CB-849A-4121BB73FE75_1_105_c.jpeg#964x723",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMTk5/MDAxNzgxNDQ5NzU0NzYz.4tVQtkZN9uDOI8r8HFVvTFVCArYGD-_Ilmqc4x9sX0wg.cpDINJapm_aH8CNLDIrhm7Hq-oe6Lyhqzg1cpzP7PM8g.JPEG/373DBE91-E289-4A30-AC07-90EC282444FC_1_102_o.jpeg#2048x1536",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfNDUg/MDAxNzgxNDQ5ODgwNDA3.P1exWG9GxxRWHejIn0Ds7Ckn6QI80I4da9_lF316ny0g.lE4IT6BF0kPoVZnLQ6PXpJuReUTEqYNbUkOkHZRv-NUg.PNG/%BD%BA%C5%A9%B8%B0%BC%A6_2026-06-15_%BF%C0%C0%FC_12.11.09.png#950x1198",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMjUz/MDAxNzgxNDQ5OTA3Mjg4.uLMY_Ngq6soi20NC9YapkudNNSSNP_o4WmZSdhDjJkIg.4Jb9TqlajhWWn-1beBu6HVlButCDBOyrU_BMy1zy3vYg.PNG/%BD%BA%C5%A9%B8%B0%BC%A6_2026-06-15_%BF%C0%C0%FC_12.11.45.png#950x1292",
+    "http://blogfiles.naver.net/MjAyNjA2MTVfMTg5/MDAxNzgxNDUwMDYzMjYx.UGIQg9540LlkRSLskzLgIeAPcQfuOcNwp1wtXA1DNM8g.dvHjVNdVm9AzPjj1X0Je2up77qJIE5iM0KRf8NHmDhgg.JPEG/D3E2A627-0DAE-4E51-98F9-343CF96D0FA4_1_102_o.jpeg#1536x2048"
+   ],
+   "thumbnailCount": "20",
+   "date": "2026.06.15.",
+   "isRepresentative": false,
+   "profileImageUrl": "https://blogpfthumb-phinf.pstatic.net/MjAyNjA0MTdfMjYy/MDAxNzc2Mzk2NDkwNDE2.BkVqsHBhTpNDySxVjPp0RLQ6jEjJkRlwx_Wtrp8iKi4g.S9wpak1zpVCs_vcPwAlGvupEmeqmL3vIBPVQjKU-G0Qg.PNG/profileImage.png",
+   "isVideoThumbnail": false,
+   "reviewId": "224315891790",
+   "authorName": "다혜룽",
+   "createdString": "6.15.월",
+   "bypassToken": null,
+   "buyWithMyMoneyType": false
+  },
+  {
+   "__typename": "FsasReview",
+   "name": "명상 여행기",
+   "type": "blog",
+   "typeName": "블로그",
+   "url": "https://m.blog.naver.com/tftq4daas/224172920767",
+   "home": "https://m.blog.naver.com/tftq4daas",
+   "id": "blog_명상 여행기_224172920767_강화도연포탕맛집 만선꽃게랑낙지, 신선한 해산물과 행복 가득한 맛의 향연",
+   "title": "강화도연포탕맛집 만선꽃게랑낙지, 신선한 해산물과 행복 가득한 맛의 향연",
+   "rank": "3",
+   "contents": "강화도 연포탕 맛집 만선꽃게랑낙지에서 식사를 했습니다. 강화도 해안도로 근처에 위치한 만선꽃게랑낙지 탁월한 해산물 요리로 유명하다고 해서 한번 방문해보기로 했죠. 아기와 함께 갈 수 있는 곳이라 가족 단위로 가기에도 좋은 맛집으로 추천받았어요. 입구부터 넓은 주차장과 깔끔한 매장이 인상적이었고, 안으로 들어가니 여유로운 분위기와 푸짐한 상차림이 반겨주었습니다. 만선꽃게랑낙지에서 가장 기대한 건 역시 해산물 요리였어요. 메뉴판을 보고 가장 먼저 눈에 띈 건 바로 연포탕! 강화도의 특산물인 연포탕은 정말 맛있었습니다. 국물은 버터처럼 부드러운 내장 깊은 맛이 살아있고, 신선한 해산물이 가득 들어 있어 입에서 바로 녹는 느낌이었어요. 함께 나온 기본 반찬들도 깔끔하게 구성되어 있었고, 그 맛이 더욱 맛있는 주 요리와 잘 어울렸습니다. 특히 라면사리를 추가해서 먹을 수 있는데, 이 라면사리와 연포탕이 찰떡궁합이었어요. 국물 맛이 라면에 배어들어 정말 맛있었습니다. 또한, 강화섬쌀로 만든 솥밥도 주문할 수 있었는데, 밥이 정말 고소하고 맛있었습니다. 갓 지은 밥이 솥에서 바로 나와 밥알 하나마다 따뜻하고 찰지게 먹을 수 있었죠. 새우가 듬뿍 들어간 칼국수도 놓칠 수 없는 메뉴였습니다. 국물도 진하고 새우의 감칠맛이 잘 스며들어 먹을 때마다 기분 좋은 만족감을 주었습니다. 전복장이 특히 신선해서 해산물의 진가를 제대로 느낄 수 있었고, 다양한 해산물을 접할 수 있는 점에서 더할 나위 없는 맛을 자랑했어요. 또한, 직원분들의 응대도 친절하고 세심해서 기분 좋은 식사를 할 수 있었습니다. 이 맛집의 또 다른 장점은 넓은 매장 덕분에 여유롭게 식사를 즐겨보실 수 있다는 점이에요. 가족 단위로 가기에도 좋고, 넓은 주차공간도 있어 차량으로 방문하기에 전혀 불편하지 않았습니다. 결국 만선꽃게랑낙지에서의 식사는 만족스럽고 행복한 경험이었습니다. 앞으로도 기회가 된다면 또 가고 싶은 맛집으로 기억될 것 같아요. 다음에는 친구들과 함께 와서 더 다양한 메뉴를 시도해보고 싶어요. 정말 맛있고 즐거운 시간이었습니다!",
+   "thumbnailUrl": "http://blogfiles.naver.net/MjAyNjAyMDVfMjI5/MDAxNzcwMjc5MjE5NzI2.V4nXK7992MI5pkVH0ZEK5_n68mjbkM4qU4Ruiy1wmdwg.fp8CiOBtSYKtte7F0Rq8adywr9nvKJ6jrtikmHacclgg.JPEG/KakaoTalk_20260205_154621615.jpg#1030x685",
+   "thumbnailUrlList": [
+    "http://blogfiles.naver.net/MjAyNjAyMDVfMjI5/MDAxNzcwMjc5MjE5NzI2.V4nXK7992MI5pkVH0ZEK5_n68mjbkM4qU4Ruiy1wmdwg.fp8CiOBtSYKtte7F0Rq8adywr9nvKJ6jrtikmHacclgg.JPEG/KakaoTalk_20260205_154621615.jpg#1030x685",
+    "http://blogfiles.naver.net/MjAyNjAyMDVfMjA0/MDAxNzcwMjc5MjMzOTIx.Hf_uAaWkgXvEzowrc_JdLgBPAqwni2IERhsslORniwkg.tYGEuatYh9VZ9F2YgQJOMARbGJ199-JnsBZPepEvd34g.JPEG/KakaoTalk_20260205_186476203.jpg#1193x794",
+    "http://blogfiles.naver.net/MjAyNjAyMDVfMjI3/MDAxNzcwMjc5MjQ4Mjk0.HdLt_a4wx3Mj9tgh0rZyQb8hNN4UXcXWS2Vg9GG3_QQg.ziw9Po-_o4zKeHvf5l7kAugbUK6m8MYWbhkdMQBePQ4g.JPEG/KakaoTalk_20260201_169983648.jpg#1201x799",
+    "http://blogfiles.naver.net/MjAyNjAyMDVfMTk3/MDAxNzcwMjc5MjYzMDQz.Kti-sC356H_Nk4VrOB5gUTVbdQkqVk6ZDbcru7Xyxj4g.GrDOyG5LOUZzsrQqnxxUrBWKTZaQupsXogJN6caysksg.JPEG/KakaoTalk_20260205_111131873.jpg#1053x701",
+    "http://blogfiles.naver.net/MjAyNjAyMDVfMjky/MDAxNzcwMjc5Mjc3Mjc3.tbQ4VEBqvoPsEJ-WQAq3YOGGyZ-ufz9r2hPiNfguP_Ag.0FrLglwtkjy2dBmfDFsgKaWCK3vElndmYtCnji0mHj8g.JPEG/KakaoTalk_20260205_130693453.jpg#1224x814"
+   ],
+   "thumbnailCount": "5",
+   "date": "2026.02.05.",
+   "isRepresentative": false,
+   "profileImageUrl": "https://blogpfthumb-phinf.pstatic.net/MjAyMzA2MTlfNzgg/MDAxNjg3MTg0NzQ0Mjkx.WBCGXumx8QMQOmPin_wOQNpkaQ02TonB4HtjLkXREHAg.kOesBiT4vz1SgJiGDdChb8RnFfix2TuGwDV9U1OPLVIg.JPEG.tftq4daas/%25EC%259E%2590%25EC%259C%25A0.jpg/%25EC%259E%2590%25EC%259C%25A0.jpg",
+   "isVideoThumbnail": false,
+   "reviewId": "224172920767",
+   "authorName": "데미대구모던",
+   "createdString": "2.5.목",
+   "bypassToken": null,
+   "buyWithMyMoneyType": false
+  },
+  {
+   "__typename": "FsasReview",
+   "name": "세종시닷컴",
+   "type": "cafe",
+   "typeName": "카페",
+   "url": "https://m.cafe.naver.com/1sejongcity/1969483?query=%EC%84%B8%EC%A2%85%EC%8B%9C%EB%8B%B7%EC%BB%B4",
+   "home": "https://m.cafe.naver.com/1sejongcity/1969483?query=%EC%84%B8%EC%A2%85%EC%8B%9C%EB%8B%B7%EC%BB%B4",
+   "id": "cafe_세종시닷컴_1969483_동막해수욕장 맛집 우수해요",
+   "title": "동막해수욕장 맛집 우수해요",
+   "rank": "1",
+   "contents": "나들이를 갔다가 점심만큼은 현지에서 유명한 메뉴를 먹어보고 싶어 이곳저곳 찾아봤어요. 여행 중에는 지역 특색이 담긴 음식을 즐기는 편이라 자연스럽게 강동막해수욕장 맛집으로 알려진 곳을 방문하게 됐는데, 기대했던 것보다 훨씬 정갈한 상차림과 깊은 손맛 덕분에 만족스러운 식사를 할 수 있었어요. 만선꽃게랑낙지 주소 : 인천 강화군 길상면 해안남로 779 만선꽃게랑 낙지 전화번호 : 0507-1418-5958 영업시간 : 평일 10:00~20:00 / 주말 09:30~20:00 라스트오더 : 마감 1시간 전 식당은 동막해수욕장과 가까운 곳에 있어 이동하기 편했어요. 넓은 주차장이 마련되어 있어 차량을 세우는 것도 수월했고 여행 동선에 넣기 좋은 위치였답니다. 자리에 앉자마자 기본 반찬과 모둠장이 차례로 준비됐어요. 한눈에 봐도 상이 풍성해 보였고 반찬 하나하나가 정갈하게 담겨 있어 동막해수욕장 맛집 다운 첫인상을 느낄 수 있었어요. 메인으로 나온 간장게장은 윤기가 흐르는 비주얼부터 남달랐어요. 게살이 속까지 꽉 차 있었고 짠맛보다 은은한 감칠맛이 먼저 느껴져 부담 없이 즐기기 좋았답니다. 게딱지를 열어보니 알과 내장이 가득 들어 있었어요. 고소한 향이 진하게 올라오면서 밥과 함께 먹으면 얼마나 맛있을지 기대감이 커지더라고요. 따뜻한 밥 위에 내장을 듬뿍 올려 비벼 먹으니 깊은 풍미가 입안을 가득 채웠어요. 짭조름한 간장과 고소한 내장이 자연스럽게 어우러져 동막해수욕장 맛집을 찾은 이유를 알겠더라고요. 양념게장도 함께 맛봤는데 매콤하면서도 달큰한 양념이 속살에 잘 스며들어 있었어요. 자극적이지 않은 맛이라 계속 손이 갔고 게살의 부드러운 식감도 인상적이었어요. 양념은 과하지 않아 끝맛이 깔끔했어요. 비린내 없이 담백한 풍미가 살아 있었고 밥과 함께 먹으니 한 공기를 금세 비우게 될 만큼 만족스러웠답니다. 함께 주문한 꽃낙새탕은 큼직한 꽃게와 낙지, 새우가 푸짐하게 들어 있었어요. 냄비를 가득 채운 재료를 보니 동막해수욕장 맛집 답게 인심도 넉넉하다는 생각이 들었어요. 국물이 끓기 시작하면서 해산물의 시원한 향과 채소의 은은한 향이 함께 올라왔어요. 한 숟갈 떠먹어보니 깊고 개운한 국물 맛이 속까지 따뜻하게 채워주더라고요. 통통한 낙지와 꽃게를 함께 건져 먹으니 식감도 풍성하고 감칠맛도 진했어요. 해산물이 듬뿍 들어 있어 마지막까지 만족스럽게 즐길 수 있었고, 가족들과 함께 방문하기 좋은 동막해수욕장 맛집 이라는 생각이 들었어요.",
+   "thumbnailUrl": "http://cafefiles.naver.net/MjAyNjA2MjZfMzkg/MDAxNzgyNDczMjM4ODY0.L-UQ-yADkl9T2ffdGVhh3D3wFryFuiX0BiJ5MSktwFIg.UCk1bEoCEcuzbFgkN0hOj5FpNcTI8iZs7Fk30CTG1dYg.JPEG/2.jpg#800x533",
+   "thumbnailUrlList": [
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMzkg/MDAxNzgyNDczMjM4ODY0.L-UQ-yADkl9T2ffdGVhh3D3wFryFuiX0BiJ5MSktwFIg.UCk1bEoCEcuzbFgkN0hOj5FpNcTI8iZs7Fk30CTG1dYg.JPEG/2.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjAy/MDAxNzgyNDczMjM4MTY2.nS3JhoLAZhzc1_FS1a0mupgQRLvA6hRANAQQngF1sGQg.abC0CIgc24HKa0uLF4j2ZGyE_Wh9QQ9Cyh9aS9JMyfAg.JPEG/1.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMTYx/MDAxNzgyNDczMjM4OTUx.zyqhXi01Qmwrfse67Z3F1PsL3WBTo-m6gqwBmO-gi1cg.pYybBI6IcSMVTOZhNN_WRUFKCGjgZHxqmhz_AN8JD3gg.JPEG/3.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjE4/MDAxNzgyNDczMjM5MDc1.VKak-uCbTTtwfPCbw5mNPOBAIuMW0Ig7yxbnOITQcsog.XryWplVUvnt2QKPJd8rIQKIZKW-2TQbokTc7xkewtGwg.JPEG/4.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjc0/MDAxNzgyNDczMjM4MjQx.acS_6xzI1NXdYLuCEo6RveEawMvALNmuj0w6kqvJAKsg.K1TK9MM9wTkc30w_KAxqAYvR2x7BKLCL85M178i0gdIg.JPEG/5.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjk1/MDAxNzgyNDczMjM4MjU3.y3uUxaG7Kjn9Fi68dMFVYJ4BsT-uQ9xPsYNrkGiKuRYg.-TuCv3q7tgPCLCqDMAcdmERcAqvPYn1p47jajSC1degg.JPEG/6.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfODYg/MDAxNzgyNDczMjM4MjU3.MU_OX7OQyT9s2hhTZH4H7xik49nP4zRNSuzMWYPzH0Eg.3AH0mEAIu8xnBg7nTOg1NVs2Na-yYJGZF9LFkds2HmMg.JPEG/7.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjUz/MDAxNzgyNDczMjM4MzQy.5d52Rq-VR1Q274ROekYGxFkrNer4K3pDiok1P34jcdMg.VK4_PuHuZ0cXZXWVhF-8-kvPaqIm9-zdPMO0cdBU1xMg.JPEG/8.jpg#800x600",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMTUz/MDAxNzgyNDczMjM4NjQz.W8LUGJYxAmyBJJqgwqyRCeyD7NHosTmQ6OAERDaCgR0g.2BgbL8VZZfVApvzYK0Qilgrq96fhWey9MIUKPIXVVuog.JPEG/9.jpg#800x533",
+    "http://cafefiles.naver.net/MjAyNjA2MjZfMjE3/MDAxNzgyNDczMjM4MjUz.EomWEpkwCNEEqhCJh5kxHqit-u4lGJjE0mOq2DqsmLMg.4WXByftA04CCF843JHd7923EM-ixOTeC6FO5qpWYi2Yg.JPEG/10.jpg#800x533"
+   ],
+   "thumbnailCount": "10",
+   "date": "2026.06.26.",
+   "isRepresentative": false,
+   "profileImageUrl": "http://cafefiles.naver.net/20160106_280/iskky_1452042021146awBg4_PNG/로고,선명.png",
+   "isVideoThumbnail": false,
+   "reviewId": "1969483",
+   "authorName": "로라밍",
+   "createdString": "6.26.금",
+   "bypassToken": "ZXh0ZXJuYWwtc2VydmljZS1wbGFjZS1zZWFyY2g=.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYWZlVHlwZSI6IkNBRkVfVVJMIiwiY2FmZVVybCI6IjFzZWpvbmdjaXR5IiwiYXJ0aWNsZUlkIjoxOTY5NDgzLCJpc3N1ZWRBdCI6MTc5NDMwNzMxOTIxMH0.JI-oggahzoz983BaEWbYWp__OXGwh5IQbZisXFNZq64",
+   "buyWithMyMoneyType": false
+  }
+ ],
+ "VisitorReviewStatsResult": [],
+ "BusStation": [
+  {
+   "__typename": "BusStation",
+   "id": "168790",
+   "name": "수양관",
+   "displayCode": "43245",
+   "lat": 37.6080763,
+   "lng": 126.4801816,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21287"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 4,
+   "walkingDistance": 227
+  },
+  {
+   "__typename": "BusStation",
+   "id": "168810",
+   "name": "수양관",
+   "displayCode": "43645",
+   "lat": 37.6079087,
+   "lng": 126.4803085,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21288"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 5,
+   "walkingDistance": 272
+  },
+  {
+   "__typename": "BusStation",
+   "id": "168791",
+   "name": "선두4리마을회관",
+   "displayCode": "43644",
+   "lat": 37.6052388,
+   "lng": 126.4829981,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21287"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 5,
+   "walkingDistance": 283
+  },
+  {
+   "__typename": "BusStation",
+   "id": "168809",
+   "name": "선두4리마을회관",
+   "displayCode": "43242",
+   "lat": 37.6052803,
+   "lng": 126.4830432,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21288"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 11,
+   "walkingDistance": 645
+  },
+  {
+   "__typename": "BusStation",
+   "id": "168789",
+   "name": "치마바위",
+   "displayCode": "43247",
+   "lat": 37.6117095,
+   "lng": 126.4778376,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21287"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 11,
+   "walkingDistance": 656
+  },
+  {
+   "__typename": "BusStation",
+   "id": "168811",
+   "name": "치마바위",
+   "displayCode": "43646",
+   "lat": 37.6118581,
+   "lng": 126.477764,
+   "innerRoutes": {
+    "__typename": "InnerRoutes",
+    "routeType": [
+     {
+      "__typename": "RouteType",
+      "type": "12",
+      "typeName": "지선",
+      "innerRoute": [
+       {
+        "__ref": "InnerRoute:22040"
+       },
+       {
+        "__ref": "InnerRoute:21288"
+       }
+      ]
+     }
+    ]
+   },
+   "walkTime": 11,
+   "walkingDistance": 681
+  }
+ ],
+ "InformationFacilities": [
+  {
+   "__typename": "InformationFacilities",
+   "id": "13",
+   "name": "단체 이용 가능",
+   "i18nName": "단체 이용 가능"
+  },
+  {
+   "__typename": "InformationFacilities",
+   "id": "4",
+   "name": "포장",
+   "i18nName": "포장"
+  },
+  {
+   "__typename": "InformationFacilities",
+   "id": "7",
+   "name": "무선 인터넷",
+   "i18nName": "무선 인터넷"
+  },
+  {
+   "__typename": "InformationFacilities",
+   "id": "8",
+   "name": "남/녀 화장실 구분",
+   "i18nName": "남/녀 화장실 구분"
+  }
+ ],
+ "PlaceDetailTopPhotoItem": [
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_business_1",
+   "viewId": "21202659_business_1_1",
+   "title": "만선꽃게랑낙지",
+   "width": 3648,
+   "height": 2432,
+   "linkUrl": null,
+   "date": null,
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": null,
+    "imageUrl": null,
+    "objectId": null,
+    "url": null,
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://ldb-phinf.pstatic.net/20261109_72/1794202851543TRURb_JPEG/2G3A0323.jpg",
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261109_72/1794202851543TRURb_JPEG/2G3A0323.jpg",
+   "description": null,
+   "mediaFormat": "image",
+   "mediaSource": "business",
+   "filterId": "biz",
+   "subFilterId": null,
+   "sourceTitle": null,
+   "externalLink": null,
+   "clip": null,
+   "option": null,
+   "visitorReview": null,
+   "originType": null
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_clip_1",
+   "viewId": "21202659_clip_1_2",
+   "title": "클립",
+   "width": null,
+   "height": null,
+   "linkUrl": null,
+   "date": "2026.11.10",
+   "isPopularStyle": null,
+   "price": null,
+   "video": {
+    "__typename": "VideoItemInfo",
+    "videoId": "BE24029BB9192AB69078880AE4DB2F78ED65",
+    "videoUrl": "vod3://2040:V125a93342581124580c4788e63201f8d332e53ebb618beec6d8125e60a907090e0e9788e63201f8d332e@BE24029BB9192AB69078880AE4DB2F78ED65?env=real#track=720",
+    "trailerUrl": "https://a02-g-smp-vod.akamaized.net/clip-home/c/read/v2/VOD_ALPHA/clip-home/BE24029BB9192AB69078880AE4DB2F78ED65/trailer/1789522107243/fc452f18-b16d-11f1-a596-a0369ffda4e8.mp4?hdnts=exp%3D1794335303%7Eacl%3D%2Fclip-home%2Fc%2Fread%2Fv2%2FVOD_ALPHA%2Fclip-home%2FBE24029BB9192AB69078880AE4DB2F78ED65%2F*%7Ehmac%3D651de68ab8d5d0a6ec0d551539cfe0f1b75f8c583004ed0f0c923afbc862b0f7"
+   },
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": "1NPfioyVjw2KrrlW-9t5",
+    "nickname": "duefoodie",
+    "imageUrl": "https://clip-service-phinf.pstatic.net/MjAyNTA4MjhfMTAy/MDAxNzU2MzY0MDM2OTQx.bnCSxnqGPckXD2JZtUpx5MdggCmIOuTcTTxjIcjqASsg.385XX60BGj1kDoQ59fTydYtmpUIBmh8JG1gB8QMOP7gg.JPEG/profileImage.jpg",
+    "objectId": null,
+    "url": "https://clip.naver.com/@duefoodie",
+    "officialYn": false,
+    "followRequested": null
+   },
+   "originalUrl": "https://clip-service-phinf.pstatic.net/MjAyNjA5MTZfMjU4/MDAxNzg5NTIyMTA2ODU3.mkHyTEZ1ZjOrGffoXgYlcClCXyTpV5MdO8J0FkGPkqcg.s5Dfxei_xgutH8ENtwdr_mPfL2nSwaUQiNwVXEg3JTog.JPEG/thumbnail-528C2703-F068-4807-817A-41F6B8A4649D.jpg",
+   "thumbnailUrl": "https://clip-service-phinf.pstatic.net/MjAyNjA5MTZfMjU4/MDAxNzg5NTIyMTA2ODU3.mkHyTEZ1ZjOrGffoXgYlcClCXyTpV5MdO8J0FkGPkqcg.s5Dfxei_xgutH8ENtwdr_mPfL2nSwaUQiNwVXEg3JTog.JPEG/thumbnail-528C2703-F068-4807-817A-41F6B8A4649D.jpg",
+   "description": "🦀 꽃게랑 낙지를 한 상에 때려 넣은 집ㅋㅋ 강화도 갔다가 가족끼리 제대로 한 끼 먹고 싶어서 찾은 곳인데 꽃게에 낙지까지 푸짐하게 나와서 상부터 꽉 차는 비주얼임🔥 특히 꽃게 살 발라먹고 낙지까지... ",
+   "mediaFormat": "video",
+   "mediaSource": "clip",
+   "filterId": "clip",
+   "subFilterId": null,
+   "sourceTitle": "클립",
+   "externalLink": null,
+   "clip": {
+    "__typename": "ClipItemInfo",
+    "serviceType": "CLIP",
+    "contentType": "VOD"
+   },
+   "option": {
+    "__typename": "PhotoViewerItemOption",
+    "channelName": null,
+    "dateString": null,
+    "playCount": 353,
+    "likeCount": 2
+   },
+   "visitorReview": null,
+   "originType": null
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_business_2",
+   "viewId": "21202659_business_2_3",
+   "title": "만선꽃게랑낙지",
+   "width": 1374,
+   "height": 1145,
+   "linkUrl": null,
+   "date": null,
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": null,
+    "imageUrl": null,
+    "objectId": null,
+    "url": null,
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://ldb-phinf.pstatic.net/20261023_262/179275147581004G4p_JPEG/111.jpg",
+   "thumbnailUrl": "https://ldb-phinf.pstatic.net/20261023_262/179275147581004G4p_JPEG/111.jpg",
+   "description": null,
+   "mediaFormat": "image",
+   "mediaSource": "business",
+   "filterId": "biz",
+   "subFilterId": null,
+   "sourceTitle": null,
+   "externalLink": null,
+   "clip": null,
+   "option": null,
+   "visitorReview": null,
+   "originType": null
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_1",
+   "viewId": "21202659_visitor_1_4",
+   "title": "내부",
+   "width": 2304,
+   "height": 2304,
+   "linkUrl": null,
+   "date": "2026.07.19",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": "~1~fM1zCXwrCaFjUOjAmmWVIQ",
+    "nickname": "리화자",
+    "imageUrl": "https://myplace-phinf.pstatic.net/20230813_44/1691895672778PJbDV_JPEG/IMG_1690.jpeg",
+    "objectId": "5eedc14c8f87a842bc8f3e6e",
+    "url": "https://m.place.naver.com/my/5eedc14c8f87a842bc8f3e6e/review?v=2",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://pup-review-phinf.pstatic.net/MjAyNjA3MjJfNDgg/MDAxNzg0NzEyNzU0NjEy.5QiSY3AtzAk9w5GCLPa-7gnoDz5U6CenzE3gvPU8U0Eg.oESCuHMIeXZtKsKe_Wi8DkcqoKUqS3k52bdMApBirfQg.JPEG/05DAD5CB-645D-4D41-A222-68E465E06E01.jpeg",
+   "thumbnailUrl": "https://pup-review-phinf.pstatic.net/MjAyNjA3MjJfNDgg/MDAxNzg0NzEyNzU0NjEy.5QiSY3AtzAk9w5GCLPa-7gnoDz5U6CenzE3gvPU8U0Eg.oESCuHMIeXZtKsKe_Wi8DkcqoKUqS3k52bdMApBirfQg.JPEG/05DAD5CB-645D-4D41-A222-68E465E06E01.jpeg",
+   "description": "강화도 여행 중 방문한 만선꽃게랑낙지! 기대 이상으로 만족스러운 식사였어요~\n\n간장게장은 짜지 않고 감칠맛이 살아 있었고, 특히 알이 정말 꽉 차 있어서 한입 먹을 때마다 만족감이 컸어요. 양념게장도 적당히 매콤달콤해서 밥도둑이라는 말이 딱 어울렸습니다. 너무 맛있어서 결국 포장까지 해왔네요~😊\n\n직원분들도 친절하게 응대해 주셔서 식사하는 내내 기분이 좋았습니다.\n\n강화도에서 게장 맛집을 찾는다면 한 번쯤 방문해 보시길 추천드립니다.",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "INTERIOR",
+   "sourceTitle": null,
+   "externalLink": null,
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": 1,
+    "visitCategories": null,
+    "votedKeywords": [
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "local_taste",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_with_thumbsup20220119222236.png",
+      "iconCode": "face_with_thumbsup",
+      "name": "현지 맛에 가까워요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "together",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/busts_in_silhouette20220119222027.png",
+      "iconCode": "busts_in_silhouette",
+      "name": "단체모임 하기 좋아요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "kind",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+      "iconCode": "beating_heart",
+      "name": "친절해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "parking_easy",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/park_sign20220119222222.png",
+      "iconCode": "park_sign",
+      "name": "주차하기 편해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "food_fast",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/stopwatch20220119222225.png",
+      "iconCode": "stopwatch",
+      "name": "음식이 빨리 나와요"
+     }
+    ],
+    "isFollowing": null,
+    "rating": 4,
+    "reviewGroupId": "6a608e3428f388fe6f973cf0",
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_2",
+   "viewId": "21202659_visitor_2_5",
+   "title": "음식·음료",
+   "width": 2982,
+   "height": 1997,
+   "linkUrl": "https://blog.naver.com/sk57533/224195859164",
+   "date": "2026.02.25",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": "쏭이",
+    "imageUrl": "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f120_120&src=https%3A%2F%2Fblogpfthumb-phinf.pstatic.net%2FMjAyNTA4MDhfMiAg%2FMDAxNzU0NjUwNjY3MzI1.AtPoBz41EYtuIi46S9ujXFmh0OE8ozniJ6y01YiwQ-Mg.LxvZlV0RRvoPsVCV0Xb3mquHse7BNd2VCEOz7x0dAtAg.JPEG%2FprofileImage.jpg",
+    "objectId": null,
+    "url": "https://m.blog.naver.com/sk57533",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://blogfiles.pstatic.net/MjAyNjAyMjVfNzYg/MDAxNzcxOTk5NjUwMTM1._PAQ7Y-4LOLW04hy26R6h_Yc_J80R_SDHZ96X4wZ-S8g.QY7QedgrrPLUnm6ygMQ1wTfcpEaFlMQEL01h5cVSNScg.JPEG/2G3A0263.jpg/2982x1997",
+   "thumbnailUrl": "https://blogfiles.pstatic.net/MjAyNjAyMjVfNzYg/MDAxNzcxOTk5NjUwMTM1._PAQ7Y-4LOLW04hy26R6h_Yc_J80R_SDHZ96X4wZ-S8g.QY7QedgrrPLUnm6ygMQ1wTfcpEaFlMQEL01h5cVSNScg.JPEG/2G3A0263.jpg/2982x1997",
+   "description": "강화도 간장게장 맛집 국내 맛집 여행",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "FOOD",
+   "sourceTitle": "블로그",
+   "externalLink": {
+    "__typename": "PhotoViewerExternalLink",
+    "title": "블로그",
+    "url": "https://blog.naver.com/sk57533/224195859164"
+   },
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": null,
+    "visitCategories": null,
+    "votedKeywords": null,
+    "isFollowing": null,
+    "rating": null,
+    "reviewGroupId": null,
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_3",
+   "viewId": "21202659_visitor_3_6",
+   "title": "꽃게탕",
+   "width": 3984,
+   "height": 2656,
+   "linkUrl": "https://blog.naver.com/renarenaworld/224210054707",
+   "date": "2026.03.09",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": "RENARENA",
+    "imageUrl": "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f120_120&src=https%3A%2F%2Fblogpfthumb-phinf.pstatic.net%2FMjAyMzEyMjVfMTUx%2FMDAxNzAzNDgzMDExMjYx.N_gw8JtL_AXM9Y7cd8Fq42hLOxMJ65WmjaqXjtKFWzIg.X85xVW1MOdaEwQLCzK7piPv-jE2_S-z79RbOEtIEX6cg.JPEG.gamsakong%2FprofileImage.jpg",
+    "objectId": null,
+    "url": "https://m.blog.naver.com/renarenaworld",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://blogfiles.pstatic.net/MjAyNjAzMDlfOTkg/MDAxNzczMDM3NzQ4MTAz.uTm7ea4tAbOa8JK3xVY9LnnucbdQj7bGzin9z6_T9vsg.PiebqQeguIvwIWvRYJVMZ5h56niEyqza5uA9RSnnkpQg.JPEG/23.jpg/3984x2656",
+   "thumbnailUrl": "https://blogfiles.pstatic.net/MjAyNjAzMDlfOTkg/MDAxNzczMDM3NzQ4MTAz.uTm7ea4tAbOa8JK3xVY9LnnucbdQj7bGzin9z6_T9vsg.PiebqQeguIvwIWvRYJVMZ5h56niEyqza5uA9RSnnkpQg.JPEG/23.jpg/3984x2656",
+   "description": "강화도 전등사 맛집 간장게장 꽃게탕 푸짐하게 먹었던 만선꽃게랑낙지",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:꽃게탕",
+   "sourceTitle": "블로그",
+   "externalLink": {
+    "__typename": "PhotoViewerExternalLink",
+    "title": "블로그",
+    "url": "https://blog.naver.com/renarenaworld/224210054707"
+   },
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": null,
+    "visitCategories": null,
+    "votedKeywords": null,
+    "isFollowing": null,
+    "rating": null,
+    "reviewGroupId": null,
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_4",
+   "viewId": "21202659_visitor_4_7",
+   "title": "전골",
+   "width": 3648,
+   "height": 2432,
+   "linkUrl": "https://blog.naver.com/ddoddomuk/224165253596",
+   "date": "2026.01.30",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": "교동부리",
+    "imageUrl": "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f120_120&src=https%3A%2F%2Fblogpfthumb-phinf.pstatic.net%2FMjAyNTA1MDZfMTMx%2FMDAxNzQ2NDk5NjYzMzUw.Oke-YLnk7480EYsH6KqL9fcSUQxx2WBfAr18NkjIwOUg._-hGcgwUA-9FqYP2eh2gseHcp5P3Z1BvRu4XpmIC9twg.JPEG%2FprofileImage.jpg",
+    "objectId": null,
+    "url": "https://m.blog.naver.com/ddoddomuk",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://blogfiles.pstatic.net/MjAyNjAxMzBfNDEg/MDAxNzY5NzQ1ODk5Nzg0.dpuoKRZ2fM-IZlUHw2bwmJPofrBp4hJnaP_xRC0yPdog.Ptp8zH-xPMR2tgcjTmt32fbgOn22U58a_tk0XWB9fT8g.JPEG/9(%EB%8C%80%ED%91%9C%EC%82%AC%EC%A7%84).jpg/3648x2432",
+   "thumbnailUrl": "https://blogfiles.pstatic.net/MjAyNjAxMzBfNDEg/MDAxNzY5NzQ1ODk5Nzg0.dpuoKRZ2fM-IZlUHw2bwmJPofrBp4hJnaP_xRC0yPdog.Ptp8zH-xPMR2tgcjTmt32fbgOn22U58a_tk0XWB9fT8g.JPEG/9(%EB%8C%80%ED%91%9C%EC%82%AC%EC%A7%84).jpg/3648x2432",
+   "description": "연포탕이 맛있는 강화도 전등사 맛집 만선꽃게랑낙지",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:전골",
+   "sourceTitle": "블로그",
+   "externalLink": {
+    "__typename": "PhotoViewerExternalLink",
+    "title": "블로그",
+    "url": "https://blog.naver.com/ddoddomuk/224165253596"
+   },
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": null,
+    "visitCategories": null,
+    "votedKeywords": null,
+    "isFollowing": null,
+    "rating": null,
+    "reviewGroupId": null,
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_5",
+   "viewId": "21202659_visitor_5_8",
+   "title": "밴댕이무침",
+   "width": 3000,
+   "height": 3750,
+   "linkUrl": null,
+   "date": "2026.11.03",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": "~1~7UiYxBh0eW1j_jCgjgOdRg",
+    "nickname": "맑은하늘구름두둥실",
+    "imageUrl": "https://myplace-phinf.pstatic.net/20220930_192/166451317014736obR_JPEG/20220910_154027.jpg",
+    "objectId": "5dd392798f87a842bcb4052f",
+    "url": "https://m.place.naver.com/my/5dd392798f87a842bcb4052f/review?v=2",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://pup-review-phinf.pstatic.net/MjAyNjExMDNfMjU0/MDAxNzkzNjkxMTUxODA1.QXR7RHdZogq49aC3bqntC4Ks1dQUF9XHyjNT4dtklPkg.tSPqf41sDmC9bvUkNIrXlYOEHJpKriVsTMzbI-gIJQMg.JPEG/20261103_160639.jpg.jpg",
+   "thumbnailUrl": "https://pup-review-phinf.pstatic.net/MjAyNjExMDNfMjU0/MDAxNzkzNjkxMTUxODA1.QXR7RHdZogq49aC3bqntC4Ks1dQUF9XHyjNT4dtklPkg.tSPqf41sDmC9bvUkNIrXlYOEHJpKriVsTMzbI-gIJQMg.JPEG/20261103_160639.jpg.jpg",
+   "description": "강화도 전등사 단풍구경왔다가 근처 맛집 검색해보니\n전등사 근처 맛집 단골집에 젓국갈비 신메뉴 나왔다고 해서 왔어요 \n젓국갈비 이름이 생소했는데 강화도 전통 갈비탕 이라고 생각하면 된다고 하는데\n야채 채소 푸짐 돼직고기도 듬뿍 들어있고 국물이 너무 시원하고 맛있네요 \n\n대파, 두부, 감자, 단호박, 양퍄, 팽이버섯, 쑥갓, 배추, 무까지 듬뿍들어있어서\n국물이 정말 담백하고 깔끔한 맛에 고기까지 든든히 먹을 수 있는 메뉴\n\n만선꽃게랑 오면 항상 만선정식먹었는데 젓국갈비 매력에 흠뻑 빠져버렸어요 ㅎㅎ\n넘 맛있게 잘 먹었습니다. \n\n젓국갈비 추천!",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:밴댕이무침",
+   "sourceTitle": null,
+   "externalLink": null,
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": 4,
+    "visitCategories": null,
+    "votedKeywords": [
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "food_good",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+      "iconCode": "face_savoring_food",
+      "name": "음식이 맛있어요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "fresh",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+      "iconCode": "leaf",
+      "name": "재료가 신선해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "special_menu",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/cook20220119222024.png",
+      "iconCode": "cook",
+      "name": "특별한 메뉴가 있어요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "kind",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+      "iconCode": "beating_heart",
+      "name": "친절해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "store_clean",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+      "iconCode": "sparkles",
+      "name": "매장이 청결해요"
+     }
+    ],
+    "isFollowing": null,
+    "rating": 5,
+    "reviewGroupId": "6ae98e121d39b1d4d0b707f0",
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_6",
+   "viewId": "21202659_visitor_6_9",
+   "title": "꽃게찜",
+   "width": 3648,
+   "height": 2432,
+   "linkUrl": "https://blog.naver.com/shway66/224140924434",
+   "date": "2026.01.09",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": "HANZ46",
+    "imageUrl": "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f120_120&src=https%3A%2F%2Fblogpfthumb-phinf.pstatic.net%2FMjAyNTA3MjVfODgg%2FMDAxNzUzNDEzNjAwMzY5.Q9hvfKMnyhTKLaUxyh5vqDol5oZ6CZAfJCsWfObihzEg.RJeLELLCIXFrmGfg_K6Vbcg7ytiDrrwkdF3DFn0EdfAg.JPEG%2FKakaoTalk_20250725_121853666.jpg%2FKakaoTalk_20250725_121853666.jpg",
+    "objectId": null,
+    "url": "https://m.blog.naver.com/shway66",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://blogfiles.pstatic.net/MjAyNjAxMDlfMjAg/MDAxNzY3OTYwMzE2MjE5.iHJUedwEasfqfs8DQ2PRTX9-OLRQ-UmUaDnKp3mSeXsg.zdFVXKi-CeZ600yWFU7TciWYxyaPT04yV2CzCB0Dz28g.JPEG/19.jpg/3648x2432",
+   "thumbnailUrl": "https://blogfiles.pstatic.net/MjAyNjAxMDlfMjAg/MDAxNzY3OTYwMzE2MjE5.iHJUedwEasfqfs8DQ2PRTX9-OLRQ-UmUaDnKp3mSeXsg.zdFVXKi-CeZ600yWFU7TciWYxyaPT04yV2CzCB0Dz28g.JPEG/19.jpg/3648x2432",
+   "description": "강화도 꽃게탕 맛집 추천 뜨끈한 국물이 최고",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:꽃게찜",
+   "sourceTitle": "블로그",
+   "externalLink": {
+    "__typename": "PhotoViewerExternalLink",
+    "title": "블로그",
+    "url": "https://blog.naver.com/shway66/224140924434"
+   },
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": null,
+    "visitCategories": null,
+    "votedKeywords": null,
+    "isFollowing": null,
+    "rating": null,
+    "reviewGroupId": null,
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_7",
+   "viewId": "21202659_visitor_7_10",
+   "title": "연포탕",
+   "width": 2992,
+   "height": 2992,
+   "linkUrl": "https://blog.naver.com/tlrl0813/224269513843",
+   "date": "2026.04.29",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": null,
+    "nickname": "씨기",
+    "imageUrl": "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f120_120&src=https%3A%2F%2Fblogpfthumb-phinf.pstatic.net%2FMjAxNzEwMTNfMjUx%2FMDAxNTA3ODI5ODQ0MTI2.xXD94z2I6PgBxW5Pz6lYosUsYLbfr6hmxzhYugaU0OUg.dxzJ95J7igdXxQ37rENwoTdZE-7X_bBSWgTlIV26Ld0g.JPEG.tlrl0813%2FMyPhoto_1185879531_0002.jpg",
+    "objectId": null,
+    "url": "https://m.blog.naver.com/tlrl0813",
+    "officialYn": null,
+    "followRequested": null
+   },
+   "originalUrl": "https://blogfiles.pstatic.net/MjAyNjA0MjlfMjk2/MDAxNzc3NDU0ODY0MTg2.tMehFopt0p79LU-wRKQ0a6ZI8aMsdvPUGrbRh-s5QkEg.0sbtwjpRIfxtkPbu_5WLz18ZFpEk5ytU4J7rJ6a4oDcg.JPEG/15.jpg/2992x2992",
+   "thumbnailUrl": "https://blogfiles.pstatic.net/MjAyNjA0MjlfMjk2/MDAxNzc3NDU0ODY0MTg2.tMehFopt0p79LU-wRKQ0a6ZI8aMsdvPUGrbRh-s5QkEg.0sbtwjpRIfxtkPbu_5WLz18ZFpEk5ytU4J7rJ6a4oDcg.JPEG/15.jpg/2992x2992",
+   "description": "근본있는 강화도 꽃게탕 맛집",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:연포탕",
+   "sourceTitle": "블로그",
+   "externalLink": {
+    "__typename": "PhotoViewerExternalLink",
+    "title": "블로그",
+    "url": "https://blog.naver.com/tlrl0813/224269513843"
+   },
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": null,
+    "visitCategories": null,
+    "votedKeywords": null,
+    "isFollowing": null,
+    "rating": null,
+    "reviewGroupId": null,
+    "reviewId": null
+   },
+   "originType": "aiView"
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_clip_1",
+   "viewId": "21202659_clip_1_2",
+   "title": "클립",
+   "width": null,
+   "height": null,
+   "linkUrl": null,
+   "date": "2026.11.10",
+   "isPopularStyle": null,
+   "price": null,
+   "video": {
+    "__typename": "VideoItemInfo",
+    "videoId": "BE24029BB9192AB69078880AE4DB2F78ED65",
+    "videoUrl": "vod3://2040:V123b9b236f30551893fb788e63201f8d332e53ebb618beec6d8125e60a907090e0e9788e63201f8d332e@BE24029BB9192AB69078880AE4DB2F78ED65?env=real#track=720",
+    "trailerUrl": "https://a02-g-smp-vod.akamaized.net/clip-home/c/read/v2/VOD_ALPHA/clip-home/BE24029BB9192AB69078880AE4DB2F78ED65/trailer/1789522107243/fc452f18-b16d-11f1-a596-a0369ffda4e8.mp4?hdnts=exp%3D1794339719%7Eacl%3D%2Fclip-home%2Fc%2Fread%2Fv2%2FVOD_ALPHA%2Fclip-home%2FBE24029BB9192AB69078880AE4DB2F78ED65%2F*%7Ehmac%3Dc3d6a65f7f20754081f0ded0c696566c34c66abf4f042f2ecbafa9e1ccac077e"
+   },
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": "1NPfioyVjw2KrrlW-9t5",
+    "nickname": "duefoodie",
+    "imageUrl": "https://clip-service-phinf.pstatic.net/MjAyNTA4MjhfMTAy/MDAxNzU2MzY0MDM2OTQx.bnCSxnqGPckXD2JZtUpx5MdggCmIOuTcTTxjIcjqASsg.385XX60BGj1kDoQ59fTydYtmpUIBmh8JG1gB8QMOP7gg.JPEG/profileImage.jpg",
+    "objectId": null,
+    "url": "https://clip.naver.com/@duefoodie",
+    "officialYn": false,
+    "followRequested": null
+   },
+   "originalUrl": "https://clip-service-phinf.pstatic.net/MjAyNjA5MTZfMjU4/MDAxNzg5NTIyMTA2ODU3.mkHyTEZ1ZjOrGffoXgYlcClCXyTpV5MdO8J0FkGPkqcg.s5Dfxei_xgutH8ENtwdr_mPfL2nSwaUQiNwVXEg3JTog.JPEG/thumbnail-528C2703-F068-4807-817A-41F6B8A4649D.jpg",
+   "thumbnailUrl": "https://clip-service-phinf.pstatic.net/MjAyNjA5MTZfMjU4/MDAxNzg5NTIyMTA2ODU3.mkHyTEZ1ZjOrGffoXgYlcClCXyTpV5MdO8J0FkGPkqcg.s5Dfxei_xgutH8ENtwdr_mPfL2nSwaUQiNwVXEg3JTog.JPEG/thumbnail-528C2703-F068-4807-817A-41F6B8A4649D.jpg",
+   "description": "🦀 꽃게랑 낙지를 한 상에 때려 넣은 집ㅋㅋ 강화도 갔다가 가족끼리 제대로 한 끼 먹고 싶어서 찾은 곳인데 꽃게에 낙지까지 푸짐하게 나와서 상부터 꽉 차는 비주얼임🔥 특히 꽃게 살 발라먹고 낙지까지... ",
+   "mediaFormat": "video",
+   "mediaSource": "clip",
+   "filterId": "clip",
+   "subFilterId": null,
+   "sourceTitle": "클립",
+   "externalLink": null,
+   "clip": {
+    "__typename": "ClipItemInfo",
+    "serviceType": "CLIP",
+    "contentType": "VOD"
+   },
+   "option": {
+    "__typename": "PhotoViewerItemOption",
+    "channelName": null,
+    "dateString": null,
+    "playCount": 353,
+    "likeCount": 2
+   },
+   "visitorReview": null,
+   "originType": null
+  },
+  {
+   "__typename": "PlaceDetailTopPhotoItem",
+   "id": "21202659_visitor_5",
+   "viewId": "21202659_visitor_5_8",
+   "title": "밴댕이무침",
+   "width": 3000,
+   "height": 3750,
+   "linkUrl": null,
+   "date": "2026.11.03",
+   "isPopularStyle": null,
+   "price": null,
+   "video": null,
+   "author": {
+    "__typename": "PhotoViewerItemAuthor",
+    "id": "~1~7UiYxBh0eW1j_jCgjgOdRg",
+    "nickname": "맑은하늘구름두둥실",
+    "imageUrl": "https://myplace-phinf.pstatic.net/20220930_192/166451317014736obR_JPEG/20220910_154027.jpg",
+    "objectId": "5dd392798f87a842bcb4052f",
+    "url": "https://m.place.naver.com/my/5dd392798f87a842bcb4052f/review?v=2",
+    "officialYn": null,
+    "followRequested": null,
+    "from": "NAVER",
+    "borderImageUrl": null
+   },
+   "originalUrl": "https://pup-review-phinf.pstatic.net/MjAyNjExMDNfMjU0/MDAxNzkzNjkxMTUxODA1.QXR7RHdZogq49aC3bqntC4Ks1dQUF9XHyjNT4dtklPkg.tSPqf41sDmC9bvUkNIrXlYOEHJpKriVsTMzbI-gIJQMg.JPEG/20261103_160639.jpg.jpg",
+   "thumbnailUrl": "https://pup-review-phinf.pstatic.net/MjAyNjExMDNfMjU0/MDAxNzkzNjkxMTUxODA1.QXR7RHdZogq49aC3bqntC4Ks1dQUF9XHyjNT4dtklPkg.tSPqf41sDmC9bvUkNIrXlYOEHJpKriVsTMzbI-gIJQMg.JPEG/20261103_160639.jpg.jpg",
+   "description": "강화도 전등사 단풍구경왔다가 근처 맛집 검색해보니\n전등사 근처 맛집 단골집에 젓국갈비 신메뉴 나왔다고 해서 왔어요 \n젓국갈비 이름이 생소했는데 강화도 전통 갈비탕 이라고 생각하면 된다고 하는데\n야채 채소 푸짐 돼직고기도 듬뿍 들어있고 국물이 너무 시원하고 맛있네요 \n\n대파, 두부, 감자, 단호박, 양퍄, 팽이버섯, 쑥갓, 배추, 무까지 듬뿍들어있어서\n국물이 정말 담백하고 깔끔한 맛에 고기까지 든든히 먹을 수 있는 메뉴\n\n만선꽃게랑 오면 항상 만선정식먹었는데 젓국갈비 매력에 흠뻑 빠져버렸어요 ㅎㅎ\n넘 맛있게 잘 먹었습니다. \n\n젓국갈비 추천!",
+   "mediaFormat": "image",
+   "mediaSource": "aiView",
+   "filterId": "aiView",
+   "subFilterId": "MENU_NAME:밴댕이무침",
+   "sourceTitle": null,
+   "externalLink": null,
+   "clip": null,
+   "option": null,
+   "visitorReview": {
+    "__typename": "PhotoViewerVisitorReviewInfo",
+    "visitCount": 4,
+    "visitCategories": null,
+    "votedKeywords": [
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "food_good",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+      "iconCode": "face_savoring_food",
+      "name": "음식이 맛있어요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "fresh",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+      "iconCode": "leaf",
+      "name": "재료가 신선해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "special_menu",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/cook20220119222024.png",
+      "iconCode": "cook",
+      "name": "특별한 메뉴가 있어요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "kind",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+      "iconCode": "beating_heart",
+      "name": "친절해요"
+     },
+     {
+      "__typename": "VisitorReviewVotedKeyword",
+      "code": "store_clean",
+      "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+      "iconCode": "sparkles",
+      "name": "매장이 청결해요"
+     }
+    ],
+    "isFollowing": null,
+    "rating": 5,
+    "reviewGroupId": "6ae98e121d39b1d4d0b707f0",
+    "reviewId": null
+   },
+   "originType": "aiView"
+  }
+ ],
+ "VisitorReviewAuthor": [
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~7UiYxBh0eW1j_jCgjgOdRg",
+   "nickname": "맑은하늘구름두둥실",
+   "from": "NAVER",
+   "imageUrl": "https://myplace-phinf.pstatic.net/20220930_192/166451317014736obR_JPEG/20220910_154027.jpg",
+   "borderImageUrl": null,
+   "objectId": "5dd392798f87a842bcb4052f",
+   "url": "https://m.place.naver.com/my/5dd392798f87a842bcb4052f/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 706,
+    "imageCount": 3008,
+    "avgRating": 4.8
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "76",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~qV0VfgsF1njY--vHuE0u8Q",
+   "nickname": "77774877",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5cd997881cdc1af852da76cd",
+   "url": "https://m.place.naver.com/my/5cd997881cdc1af852da76cd/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 156,
+    "imageCount": 55,
+    "avgRating": 4.9
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~D3oD8ZUb6vDQO3pXBnWiew",
+   "nickname": "sjg****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5dafca9b8f87a842bce32bae",
+   "url": "https://m.place.naver.com/my/5dafca9b8f87a842bce32bae/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 8,
+    "imageCount": 30,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~jNNliywwuVAFBD93RTiDRg",
+   "nickname": "grace47",
+   "from": "NAVER",
+   "imageUrl": "https://phinf.pstatic.net/contact/20200713_212/1594648338687IFAi1_JPEG/image.jpg",
+   "borderImageUrl": null,
+   "objectId": "5f0709f1204cee9e1d96a43f",
+   "url": "https://m.place.naver.com/my/5f0709f1204cee9e1d96a43f/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 28,
+    "imageCount": 90,
+    "avgRating": 4.8
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~18WtimaPAyVajlTt-N-GNQ",
+   "nickname": "fun****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5d304b62f2dccf2655cdc381",
+   "url": "https://m.place.naver.com/my/5d304b62f2dccf2655cdc381/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 116,
+    "imageCount": 304,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~i04PGeo9EigS41lNJdozrw",
+   "nickname": "mmm323708",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "618b488c7bac191c195de4d8",
+   "url": "https://m.place.naver.com/my/618b488c7bac191c195de4d8/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 150,
+    "imageCount": 13,
+    "avgRating": 4.6
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~IP-8rQ54egqRXoB3xs4XXA",
+   "nickname": "KJ42",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5f044203e9d94998c6cc8d36",
+   "url": "https://m.place.naver.com/my/5f044203e9d94998c6cc8d36/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 37,
+    "imageCount": 51,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~1JEcspBt54Ir46qyhfYpQQ",
+   "nickname": "캐리브래드춘",
+   "from": "NAVER",
+   "imageUrl": "https://phinf.pstatic.net/contact/20170504_132/1493883699971yOwGy_JPEG/292a21c42abe5c01bbdfce88cd5b9437.jpg",
+   "borderImageUrl": null,
+   "objectId": "5c24feaa7a3d20cd9b63a0af",
+   "url": "https://m.place.naver.com/my/5c24feaa7a3d20cd9b63a0af/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 44,
+    "imageCount": 64,
+    "avgRating": 4.4
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~FY1XL982j5325r8M6iCn1w",
+   "nickname": "cih1021",
+   "from": "NAVER",
+   "imageUrl": "https://pup-review-phinf.pstatic.net/MjAyNjA3MTVfMTYx/MDAxNzg0MDk3ODU4NTYx.WfHvCj52VtBVdTLCMy6KMTkQBPM1ALxS-SXoJKkMSB0g._0LThHwWYn_vUB0vqZYAQvIr56vBp5Gw7BWoDlFUULEg.JPEG/1775125779087.jpg",
+   "borderImageUrl": null,
+   "objectId": "5c19f2a41402d646444faa1f",
+   "url": "https://m.place.naver.com/my/5c19f2a41402d646444faa1f/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 18,
+    "imageCount": 25,
+    "avgRating": 4.9
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~pQxpR3W5PBe5FN1JVBdgSg",
+   "nickname": "dbs****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5bb40b0b3874749546b0f750",
+   "url": "https://m.place.naver.com/my/5bb40b0b3874749546b0f750/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 919,
+    "imageCount": 280,
+    "avgRating": 4.8
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "3",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~O9o2fvyGX4quubP11Kek5Q",
+   "nickname": "chr****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "61781045004deb4392cf6eb1",
+   "url": "https://m.place.naver.com/my/61781045004deb4392cf6eb1/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 9,
+    "imageCount": 1,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~CIHtS78LQnsbEd2UbFfyJg",
+   "nickname": "여기가 어디야23",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "603e4b7672604363591f832e",
+   "url": "https://m.place.naver.com/my/603e4b7672604363591f832e/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 21,
+    "imageCount": 14,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~h09APcJFgwNXhSRBiCvSsw",
+   "nickname": "안민호38",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5d21f9cab8364e291890eac7",
+   "url": "https://m.place.naver.com/my/5d21f9cab8364e291890eac7/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 8,
+    "imageCount": 4,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~eO4N--FcNTEd8vSii7iKqQ",
+   "nickname": "sgs****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "6161297082ac4f8e76eb05e7",
+   "url": "https://m.place.naver.com/my/6161297082ac4f8e76eb05e7/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 203,
+    "imageCount": 0,
+    "avgRating": 0
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~rvKWMWRz-0V3LVEjM0KsuQ",
+   "nickname": "dea****",
+   "from": "NAVER",
+   "imageUrl": "https://phinf.pstatic.net/contact/20210614_213/1623680945649dKBW8_JPEG/%C4%B8%C3%B3.JPG",
+   "borderImageUrl": null,
+   "objectId": "5f3a583ea602e98f561e3880",
+   "url": "https://m.place.naver.com/my/5f3a583ea602e98f561e3880/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 1,
+    "imageCount": 0,
+    "avgRating": 0
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~Z23mi0FIB5536BlbS-1dsA",
+   "nickname": "WATER47",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5bf53ef4c6d3e375c8709cf2",
+   "url": "https://m.place.naver.com/my/5bf53ef4c6d3e375c8709cf2/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 19,
+    "imageCount": 14,
+    "avgRating": 4.7
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~FQ40BvdKsUggP2HVDGer4w",
+   "nickname": "go****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5b676f54fadce323f7fb52d0",
+   "url": "https://m.place.naver.com/my/5b676f54fadce323f7fb52d0/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 1,
+    "imageCount": 0,
+    "avgRating": 0
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~M3dhnFPHJzKEZXkRcZc9Hg",
+   "nickname": "킴5412",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5c3a08d1f0801334229a09b9",
+   "url": "https://m.place.naver.com/my/5c3a08d1f0801334229a09b9/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 20,
+    "imageCount": 13,
+    "avgRating": 4.8
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~edsf2s2_F38NSIrf7_Tuiw",
+   "nickname": "tig****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "5edf5e3e8f87a842bc9b42a9",
+   "url": "https://m.place.naver.com/my/5edf5e3e8f87a842bc9b42a9/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 21,
+    "imageCount": 12,
+    "avgRating": 5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "1",
+   "followRequested": null
+  },
+  {
+   "__typename": "VisitorReviewAuthor",
+   "isMe": false,
+   "id": "~1~2b7eIh112j_CSRIy8iqYrQ",
+   "nickname": "wet****",
+   "from": "NAVER",
+   "imageUrl": null,
+   "borderImageUrl": null,
+   "objectId": "616a9c6ecc3a5110ff3349b3",
+   "url": "https://m.place.naver.com/my/616a9c6ecc3a5110ff3349b3/review?v=2",
+   "review": {
+    "__typename": "AuthorReview",
+    "totalCount": 6,
+    "imageCount": 3,
+    "avgRating": 4.5
+   },
+   "theme": {
+    "__typename": "AuthorTheme",
+    "totalCount": 0
+   },
+   "isFollowing": null,
+   "followerCount": "0",
+   "followRequested": null
+  }
+ ],
+ "ReactionStat": [
+  {
+   "__typename": "ReactionStat",
+   "id": "6ae98e121d39b1d4d0b707f0",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6af2985f7cc448781c7df0b6",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6ae993fa1fc2bffea4a4fa81",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6acb0c2293a8110723b57917",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6ac0d610b1943ef9ffca8bb9",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6aed5682026b045daf3bdf48",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 1
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    }
+   ],
+   "totalCount": 1
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6ab5f93519f429203650c2b4",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6ae58b0e53f5f148b191d14d",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6adb1cf88739b9b08541f583",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6aadfeb63264b1dfef564629",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6a7fd22fdc3827c8b73c38d5",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "69f44ff17669d1def836620e",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "6a13c389834888c0d8e6fd24",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "69c89b4eb5d4798f4fdb7e61",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "69be2ba88a9a3f6781f77972",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "68fc64931b50d54ee3f5aa1d",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "68f9b739d5d00d7d075ee7be",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "68f2ff113806a5e44f6aa857",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "68312a9b4609543e02af2f34",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  },
+  {
+   "__typename": "ReactionStat",
+   "id": "68183fec70a6820b0b7dd675",
+   "typeCount": [
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "fun",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "helpful",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "wannago",
+     "count": 0
+    },
+    {
+     "__typename": "ReactionStatTypeCount",
+     "name": "cool",
+     "count": 0
+    }
+   ],
+   "totalCount": 0
+  }
+ ],
+ "VisitorReview": [
+  {
+   "__typename": "VisitorReview",
+   "id": "6acb0c2293a8110723b57917",
+   "cursor": "SXlZc3hVMnFvS2FIbzBxMVBNTEh3SnNnNkUxdVVWVzRnUVZTYlFZWnVCdXdLbXY0b3pPMFZYNzdHLy9nekJiMkduK1E5Smk5Y3BTa3lERWRKcy9pN1E4eWo5bC8yMTM5bEhEaDl5SlVuY202NGZveTByUzI1UUk4MDBnZWNkcHZmY08yNmc9PQ==",
+   "reviewId": "6acb0c2293a8110723b5792a",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~jNNliywwuVAFBD93RTiDRg",
+    "nickname": "grace47",
+    "from": "NAVER",
+    "imageUrl": "https://phinf.pstatic.net/contact/20200713_212/1594648338687IFAi1_JPEG/image.jpg",
+    "borderImageUrl": null,
+    "objectId": "5f0709f1204cee9e1d96a43f",
+    "url": "https://m.place.naver.com/my/5f0709f1204cee9e1d96a43f/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 28,
+     "imageCount": 90,
+     "avgRating": 4.8
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "body": "전등사에 놀러왔다 점심먹으러 왔어요 신랑은 간장게장시키고 저는 생선구이백반시켰는데 정말 맛있게 먹었습니다. 같이 나온 된장찌개도 정말 맛있어요 밑반찬도 맛있고 신랑이 간징게장 싱싱하고 너무 맛있다고 밥 한공기 더 시켰어요 서비스로 콘치즈도 나왔는데 이것도.맛있네요",
+   "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMTFfMTQ5/MDAxNzkxNjkxNjMxNTMy.Fyv6M4fpWWMlUCdQXgZLYuoxQtd67YjJYTbTeuQTQ3Eg.a9qMLcNlrju4Wv3N30_WKsjIgvfIHTgXT2BqRthuYE0g.JPEG/20261011_130318.jpg",
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMTFfMTQ5/MDAxNzkxNjkxNjMxNTMy.Fyv6M4fpWWMlUCdQXgZLYuoxQtd67YjJYTbTeuQTQ3Eg.a9qMLcNlrju4Wv3N30_WKsjIgvfIHTgXT2BqRthuYE0g.JPEG/20261011_130318.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "landscape",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMTFfMjYx/MDAxNzkxNjkxNjMwODI1.P7wQ5atVWgpdSnKyYMaZ1sqTfj3WXY-aN2pVHCfoChIg.Hi3ECyOaIfDxt3fMwbAZzYlonUqkcpqOnwmJS0ScjeUg.JPEG/20261011_130313.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "landscape",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMTFfNTcg/MDAxNzkxNjkxNjMxMjUw.6q4YCV6VMZ0BV2Nwf_t8UwYQE8hRo_v4IBe-XlsQYrAg.drXeXKqCLniKcVEiNr-0x6S7RvBd5UsmduAxbQ_hADUg.JPEG/20261011_130215.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "landscape",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMTFfOTUg/MDAxNzkxNjkxNjMxNDA4.yzEqBha7s-GfD6GRgNyhg9v3i_N7ywN_GVZcQm2V7n4g.iiUyYEeUo0BvMSjgwVdjkf-jlpNX7Iu6-8wsV7B-Hy8g.JPEG/20261011_130212.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "landscape",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 1594,
+   "visited": "10.11.일",
+   "created": "10.11.일",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6acb0c2293a8110723b57917",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "간장게장",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "spacious",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/eyes20220119222026.png",
+     "iconCode": "eyes",
+     "name": "매장이 넓어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "store_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+     "iconCode": "sparkles",
+     "name": "매장이 청결해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "name": "친절해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "parking_easy",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/park_sign20220119222222.png",
+     "iconCode": "park_sign",
+     "name": "주차하기 편해요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6acb0c2293a8110723b57917/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6acb0c2293a8110723b57917",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6acb0c2293a8110723b57917",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_casual_outing",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "나들이",
+       "name": "나들이"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_significant_other",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "연인・배우자",
+       "name": "연인・배우자"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-10-11T04:06:00.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6ac0d610b1943ef9ffca8bb9",
+   "cursor": "TVk0MG43MHRhV2QrdTNOUkN6S3p4eEJ5akhTblc5MWlTNnBXY3JvVHBkdHB4NWo1Q2phdklWMXlTM3hCL082KzZNS0lod0lCMkJBcTZVaFMwaWQyRzYyRmJBYlUvMmJ1L3BkaE9aY2JETnc5QWdzNHFXaWs5TWg0YnUwSW83cCtMeUtlcVE9PQ==",
+   "reviewId": "6ac0d610b1943ef9ffca8bd1",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~18WtimaPAyVajlTt-N-GNQ",
+    "nickname": "fun****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5d304b62f2dccf2655cdc381",
+    "url": "https://m.place.naver.com/my/5d304b62f2dccf2655cdc381/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 116,
+     "imageCount": 304,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "body": "강화루지 타고 찬바람쐬서 따땃한 맛집찾아서 왔는데 완전 대성공이에요!!!🐙😉🦀🤗🦐 부모님 모시고 꼭 다시 올거에요!  가마솥밥에 누룽지도 넘넘 고소하고 깔끔하고 잘 어울리고 꽃게도 대왕커서 살이 꽉 찼습니당! 강추드려요👍",
+   "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMDNfMTY4/MDAxNzkxMDIyMTQ4NzI5.lJlyd3ISmVkFrnUlWsANADteGCL_QfbKIcI00j2638Ug.GPDLduAawcyKuFXrv9h2kY719-bDlNcXEqfvUUEVSe0g.JPEG/20261003_184014.jpg",
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMDNfMTY4/MDAxNzkxMDIyMTQ4NzI5.lJlyd3ISmVkFrnUlWsANADteGCL_QfbKIcI00j2638Ug.GPDLduAawcyKuFXrv9h2kY719-bDlNcXEqfvUUEVSe0g.JPEG/20261003_184014.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMDNfMTkz/MDAxNzkxMDIyMTQ4OTU5.WVCZBIMQaYdzDmV5DLKZcq9AAIDyjEZRmMBdfvSghyIg.o2G6zI9esh-HJR8DE8jjd4KEGwMeF-rE6odSbNYt0hAg.JPEG/20261003_183351.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMDNfMTUz/MDAxNzkxMDIyMTQ4NDc3.J1456IwMXPQ-nAr2es5e-RpU93ieW72MgVZlBh6YB9Ag.BEgbTfC0WYxoxlrpez1N0V0SKCqnpg_k9dAS-5CZnAkg.JPEG/20261003_184006.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 1952,
+   "visited": "10.3.토",
+   "created": "10.3.토",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6ac0d610b1943ef9ffca8bb9",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "꽃낙새 중",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "name": "친절해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "store_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+     "iconCode": "sparkles",
+     "name": "매장이 청결해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "parking_easy",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/park_sign20220119222222.png",
+     "iconCode": "park_sign",
+     "name": "주차하기 편해요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6ac0d610b1943ef9ffca8bb9/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6ac0d610b1943ef9ffca8bb9",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6ac0d610b1943ef9ffca8bb9",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_romantic_date",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "데이트",
+       "name": "데이트"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_significant_other",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "연인・배우자",
+       "name": "연인・배우자"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-10-03T09:43:00.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6ab5f93519f429203650c2b4",
+   "cursor": "dGhQK2tOeWY0WEViUmxkaTM4OG8yZmtZQk9PQWZZb0ZoRDJCS2J0eTR3M3lrYUZyUFJpTTdZcnZxalM1NEVXZWd3Wk4xejNXQnp0emRKK2FLNVZFQWNZSWt3ZEtsYUNNQnhhMnNVbEpmb1ZTZmdkMTBVeTYrVjBVTHVkYnBSL05uREZ3eWc9PQ==",
+   "reviewId": "6ab5f93519f429203650c2d6",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~IP-8rQ54egqRXoB3xs4XXA",
+    "nickname": "KJ42",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5f044203e9d94998c6cc8d36",
+    "url": "https://m.place.naver.com/my/5f044203e9d94998c6cc8d36/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 37,
+     "imageCount": 51,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "body": "검색해보고 와본 곳인데 생각보다 너무너무 맛있었어요 강추입니다! 꽃게탕 너무 맛있고 좀 먹다가 칼국수 수제비 꼭 추가하세용 간장게장 새우장도 짱맛이고 양념게장도 살짝 매콤하니 간이 딱이었습니다!! 가족 식사로 너무 잘먹었습니당",
+   "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MjVfMjg0/MDAxNzkwMzEwNzAxNjM2.5kxnJh4nAnMGjzp2wzgnSJZKhK9VNsj8W4y47iaVMfYg.v6ZAQMpSRh2fNs0x1GsoxNuCZDf0_UoVdwyGGRjcgpMg.JPEG/2689A5A4-0F3A-4C46-BEBD-619D092E0C58.jpeg",
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MjVfMjg0/MDAxNzkwMzEwNzAxNjM2.5kxnJh4nAnMGjzp2wzgnSJZKhK9VNsj8W4y47iaVMfYg.v6ZAQMpSRh2fNs0x1GsoxNuCZDf0_UoVdwyGGRjcgpMg.JPEG/2689A5A4-0F3A-4C46-BEBD-619D092E0C58.jpeg?type=w1500_60_sharpen",
+     "thumbnailRatio": "square",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MjVfMjAz/MDAxNzkwMzEwNzA0NTUx.T9PmYDm4n1C-K-VeYTQWjI-pdGOBVDEPYhFPkTha0Gsg.q5UpWt3lKyyzMRg3Or9EyZLx-dR4AEmA1FmfcRMD-qog.JPEG/D5C81CCA-56DF-4E8B-A17A-273A936FF9E2.jpeg?type=w1500_60_sharpen",
+     "thumbnailRatio": "square",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MjVfMjYx/MDAxNzkwMzEwNzA3ODY1.4Gi8Nmu3pYPgFaxVJeJRJogHkR0nAKUl2C1ntJP7gi4g.T-BKzwgbvupCBGUhB0aDtYX7kqGIyoXnFEJvov56KKwg.JPEG/8AFF0073-A253-4953-8752-59381294F692.jpeg?type=w1500_60_sharpen",
+     "thumbnailRatio": "square",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 2357,
+   "visited": "9.25.금",
+   "created": "9.25.금",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6ab5f93519f429203650c2b4",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "만선정식 3인",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "name": "양이 많아요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6ab5f93519f429203650c2b4/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6ab5f93519f429203650c2b4",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6ab5f93519f429203650c2b4",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_casual_outing",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "나들이",
+       "name": "나들이"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-09-25T04:29:00.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6ae58b0e53f5f148b191d14d",
+   "cursor": "eG5mVStEaEtlOG02czBSdWl4OWdTLzhVVUFCeGhPM3BiWjhlcUQvWGNkcEdlM0NTaUpYV0cvOXlGNlJLN0hncUJmeHh5b2k3djBxUUs1aFk4K1RpMkpXQUxndUNSOHRGeEZtdllHd1pjUkZleURaVzRFbnFzQi8yMnZWZW94REc3ZnZNQ0E9PQ==",
+   "reviewId": "6ae58b0e53f5f148b191d153",
+   "rating": 4,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~1JEcspBt54Ir46qyhfYpQQ",
+    "nickname": "캐리브래드춘",
+    "from": "NAVER",
+    "imageUrl": "https://phinf.pstatic.net/contact/20170504_132/1493883699971yOwGy_JPEG/292a21c42abe5c01bbdfce88cd5b9437.jpg",
+    "borderImageUrl": null,
+    "objectId": "5c24feaa7a3d20cd9b63a0af",
+    "url": "https://m.place.naver.com/my/5c24feaa7a3d20cd9b63a0af/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 44,
+     "imageCount": 64,
+     "avgRating": 4.4
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "body": "​1. 비주얼 & 재료 구성\n​냄비 가득 꽉 들어찬 해산물의 비주얼부터 시선을 사로잡습니다. 살이 오통통하게 차오른 꽃게, 쫄깃함이 눈으로도 보이는 통낙지, 그리고 탱글탱글한 새우까지 배부르게 어우러져 있어 끓이기 전부터 기대감이 커졌습니다. 여기에 무, 쑥갓, 팽이버섯, 대파가 듬뿍 들어가 국물 맛의 완성도를 제대로 높여줍니다.\n​2. 맛과 국물 (핵심!)\n​국물 맛: 해산물이 어우러지면서 우러나오는 국물 맛이 정말 깊고 시원합니다. 인위적인 조미료 맛이 아니라, 꽃게에서 나오는 달큼한 감칠맛과 새우의 고소함, 무와 쑥갓의 칼칼하고 시원한 맛이 완벽하게 균형을 이룹니다.\n​해물 식감:\n​꽃게: 속살이 꽉 차 있어 씹을 때마다 달콤한 게살이 입안 가득 퍼집니다.\n​낙지: 살짝 데쳐졌을 때 바로 건져 먹으니 질기지 않고 야들야들하면서도 쫄깃한 식감이 예술입니다.\n​새우: 껍질을 까서 국물에 적셔 먹으면 탱글한 식감과 함께 짭조름한 양념이 잘 베어있습니다.\n​3. 추천 팁 & 마무리의 미학\n​시작은 국물, 마무리는 사리: 처음에는 깔끔하고 칼칼한 국물 본연의 맛을 즐기다가, 해산물을 어느 정도 건져 먹은 뒤 라면 사리나 수제비 사리를 추가하면 녹진해진 국물과 환상의 조합이 미쳤습니다.",
+   "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMzFfMTE2/MDAxNzkzNDI4MjE0OTE1.yYEej2tTO1m5ri2u895lC67Rimvku3C-2jGo2YRKRIcg.U2gxcT4_Ouh8QFJtWjHwKp8NCFXCXPJIT46tsMogy5og.JPEG/7292.jpg",
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMzFfMTE2/MDAxNzkzNDI4MjE0OTE1.yYEej2tTO1m5ri2u895lC67Rimvku3C-2jGo2YRKRIcg.U2gxcT4_Ouh8QFJtWjHwKp8NCFXCXPJIT46tsMogy5og.JPEG/7292.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 238,
+   "visited": "10.31.토",
+   "created": "10.31.토",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6ae58b0e53f5f148b191d14d",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "name": "양이 많아요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6ae58b0e53f5f148b191d14d/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6ae58b0e53f5f148b191d14d",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6ae58b0e53f5f148b191d14d",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_casual_outing",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "나들이",
+       "name": "나들이"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_parents",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "부모님",
+       "name": "부모님"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-10-31T06:29:00.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6adb1cf88739b9b08541f583",
+   "cursor": "SlZNMUJEN3d6NzZUTTFRODJ3c0NnV29pYW9rWHFSci9jUUhMd3ZqMW1LcHBmcERyZ0tYalljQTVOYW01My9sMUtmMDFJb21hVDJsa3NaOHJNWFJuWEx6Mzc2dzE5MTBmeW9rRHNLMUgzWlllaVgyb1A2YXM1aEoyR3B1NWcvYWg1Q0tqZGc9PQ==",
+   "reviewId": "6adb1cf88739b9b08541f58a",
+   "rating": 4.5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~FY1XL982j5325r8M6iCn1w",
+    "nickname": "cih1021",
+    "from": "NAVER",
+    "imageUrl": "https://pup-review-phinf.pstatic.net/MjAyNjA3MTVfMTYx/MDAxNzg0MDk3ODU4NTYx.WfHvCj52VtBVdTLCMy6KMTkQBPM1ALxS-SXoJKkMSB0g._0LThHwWYn_vUB0vqZYAQvIr56vBp5Gw7BWoDlFUULEg.JPEG/1775125779087.jpg",
+    "borderImageUrl": null,
+    "objectId": "5c19f2a41402d646444faa1f",
+    "url": "https://m.place.naver.com/my/5c19f2a41402d646444faa1f/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 18,
+     "imageCount": 25,
+     "avgRating": 4.9
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "body": "바다뷰를 바라보며 먹는 꽃낙새탕🌊 꽃게와 새우, 산낙지 한 마리까지 푸짐하게 들어가고 국물도 시원하고 얼큰해서 정말 맛있게 먹었어요. 멋진 뷰와 맛을 함께 즐길 수 있어 좋았어요. 😊",
+   "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMjNfNzAg/MDAxNzkyNzQ0Njk1MTk2.9fUjHxeKOXTYW1vMSBEHn9dxCClvFY5k8QzExKUn9YUg.4OMsqgxk-53ldstqKGppD5tCxutf5C-6DG3lbx7QF7Ig.JPEG/20261023_172043.jpg.jpg",
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMjNfNzAg/MDAxNzkyNzQ0Njk1MTk2.9fUjHxeKOXTYW1vMSBEHn9dxCClvFY5k8QzExKUn9YUg.4OMsqgxk-53ldstqKGppD5tCxutf5C-6DG3lbx7QF7Ig.JPEG/20261023_172043.jpg.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMjNfMjk0/MDAxNzkyNzQ0Njk1Mjk2.3tL8UaqTg9JJ6kYPDwJy88iMZ9vzA_-JChIRXfAwqbog.KMgAzWtm4NO1S2KXg4a3IwUCo0NF6TIANGwWEanSNU0g.JPEG/20261023_172054.jpg.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "landscape",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjEwMjNfMjUw/MDAxNzkyNzQ0Njk1MTQ2.x02Pb3llNOnAnlavQSDuk0RgFAq55NClZLzV7ZnJPLsg.MGbhovPOHcBzsunG_SRbK-WdI_WEylRtO-rrjEWEwOUg.JPEG/20261023_172334.jpg.jpg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 411,
+   "visited": "10.23.금",
+   "created": "10.23.금",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6adb1cf88739b9b08541f583",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "만선정식 2인",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "interior_cool",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/couch_and_lamp20220119222025.png",
+     "iconCode": "couch_and_lamp",
+     "name": "인테리어가 멋져요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "name": "친절해요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6adb1cf88739b9b08541f583/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6adb1cf88739b9b08541f583",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6adb1cf88739b9b08541f583",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_romantic_date",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "데이트",
+       "name": "데이트"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_significant_other",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "연인・배우자",
+       "name": "연인・배우자"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-10-23T08:37:00.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6aadfeb63264b1dfef564629",
+   "cursor": "bWhnUDQvSU9hL29VeGhxTlYyWDRkWjRlcWlyeSsrZzJOV1NQMW03Z3VIS1pWOWVuWHVvQ3RMckRZZU0zanQyOURUanhESVdhdmc1T1hFNWxBZFVmdXBlWjlybDgxY1hZQUhSMjRjazgwZGUzWHJNN3VKZTlSSjlIdXU0R1pxK01zSmsyRFE9PQ==",
+   "reviewId": "6aadfeb63264b1dfef564644",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~pQxpR3W5PBe5FN1JVBdgSg",
+    "nickname": "dbs****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5bb40b0b3874749546b0f750",
+    "url": "https://m.place.naver.com/my/5bb40b0b3874749546b0f750/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 919,
+     "imageCount": 280,
+     "avgRating": 4.8
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "3",
+    "followRequested": null
+   },
+   "body": "꽃게탕을 좋아하시는 부모님을 모시고 갈 만한 곳을 찾다가 방문했어요!\n꽃게탕도 푸짐하고 맛있었는데, 살아있는 낙지를 넣어주셔서 더욱 신선하게 즐길 수 있었어요.\n부모님도 맛있게 드셔서 뿌듯했네요. 가족과 함께 식사하기 좋은 곳으로 추천합니다!",
+   "thumbnail": null,
+   "media": [
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "video",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MTlfMTUy/MDAxNzg5Nzg3ODI4MzI4.CW-WjYEVLY39LOmVdFLYr9l8gY6HnGNGj4fjHA-sebIg.8Sw9k0CBY2mNCQk1zknWTAdwZRNsKkD-xfpTiiSU4HIg.JPEG/3F684CF3-3AE6-4A2C-BBD3-7F647CE3EEA2.jpeg",
+     "thumbnailRatio": "portrait",
+     "class": null,
+     "videoId": "FC42F882EED2CBA111E1EE5495DC701E33E8",
+     "videoUrl": "vod3://2040:V1268bda73238868976050db6f2181062bff8bd66d1d81af713845369fb87938facf70db6f2181062bff8@FC42F882EED2CBA111E1EE5495DC701E33E8?env=real#track=720",
+     "trailerUrl": "https://a02-g-smp-vod.akamaized.net/pup_review/c/read/v2/VOD_ALPHA/pup_review/FC42F882EED2CBA111E1EE5495DC701E33E8/trailer/1789787829625/9c0d971f-b3d8-11f1-bc54-80615f0bccb0.mp4?hdnts=exp%3D1794339723%7Eacl%3D%2Fpup_review%2Fc%2Fread%2Fv2%2FVOD_ALPHA%2Fpup_review%2FFC42F882EED2CBA111E1EE5495DC701E33E8%2F*%7Ehmac%3D8069a20eff020d7175c75a8617a47edbecad781c67b93949c5ed591ca477ed51"
+    },
+    {
+     "__typename": "VisitorReviewMedia",
+     "type": "image",
+     "thumbnail": "https://pup-review-phinf.pstatic.net/MjAyNjA5MTlfMzMg/MDAxNzg5Nzg3ODI5MTk3.MNQu6_W5_T4CBu3LKf07yKPCH9F1b96h0pF__vbvPXog.xA8kvNSKkTTDFuRpwKuywi6kLjJjxQ1PAMukgAXJXmog.JPEG/2B775048-C81F-47AF-8FDA-4CDC13DE882E.jpeg?type=w1500_60_sharpen",
+     "thumbnailRatio": "portrait",
+     "class": "notReceipt",
+     "videoId": null,
+     "videoUrl": null,
+     "trailerUrl": null
+    }
+   ],
+   "tags": null,
+   "status": "ACTIVE",
+   "visitCount": 1,
+   "viewCount": 2114,
+   "visited": "9.19.토",
+   "created": "9.19.토",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6aadfeb63264b1dfef564629",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "originType": "영수증",
+   "item": {
+    "__typename": "VisitorReviewItem",
+    "name": "꽃낙새 중",
+    "code": null,
+    "options": null
+   },
+   "language": "ko",
+   "highlightRanges": null,
+   "apolloCacheId": "true",
+   "translatedText": null,
+   "businessName": "만선꽃게랑낙지",
+   "showBookingItemName": false,
+   "bookingItemName": "",
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "name": "양이 많아요"
+    }
+   ],
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6aadfeb63264b1dfef564629/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6aadfeb63264b1dfef564629",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6aadfeb63264b1dfef564629",
+    "reacted": false
+   },
+   "nickname": "",
+   "showPaymentInfo": true,
+   "visitCategories": [
+    {
+     "__typename": "VisitCategory",
+     "code": "v_no_reservation",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "예약 없이 이용",
+       "name": "예약 없이 이용"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_enter_immediately",
+     "name": "대기 시간",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "바로 입장",
+       "name": "바로 입장"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_family_gathering",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "가족모임",
+       "name": "가족모임"
+      }
+     ]
+    },
+    {
+     "__typename": "VisitCategory",
+     "code": "v_parents",
+     "name": "",
+     "keywords": [
+      {
+       "__typename": "VisitCategoryKeyword",
+       "code": "부모님",
+       "name": "부모님"
+      }
+     ]
+    }
+   ],
+   "representativeVisitDateTime": "2026-09-19T03:15:29.000Z",
+   "showRepresentativeVisitDateTime": true
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6a7fd22fdc3827c8b73c38d5",
+   "cursor": "ZVVvQXJScEdKZFdQUHVLQnVScm1TVlBxaGhRUVhuVVBBVC9oVjNuVDhGcVZaVkcraDFqUlhaQTJpM2tFcWlRUkIyVkVBTnl5TzBxaE5nY0JiV1Bwekl0eHN1ZklZZy9kVzZJSUhyVXJMT01DZ29kOUhwSStkS20rblZpaHFFZE5PWjdDekE9PQ==",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~O9o2fvyGX4quubP11Kek5Q",
+    "nickname": "chr****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "61781045004deb4392cf6eb1",
+    "url": "https://m.place.naver.com/my/61781045004deb4392cf6eb1/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 9,
+     "imageCount": 1,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "8.15.토",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6a7fd22fdc3827c8b73c38d5",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "displayName": null,
+     "name": "양이 많아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "special_menu",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/cook20220119222024.png",
+     "iconCode": "cook",
+     "displayName": null,
+     "name": "특별한 메뉴가 있어요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6a7fd22fdc3827c8b73c38d5/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6a7fd22fdc3827c8b73c38d5",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6a7fd22fdc3827c8b73c38d5",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "69f44ff17669d1def836620e",
+   "cursor": "MkRWZmZ3WkY0ZGlWYkNmamY5SEJ2cE0rQzVGTTVKbVpHVHN6a1ZaN3E1QlVyRzBQV1lDQTkyYWZTandlQS9IcFdIc0NOTnhPR0N2SzFxTGkzUG5YcGVObUJ1Wm9nc0tiQWpTSnVuUTBhU3BIR08zZnZHOE5pUUQrSFNFYlhlN3FZWk16enc9PQ==",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~CIHtS78LQnsbEd2UbFfyJg",
+    "nickname": "여기가 어디야23",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "603e4b7672604363591f832e",
+    "url": "https://m.place.naver.com/my/603e4b7672604363591f832e/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 21,
+     "imageCount": 14,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "5.1.금",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/69f44ff17669d1def836620e",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/69f44ff17669d1def836620e/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "69f44ff17669d1def836620e",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "69f44ff17669d1def836620e",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "6a13c389834888c0d8e6fd24",
+   "cursor": "T2dURnQzU200Tkp4eHhKWFcrUW90UnUxdXRqN212QWxhRWgySkZDamhhakhjQlN1aThxR2pYbTBSSFpDVTh5bGRjZjg3WXZuRE9KT1ByVFFIU1p0RmVTYXpURWhpU3NFbEJtamdRVGVGZjBUSEFjdFFpejBLdDdFMUdSLzA2T0VqYXZG",
+   "rating": 5,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~h09APcJFgwNXhSRBiCvSsw",
+    "nickname": "안민호38",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5d21f9cab8364e291890eac7",
+    "url": "https://m.place.naver.com/my/5d21f9cab8364e291890eac7/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 8,
+     "imageCount": 4,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "5.25.월",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/6a13c389834888c0d8e6fd24",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "displayName": null,
+     "name": "양이 많아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "price_worthy",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/gem_stone20220119222239.png",
+     "iconCode": "gem_stone",
+     "displayName": null,
+     "name": "비싼 만큼 가치있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "sidedish_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/bento_box20220119222224.png",
+     "iconCode": "bento_box",
+     "displayName": null,
+     "name": "반찬이 잘 나와요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/6a13c389834888c0d8e6fd24/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "6a13c389834888c0d8e6fd24",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "6a13c389834888c0d8e6fd24",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "69c89b4eb5d4798f4fdb7e61",
+   "cursor": "UE5kVzFVUWNFdlpxakFMejk2ZEltOEE5eUxNdk5NZWVLLzZkZEdEeExRUTlvZFdyWjk0K0owZ2tiTUdlVWdXU3NYOXl5cTYvM0JoRWFFREJLWi9Ed1o2NkFMRzZjSFo0UkU0K1hkcVV2aHg1T2k4aUVmaVR3c0V3NDRlNDF4bnBuUm05RXc9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~eO4N--FcNTEd8vSii7iKqQ",
+    "nickname": "sgs****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "6161297082ac4f8e76eb05e7",
+    "url": "https://m.place.naver.com/my/6161297082ac4f8e76eb05e7/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 203,
+     "imageCount": 0,
+     "avgRating": 0
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "3.29.일",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/69c89b4eb5d4798f4fdb7e61",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "displayName": null,
+     "name": "양이 많아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "view_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/framed_picture20220119222027.png",
+     "iconCode": "framed_picture",
+     "displayName": null,
+     "name": "뷰가 좋아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/69c89b4eb5d4798f4fdb7e61/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "69c89b4eb5d4798f4fdb7e61",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "69c89b4eb5d4798f4fdb7e61",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "69be2ba88a9a3f6781f77972",
+   "cursor": "c0Robmd5cDlHOGV4T1Q4dm5KTmlWa05iVVNxdjhtOEFBK0Q1aTdZNytZci9hUEg5OVQ2YnFQaFlua0puc3JCN3kwK3l5K3VsTVdzV0lOTXJYYmlxSFFCZlcydTM1Qmwvd2lDZFpDcHVpR3F6UktnSkRKbDh5emVCemZQQlNYV3lWTVZZNkE9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~rvKWMWRz-0V3LVEjM0KsuQ",
+    "nickname": "dea****",
+    "from": "NAVER",
+    "imageUrl": "https://phinf.pstatic.net/contact/20210614_213/1623680945649dKBW8_JPEG/%C4%B8%C3%B3.JPG",
+    "borderImageUrl": null,
+    "objectId": "5f3a583ea602e98f561e3880",
+    "url": "https://m.place.naver.com/my/5f3a583ea602e98f561e3880/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 1,
+     "imageCount": 0,
+     "avgRating": 0
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "3.21.토",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/69be2ba88a9a3f6781f77972",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "large",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/steamed_rice20220119222024.png",
+     "iconCode": "steamed_rice",
+     "displayName": null,
+     "name": "양이 많아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "together",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/busts_in_silhouette20220119222027.png",
+     "iconCode": "busts_in_silhouette",
+     "displayName": null,
+     "name": "단체모임 하기 좋아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/69be2ba88a9a3f6781f77972/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "69be2ba88a9a3f6781f77972",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "69be2ba88a9a3f6781f77972",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "68fc64931b50d54ee3f5aa1d",
+   "cursor": "VGVuTU8yelN3Z2tRcVJlRzJHeFhrOHp4STZxNnM3c2JHak9vN3Rld1FiNVYxdTB2MThUL3hpSEowQWVrRnF1SzJwQVl0d3dzZFREMVB3amZWWTFWM1hKNUxZc2FGRUlMSW5zNDFVSXFrLy9oWHNEYmFicDB4TEhFcDlqRUtXMGcrY0JlZ1E9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~Z23mi0FIB5536BlbS-1dsA",
+    "nickname": "WATER47",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5bf53ef4c6d3e375c8709cf2",
+    "url": "https://m.place.naver.com/my/5bf53ef4c6d3e375c8709cf2/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 19,
+     "imageCount": 14,
+     "avgRating": 4.7
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "25.10.25.토",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/68fc64931b50d54ee3f5aa1d",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "sidedish_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/bento_box20220119222224.png",
+     "iconCode": "bento_box",
+     "displayName": null,
+     "name": "반찬이 잘 나와요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "talk_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/speaking_head20220119222227.png",
+     "iconCode": "speaking_head",
+     "displayName": null,
+     "name": "대화하기 좋아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/68fc64931b50d54ee3f5aa1d/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "68fc64931b50d54ee3f5aa1d",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "68fc64931b50d54ee3f5aa1d",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "68f9b739d5d00d7d075ee7be",
+   "cursor": "Wno0WU4xNXJ4Q0liOGVMUGRhSVFMc25UWW90TVRXMzVGLzNWZVVmem1TckFnc1Z3L29yY3d3RHlWTFZEb2lJbW1YMTQ1MldyekxCMUh5WW5sZzRROTh6TlVJL1BFczBQTWg3TW11RjN4cFJjK3VUVTd0Sm95WEkxZE92dTVtamt1b0VGcWc9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~FQ40BvdKsUggP2HVDGer4w",
+    "nickname": "go****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5b676f54fadce323f7fb52d0",
+    "url": "https://m.place.naver.com/my/5b676f54fadce323f7fb52d0/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 1,
+     "imageCount": 0,
+     "avgRating": 0
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "25.10.23.목",
+   "originType": "결제내역",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/68f9b739d5d00d7d075ee7be",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "special_day",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/bouquet20220119222223.png",
+     "iconCode": "bouquet",
+     "displayName": null,
+     "name": "특별한 날 가기 좋아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "store_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+     "iconCode": "sparkles",
+     "displayName": null,
+     "name": "매장이 청결해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "view_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/framed_picture20220119222027.png",
+     "iconCode": "framed_picture",
+     "displayName": null,
+     "name": "뷰가 좋아요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/68f9b739d5d00d7d075ee7be/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "68f9b739d5d00d7d075ee7be",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "68f9b739d5d00d7d075ee7be",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "68f2ff113806a5e44f6aa857",
+   "cursor": "RnR2alJpdjEyd2FEaGNDckxjWUZnOHNzeVh5blpxTVc0cGZMcWdpWnQ5ZWk1L1VoQUlVM2c4Y1crbldBMVBuVGhTUHh0eVRXODREVEFtbFFEcG1TSTVPNjlPMkQreTJyQjRhcnhmT01WZ3VxdEJCQWltQXRuUlM0WjNNMVdvMnFzTEc4d3c9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~M3dhnFPHJzKEZXkRcZc9Hg",
+    "nickname": "킴5412",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5c3a08d1f0801334229a09b9",
+    "url": "https://m.place.naver.com/my/5c3a08d1f0801334229a09b9/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 20,
+     "imageCount": 13,
+     "avgRating": 4.8
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "25.10.18.토",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/68f2ff113806a5e44f6aa857",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "spacious",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/eyes20220119222026.png",
+     "iconCode": "eyes",
+     "displayName": null,
+     "name": "매장이 넓어요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/68f2ff113806a5e44f6aa857/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "68f2ff113806a5e44f6aa857",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "68f2ff113806a5e44f6aa857",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "68312a9b4609543e02af2f34",
+   "cursor": "SDZWbFBGNm5EVklRWWhHZHhlZUkyN29NcmNvM2gwUDQzZFp1RDlGbVhJRXRDLytpY3dwbVowS01STDVUOWZyOEU1Vm10RjBXV0E4NDM5SCswS1BIQm1sMVRRUzd1U3o0Vlk0S0V5Y0VXS1R4UDFRMHdHYmY2THB6ek1OTGdSb1IzeXowNFE9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~edsf2s2_F38NSIrf7_Tuiw",
+    "nickname": "tig****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "5edf5e3e8f87a842bc9b42a9",
+    "url": "https://m.place.naver.com/my/5edf5e3e8f87a842bc9b42a9/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 21,
+     "imageCount": 12,
+     "avgRating": 5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "1",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "25.5.23.금",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/68312a9b4609543e02af2f34",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "store_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+     "iconCode": "sparkles",
+     "displayName": null,
+     "name": "매장이 청결해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "toilet_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/restroom20220119222222.png",
+     "iconCode": "restroom",
+     "displayName": null,
+     "name": "화장실이 깨끗해요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/68312a9b4609543e02af2f34/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "68312a9b4609543e02af2f34",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "68312a9b4609543e02af2f34",
+    "reacted": false
+   },
+   "nickname": ""
+  },
+  {
+   "__typename": "VisitorReview",
+   "id": "68183fec70a6820b0b7dd675",
+   "cursor": "MklPaWRNOW5XSmV5SUtPWTcrQ2RScTg3S2sxeElyQjFvd1JpUnVtRWZKQkJ4UGFEWW4vUmpHQWhEY2NFNUVLVlFHV2h5ekNZUVMrUExVbFVFZE9ML0NMLzdxbUZBTnB6WlNxa0VzV0lKMk9EaXpEN0t1dU9RQnRscGRjODAxRGlSdFBJQkE9PQ==",
+   "rating": null,
+   "author": {
+    "__typename": "VisitorReviewAuthor",
+    "isMe": false,
+    "id": "~1~2b7eIh112j_CSRIy8iqYrQ",
+    "nickname": "wet****",
+    "from": "NAVER",
+    "imageUrl": null,
+    "borderImageUrl": null,
+    "objectId": "616a9c6ecc3a5110ff3349b3",
+    "url": "https://m.place.naver.com/my/616a9c6ecc3a5110ff3349b3/review?v=2",
+    "review": {
+     "__typename": "AuthorReview",
+     "totalCount": 6,
+     "imageCount": 3,
+     "avgRating": 4.5
+    },
+    "theme": {
+     "__typename": "AuthorTheme",
+     "totalCount": 0
+    },
+    "isFollowing": null,
+    "followerCount": "0",
+    "followRequested": null
+   },
+   "visitCount": 1,
+   "visited": "25.5.5.월",
+   "originType": "영수증",
+   "reply": {
+    "__typename": "VisitorReviewReply",
+    "editUrl": "https://new-m.smartplace.naver.com/bizes/place-id/21202659/reviews/68183fec70a6820b0b7dd675",
+    "body": null,
+    "editedBy": null,
+    "created": null,
+    "date": null,
+    "replyTitle": null,
+    "isReported": false,
+    "isSuspended": false,
+    "status": null
+   },
+   "votedKeywords": [
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "food_good",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/face_savoring_food20220119222022.png",
+     "iconCode": "face_savoring_food",
+     "displayName": null,
+     "name": "음식이 맛있어요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "fresh",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/leaf20220119222023.png",
+     "iconCode": "leaf",
+     "displayName": null,
+     "name": "재료가 신선해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "together",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/busts_in_silhouette20220119222027.png",
+     "iconCode": "busts_in_silhouette",
+     "displayName": null,
+     "name": "단체모임 하기 좋아요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "kind",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/beating_heart20220119222223.png",
+     "iconCode": "beating_heart",
+     "displayName": null,
+     "name": "친절해요"
+    },
+    {
+     "__typename": "VisitorReviewVotedKeyword",
+     "code": "store_clean",
+     "iconUrl": "https://ssl.pstatic.net/static/pup/emoji/sparkles20220119222028.png",
+     "iconCode": "sparkles",
+     "displayName": null,
+     "name": "매장이 청결해요"
+    }
+   ],
+   "businessName": "만선꽃게랑낙지",
+   "status": "ACTIVE",
+   "receiptInfoUrl": "https://m.place.naver.com/my/review/68183fec70a6820b0b7dd675/paymentInfo",
+   "reactionStat": {
+    "__typename": "ReactionStat",
+    "id": "68183fec70a6820b0b7dd675",
+    "typeCount": [
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "fun",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "helpful",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "wannago",
+      "count": 0
+     },
+     {
+      "__typename": "ReactionStatTypeCount",
+      "name": "cool",
+      "count": 0
+     }
+    ],
+    "totalCount": 0
+   },
+   "hasViewerReacted": {
+    "__typename": "HasViewerReacted",
+    "id": "68183fec70a6820b0b7dd675",
+    "reacted": false
+   },
+   "nickname": ""
+  }
+ ]
+}

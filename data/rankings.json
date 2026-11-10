@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-10 17:21",
+ "checked": "2026-11-10 17:25",
  "queries": {
   "강화도 칼국수": {
    "place": [
@@ -105,7 +105,8 @@
     }
    ],
    "api": [],
-   "my_rank": null
+   "my_rank": null,
+   "total": 139
   },
   "강화도 꽃게탕": {
    "place": [
@@ -211,7 +212,8 @@
     }
    ],
    "api": [],
-   "my_rank": 5
+   "my_rank": 5,
+   "total": 64
   },
   "강화도 간장게장": {
    "place": [
@@ -317,7 +319,8 @@
     }
    ],
    "api": [],
-   "my_rank": 4
+   "my_rank": 4,
+   "total": 45
   },
   "강화도 젓국갈비": {
    "place": [
@@ -423,7 +426,8 @@
     }
    ],
    "api": [],
-   "my_rank": null
+   "my_rank": null,
+   "total": 19
   },
   "강화도 연포탕": {
    "place": [
@@ -529,7 +533,8 @@
     }
    ],
    "api": [],
-   "my_rank": 8
+   "my_rank": 8,
+   "total": 15
   },
   "강화도 낙지": {
    "place": [
@@ -635,7 +640,8 @@
     }
    ],
    "api": [],
-   "my_rank": 1
+   "my_rank": 1,
+   "total": 16
   }
  },
  "history": {
@@ -702,194 +708,5 @@
    }
   }
  },
- "debug": {
-  "probe": {
-   "len": 459930,
-   "apollo": true,
-   "parsed": true,
-   "root": [
-    "__typename",
-    "placeList({\"input\":{\"deviceType\":\"mobile",
-    "placeList({\"input\":{\"deviceType\":\"mobile"
-   ],
-   "types": [
-    "HouseBanner",
-    "NaverOrderItem",
-    "Panorama",
-    "PlaceListBusinessesItem",
-    "PlaceListFilterItem",
-    "Query",
-    "VisitorReviews"
-   ],
-   "title": "네이버 플레이스"
-  },
-  "totals": {
-   "강화도 칼국수": [
-    139,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=dining.basic.trade_query.deepmatch.force_use_center_coord&r_format=json&r_psglen=none&so=rel.dsc&hl=none&ic=basic&rp=none&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EC%B9%BC%EA%B5%AD%EC%88%98&iq_cid=220036&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 칼국수\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ],
-   "강화도 꽃게탕": [
-    64,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=dining.basic.trade_query.deepmatch.force_use_center_coord&r_format=json&r_psglen=none&so=rel.dsc&hl=none&ic=basic&rp=none&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EA%BD%83%EA%B2%8C%ED%83%95&iq_cid=220036&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 꽃게탕\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ],
-   "강화도 간장게장": [
-    45,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=dining.basic.trade_query.deepmatch.force_use_center_coord&r_format=json&r_psglen=none&so=rel.dsc&hl=none&ic=basic&rp=none&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EA%B0%84%EC%9E%A5%EA%B2%8C%EC%9E%A5&iq_cid=220036&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 간장게장\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ],
-   "강화도 젓국갈비": [
-    19,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=dining.basic.trade_query.deepmatch.force_use_center_coord&r_format=json&r_psglen=none&so=rel.dsc&hl=none&ic=basic&rp=none&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EC%A0%93%EA%B5%AD%EA%B0%88%EB%B9%84&iq_cid=220036&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 젓국갈비\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ],
-   "강화도 연포탕": [
-    15,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=dining.basic.trade_query.deepmatch.force_use_center_coord&r_format=json&r_psglen=none&so=rel.dsc&hl=none&ic=basic&rp=none&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EC%97%B0%ED%8F%AC%ED%83%95&iq_cid=220036&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 연포탕\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ],
-   "강화도 낙지": [
-    16,
-    10,
-    "pr=place_m_salt&version=2.0.0&st=poi&q_enc=utf-8&r_enc=utf-8&sm=all.basic.trade_query.deepmatch.use_quasar_cid.force_match_keyword.force_use_center_coord&r_format=json&r_psglen=title.140&so=rel.dsc&hl=none&ic=basic&rp=diversify.other_local_group_id.1&r_query_info=1&start=1&display=10&q=%EA%B0%95%ED%99%94%EB%8F%84%20%EB%82%99%EC%A7%80&q_center_coordinate=126.4870%3B37.7460&r_query_select=1&eq_property=adult",
-    "{\"input\":{\"deviceType\":\"mobile\",\"display\":10,\"isNmap\":false,\"query\":\"강화도 낙지\",\"start\":1,\"x\":\"126.4870\",\"y\":\"37.7460\"}})"
-   ]
-  },
-  "list_keys": {
-   "__typename": "str",
-   "businessType": "str",
-   "businesses": [
-    "__typename",
-    "items",
-    "queryString",
-    "siteSort",
-    "total"
-   ],
-   "adBusinesses({\"channel\":\"openingPlace\"})": [
-    "__typename",
-    "items"
-   ]
-  },
-  "debug_keys": [
-   "__typename",
-   "address",
-   "apolloCacheId",
-   "blogCafeReviewCount",
-   "bookingBusinessId",
-   "bookingDisplayName",
-   "bookingReviewCount",
-   "broadcastInfo",
-   "broadcasts",
-   "businessCategory",
-   "category",
-   "categoryCodeList",
-   "commonAddress",
-   "coupon",
-   "dbType",
-   "detailCid",
-   "distance",
-   "fullAddress",
-   "hasBooking",
-   "hasNPay",
-   "hasWheelchairEntrance",
-   "id",
-   "imageCount",
-   "imageUrl",
-   "imageUrls",
-   "listBadges",
-   "membershipBenefit",
-   "michelinGuide",
-   "microReview",
-   "nPayConnect",
-   "name",
-   "naverBookingBusinessId",
-   "naverBookingCategory",
-   "naverOrder",
-   "newBusinessHours",
-   "newOpening",
-   "options",
-   "phone",
-   "popularMenuImages",
-   "posInfo",
-   "promotionTitle",
-   "realTimeBookingInfo",
-   "repeatVisit",
-   "roadAddress",
-   "saveCount",
-   "streetPanorama",
-   "talktalkUrl",
-   "uniqueBroadcasts",
-   "virtualPhone",
-   "visitorImages",
-   "visitorReviewCount",
-   "visitorReviewScore",
-   "visitorReviews",
-   "x",
-   "y"
-  ],
-  "sample": {
-   "__typename": "PlaceListBusinessesItem",
-   "apolloCacheId": "13113971",
-   "coupon": "{'__typename': 'Coupon', 'total': 1, 'promotions': [{'__typename': 'CouponPromot",
-   "id": "13113971",
-   "dbType": "drt",
-   "name": "배터지는집 동막손칼국수명가",
-   "businessCategory": "restaurant",
-   "category": "칼국수,만두",
-   "hasBooking": true,
-   "hasNPay": false,
-   "x": "126.4579664",
-   "y": "37.6022549",
-   "distance": "16km",
-   "imageUrl": "https://ldb-phinf.pstatic.net/20260131_252/17698504441902bKJj_JPEG/IMG_1232.JPG",
-   "imageCount": 65,
-   "phone": null,
-   "virtualPhone": "0507-1414-9674",
-   "streetPanorama": "{'__ref': 'Panorama:RVMqqQ4A3PeszE0k/z52wg=='}",
-   "roadAddress": "해안남로 1279 1층",
-   "address": "사기리 481-17",
-   "commonAddress": "인천 강화군 화도면",
-   "blogCafeReviewCount": "1,602",
-   "bookingReviewCount": "0",
-   "bookingBusinessId": "1687465",
-   "talktalkUrl": "http://talk.naver.com/w4mhui?frm=mnmb",
-   "detailCid": "{'__typename': 'DetailCid', 'c0': '220036/220037/220073/220712', 'c1': '1004760/",
-   "options": "단체 이용 가능,포장,남/녀 화장실 구분,무선 인터넷,대기공간,유아의자,예약,간편결제,제로페이,지역화폐 (지류형),지역화폐 (카드형),지역화폐 (모바일형),주차,반려동물 동반",
-   "promotionTitle": null,
-   "newOpening": null,
-   "hasWheelchairEntrance": null,
-   "fullAddress": "인천광역시 강화군 화도면 사기리 481-17 1층",
-   "categoryCodeList": "['220036', '220037', '220073', '220712']",
-   "visitorReviewCount": "14,908",
-   "visitorReviewScore": "4.88",
-   "imageUrls": "['https://ldb-phinf.pstatic.net/20260131_252/17698504441902bKJj_JPEG/IMG_1232.JP",
-   "visitorImages": "[{'__typename': 'VisitorImages', 'reviewId': '6aefff97790bc39a56104282', 'imageU",
-   "visitorReviews": "[{'__ref': 'VisitorReviews:mwaf8m1c56ok5tus515'}, {'__ref': 'VisitorReviews:mwaf",
-   "microReview": "주말 웨이팅도 감수할 맛의 퀄리티",
-   "broadcastInfo": "{'__typename': 'BroadcastInfo', 'program': '오늘N'}",
-   "michelinGuide": null,
-   "broadcasts": null,
-   "naverBookingCategory": "예약",
-   "saveCount": "84,000+",
-   "uniqueBroadcasts": null,
-   "naverOrder": "{'__typename': 'NaverOrder', 'items': [], 'isDelivery': False, 'isTableOrder': F",
-   "bookingDisplayName": "방문자 리뷰",
-   "popularMenuImages": null,
-   "newBusinessHours": "{'__typename': 'NewBusinessHours', 'status': '영업 중', 'description': '20:00에 라스트오",
-   "repeatVisit": null,
-   "listBadges": "[{'__typename': 'RestaurantListBadge', 'key': 'WEEKLY_SURGE_RESERVATION', 'group",
-   "naverBookingBusinessId": "1687465",
-   "realTimeBookingInfo": null,
-   "posInfo": "{'__typename': 'POSInfo', 'isPOS': True, 'items': [{'__typename': 'POSItem', 'va",
-   "nPayConnect": "{'__typename': 'NpayConnect', 'benefitText': 'QR로 간편하게 주문하기'}",
-   "membershipBenefit": null
-  },
-  "api_err": "HTTPError HTTP Error 401: Unauthorized"
- }
+ "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳."
 }

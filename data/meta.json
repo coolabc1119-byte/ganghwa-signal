@@ -1,7 +1,7 @@
 {
  "project": "강화 시그널",
  "version": "4.2",
- "updated_at": "2026-11-10 10:50 KST",
+ "updated_at": "2026-11-10 11:00 KST",
  "range": [
   "2025-07-13",
   "2026-11-09"
@@ -31,7 +31,12 @@
   "DATA_GO_KR_KEY": 64
  },
  "errors": {
-  "tour_api_calls": 6
+  "tour_api_chunks": [
+   "2026-10-17~2026-11-09: 접속 실패 URLError: <urlopen error timed out>",
+   "2026-09-17~2026-10-16: 접속 실패 URLError: <urlopen error timed out>"
+  ],
+  "tour_api_calls": 2,
+  "weather_archive": "TimeoutError: The read operation timed out"
  },
  "mode": "live",
  "store": {
@@ -147,7 +152,8 @@
     "hot_menu": true
    }
   },
-  "prep_baseline_hint": "브리핑 탭 \"기준량\" 칸에 평소 평일/토요일 준비량을 적어 두면 추천량(kg·인분)이 계산됩니다"
+  "prep_baseline_hint": "브리핑 탭 \"기준량\" 칸에 평소 평일/토요일 준비량을 적어 두면 추천량(kg·인분)이 계산됩니다",
+  "naver_place_id": "21202659"
  },
  "groups": {
   "우리 가게 메뉴": [

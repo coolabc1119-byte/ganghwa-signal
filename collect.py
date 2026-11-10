@@ -436,18 +436,18 @@ def fetch_weather(start, end):
     # 과거(archive): 어제까지
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "start_date": start.isoformat(),
                                 "end_date": (datetime.now(KST).date() - timedelta(days=2)).isoformat(),
-                                "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum", "timezone": "Asia/Seoul"})
+                                "daily": "weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max", "timezone": "Asia/Seoul"})
     try:
         res = http_json("https://archive-api.open-meteo.com/v1/archive?" + q, timeout=60)
         d = res.get("daily", {})
         for i, day in enumerate(d.get("time", [])):
             out[day] = {"code": d["weathercode"][i], "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i],
-                        "rain": d["precipitation_sum"][i], "pop": None, "src": "past"}
+                        "rain": d["precipitation_sum"][i], "pop": None, "wind": (d.get("windspeed_10m_max") or [None] * 9999)[i], "src": "past"}
     except Exception as e:
         ERRORS["weather_archive"] = f"{type(e).__name__}: {str(e)[:120]}"
     # 예보: 최근 7일(과거 보정) + 앞 7일
     q = urllib.parse.urlencode({"latitude": GANGHWA_LAT, "longitude": GANGHWA_LON, "daily": daily, "timezone": "Asia/Seoul",
-                                "past_days": 7, "forecast_days": 8})
+                                "past_days": 7, "forecast_days": 14})
     res = None
     for attempt in range(4):  # Open-Meteo가 가끔 503(과부하) → 재시도
         try:
@@ -882,7 +882,7 @@ def main():
         news["upcoming_checked"] = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
     except Exception as e:
         ERRORS["upcoming"] = f"{type(e).__name__}: {str(e)[:120]}"
-    weather = run("weather", lambda: fetch_weather(start, end), lambda: sample_weather(start, end))
+    weather = run("weather", lambda: fetch_weather(min(start, date(2024, 1, 1)), end), lambda: sample_weather(start, end))
     save("weather.json", weather)
 
     if sources.get("datalab") == "live":

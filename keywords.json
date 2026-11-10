@@ -1,6 +1,6 @@
 {
   "project": "강화 시그널",
-  "version": "4.1",
+  "version": "4.2",
   "store": {
     "name": "선두리 만선꽃게랑낙지",
     "address": "인천 강화군 길상면 선두리",
@@ -114,7 +114,8 @@
         "hot_menu": true
       }
     },
-    "prep_baseline_hint": "브리핑 탭 \"기준량\" 칸에 평소 평일/토요일 준비량을 적어 두면 추천량(kg·인분)이 계산됩니다"
+    "prep_baseline_hint": "브리핑 탭 \"기준량\" 칸에 평소 평일/토요일 준비량을 적어 두면 추천량(kg·인분)이 계산됩니다",
+    "naver_place_id": "21202659"
   },
   "anchor_keyword": "강화도 맛집",
   "groups": {

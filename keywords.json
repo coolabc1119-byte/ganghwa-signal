@@ -1,6 +1,6 @@
 {
   "project": "강화 시그널",
-  "version": "1.0",
+  "version": "1.1",
   "store": {
     "name": "선두리 만선꽃게랑낙지",
     "address": "인천 강화군 길상면 선두리",
@@ -330,5 +330,63 @@
     "강화 맛집 오늘",
     "강화도 촬영 방송",
     "강화 출연 예고"
-  ]
+  ],
+  "review_tone": {
+    "https://blog.naver.com/fennecfox2e/224475271807": {
+      "tone": "부정",
+      "why": "아침 생선구이백반 방문. 매장·테이블 관리와 메뉴 구성이 기대와 달라 아쉬웠다는 내용"
+    },
+    "https://blog.naver.com/sk57533/224472577882": {
+      "tone": "긍정",
+      "why": "전등사 단풍 구경과 묶어 젓국갈비를 추천"
+    },
+    "https://blog.naver.com/sihwan0715/224454334504": {
+      "tone": "중립",
+      "why": "여러 맛집을 모은 글에서 한 번 언급"
+    },
+    "https://blog.naver.com/cmccmc111/224452248184": {
+      "tone": "긍정",
+      "why": "강화도 게장 맛집 4곳 중 하나로 추천"
+    },
+    "https://blog.naver.com/shsekelove/224442352108": {
+      "tone": "긍정",
+      "why": "꽃게탕·게장 모둠을 칭찬한 방문 후기"
+    },
+    "https://blog.naver.com/h74565381/224421093857": {
+      "tone": "중립",
+      "why": "당일치기 여행 안내 글에서 한 번 언급"
+    },
+    "https://blog.naver.com/howmany_0/224377065144": {
+      "tone": "긍정",
+      "why": "꽃게탕·게장 방문 후기, 칭찬 위주"
+    },
+    "https://blog.naver.com/smson1007/224373708369": {
+      "tone": "중립",
+      "why": "맛은 괜찮다고 했지만 꽃게가 냉동이라고 적음"
+    },
+    "https://blog.naver.com/denny911/224352078145": {
+      "tone": "중립",
+      "why": "사진 위주, 평가 문장이 거의 없음"
+    },
+    "https://blog.naver.com/phr4714/224351874226": {
+      "tone": "긍정",
+      "why": "꽃낙새탕·간장게장·양념게장 모두 칭찬"
+    },
+    "https://blog.naver.com/suzing9_/224351354500": {
+      "tone": "중립",
+      "why": "1박 2일 여행기 속 짧은 언급"
+    },
+    "https://blog.naver.com/x3d2p032n7/224337488132": {
+      "tone": "긍정",
+      "why": "해산물 맛집으로 추천, 칭찬 위주"
+    },
+    "https://blog.naver.com/hyeda_png/224315891790": {
+      "tone": "긍정",
+      "why": "부모님 모시고 가기 좋은 곳으로 추천"
+    },
+    "https://blog.naver.com/simba1005/224475584963": {
+      "tone": "중립",
+      "why": "가게와 무관한 글에서 이름만 언급"
+    }
+  }
 }

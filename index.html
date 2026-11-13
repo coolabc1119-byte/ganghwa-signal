@@ -153,6 +153,7 @@ small.thd{display:block;font-size:10px;font-weight:500;color:var(--faint);font-f
 tr.mine td{background:color-mix(in srgb,var(--blue) 7%,transparent)}
 .up{color:var(--ok)} .down{color:var(--red)} .muted{color:var(--faint)}
 .bar{height:6px;border-radius:3px;background:var(--blue);display:inline-block;vertical-align:middle;margin-right:8px;opacity:.85}
+.tn{display:inline-block;font-size:11px;line-height:1.5;padding:0 6px;border-radius:5px;font-weight:600;margin-right:6px;white-space:nowrap;vertical-align:1px;background:var(--soft2);color:var(--sub)} .tn.p{color:var(--ok)} .tn.n{color:var(--hero-ink);background:var(--red)} .ni .why{display:block;font-size:12px;color:var(--faint);margin-top:2px}
 .tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:5px;background:var(--soft2);color:var(--sub);margin-left:6px;font-weight:500}
 .tag.mine{background:var(--cold-bg);color:var(--cold)}
 input[type=search],input[type=number],input[type=text],input[type=date]{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
@@ -745,13 +746,14 @@ function renderPlace(){
 function renderReviews(){
   const r=D.reviews, card=document.getElementById('rvCard'); if(!r||!r.items||!r.items.length){ card.hidden=true; return; } card.hidden=false;
   const today=KTODAY(), it=r.items; const cnt=(a,b)=>it.filter(x=>x.date>shift(today,-b)&&x.date<=shift(today,-a)).length;
-  const c30=cnt(0,30), p30=cnt(30,60);
+  const c30=cnt(0,30), p30=cnt(30,60), tc=t=>it.filter(x=>x.tone===t).length, auto=it.filter(x=>x.tone&&x.tone_by==='auto').length, showN=8;
   document.getElementById('rvSub').innerHTML=`네이버 블로그에서 제목·요약에 가게 이름이 들어간 글 · 단위: <b>건</b> · 확인 ${r.checked?md(r.checked.slice(0,10))+' '+r.checked.slice(11):'–'} · 검색 API가 최근 글 위주로 돌려줘 오래된 달은 실제보다 적게 잡힐 수 있음`;
   const months=[]; let y=+today.slice(0,4), m=+today.slice(5,7); for(let i=0;i<6;i++){ months.unshift(`${y}-${String(m).padStart(2,'0')}`); m--; if(!m){m=12;y--;} }
   const mc=months.map(k=>it.filter(x=>x.date.startsWith(k)).length), mx=Math.max(1,...mc);
   document.getElementById('rvBody').innerHTML=`<div class="basis"><div><span>최근 30일 새 글</span><b>${c30}건</b></div><div><span>그 앞 30일</span><b>${p30}건</b></div></div>
     <div class="rvb">${months.map((k,i)=>`<div><b>${mc[i]}</b><i style="height:${Math.round(mc[i]/mx*52)}px"></i><span>${+k.slice(5)}월</span></div>`).join('')}</div>
-    <h3 class="h3">최근 글</h3>`+it.slice(0,6).map(x=>`<div class="ng"><div class="nd">${md(x.date)} <span>${WD[dow(x.date)]}</span></div><div class="nl"><a class="ni" href="${XSS(x.link)}" target="_blank" rel="noopener">${XSS(x.title)}${x.blogger?` <span class="muted" style="font-size:12px">· ${XSS(x.blogger)}</span>`:''}</a></div></div>`).join('');
+    <h3 class="h3">최근 글</h3>
+    <div class="sub">글 본문 전체의 논조 · <b>긍정</b> 칭찬 위주 · <b>중립</b> 여러 곳 소개·짧은 언급이거나 칭찬과 아쉬움이 섞임 · <b>부정</b> 아쉬움·불만이 중심 · 수집된 ${it.length}건 중 긍정 ${tc('긍정')} · 중립 ${tc('중립')} · 부정 ${tc('부정')}${auto?` · 자동 판정 ${auto}건 포함(“자동” 표시)`:''}</div>`+it.slice(0,showN).map(x=>`<div class="ng"><div class="nd">${md(x.date)} <span>${WD[dow(x.date)]}</span></div><div class="nl"><a class="ni" href="${XSS(x.link)}" target="_blank" rel="noopener">${x.tone?`<span class="tn ${x.tone==='긍정'?'p':x.tone==='부정'?'n':''}">${XSS(x.tone)}${x.tone_by==='auto'?' · 자동':''}</span>`:''}${XSS(x.title)}${x.blogger?` <span class="muted" style="font-size:12px">· ${XSS(x.blogger)}</span>`:''}${x.why?`<span class="why">${XSS(x.why)}</span>`:''}</a></div></div>`).join('');
 }
 function renderEvents(){
   const ev=(D.events||[]).filter(e=>D.meta.groups[Object.keys(D.meta.groups)[0]].includes(e.keyword)||e.keyword==='강화도 맛집').slice(0,8), r=D.meta;

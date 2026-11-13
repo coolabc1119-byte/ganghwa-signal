@@ -778,6 +778,67 @@ def fetch_rankings(cfg):
             "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.", "debug": dbg}
 
 
+TONE_V = 1
+_NEG = re.compile(r"아쉬[웠운움워]|아쉽|별로|비싸|비싼|가격대가\s?(?:좀|조금|다소|꽤)?\s?있|가격이\s?(?:좀|조금|다소|꽤)\s?(?:있|나가|쎄|세)|부담스러|사악|짰|짜서|짠\s?편|너무\s?짜|비렸|비린|불친절|실망|그닥|그저\s?그|냉동|양이\s?적|적은\s?편|오래\s?걸|한참\s?기다|식어|식었|질겼|질긴|다시는|글쎄|애매|평범")
+_NEG_OFF = re.compile(r"않|안\s|없|전혀|하나도|1도|걱정")
+_POS = re.compile(r"맛있|맛집|신선|싱싱|푸짐|친절|추천|재방문|또\s?가|또\s?오|또\s?방문|최고|만족|깔끔|시원|꽉\s?[찼찬차]|밥도둑|감동|대박|인생")
+_AD = re.compile(r"소정의|원고료|제공받|협찬|체험단|지원받|업체로부터|서비스를\s?제공")
+
+
+def _blog_text(link):
+    m = re.search(r"blog\.naver\.com/([^/?#]+)/(\d+)", link or "")
+    if not m:
+        return ""
+    for url in (f"https://m.blog.naver.com/PostView.naver?blogId={m.group(1)}&logNo={m.group(2)}",
+                f"https://blog.naver.com/PostView.naver?blogId={m.group(1)}&logNo={m.group(2)}"):
+        try:
+            html = http_text(url)
+        except Exception:
+            continue
+        i = html.find("se-main-container")
+        if i < 0:
+            i = html.find("post-view")
+        if i < 0:
+            continue
+        body = html[i:]
+        j = re.search(r'class="(?:post_footer|section_t1|comment_area|post_btn|blog_authorArea)', body)
+        body = body[:j.start()] if j else body[:200000]
+        body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", body, flags=re.S)
+        body = re.sub(r"<(?:br|/p|/div|/li|/span)[^>]*>", "\n", body)
+        txt = _clean(re.sub(r"<[^>]+>", "", body)).replace("​", "").replace("&nbsp;", " ")
+        txt = re.sub(r"[ \t]+", " ", txt)
+        if len(txt) > 200:
+            return txt
+    return ""
+
+
+def _blog_tone(link):
+    """블로그 본문 전체를 읽어 긍정/중립/부정을 자동 판정. 아쉬움 표현(부정어가 뒤따르면 제외)과 칭찬 표현을 세어 정함."""
+    txt = _blog_text(link)
+    if not txt:
+        return None
+    sents = [x.strip() for x in re.split(r"[\n.!?~]+", txt) if x.strip()]
+    store = sum(1 for x in sents if re.search(r"만선", x))
+    neg, cues = 0, []
+    for x in sents:
+        for m in _NEG.finditer(x):
+            if _NEG_OFF.search(x[m.end():m.end() + 8]) or _NEG_OFF.search(x[max(0, m.start() - 6):m.start()]):
+                continue
+            neg += 1
+            if len(cues) < 4:
+                cues.append(x[max(0, m.start() - 22):m.end() + 22])
+            break
+    pos = sum(1 for x in sents if _POS.search(x))
+    ad = bool(_AD.search(txt[-1500:]) or _AD.search(txt[:600]))
+    if neg >= 3 and neg * 2 >= pos:
+        tone = "부정"
+    elif neg >= 2 or (neg >= 1 and pos < 6) or pos < 3 or (store <= 1 and len(txt) > 2500):
+        tone = "중립"
+    else:
+        tone = "긍정"
+    return {"tone": tone, "pos": pos, "neg": neg, "ad": ad, "len": len(txt), "store": store, "cues": cues, "tone_v": TONE_V, "tone_by": "auto"}
+
+
 def fetch_reviews(cfg):
     """네이버 블로그에서 가게 이름이 들어간 최근 글 — 입소문이 늘고 있는지 보는 용도"""
     cid, csec = os.getenv("NAVER_CLIENT_ID"), os.getenv("NAVER_CLIENT_SECRET")
@@ -800,9 +861,27 @@ def fetch_reviews(cfg):
             pd = it.get("postdate") or ""
             if len(pd) != 8:
                 continue
-            items[it["link"]] = {"date": f"{pd[:4]}-{pd[4:6]}-{pd[6:]}", "title": title, "link": it["link"], "blogger": it.get("bloggername", "")}
+            old = items.get(it["link"], {})
+            items[it["link"]] = {**{k: v for k, v in old.items() if k in ("tone", "pos", "neg", "ad", "len", "store", "cues", "tone_v", "tone_by", "why")},
+                                 "date": f"{pd[:4]}-{pd[4:6]}-{pd[6:]}", "title": title, "link": it["link"], "blogger": it.get("bloggername", "")}
         time.sleep(0.2)
     out = sorted(items.values(), key=lambda x: x["date"], reverse=True)[:400]
+    # 본문 논조 판정: 아직 안 한 글만(하루 최대 30건). keywords.json 의 review_tone 에 사람이 정한 값이 있으면 그것이 우선.
+    manual, n = cfg.get("review_tone", {}), 0
+    for it in out:
+        mv = manual.get(it["link"])
+        if it.get("tone_v") != TONE_V and n < 30:
+            try:
+                t = _blog_tone(it["link"])
+            except Exception as e:
+                t = None
+                log(f"블로그 논조 실패: {str(e)[:60]}")
+            n += 1
+            if t:
+                it.update(t)
+            time.sleep(0.4)
+        if mv:
+            it.update({"tone": mv.get("tone"), "why": mv.get("why", ""), "tone_by": "manual"})
     return {"items": out, "total_hint": total, "checked": datetime.now(KST).strftime("%Y-%m-%d %H:%M"),
             "note": "네이버 블로그 검색에서 제목·요약에 가게 이름이 들어간 글(누적)."}
 

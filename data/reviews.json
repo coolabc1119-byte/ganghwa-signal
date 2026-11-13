@@ -1,10 +1,6 @@
 {
  "items": [
   {
-   "date": "2026-11-13",
-   "title": "만선꽃게랑낙지 | 강화도 맛집 아침식사 생선구이백반 내돈내산 솔....",
-   "link": "https://blog.naver.com/fennecfox2e/224475271807",
-   "blogger": "사막여우는 귀여워요",
    "tone": "부정",
    "pos": 5,
    "neg": 6,
@@ -17,14 +13,15 @@
     "신경 쓰이는 부분인데, 첫인상부터 조금 아쉬웠네요",
     "만, 메뉴 구성과 테이블 관리 부분에서 아쉬움이 남았어요"
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-11-13",
+   "title": "만선꽃게랑낙지 | 강화도 맛집 아침식사 생선구이백반 내돈내산 솔....",
+   "link": "https://blog.naver.com/fennecfox2e/224475271807",
+   "blogger": "사막여우는 귀여워요",
+   "why": "아침 생선구이백반 방문. 매장·테이블 관리와 메뉴 구성이 기대와 달라 아쉬웠다는 내용"
   },
   {
-   "date": "2026-11-13",
-   "title": "강화납골당 [강화 파라다이스 추모원] 위치,가격 장단점 심층분석과....",
-   "link": "https://blog.naver.com/simba1005/224475584963",
-   "blogger": "장례비교 토탈 더쉼메모리얼",
    "tone": "중립",
    "pos": 8,
    "neg": 0,
@@ -32,14 +29,15 @@
    "len": 6162,
    "store": 1,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-11-13",
+   "title": "강화납골당 [강화 파라다이스 추모원] 위치,가격 장단점 심층분석과....",
+   "link": "https://blog.naver.com/simba1005/224475584963",
+   "blogger": "장례비교 토탈 더쉼메모리얼",
+   "why": "가게와 무관한 글에서 이름만 언급"
   },
   {
-   "date": "2026-11-11",
-   "title": "강화도 젓국갈비 추천! 전등사 단풍 구경과 함께 즐기는 강화도 맛....",
-   "link": "https://blog.naver.com/sk57533/224472577882",
-   "blogger": "제주오름부부 ❤️",
    "tone": "긍정",
    "pos": 19,
    "neg": 0,
@@ -47,31 +45,33 @@
    "len": 4997,
    "store": 10,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-11-11",
+   "title": "강화도 젓국갈비 추천! 전등사 단풍 구경과 함께 즐기는 강화도 맛....",
+   "link": "https://blog.naver.com/sk57533/224472577882",
+   "blogger": "제주오름부부 ❤️",
+   "why": "전등사 단풍 구경과 묶어 젓국갈비를 추천"
   },
   {
-   "date": "2026-10-26",
-   "title": "강화도맛집 추천!",
-   "link": "https://blog.naver.com/sihwan0715/224454334504",
-   "blogger": "아름다운 농부",
    "tone": "중립",
    "pos": 10,
    "neg": 1,
    "ad": false,
-   "len": 6424,
+   "len": 6426,
    "store": 1,
    "cues": [
     "전골 맛있음 가마솥밥은 3천원인데 양이 아쉬움\""
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-10-26",
+   "title": "강화도맛집 추천!",
+   "link": "https://blog.naver.com/sihwan0715/224454334504",
+   "blogger": "아름다운 농부",
+   "why": "여러 맛집을 모은 글에서 한 번 언급"
   },
   {
-   "date": "2026-10-24",
-   "title": "밥도둑 총출동! 리뷰 수와 만족도가 증명하는 강화도 게장 맛집 TOP 4",
-   "link": "https://blog.naver.com/cmccmc111/224452248184",
-   "blogger": "히스토리 앤 트립",
    "tone": "긍정",
    "pos": 11,
    "neg": 0,
@@ -79,14 +79,15 @@
    "len": 1629,
    "store": 2,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-10-24",
+   "title": "밥도둑 총출동! 리뷰 수와 만족도가 증명하는 강화도 게장 맛집 TOP 4",
+   "link": "https://blog.naver.com/cmccmc111/224452248184",
+   "blogger": "히스토리 앤 트립",
+   "why": "강화도 게장 맛집 4곳 중 하나로 추천"
   },
   {
-   "date": "2026-10-15",
-   "title": "강화도 길상면 맛집 만선꽃게랑낙지 - 신선한 꽃게탕과 밥도둑 모듬....",
-   "link": "https://blog.naver.com/shsekelove/224442352108",
-   "blogger": "맛집레이더",
    "tone": "긍정",
    "pos": 20,
    "neg": 0,
@@ -94,14 +95,15 @@
    "len": 3558,
    "store": 14,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-10-15",
+   "title": "강화도 길상면 맛집 만선꽃게랑낙지 - 신선한 꽃게탕과 밥도둑 모듬....",
+   "link": "https://blog.naver.com/shsekelove/224442352108",
+   "blogger": "맛집레이더",
+   "why": "꽃게탕·게장 모둠을 칭찬한 방문 후기"
   },
   {
-   "date": "2026-09-23",
-   "title": "강화도 당일치기 여행 완벽 가이드: 서울에서 1시간 반, 역사·바다·....",
-   "link": "https://blog.naver.com/h74565381/224421093857",
-   "blogger": "아임 매거진",
    "tone": "중립",
    "pos": 16,
    "neg": 0,
@@ -109,34 +111,31 @@
    "len": 6334,
    "store": 1,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-09-23",
+   "title": "강화도 당일치기 여행 완벽 가이드: 서울에서 1시간 반, 역사·바다·....",
+   "link": "https://blog.naver.com/h74565381/224421093857",
+   "blogger": "아임 매거진",
+   "why": "당일치기 여행 안내 글에서 한 번 언급"
   },
   {
+   "tone": "긍정",
+   "pos": 13,
+   "neg": 0,
+   "ad": false,
+   "len": 3195,
+   "store": 3,
+   "cues": [],
+   "tone_v": 2,
+   "tone_by": "manual",
    "date": "2026-08-13",
    "title": "[만선 꽃게랑 낙지] 인천 강화도 길상면 꽃게탕 게장 맛집",
    "link": "https://blog.naver.com/howmany_0/224377065144",
    "blogger": "쏭th 스토리",
-   "tone": "중립",
-   "pos": 13,
-   "neg": 4,
-   "ad": false,
-   "len": 3195,
-   "store": 3,
-   "cues": [
-    "처 꽃게탕집을 갈까 했는데 괜히 갔다가 실망하지 말고",
-    "애매한 오후 3시쯤 오니 사람도 없고 좋다좋",
-    "그렇다고양념게장이 아쉬운 맛은 절대 아냐아",
-    "먹은 반찬 아쉬워말고 채워 드세요"
-   ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "why": "꽃게탕·게장 방문 후기, 칭찬 위주"
   },
   {
-   "date": "2026-08-10",
-   "title": "강화도 꽃게탕 맛집 찾다가 방문한 만선꽃게랑낙지 솔직후기",
-   "link": "https://blog.naver.com/smson1007/224373708369",
-   "blogger": "0xPico님의 블로그",
    "tone": "중립",
    "pos": 5,
    "neg": 1,
@@ -146,14 +145,15 @@
    "cues": [
     "꽃게는 냉동이지만 암꽃게라 알이 들어있었다"
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-08-10",
+   "title": "강화도 꽃게탕 맛집 찾다가 방문한 만선꽃게랑낙지 솔직후기",
+   "link": "https://blog.naver.com/smson1007/224373708369",
+   "blogger": "0xPico님의 블로그",
+   "why": "맛은 괜찮다고 했지만 꽃게가 냉동이라고 적음"
   },
   {
-   "date": "2026-07-20",
-   "title": "강화도 만선꽃게랑낙지",
-   "link": "https://blog.naver.com/denny911/224352078145",
-   "blogger": "잡기대마왕'S... Mozambique drill.",
    "tone": "중립",
    "pos": 0,
    "neg": 0,
@@ -161,31 +161,31 @@
    "len": 870,
    "store": 0,
    "cues": [],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-07-20",
+   "title": "강화도 만선꽃게랑낙지",
+   "link": "https://blog.naver.com/denny911/224352078145",
+   "blogger": "잡기대마왕'S... Mozambique drill.",
+   "why": "사진 위주, 평가 문장이 거의 없음"
   },
   {
+   "tone": "긍정",
+   "pos": 27,
+   "neg": 0,
+   "ad": false,
+   "len": 2911,
+   "store": 6,
+   "cues": [],
+   "tone_v": 2,
+   "tone_by": "manual",
    "date": "2026-07-20",
    "title": "[강화도 맛집] 꽃·낙·새탕부터 간장게장, 양념게장까지 완벽했던 ....",
    "link": "https://blog.naver.com/phr4714/224351874226",
    "blogger": "a happy life",
-   "tone": "긍정",
-   "pos": 27,
-   "neg": 1,
-   "ad": false,
-   "len": 2911,
-   "store": 6,
-   "cues": [
-    "짜기만 하거나 비린 맛이 날까 봐"
-   ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "why": "꽃낙새탕·간장게장·양념게장 모두 칭찬"
   },
   {
-   "date": "2026-07-19",
-   "title": "7월 초여름, 강화도 1박 2일 여행기☁️✨",
-   "link": "https://blog.naver.com/suzing9_/224351354500",
-   "blogger": "『수징구.zip』✨",
    "tone": "중립",
    "pos": 9,
    "neg": 3,
@@ -197,14 +197,15 @@
     "아쉬워 엉엉슨ㅠ",
     "날씨가 흐린게 아쉽지만 푸릇푸릇한 마당도 예뻤다"
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-07-19",
+   "title": "7월 초여름, 강화도 1박 2일 여행기☁️✨",
+   "link": "https://blog.naver.com/suzing9_/224351354500",
+   "blogger": "『수징구.zip』✨",
+   "why": "1박 2일 여행기 속 짧은 언급"
   },
   {
-   "date": "2026-07-06",
-   "title": "강화도 만선꽃게랑낙지 맛집 추천 현지인이 찾는 해산물 명소",
-   "link": "https://blog.naver.com/x3d2p032n7/224337488132",
-   "blogger": "x3d2p032n7님의 블로그",
    "tone": "긍정",
    "pos": 37,
    "neg": 1,
@@ -214,14 +215,15 @@
    "cues": [
     "를 놓쳐서 아쉬웠던 적이 있어요"
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-07-06",
+   "title": "강화도 만선꽃게랑낙지 맛집 추천 현지인이 찾는 해산물 명소",
+   "link": "https://blog.naver.com/x3d2p032n7/224337488132",
+   "blogger": "x3d2p032n7님의 블로그",
+   "why": "해산물 맛집으로 추천, 칭찬 위주"
   },
   {
-   "date": "2026-06-15",
-   "title": "강화도 나들이 부모님 모시고 가기 좋은 곳 | 해물탕 맛집 + 바다뷰 ....",
-   "link": "https://blog.naver.com/hyeda_png/224315891790",
-   "blogger": "다혜네 집",
    "tone": "긍정",
    "pos": 7,
    "neg": 1,
@@ -231,11 +233,16 @@
    "cues": [
     "커피 가격대가 좀 있지만 이제 바다뷰 카페가면 흔한 가격대 "
    ],
-   "tone_v": 1,
-   "tone_by": "auto"
+   "tone_v": 2,
+   "tone_by": "manual",
+   "date": "2026-06-15",
+   "title": "강화도 나들이 부모님 모시고 가기 좋은 곳 | 해물탕 맛집 + 바다뷰 ....",
+   "link": "https://blog.naver.com/hyeda_png/224315891790",
+   "blogger": "다혜네 집",
+   "why": "부모님 모시고 가기 좋은 곳으로 추천"
   }
  ],
  "total_hint": 16191,
- "checked": "2026-11-13 19:04",
+ "checked": "2026-11-13 19:08",
  "note": "네이버 블로그 검색에서 제목·요약에 가게 이름이 들어간 글(누적)."
 }

@@ -1,7 +1,7 @@
 {
  "place_id": "21202659",
  "name": "만선꽃게랑낙지",
- "checked": "2026-11-13 19:07",
+ "checked": "2026-11-14 11:38",
  "visitor": 1067.0,
  "blog": 1451.0,
  "score": 4.58,
@@ -56,10 +56,14 @@
   "2026-11-13": {
    "visitor": 1067.0,
    "blog": 1451.0
+  },
+  "2026-11-14": {
+   "visitor": 1067.0,
+   "blog": 1451.0
   }
  },
  "debug": {
-  "home_len": 453342,
+  "home_len": 451997,
   "review_keys": [
    "cafeBlogReviewsTotal",
    "imageReviewCount",

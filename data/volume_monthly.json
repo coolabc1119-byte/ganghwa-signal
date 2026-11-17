@@ -2,54 +2,54 @@
  "rows": [
   {
    "keyword": "강화도맛집",
-   "pc": 7120,
-   "mobile": 49900,
-   "total": 57020,
+   "pc": 7340,
+   "mobile": 48700,
+   "total": 56040,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
    "keyword": "강화도갈만한곳",
-   "pc": 4010,
-   "mobile": 34600,
-   "total": 38610,
+   "pc": 4050,
+   "mobile": 33500,
+   "total": 37550,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도",
-   "pc": 7160,
-   "mobile": 25900,
-   "total": 33060,
+   "pc": 7330,
+   "mobile": 25400,
+   "total": 32730,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "석모도미네랄온천",
-   "pc": 3450,
-   "mobile": 26300,
-   "total": 29750,
+   "pc": 3580,
+   "mobile": 27700,
+   "total": 31280,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화가볼만한곳",
-   "pc": 1280,
-   "mobile": 23000,
-   "total": 24280,
+   "pc": 1300,
+   "mobile": 22100,
+   "total": 23400,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도펜션",
-   "pc": 4940,
+   "pc": 5090,
    "mobile": 17000,
-   "total": 21940,
+   "total": 22090,
    "comp": "높음",
    "tracked": true,
    "under10": false
@@ -57,8 +57,8 @@
   {
    "keyword": "강화화개정원",
    "pc": 710,
-   "mobile": 13900,
-   "total": 14610,
+   "mobile": 13600,
+   "total": 14310,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -66,71 +66,80 @@
   {
    "keyword": "강화도카페",
    "pc": 1580,
-   "mobile": 12000,
-   "total": 13580,
+   "mobile": 11500,
+   "total": 13080,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
    "keyword": "석모도",
-   "pc": 2150,
-   "mobile": 10400,
-   "total": 12550,
+   "pc": 2210,
+   "mobile": 10800,
+   "total": 13010,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도루지",
-   "pc": 1940,
-   "mobile": 9190,
-   "total": 11130,
+   "pc": 1960,
+   "mobile": 8910,
+   "total": 10870,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화맛집",
-   "pc": 870,
-   "mobile": 9440,
-   "total": 10310,
+   "pc": 880,
+   "mobile": 9170,
+   "total": 10050,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "석모도맛집",
-   "pc": 660,
-   "mobile": 8230,
-   "total": 8890,
+   "pc": 680,
+   "mobile": 8030,
+   "total": 8710,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화순무김치",
-   "pc": 390,
-   "mobile": 7090,
-   "total": 7480,
+   "pc": 400,
+   "mobile": 7180,
+   "total": 7580,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도숙소",
-   "pc": 2550,
-   "mobile": 4020,
-   "total": 6570,
+   "pc": 2690,
+   "mobile": 4040,
+   "total": 6730,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도글램핑",
-   "pc": 1260,
-   "mobile": 5010,
-   "total": 6270,
+   "pc": 1280,
+   "mobile": 5020,
+   "total": 6300,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "석모도온천",
+   "pc": 940,
+   "mobile": 4830,
+   "total": 5770,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -138,70 +147,61 @@
   {
    "keyword": "석모도가볼만한곳",
    "pc": 570,
-   "mobile": 4990,
-   "total": 5560,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화카페",
-   "pc": 300,
-   "mobile": 5160,
-   "total": 5460,
+   "mobile": 4830,
+   "total": 5400,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도캠핑장",
-   "pc": 1260,
-   "mobile": 4150,
-   "total": 5410,
+   "pc": 1290,
+   "mobile": 4060,
+   "total": 5350,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화카페",
+   "pc": 310,
+   "mobile": 4960,
+   "total": 5270,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도온천",
-   "pc": 810,
-   "mobile": 4310,
-   "total": 5120,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "석모도온천",
-   "pc": 890,
-   "mobile": 4090,
-   "total": 4980,
+   "pc": 850,
+   "mobile": 4360,
+   "total": 5210,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도가볼만한곳",
-   "pc": 1130,
-   "mobile": 3830,
-   "total": 4960,
+   "pc": 1160,
+   "mobile": 3680,
+   "total": 4840,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
    "keyword": "강화보문사",
-   "pc": 450,
-   "mobile": 4090,
-   "total": 4540,
+   "pc": 460,
+   "mobile": 4050,
+   "total": 4510,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화펜션",
-   "pc": 640,
-   "mobile": 3210,
+   "pc": 670,
+   "mobile": 3180,
    "total": 3850,
    "comp": "높음",
    "tracked": false,
@@ -209,63 +209,63 @@
   },
   {
    "keyword": "강화도키즈펜션",
-   "pc": 490,
-   "mobile": 2920,
-   "total": 3410,
+   "pc": 510,
+   "mobile": 2960,
+   "total": 3470,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도여행",
-   "pc": 1050,
-   "mobile": 2300,
-   "total": 3350,
+   "pc": 1100,
+   "mobile": 2290,
+   "total": 3390,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
-   "keyword": "강화도마니산",
-   "pc": 560,
-   "mobile": 2770,
-   "total": 3330,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화도호텔",
-   "pc": 680,
-   "mobile": 2600,
-   "total": 3280,
+   "pc": 700,
+   "mobile": 2620,
+   "total": 3320,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화읍맛집",
-   "pc": 390,
-   "mobile": 2880,
-   "total": 3270,
+   "pc": 400,
+   "mobile": 2840,
+   "total": 3240,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도마니산",
+   "pc": 580,
+   "mobile": 2650,
+   "total": 3230,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "석모도펜션",
-   "pc": 520,
-   "mobile": 2670,
-   "total": 3190,
+   "pc": 540,
+   "mobile": 2680,
+   "total": 3220,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도석모도온천",
-   "pc": 340,
+   "pc": 360,
    "mobile": 2770,
-   "total": 3110,
+   "total": 3130,
    "comp": "중간",
    "tracked": false,
    "under10": false
@@ -273,8 +273,8 @@
   {
    "keyword": "전등사맛집",
    "pc": 210,
-   "mobile": 2790,
-   "total": 3000,
+   "mobile": 2740,
+   "total": 2950,
    "comp": "높음",
    "tracked": true,
    "under10": false
@@ -282,8 +282,8 @@
   {
    "keyword": "강화교동시장",
    "pc": 180,
-   "mobile": 2730,
-   "total": 2910,
+   "mobile": 2640,
+   "total": 2820,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -291,17 +291,17 @@
   {
    "keyword": "강화도꽃게탕",
    "pc": 280,
-   "mobile": 2500,
-   "total": 2780,
+   "mobile": 2390,
+   "total": 2670,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
    "keyword": "강화도독채펜션",
-   "pc": 570,
-   "mobile": 1950,
-   "total": 2520,
+   "pc": 600,
+   "mobile": 1930,
+   "total": 2530,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -309,44 +309,53 @@
   {
    "keyword": "강화도전등사맛집",
    "pc": 230,
-   "mobile": 2270,
-   "total": 2500,
+   "mobile": 2250,
+   "total": 2480,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화캠핑장",
-   "pc": 430,
-   "mobile": 2070,
-   "total": 2500,
+   "pc": 450,
+   "mobile": 2020,
+   "total": 2470,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화풍물시장맛집",
-   "pc": 180,
-   "mobile": 2260,
-   "total": 2440,
+   "pc": 190,
+   "mobile": 2140,
+   "total": 2330,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화글램핑",
-   "pc": 360,
-   "mobile": 1910,
-   "total": 2270,
+   "pc": 370,
+   "mobile": 1890,
+   "total": 2260,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화석모도",
-   "pc": 180,
-   "mobile": 2050,
-   "total": 2230,
+   "keyword": "강화도애견펜션",
+   "pc": 360,
+   "mobile": 1890,
+   "total": 2250,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도풀빌라",
+   "pc": 460,
+   "mobile": 1740,
+   "total": 2200,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -354,26 +363,17 @@
   {
    "keyword": "강화스페인마을",
    "pc": 180,
-   "mobile": 2040,
-   "total": 2220,
+   "mobile": 1990,
+   "total": 2170,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도애견펜션",
-   "pc": 360,
-   "mobile": 1850,
-   "total": 2210,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도풀빌라",
-   "pc": 450,
-   "mobile": 1730,
-   "total": 2180,
+   "keyword": "강화석모도",
+   "pc": 180,
+   "mobile": 1940,
+   "total": 2120,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -381,8 +381,8 @@
   {
    "keyword": "강화도젓국갈비",
    "pc": 210,
-   "mobile": 1880,
-   "total": 2090,
+   "mobile": 1740,
+   "total": 1950,
    "comp": "중간",
    "tracked": true,
    "under10": false
@@ -390,62 +390,80 @@
   {
    "keyword": "강화도칼국수",
    "pc": 160,
-   "mobile": 1790,
-   "total": 1950,
+   "mobile": 1730,
+   "total": 1890,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
    "keyword": "강화도순무",
-   "pc": 210,
-   "mobile": 1610,
-   "total": 1820,
+   "pc": 220,
+   "mobile": 1640,
+   "total": 1860,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
-   "keyword": "강화도횟집",
-   "pc": 230,
-   "mobile": 1580,
-   "total": 1810,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화도교동시장",
-   "pc": 210,
-   "mobile": 1600,
-   "total": 1810,
+   "pc": 220,
+   "mobile": 1560,
+   "total": 1780,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도카페추천",
-   "pc": 160,
-   "mobile": 1610,
+   "keyword": "강화도횟집",
+   "pc": 230,
+   "mobile": 1540,
    "total": 1770,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도외포항",
+   "keyword": "강화도카페추천",
    "pc": 160,
-   "mobile": 1600,
-   "total": 1760,
-   "comp": "중간",
+   "mobile": 1550,
+   "total": 1710,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도순무김치",
-   "pc": 150,
-   "mobile": 1530,
-   "total": 1680,
+   "pc": 160,
+   "mobile": 1550,
+   "total": 1710,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도외포항",
+   "pc": 170,
+   "mobile": 1480,
+   "total": 1650,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도리조트",
+   "pc": 380,
+   "mobile": 1230,
+   "total": 1610,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도애견동반펜션",
+   "pc": 270,
+   "mobile": 1310,
+   "total": 1580,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -453,34 +471,7 @@
   {
    "keyword": "강화도장어맛집",
    "pc": 180,
-   "mobile": 1460,
-   "total": 1640,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도애견동반식당",
-   "pc": 200,
-   "mobile": 1400,
-   "total": 1600,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도리조트",
-   "pc": 360,
-   "mobile": 1230,
-   "total": 1590,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도애견동반펜션",
-   "pc": 250,
-   "mobile": 1320,
+   "mobile": 1390,
    "total": 1570,
    "comp": "높음",
    "tracked": false,
@@ -488,18 +479,27 @@
   },
   {
    "keyword": "강화도카라반",
-   "pc": 290,
-   "mobile": 1270,
+   "pc": 300,
+   "mobile": 1260,
    "total": 1560,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
+   "keyword": "강화도애견동반식당",
+   "pc": 200,
+   "mobile": 1350,
+   "total": 1550,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도팬션",
-   "pc": 360,
-   "mobile": 1150,
-   "total": 1510,
+   "pc": 370,
+   "mobile": 1160,
+   "total": 1530,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -507,26 +507,35 @@
   {
    "keyword": "강화손칼국수",
    "pc": 80,
-   "mobile": 1400,
-   "total": 1480,
+   "mobile": 1380,
+   "total": 1460,
    "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도펜션추천",
+   "pc": 230,
+   "mobile": 1190,
+   "total": 1420,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "석모도카페",
    "pc": 130,
-   "mobile": 1330,
-   "total": 1460,
+   "mobile": 1270,
+   "total": 1400,
    "comp": "낮음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도펜션추천",
-   "pc": 220,
+   "keyword": "강화도대형카페",
+   "pc": 190,
    "mobile": 1190,
-   "total": 1410,
+   "total": 1380,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -534,26 +543,17 @@
   {
    "keyword": "강화해수탕",
    "pc": 80,
-   "mobile": 1330,
-   "total": 1410,
+   "mobile": 1300,
+   "total": 1380,
    "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도대형카페",
-   "pc": 190,
-   "mobile": 1210,
-   "total": 1400,
-   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도동막해변",
    "pc": 210,
-   "mobile": 1100,
-   "total": 1310,
+   "mobile": 1050,
+   "total": 1260,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -561,8 +561,8 @@
   {
    "keyword": "강화석모도맛집",
    "pc": 110,
-   "mobile": 1150,
-   "total": 1260,
+   "mobile": 1130,
+   "total": 1240,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -570,8 +570,8 @@
   {
    "keyword": "강화마니산",
    "pc": 140,
-   "mobile": 1100,
-   "total": 1240,
+   "mobile": 1090,
+   "total": 1230,
    "comp": "중간",
    "tracked": false,
    "under10": false
@@ -579,8 +579,8 @@
   {
    "keyword": "강화교동",
    "pc": 140,
-   "mobile": 1080,
-   "total": 1220,
+   "mobile": 1050,
+   "total": 1190,
    "comp": "중간",
    "tracked": false,
    "under10": false
@@ -588,8 +588,8 @@
   {
    "keyword": "강화도글램핑장",
    "pc": 230,
-   "mobile": 970,
-   "total": 1200,
+   "mobile": 960,
+   "total": 1190,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -597,8 +597,26 @@
   {
    "keyword": "강화도칼국수맛집",
    "pc": 80,
-   "mobile": 1090,
-   "total": 1170,
+   "mobile": 1060,
+   "total": 1140,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도꽃게탕맛집",
+   "pc": 110,
+   "mobile": 970,
+   "total": 1080,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도단체펜션",
+   "pc": 270,
+   "mobile": 810,
+   "total": 1080,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -606,62 +624,17 @@
   {
    "keyword": "강화도장어",
    "pc": 140,
-   "mobile": 960,
-   "total": 1100,
+   "mobile": 930,
+   "total": 1070,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
-   "keyword": "강화도꽃게탕맛집",
-   "pc": 110,
-   "mobile": 990,
-   "total": 1100,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도새우",
-   "pc": 180,
-   "mobile": 880,
-   "total": 1060,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도단체펜션",
-   "pc": 250,
-   "mobile": 810,
-   "total": 1060,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화도석모도",
-   "pc": 180,
-   "mobile": 870,
-   "total": 1050,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화카페추천",
-   "pc": 40,
-   "mobile": 990,
-   "total": 1030,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도한정식",
-   "pc": 130,
-   "mobile": 880,
-   "total": 1010,
+   "pc": 190,
+   "mobile": 850,
+   "total": 1040,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -676,10 +649,37 @@
    "under10": false
   },
   {
+   "keyword": "강화도한정식",
+   "pc": 130,
+   "mobile": 850,
+   "total": 980,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도새우",
+   "pc": 180,
+   "mobile": 800,
+   "total": 980,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화카페추천",
+   "pc": 40,
+   "mobile": 940,
+   "total": 980,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도간장게장",
    "pc": 100,
-   "mobile": 880,
-   "total": 980,
+   "mobile": 870,
+   "total": 970,
    "comp": "높음",
    "tracked": true,
    "under10": false
@@ -687,35 +687,26 @@
   {
    "keyword": "강화도여행코스",
    "pc": 230,
-   "mobile": 700,
-   "total": 930,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화새우젓축제",
-   "pc": 60,
-   "mobile": 840,
-   "total": 900,
+   "mobile": 680,
+   "total": 910,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화키즈펜션",
-   "pc": 100,
-   "mobile": 780,
-   "total": 880,
+   "pc": 110,
+   "mobile": 790,
+   "total": 900,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도해수욕장",
-   "pc": 80,
-   "mobile": 790,
-   "total": 870,
+   "keyword": "강화도키즈풀빌라",
+   "pc": 160,
+   "mobile": 730,
+   "total": 890,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -730,10 +721,10 @@
    "under10": false
   },
   {
-   "keyword": "강화도키즈풀빌라",
-   "pc": 160,
-   "mobile": 700,
-   "total": 860,
+   "keyword": "인천강화도맛집",
+   "pc": 70,
+   "mobile": 760,
+   "total": 830,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -741,25 +732,7 @@
   {
    "keyword": "강화대형카페",
    "pc": 50,
-   "mobile": 810,
-   "total": 860,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "인천강화도맛집",
-   "pc": 70,
-   "mobile": 770,
-   "total": 840,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도특산물",
-   "pc": 110,
-   "mobile": 720,
+   "mobile": 780,
    "total": 830,
    "comp": "중간",
    "tracked": false,
@@ -775,29 +748,38 @@
    "under10": false
   },
   {
-   "keyword": "강화리조트",
-   "pc": 120,
-   "mobile": 710,
+   "keyword": "강화도스파펜션",
+   "pc": 180,
+   "mobile": 650,
    "total": 830,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화한정식",
-   "pc": 60,
-   "mobile": 760,
+   "keyword": "강화도해수욕장",
+   "pc": 80,
+   "mobile": 740,
    "total": 820,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도꽃게",
-   "pc": 110,
-   "mobile": 710,
+   "keyword": "강화리조트",
+   "pc": 130,
+   "mobile": 690,
    "total": 820,
    "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도특산물",
+   "pc": 110,
+   "mobile": 700,
+   "total": 810,
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -811,7 +793,7 @@
    "under10": false
   },
   {
-   "keyword": "강화애견동반펜션",
+   "keyword": "강화글램핑장",
    "pc": 100,
    "mobile": 710,
    "total": 810,
@@ -820,27 +802,27 @@
    "under10": false
   },
   {
-   "keyword": "강화도스파펜션",
-   "pc": 170,
-   "mobile": 640,
-   "total": 810,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화고인돌",
-   "pc": 160,
-   "mobile": 640,
+   "keyword": "강화한정식",
+   "pc": 70,
+   "mobile": 730,
    "total": 800,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화글램핑장",
-   "pc": 90,
-   "mobile": 710,
+   "keyword": "강화새우젓축제",
+   "pc": 60,
+   "mobile": 740,
+   "total": 800,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화애견동반펜션",
+   "pc": 100,
+   "mobile": 700,
    "total": 800,
    "comp": "높음",
    "tracked": false,
@@ -849,25 +831,34 @@
   {
    "keyword": "석모도숙소",
    "pc": 140,
-   "mobile": 650,
+   "mobile": 660,
+   "total": 800,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도꽃게",
+   "pc": 110,
+   "mobile": 680,
    "total": 790,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "인천강화도가볼만한곳",
-   "pc": 100,
-   "mobile": 660,
-   "total": 760,
+   "keyword": "강화고인돌",
+   "pc": 160,
+   "mobile": 610,
+   "total": 770,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도장날",
-   "pc": 30,
-   "mobile": 730,
+   "keyword": "강화독채펜션",
+   "pc": 140,
+   "mobile": 620,
    "total": 760,
    "comp": "높음",
    "tracked": false,
@@ -883,19 +874,10 @@
    "under10": false
   },
   {
-   "keyword": "강화독채펜션",
-   "pc": 130,
-   "mobile": 620,
-   "total": 750,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화장어맛집",
-   "pc": 30,
-   "mobile": 720,
-   "total": 750,
+   "keyword": "인천강화도가볼만한곳",
+   "pc": 100,
+   "mobile": 640,
+   "total": 740,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -911,8 +893,8 @@
   },
   {
    "keyword": "강화도캠핑",
-   "pc": 170,
-   "mobile": 550,
+   "pc": 180,
+   "mobile": 540,
    "total": 720,
    "comp": "높음",
    "tracked": false,
@@ -928,20 +910,11 @@
    "under10": false
   },
   {
-   "keyword": "강화도밴댕이맛집",
-   "pc": 70,
-   "mobile": 650,
+   "keyword": "강화도장날",
+   "pc": 30,
+   "mobile": 690,
    "total": 720,
    "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도볼거리",
-   "pc": 160,
-   "mobile": 550,
-   "total": 710,
-   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -955,37 +928,46 @@
    "under10": false
   },
   {
-   "keyword": "강화도교동맛집",
-   "pc": 80,
-   "mobile": 610,
-   "total": 690,
+   "keyword": "강화장어맛집",
+   "pc": 30,
+   "mobile": 680,
+   "total": 710,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도밴댕이맛집",
+   "pc": 60,
+   "mobile": 640,
+   "total": 700,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도한정식맛집",
-   "pc": 50,
-   "mobile": 620,
-   "total": 670,
+   "pc": 60,
+   "mobile": 630,
+   "total": 690,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도갯벌체험",
-   "pc": 140,
+   "keyword": "강화도볼거리",
+   "pc": 160,
    "mobile": 520,
-   "total": 660,
-   "comp": "높음",
+   "total": 680,
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도애견동반",
-   "pc": 100,
-   "mobile": 540,
-   "total": 640,
+   "keyword": "강화도교동맛집",
+   "pc": 80,
+   "mobile": 590,
+   "total": 670,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1000,10 +982,37 @@
    "under10": false
   },
   {
+   "keyword": "강화도가족펜션",
+   "pc": 130,
+   "mobile": 510,
+   "total": 640,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도갯벌체험",
+   "pc": 140,
+   "mobile": 490,
+   "total": 630,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도애견동반",
+   "pc": 100,
+   "mobile": 530,
+   "total": 630,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "전등사근처맛집",
    "pc": 50,
-   "mobile": 570,
-   "total": 620,
+   "mobile": 560,
+   "total": 610,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1011,17 +1020,8 @@
   {
    "keyword": "강화도모텔",
    "pc": 110,
-   "mobile": 510,
-   "total": 620,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도가족펜션",
-   "pc": 120,
    "mobile": 500,
-   "total": 620,
+   "total": 610,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1036,9 +1036,9 @@
    "under10": false
   },
   {
-   "keyword": "강화애견동반식당",
-   "pc": 30,
-   "mobile": 560,
+   "keyword": "강화도식당",
+   "pc": 60,
+   "mobile": 530,
    "total": 590,
    "comp": "높음",
    "tracked": false,
@@ -1047,52 +1047,43 @@
   {
    "keyword": "강화도까페",
    "pc": 40,
+   "mobile": 520,
+   "total": 560,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도한식",
+   "pc": 20,
    "mobile": 540,
-   "total": 580,
+   "total": 560,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도식당",
-   "pc": 60,
-   "mobile": 510,
-   "total": 570,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화대하구이",
-   "pc": 40,
-   "mobile": 530,
-   "total": 570,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도아이랑갈만한곳",
-   "pc": 60,
-   "mobile": 490,
+   "keyword": "강화애견동반식당",
+   "pc": 30,
+   "mobile": 520,
    "total": 550,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화외포리맛집",
-   "pc": 30,
-   "mobile": 510,
+   "keyword": "강화도갯벌장어",
+   "pc": 70,
+   "mobile": 470,
    "total": 540,
-   "comp": "높음",
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도수제버거",
-   "pc": 130,
-   "mobile": 410,
+   "keyword": "강화도숙박",
+   "pc": 140,
+   "mobile": 400,
    "total": 540,
    "comp": "높음",
    "tracked": false,
@@ -1100,8 +1091,8 @@
   },
   {
    "keyword": "강화도캠핑장추천",
-   "pc": 130,
-   "mobile": 410,
+   "pc": 140,
+   "mobile": 400,
    "total": 540,
    "comp": "높음",
    "tracked": false,
@@ -1110,52 +1101,43 @@
   {
    "keyword": "강화장어",
    "pc": 50,
-   "mobile": 480,
-   "total": 530,
+   "mobile": 470,
+   "total": 520,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도갯벌장어",
-   "pc": 60,
-   "mobile": 470,
-   "total": 530,
-   "comp": "중간",
+   "keyword": "강화대하구이",
+   "pc": 40,
+   "mobile": 480,
+   "total": 520,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도밴댕이",
    "pc": 90,
-   "mobile": 440,
-   "total": 530,
+   "mobile": 430,
+   "total": 520,
    "comp": "높음",
    "tracked": true,
    "under10": false
   },
   {
-   "keyword": "강화초지대교맛집",
-   "pc": 20,
-   "mobile": 500,
-   "total": 520,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도숙박",
-   "pc": 130,
-   "mobile": 390,
+   "keyword": "강화도수제버거",
+   "pc": 120,
+   "mobile": 400,
    "total": 520,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도한식",
-   "pc": 20,
-   "mobile": 490,
+   "keyword": "강화외포리맛집",
+   "pc": 30,
+   "mobile": 480,
    "total": 510,
    "comp": "높음",
    "tracked": false,
@@ -1163,8 +1145,8 @@
   },
   {
    "keyword": "강화도오토캠핑장",
-   "pc": 120,
-   "mobile": 390,
+   "pc": 130,
+   "mobile": 380,
    "total": 510,
    "comp": "중간",
    "tracked": false,
@@ -1172,8 +1154,8 @@
   },
   {
    "keyword": "강화팬션",
-   "pc": 60,
-   "mobile": 450,
+   "pc": 70,
+   "mobile": 440,
    "total": 510,
    "comp": "높음",
    "tracked": false,
@@ -1182,8 +1164,26 @@
   {
    "keyword": "강화도감성숙소",
    "pc": 100,
-   "mobile": 380,
-   "total": 480,
+   "mobile": 400,
+   "total": 500,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화초지대교맛집",
+   "pc": 20,
+   "mobile": 480,
+   "total": 500,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도아이랑갈만한곳",
+   "pc": 50,
+   "mobile": 450,
+   "total": 500,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1198,19 +1198,19 @@
    "under10": false
   },
   {
-   "keyword": "강화도옥토끼우주센터",
-   "pc": 120,
-   "mobile": 350,
-   "total": 470,
+   "keyword": "인천강화도펜션",
+   "pc": 50,
+   "mobile": 410,
+   "total": 460,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "인천강화도펜션",
-   "pc": 50,
-   "mobile": 400,
-   "total": 450,
+   "keyword": "강화도옥토끼우주센터",
+   "pc": 120,
+   "mobile": 320,
+   "total": 440,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1218,36 +1218,9 @@
   {
    "keyword": "석모도횟집",
    "pc": 20,
-   "mobile": 420,
-   "total": 440,
+   "mobile": 410,
+   "total": 430,
    "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도석모도맛집",
-   "pc": 50,
-   "mobile": 380,
-   "total": 430,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도마니산맛집",
-   "pc": 30,
-   "mobile": 400,
-   "total": 430,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화애견펜션",
-   "pc": 50,
-   "mobile": 380,
-   "total": 430,
-   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -1261,28 +1234,37 @@
    "under10": false
   },
   {
-   "keyword": "강화도아침식사",
-   "pc": 40,
-   "mobile": 380,
+   "keyword": "강화도석모도맛집",
+   "pc": 50,
+   "mobile": 370,
    "total": 420,
-   "comp": "중간",
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도현지인맛집",
+   "keyword": "강화도마니산맛집",
+   "pc": 40,
+   "mobile": 380,
+   "total": 420,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화애견펜션",
    "pc": 50,
-   "mobile": 360,
-   "total": 410,
+   "mobile": 370,
+   "total": 420,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도당일치기",
-   "pc": 140,
+   "pc": 150,
    "mobile": 270,
-   "total": 410,
+   "total": 420,
    "comp": "높음",
    "tracked": true,
    "under10": false
@@ -1290,7 +1272,16 @@
   {
    "keyword": "강화도민박",
    "pc": 90,
-   "mobile": 310,
+   "mobile": 320,
+   "total": 410,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도현지인맛집",
+   "pc": 50,
+   "mobile": 350,
    "total": 400,
    "comp": "높음",
    "tracked": false,
@@ -1306,6 +1297,24 @@
    "under10": false
   },
   {
+   "keyword": "강화도애견동반숙소",
+   "pc": 90,
+   "mobile": 310,
+   "total": 400,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도아침식사",
+   "pc": 40,
+   "mobile": 350,
+   "total": 390,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "석모도휴양림",
    "pc": 60,
    "mobile": 330,
@@ -1315,10 +1324,10 @@
    "under10": false
   },
   {
-   "keyword": "강화도애견동반숙소",
-   "pc": 80,
+   "keyword": "강화도스파",
+   "pc": 70,
    "mobile": 310,
-   "total": 390,
+   "total": 380,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1326,18 +1335,9 @@
   {
    "keyword": "강화한옥펜션",
    "pc": 30,
-   "mobile": 350,
-   "total": 380,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "석모도골프장",
-   "pc": 60,
-   "mobile": 310,
+   "mobile": 340,
    "total": 370,
-   "comp": "중간",
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -1351,36 +1351,18 @@
    "under10": false
   },
   {
-   "keyword": "강화교동시장맛집",
-   "pc": 20,
-   "mobile": 340,
-   "total": 360,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도스파",
+   "keyword": "석모도골프장",
    "pc": 60,
    "mobile": 300,
    "total": 360,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도벤뎅이",
-   "pc": 30,
-   "mobile": 320,
-   "total": 350,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도고려산",
-   "pc": 70,
-   "mobile": 280,
+   "keyword": "강화교동시장맛집",
+   "pc": 20,
+   "mobile": 330,
    "total": 350,
    "comp": "중간",
    "tracked": false,
@@ -1388,28 +1370,37 @@
   },
   {
    "keyword": "강화도낚시펜션",
+   "pc": 70,
+   "mobile": 270,
+   "total": 340,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도벤뎅이",
+   "pc": 30,
+   "mobile": 310,
+   "total": 340,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도고려산",
+   "pc": 70,
+   "mobile": 270,
+   "total": 340,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도소노905",
    "pc": 60,
    "mobile": 270,
    "total": 330,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화까페",
-   "pc": 10,
-   "mobile": 310,
-   "total": 320,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도점심맛집",
-   "pc": 60,
-   "mobile": 260,
-   "total": 320,
-   "comp": "높음",
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -1423,55 +1414,37 @@
    "under10": false
   },
   {
-   "keyword": "강화도소노905",
-   "pc": 60,
-   "mobile": 260,
-   "total": 320,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화단체펜션",
    "pc": 50,
-   "mobile": 260,
-   "total": 310,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "석모도여행",
-   "pc": 110,
-   "mobile": 190,
-   "total": 300,
+   "mobile": 270,
+   "total": 320,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화고려산",
-   "pc": 40,
+   "pc": 50,
    "mobile": 260,
-   "total": 300,
+   "total": 310,
    "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화까페",
+   "pc": 10,
+   "mobile": 300,
+   "total": 310,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도독채풀빌라",
    "pc": 70,
-   "mobile": 230,
-   "total": 300,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도애견동반글램핑",
-   "pc": 80,
-   "mobile": 220,
-   "total": 300,
+   "mobile": 240,
+   "total": 310,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1479,36 +1452,45 @@
   {
    "keyword": "강화군맛집",
    "pc": 50,
+   "mobile": 250,
+   "total": 300,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도점심맛집",
+   "pc": 60,
    "mobile": 240,
+   "total": 300,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "석모도여행",
+   "pc": 110,
+   "mobile": 180,
    "total": 290,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화쌀밥집",
-   "pc": 10,
-   "mobile": 280,
+   "keyword": "석모도글램핑",
+   "pc": 60,
+   "mobile": 230,
    "total": 290,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도드라이브",
-   "pc": 50,
-   "mobile": 240,
+   "keyword": "강화도애견동반글램핑",
+   "pc": 80,
+   "mobile": 210,
    "total": 290,
-   "comp": "중간",
-   "tracked": true,
-   "under10": false
-  },
-  {
-   "keyword": "석모도글램핑",
-   "pc": 50,
-   "mobile": 230,
-   "total": 280,
-   "comp": "중간",
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -1531,34 +1513,52 @@
    "under10": false
   },
   {
-   "keyword": "강화도바다뷰카페",
-   "pc": 30,
-   "mobile": 250,
+   "keyword": "강화도1박2일",
+   "pc": 110,
+   "mobile": 170,
+   "total": 280,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화쌀밥집",
+   "pc": 10,
+   "mobile": 270,
    "total": 280,
    "comp": "중간",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화맛집추천",
-   "pc": 10,
-   "mobile": 260,
-   "total": 270,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도1박2일",
-   "pc": 100,
-   "mobile": 170,
-   "total": 270,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화도온천펜션",
+   "pc": 60,
+   "mobile": 220,
+   "total": 280,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도드라이브",
+   "pc": 50,
+   "mobile": 230,
+   "total": 280,
+   "comp": "중간",
+   "tracked": true,
+   "under10": false
+  },
+  {
+   "keyword": "강화도바다뷰카페",
+   "pc": 20,
+   "mobile": 250,
+   "total": 270,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도풀빌라펜션",
    "pc": 50,
    "mobile": 220,
    "total": 270,
@@ -1569,52 +1569,25 @@
   {
    "keyword": "강화도석모도펜션",
    "pc": 40,
-   "mobile": 230,
-   "total": 270,
+   "mobile": 220,
+   "total": 260,
    "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
-   "keyword": "강화도일몰명소",
-   "pc": 40,
-   "mobile": 220,
-   "total": 260,
-   "comp": "중간",
+   "keyword": "전등사주변맛집",
+   "pc": 20,
+   "mobile": 230,
+   "total": 250,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화도길상면맛집",
    "pc": 30,
-   "mobile": 230,
-   "total": 260,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도풀빌라펜션",
-   "pc": 40,
    "mobile": 220,
-   "total": 260,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도대하축제",
-   "pc": 30,
-   "mobile": 230,
-   "total": 260,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도먹거리",
-   "pc": 50,
-   "mobile": 200,
    "total": 250,
    "comp": "높음",
    "tracked": false,
@@ -1639,9 +1612,18 @@
    "under10": false
   },
   {
-   "keyword": "전등사주변맛집",
-   "pc": 20,
-   "mobile": 220,
+   "keyword": "강화도먹거리",
+   "pc": 50,
+   "mobile": 190,
+   "total": 240,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화맛집추천",
+   "pc": 10,
+   "mobile": 230,
    "total": 240,
    "comp": "높음",
    "tracked": false,
@@ -1657,25 +1639,7 @@
    "under10": false
   },
   {
-   "keyword": "강화도등산",
-   "pc": 60,
-   "mobile": 180,
-   "total": 240,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화대룡시장맛집",
-   "pc": 20,
-   "mobile": 220,
-   "total": 240,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도바닷가펜션",
+   "keyword": "강화도대하축제",
    "pc": 30,
    "mobile": 210,
    "total": 240,
@@ -1694,8 +1658,26 @@
   },
   {
    "keyword": "강화캠핑",
-   "pc": 50,
-   "mobile": 180,
+   "pc": 60,
+   "mobile": 170,
+   "total": 230,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도등산",
+   "pc": 60,
+   "mobile": 170,
+   "total": 230,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화대룡시장맛집",
+   "pc": 20,
+   "mobile": 210,
    "total": 230,
    "comp": "높음",
    "tracked": false,
@@ -1720,9 +1702,27 @@
    "under10": false
   },
   {
-   "keyword": "강화바닷가펜션",
-   "pc": 20,
-   "mobile": 200,
+   "keyword": "강화도일몰명소",
+   "pc": 40,
+   "mobile": 180,
+   "total": 220,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도바닷가펜션",
+   "pc": 30,
+   "mobile": 190,
+   "total": 220,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도온수풀펜션",
+   "pc": 40,
+   "mobile": 180,
    "total": 220,
    "comp": "높음",
    "tracked": false,
@@ -1738,27 +1738,9 @@
    "under10": false
   },
   {
-   "keyword": "강화애견동반",
+   "keyword": "강화바닷가펜션",
    "pc": 20,
    "mobile": 190,
-   "total": 210,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도한식맛집",
-   "pc": 20,
-   "mobile": 190,
-   "total": 210,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도온수풀펜션",
-   "pc": 40,
-   "mobile": 170,
    "total": 210,
    "comp": "높음",
    "tracked": false,
@@ -1774,9 +1756,18 @@
    "under10": false
   },
   {
-   "keyword": "강화도오션뷰펜션",
-   "pc": 40,
-   "mobile": 160,
+   "keyword": "강화애견동반",
+   "pc": 20,
+   "mobile": 180,
+   "total": 200,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도한식맛집",
+   "pc": 20,
+   "mobile": 180,
    "total": 200,
    "comp": "높음",
    "tracked": false,
@@ -1792,15 +1783,6 @@
    "under10": false
   },
   {
-   "keyword": "강화갯벌체험",
-   "pc": 30,
-   "mobile": 170,
-   "total": 200,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "석모도팬션",
    "pc": 40,
    "mobile": 160,
@@ -1811,8 +1793,17 @@
   },
   {
    "keyword": "강화도바베큐펜션",
-   "pc": 30,
-   "mobile": 160,
+   "pc": 40,
+   "mobile": 150,
+   "total": 190,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도오션뷰펜션",
+   "pc": 40,
+   "mobile": 150,
    "total": 190,
    "comp": "높음",
    "tracked": false,
@@ -1828,11 +1819,11 @@
    "under10": false
   },
   {
-   "keyword": "강화도바베큐",
-   "pc": 30,
-   "mobile": 160,
+   "keyword": "석모도리안월드",
+   "pc": 20,
+   "mobile": 170,
    "total": 190,
-   "comp": "높음",
+   "comp": "낮음",
    "tracked": false,
    "under10": false
   },
@@ -1841,6 +1832,24 @@
    "pc": 50,
    "mobile": 140,
    "total": 190,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도관광",
+   "pc": 60,
+   "mobile": 120,
+   "total": 180,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도맛집추천",
+   "pc": 40,
+   "mobile": 140,
+   "total": 180,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -1855,63 +1864,18 @@
    "under10": false
   },
   {
-   "keyword": "석모도리안월드",
-   "pc": 20,
-   "mobile": 160,
+   "keyword": "강화도바베큐",
+   "pc": 30,
+   "mobile": 150,
    "total": 180,
-   "comp": "낮음",
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
   {
    "keyword": "강화바닷가산책펜션",
    "pc": 20,
-   "mobile": 160,
-   "total": 180,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도관광",
-   "pc": 50,
-   "mobile": 120,
-   "total": 170,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도맛집추천",
-   "pc": 30,
-   "mobile": 140,
-   "total": 170,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도대형펜션",
-   "pc": 40,
-   "mobile": 130,
-   "total": 170,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도외포리맛집",
-   "pc": 20,
    "mobile": 150,
-   "total": 170,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도바다카페",
-   "pc": 10,
-   "mobile": 160,
    "total": 170,
    "comp": "높음",
    "tracked": false,
@@ -1927,11 +1891,47 @@
    "under10": false
   },
   {
+   "keyword": "강화갯벌체험",
+   "pc": 20,
+   "mobile": 150,
+   "total": 170,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도돈대",
+   "pc": 30,
+   "mobile": 130,
+   "total": 160,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도대형펜션",
+   "pc": 40,
+   "mobile": 120,
+   "total": 160,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도외포리맛집",
    "pc": 20,
    "mobile": 140,
    "total": 160,
-   "comp": "중간",
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도바다카페",
+   "pc": 10,
+   "mobile": 150,
+   "total": 160,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -1972,15 +1972,6 @@
    "under10": false
   },
   {
-   "keyword": "강화도신상카페",
-   "pc": 20,
-   "mobile": 120,
-   "total": 140,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화실내가볼만한곳",
    "pc": 10,
    "mobile": 130,
@@ -2000,8 +1991,8 @@
   },
   {
    "keyword": "강화석모도펜션",
-   "pc": 20,
-   "mobile": 120,
+   "pc": 30,
+   "mobile": 110,
    "total": 140,
    "comp": "높음",
    "tracked": false,
@@ -2017,27 +2008,9 @@
    "under10": false
   },
   {
-   "keyword": "강화먹거리",
-   "pc": 10,
-   "mobile": 120,
-   "total": 130,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화벤뎅이",
+   "keyword": "강화도신상카페",
    "pc": 20,
    "mobile": 110,
-   "total": 130,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도쌀밥집",
-   "pc": 10,
-   "mobile": 120,
    "total": 130,
    "comp": "중간",
    "tracked": false,
@@ -2062,11 +2035,29 @@
    "under10": false
   },
   {
+   "keyword": "강화도온수풀",
+   "pc": 20,
+   "mobile": 110,
+   "total": 130,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화짚라인",
    "pc": 20,
    "mobile": 110,
    "total": 130,
    "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화먹거리",
+   "pc": 10,
+   "mobile": 110,
+   "total": 120,
+   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -2080,7 +2071,7 @@
    "under10": false
   },
   {
-   "keyword": "강화대하축제",
+   "keyword": "강화도쌀밥집",
    "pc": 10,
    "mobile": 110,
    "total": 120,
@@ -2107,45 +2098,9 @@
    "under10": false
   },
   {
-   "keyword": "강화도쭈꾸미맛집",
-   "pc": 10,
-   "mobile": 110,
-   "total": 120,
-   "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화펜션추천",
    "pc": 10,
    "mobile": 110,
-   "total": 120,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도온수풀",
-   "pc": 20,
-   "mobile": 100,
-   "total": 120,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도대가족펜션",
-   "pc": 10,
-   "mobile": 110,
-   "total": 120,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도풀빌라독채",
-   "pc": 20,
-   "mobile": 100,
    "total": 120,
    "comp": "높음",
    "tracked": false,
@@ -2161,6 +2116,15 @@
    "under10": false
   },
   {
+   "keyword": "강화벤뎅이",
+   "pc": 10,
+   "mobile": 100,
+   "total": 110,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "마호가니강화점",
    "pc": 20,
    "mobile": 90,
@@ -2170,9 +2134,36 @@
    "under10": false
   },
   {
-   "keyword": "석모도독채펜션",
+   "keyword": "강화도쭈꾸미맛집",
    "pc": 10,
    "mobile": 100,
+   "total": 110,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도대가족펜션",
+   "pc": 10,
+   "mobile": 100,
+   "total": 110,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화독채풀빌라",
+   "pc": 30,
+   "mobile": 80,
+   "total": 110,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도풀빌라독채",
+   "pc": 20,
+   "mobile": 90,
    "total": 110,
    "comp": "높음",
    "tracked": false,
@@ -2182,15 +2173,6 @@
    "keyword": "강화도단체독채펜션",
    "pc": 30,
    "mobile": 80,
-   "total": 110,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도워크샵",
-   "pc": 70,
-   "mobile": 40,
    "total": 110,
    "comp": "높음",
    "tracked": false,
@@ -2211,6 +2193,15 @@
    "mobile": 80,
    "total": 100,
    "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화대하축제",
+   "pc": 10,
+   "mobile": 90,
+   "total": 100,
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -2242,9 +2233,18 @@
    "under10": false
   },
   {
-   "keyword": "강화독채풀빌라",
-   "pc": 30,
-   "mobile": 70,
+   "keyword": "석모도독채펜션",
+   "pc": 10,
+   "mobile": 90,
+   "total": 100,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도워크샵",
+   "pc": 70,
+   "mobile": 30,
    "total": 100,
    "comp": "높음",
    "tracked": false,
@@ -2272,6 +2272,15 @@
    "keyword": "강화스파",
    "pc": 10,
    "mobile": 80,
+   "total": 90,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도호캉스",
+   "pc": 30,
+   "mobile": 60,
    "total": 90,
    "comp": "높음",
    "tracked": false,
@@ -2332,15 +2341,6 @@
    "under10": false
   },
   {
-   "keyword": "강화도여행지도",
-   "pc": 30,
-   "mobile": 50,
-   "total": 80,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "석모도아침식사",
    "pc": 10,
    "mobile": 70,
@@ -2395,15 +2395,6 @@
    "under10": false
   },
   {
-   "keyword": "강화도호캉스",
-   "pc": 30,
-   "mobile": 50,
-   "total": 80,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화도펜션독채",
    "pc": 20,
    "mobile": 60,
@@ -2435,15 +2426,6 @@
    "pc": 10,
    "mobile": 70,
    "total": 80,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도숨은맛집",
-   "pc": 10,
-   "mobile": 60,
-   "total": 70,
    "comp": "높음",
    "tracked": false,
    "under10": false
@@ -2548,6 +2530,15 @@
    "under10": false
   },
   {
+   "keyword": "강화도숨은맛집",
+   "pc": 10,
+   "mobile": 50,
+   "total": 60,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "겨울강화도갈만한곳",
    "pc": 10,
    "mobile": 50,
@@ -2575,20 +2566,11 @@
    "under10": false
   },
   {
-   "keyword": "강화도동막해수욕장펜션",
-   "pc": 10,
-   "mobile": 50,
+   "keyword": "강화도여행지도",
+   "pc": 20,
+   "mobile": 40,
    "total": 60,
    "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도고인돌카페",
-   "pc": 10,
-   "mobile": 50,
-   "total": 60,
-   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -2634,15 +2616,6 @@
    "mobile": 50,
    "total": 60,
    "comp": "중간",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도체험학습",
-   "pc": 10,
-   "mobile": 50,
-   "total": 60,
-   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -2719,6 +2692,15 @@
    "under10": false
   },
   {
+   "keyword": "강화도동막해수욕장펜션",
+   "pc": 10,
+   "mobile": 40,
+   "total": 50,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도오션뷰",
    "pc": 10,
    "mobile": 40,
@@ -2737,11 +2719,11 @@
    "under10": false
   },
   {
-   "keyword": "강화고려산맛집",
+   "keyword": "강화도고인돌카페",
    "pc": 10,
    "mobile": 40,
    "total": 50,
-   "comp": "낮음",
+   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -2764,6 +2746,15 @@
    "under10": false
   },
   {
+   "keyword": "강화도체험학습",
+   "pc": 10,
+   "mobile": 40,
+   "total": 50,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화군펜션",
    "pc": 20,
    "mobile": 30,
@@ -2774,6 +2765,15 @@
   },
   {
    "keyword": "강화오션뷰펜션",
+   "pc": 10,
+   "mobile": 40,
+   "total": 50,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도온수수영장펜션",
    "pc": 10,
    "mobile": 40,
    "total": 50,
@@ -2801,15 +2801,6 @@
   },
   {
    "keyword": "강화바베큐펜션",
-   "pc": 10,
-   "mobile": 40,
-   "total": 50,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도독채펜션추천",
    "pc": 10,
    "mobile": 40,
    "total": 50,
@@ -2854,6 +2845,15 @@
    "under10": false
   },
   {
+   "keyword": "강화고려산맛집",
+   "pc": 10,
+   "mobile": 30,
+   "total": 40,
+   "comp": "낮음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도단체식당",
    "pc": 10,
    "mobile": 30,
@@ -2877,24 +2877,6 @@
    "mobile": 30,
    "total": 40,
    "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "인천강화가볼만한곳",
-   "pc": 10,
-   "mobile": 30,
-   "total": 40,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도북카페",
-   "pc": 10,
-   "mobile": 30,
-   "total": 40,
-   "comp": "중간",
    "tracked": false,
    "under10": false
   },
@@ -2989,7 +2971,7 @@
    "under10": false
   },
   {
-   "keyword": "강화도온수수영장펜션",
+   "keyword": "강화도실내수영장펜션",
    "pc": 10,
    "mobile": 30,
    "total": 40,
@@ -3008,6 +2990,24 @@
   },
   {
    "keyword": "석모도단체펜션",
+   "pc": 10,
+   "mobile": 30,
+   "total": 40,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도독채펜션추천",
+   "pc": 10,
+   "mobile": 30,
+   "total": 40,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도펜션단체",
    "pc": 10,
    "mobile": 30,
    "total": 40,
@@ -3061,6 +3061,15 @@
    "under10": false
   },
   {
+   "keyword": "강화도스페인마을맛집",
+   "pc": 10,
+   "mobile": 20,
+   "total": 30,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
    "keyword": "강화도추천",
    "pc": 10,
    "mobile": 20,
@@ -3071,6 +3080,33 @@
   },
   {
    "keyword": "강화투어",
+   "pc": 10,
+   "mobile": 20,
+   "total": 30,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "인천강화가볼만한곳",
+   "pc": 10,
+   "mobile": 20,
+   "total": 30,
+   "comp": "높음",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화도북카페",
+   "pc": 10,
+   "mobile": 20,
+   "total": 30,
+   "comp": "중간",
+   "tracked": false,
+   "under10": false
+  },
+  {
+   "keyword": "강화1박2일",
    "pc": 10,
    "mobile": 20,
    "total": 30,
@@ -3187,7 +3223,7 @@
    "under10": false
   },
   {
-   "keyword": "강화도실내수영장펜션",
+   "keyword": "강화도족구장펜션",
    "pc": 10,
    "mobile": 20,
    "total": 30,
@@ -3196,7 +3232,7 @@
    "under10": false
   },
   {
-   "keyword": "강화도족구장펜션",
+   "keyword": "강화대가족펜션",
    "pc": 10,
    "mobile": 20,
    "total": 30,
@@ -3214,7 +3250,7 @@
    "under10": false
   },
   {
-   "keyword": "강화족구장펜션",
+   "keyword": "강화도오션뷰호텔",
    "pc": 10,
    "mobile": 20,
    "total": 30,
@@ -3223,7 +3259,7 @@
    "under10": false
   },
   {
-   "keyword": "강화도펜션단체",
+   "keyword": "강화족구장펜션",
    "pc": 10,
    "mobile": 20,
    "total": 30,
@@ -3336,15 +3372,6 @@
    "mobile": 10,
    "total": 20,
    "comp": "낮음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도스페인마을맛집",
-   "pc": 10,
-   "mobile": 10,
-   "total": 20,
-   "comp": "높음",
    "tracked": false,
    "under10": false
   },
@@ -3485,15 +3512,6 @@
   },
   {
    "keyword": "강화커플펜션",
-   "pc": 10,
-   "mobile": 10,
-   "total": 20,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화1박2일",
    "pc": 10,
    "mobile": 10,
    "total": 20,
@@ -3790,15 +3808,6 @@
    "under10": false
   },
   {
-   "keyword": "강화대가족펜션",
-   "pc": 10,
-   "mobile": 10,
-   "total": 20,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
    "keyword": "강화워터슬라이드펜션",
    "pc": 10,
    "mobile": 10,
@@ -3890,15 +3899,6 @@
   },
   {
    "keyword": "석모도가족펜션",
-   "pc": 10,
-   "mobile": 10,
-   "total": 20,
-   "comp": "높음",
-   "tracked": false,
-   "under10": false
-  },
-  {
-   "keyword": "강화도오션뷰호텔",
    "pc": 10,
    "mobile": 10,
    "total": 20,
@@ -4179,8 +4179,8 @@
   {
    "keyword": "만선꽃게랑낙지",
    "pc": 50,
-   "mobile": 240,
-   "total": 290,
+   "mobile": 230,
+   "total": 280,
    "comp": "",
    "tracked": true,
    "under10": false,
@@ -4194,8 +4194,8 @@
   {
    "keyword": "더스타스파펜션",
    "pc": 40,
-   "mobile": 80,
-   "total": 120,
+   "mobile": 100,
+   "total": 140,
    "comp": "",
    "tracked": true,
    "under10": false,
@@ -4221,8 +4221,8 @@
   },
   {
    "keyword": "바다노을캠핑장",
-   "pc": 190,
-   "mobile": 580,
+   "pc": 200,
+   "mobile": 570,
    "total": 770,
    "comp": "",
    "tracked": true,
@@ -4249,9 +4249,9 @@
   },
   {
    "keyword": "전등사",
-   "pc": 4530,
-   "mobile": 30300,
-   "total": 34830,
+   "pc": 4590,
+   "mobile": 29840,
+   "total": 34430,
    "comp": "",
    "tracked": true,
    "under10": false,

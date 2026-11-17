@@ -155,6 +155,15 @@
    "tv": null
   }
  ],
- "upcoming": [],
- "upcoming_checked": "2026-11-16 11:21"
+ "upcoming": [
+  {
+   "air": "2026-11-16",
+   "pub": "2026-11-16",
+   "program": "생방송투데이",
+   "title": "'생방송투데이' 제주 탄산 온천부터 석모도 해수 온천까지",
+   "link": "https://www.joongangenews.com/news/articleView.html?idxno=564277",
+   "ours": false
+  }
+ ],
+ "upcoming_checked": "2026-11-17 13:44"
 }

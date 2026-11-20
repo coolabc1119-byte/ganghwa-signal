@@ -1,10 +1,6 @@
 {
  "items": [
   {
-   "date": "2026-11-19",
-   "title": "강화도 여행 | 겨울맞이 개쳐망한 여행 썰푼다 '서해촌/전등사/조양....",
-   "link": "https://blog.naver.com/fennecfox2e/224481910454",
-   "blogger": "사막여우는 귀여워요",
    "tone": "긍정",
    "pos": 5,
    "neg": 0,
@@ -13,7 +9,11 @@
    "store": 4,
    "cues": [],
    "tone_v": 2,
-   "tone_by": "auto"
+   "tone_by": "auto",
+   "date": "2026-11-19",
+   "title": "강화도 여행 | 겨울맞이 개쳐망한 여행 썰푼다 '서해촌/전등사/조양....",
+   "link": "https://blog.naver.com/fennecfox2e/224481910454",
+   "blogger": "사막여우는 귀여워요"
   },
   {
    "tone": "부정",
@@ -257,7 +257,7 @@
    "blogger": "다혜네 집"
   }
  ],
- "total_hint": 16201,
- "checked": "2026-11-19 12:47",
+ "total_hint": 16204,
+ "checked": "2026-11-20 12:40",
  "note": "네이버 블로그 검색에서 제목·요약에 가게 이름이 들어간 글(누적)."
 }

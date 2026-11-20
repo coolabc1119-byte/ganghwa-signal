@@ -1,38 +1,38 @@
 [
  {
   "keyword": "만선꽃게랑낙지",
-  "this_week": 11.8,
-  "last_week": 1.5,
-  "avg_4w": 8.1,
-  "change_pct": 699.0
- },
- {
-  "keyword": "강화도 밴댕이",
-  "this_week": 19.3,
-  "last_week": 13.6,
-  "avg_4w": 17.4,
-  "change_pct": 42.0
- },
- {
-  "keyword": "바다노을캠핑장",
-  "this_week": 18.8,
-  "last_week": 14.7,
-  "avg_4w": 27.0,
-  "change_pct": 28.4
- },
- {
-  "keyword": "강화도 꽃게탕",
-  "this_week": 82.5,
-  "last_week": 71.4,
-  "avg_4w": 90.4,
-  "change_pct": 15.6
+  "this_week": 8.4,
+  "last_week": 3.8,
+  "avg_4w": 9.4,
+  "change_pct": 120.3
  },
  {
   "keyword": "강화도 당일치기",
-  "this_week": 13.5,
-  "last_week": 11.7,
-  "avg_4w": 13.8,
-  "change_pct": 14.7
+  "this_week": 13.9,
+  "last_week": 10.4,
+  "avg_4w": 14.3,
+  "change_pct": 34.2
+ },
+ {
+  "keyword": "바다노을캠핑장",
+  "this_week": 18.9,
+  "last_week": 14.3,
+  "avg_4w": 26.8,
+  "change_pct": 32.5
+ },
+ {
+  "keyword": "강화도 밴댕이",
+  "this_week": 17.9,
+  "last_week": 15.1,
+  "avg_4w": 18.0,
+  "change_pct": 18.6
+ },
+ {
+  "keyword": "강화도 드라이브",
+  "this_week": 8.5,
+  "last_week": 7.3,
+  "avg_4w": 9.8,
+  "change_pct": 16.9
  },
  {
   "keyword": "더스타스파펜션",
@@ -43,30 +43,30 @@
  },
  {
   "keyword": "강화도 여행",
-  "this_week": 103.6,
-  "last_week": 98.2,
-  "avg_4w": 115.0,
-  "change_pct": 5.5
- },
- {
-  "keyword": "강화도 간장게장",
-  "this_week": 31.0,
-  "last_week": 29.5,
-  "avg_4w": 32.4,
-  "change_pct": 5.2
+  "this_week": 101.1,
+  "last_week": 99.1,
+  "avg_4w": 114.3,
+  "change_pct": 2.0
  },
  {
   "keyword": "강화도 맛집",
-  "this_week": 1827.0,
-  "last_week": 1801.4,
-  "avg_4w": 1856.5,
-  "change_pct": 1.4
+  "this_week": 1815.5,
+  "last_week": 1782.7,
+  "avg_4w": 1863.6,
+  "change_pct": 1.8
  },
  {
-  "keyword": "강화도 드라이브",
-  "this_week": 7.3,
-  "last_week": 7.3,
-  "avg_4w": 9.8,
+  "keyword": "강화도 칼국수",
+  "this_week": 61.0,
+  "last_week": 60.3,
+  "avg_4w": 63.4,
+  "change_pct": 1.0
+ },
+ {
+  "keyword": "강화도 장어",
+  "this_week": 36.3,
+  "last_week": 36.3,
+  "avg_4w": 35.9,
   "change_pct": 0.0
  },
  {
@@ -92,72 +92,72 @@
  },
  {
   "keyword": "강화도 펜션",
-  "this_week": 694.0,
-  "last_week": 702.2,
-  "avg_4w": 756.0,
-  "change_pct": -1.2
+  "this_week": 678.8,
+  "last_week": 697.7,
+  "avg_4w": 749.5,
+  "change_pct": -2.7
  },
  {
-  "keyword": "강화도 칼국수",
-  "this_week": 57.8,
-  "last_week": 59.6,
-  "avg_4w": 64.1,
-  "change_pct": -3.0
- },
- {
-  "keyword": "강화도 카페",
-  "this_week": 386.0,
-  "last_week": 401.7,
-  "avg_4w": 442.7,
-  "change_pct": -3.9
+  "keyword": "강화도 간장게장",
+  "this_week": 28.2,
+  "last_week": 29.2,
+  "avg_4w": 32.3,
+  "change_pct": -3.1
  },
  {
   "keyword": "강화도 가볼만한곳",
-  "this_week": 146.2,
-  "last_week": 155.3,
-  "avg_4w": 167.7,
-  "change_pct": -5.9
+  "this_week": 149.4,
+  "last_week": 154.9,
+  "avg_4w": 168.3,
+  "change_pct": -3.5
  },
  {
-  "keyword": "강화도 장어",
-  "this_week": 34.9,
-  "last_week": 37.6,
-  "avg_4w": 36.5,
-  "change_pct": -7.2
+  "keyword": "강화도 카페",
+  "this_week": 380.2,
+  "last_week": 397.8,
+  "avg_4w": 440.4,
+  "change_pct": -4.4
  },
  {
   "keyword": "강화도 순무",
-  "this_week": 67.6,
-  "last_week": 79.0,
-  "avg_4w": 58.2,
-  "change_pct": -14.3
- },
- {
-  "keyword": "전등사 맛집",
-  "this_week": 89.0,
-  "last_week": 106.6,
-  "avg_4w": 97.9,
-  "change_pct": -16.5
+  "this_week": 65.1,
+  "last_week": 71.3,
+  "avg_4w": 59.9,
+  "change_pct": -8.7
  },
  {
   "keyword": "전등사",
-  "this_week": 944.6,
-  "last_week": 1157.1,
-  "avg_4w": 1167.3,
-  "change_pct": -18.4
+  "this_week": 905.8,
+  "last_week": 1146.8,
+  "avg_4w": 1164.4,
+  "change_pct": -21.0
+ },
+ {
+  "keyword": "전등사 맛집",
+  "this_week": 82.8,
+  "last_week": 110.3,
+  "avg_4w": 97.6,
+  "change_pct": -24.9
+ },
+ {
+  "keyword": "강화도 꽃게탕",
+  "this_week": 63.6,
+  "last_week": 91.3,
+  "avg_4w": 94.4,
+  "change_pct": -30.3
  },
  {
   "keyword": "강화도 젓국갈비",
-  "this_week": 44.8,
-  "last_week": 65.3,
-  "avg_4w": 70.6,
-  "change_pct": -31.4
+  "this_week": 41.4,
+  "last_week": 67.1,
+  "avg_4w": 70.7,
+  "change_pct": -38.3
  },
  {
   "keyword": "글로리바다펜션",
   "this_week": 2.2,
   "last_week": 12.5,
-  "avg_4w": 8.0,
+  "avg_4w": 7.2,
   "change_pct": -82.8
  }
 ]

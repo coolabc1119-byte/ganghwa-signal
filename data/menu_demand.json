@@ -1,7 +1,7 @@
 [
  {
   "menu": "카페",
-  "monthly_search": 17610,
+  "monthly_search": 17970,
   "keywords": [
    "강화도카페",
    "강화카페"
@@ -11,7 +11,7 @@
  },
  {
   "menu": "장어",
-  "monthly_search": 3700,
+  "monthly_search": 3750,
   "keywords": [
    "강화도장어",
    "강화장어",
@@ -23,7 +23,7 @@
  },
  {
   "menu": "꽃게탕",
-  "monthly_search": 3590,
+  "monthly_search": 3620,
   "keywords": [
    "강화도꽃게탕",
    "강화도꽃게탕맛집"
@@ -33,7 +33,7 @@
  },
  {
   "menu": "칼국수",
-  "monthly_search": 2940,
+  "monthly_search": 2990,
   "keywords": [
    "강화도칼국수",
    "강화도칼국수맛집"
@@ -43,7 +43,7 @@
  },
  {
   "menu": "젓국갈비",
-  "monthly_search": 2010,
+  "monthly_search": 2190,
   "keywords": [
    "강화도젓국갈비"
   ],
@@ -52,7 +52,7 @@
  },
  {
   "menu": "순무",
-  "monthly_search": 1900,
+  "monthly_search": 1910,
   "keywords": [
    "강화도순무"
   ],
@@ -61,7 +61,7 @@
  },
  {
   "menu": "밴댕이",
-  "monthly_search": 1210,
+  "monthly_search": 1230,
   "keywords": [
    "강화도밴댕이",
    "강화도밴댕이맛집"
@@ -71,10 +71,19 @@
  },
  {
   "menu": "간장게장",
-  "monthly_search": 1050,
+  "monthly_search": 1030,
   "keywords": [
    "강화도간장게장",
    "강화간장게장맛집"
+  ],
+  "mine": true,
+  "under10": false
+ },
+ {
+  "menu": "연포탕",
+  "monthly_search": 40,
+  "keywords": [
+   "강화도연포탕"
   ],
   "mine": true,
   "under10": false
@@ -84,15 +93,6 @@
   "monthly_search": 30,
   "keywords": [
    "강화도낙지"
-  ],
-  "mine": true,
-  "under10": false
- },
- {
-  "menu": "연포탕",
-  "monthly_search": 30,
-  "keywords": [
-   "강화도연포탕"
   ],
   "mine": true,
   "under10": false

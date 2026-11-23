@@ -1,73 +1,52 @@
 [
  {
   "keyword": "강화도 젓국갈비",
-  "this_week": 105.7,
-  "last_week": 54.8,
-  "avg_4w": 65.7,
-  "change_pct": 93.0
+  "this_week": 107.0,
+  "last_week": 54.0,
+  "avg_4w": 64.9,
+  "change_pct": 98.1
  },
  {
   "keyword": "만선꽃게랑낙지",
-  "this_week": 10.6,
-  "last_week": 6.9,
-  "avg_4w": 8.5,
-  "change_pct": 53.3
- },
- {
-  "keyword": "강화도 밴댕이",
-  "this_week": 19.7,
-  "last_week": 14.2,
-  "avg_4w": 16.9,
-  "change_pct": 39.0
- },
- {
-  "keyword": "강화도 당일치기",
-  "this_week": 13.9,
-  "last_week": 11.0,
-  "avg_4w": 14.3,
-  "change_pct": 27.0
+  "this_week": 14.3,
+  "last_week": 7.9,
+  "avg_4w": 7.9,
+  "change_pct": 81.7
  },
  {
   "keyword": "더스타스파펜션",
-  "this_week": 11.4,
-  "last_week": 10.0,
-  "avg_4w": 2.5,
-  "change_pct": 14.3
+  "this_week": 12.2,
+  "last_week": 10.7,
+  "avg_4w": 2.7,
+  "change_pct": 14.2
+ },
+ {
+  "keyword": "강화도 밴댕이",
+  "this_week": 18.4,
+  "last_week": 16.1,
+  "avg_4w": 17.1,
+  "change_pct": 14.1
  },
  {
   "keyword": "강화도 칼국수",
-  "this_week": 67.2,
-  "last_week": 61.7,
-  "avg_4w": 62.4,
-  "change_pct": 9.0
- },
- {
-  "keyword": "강화도 장어",
-  "this_week": 36.0,
-  "last_week": 33.3,
-  "avg_4w": 35.2,
-  "change_pct": 7.9
- },
- {
-  "keyword": "강화도 맛집",
-  "this_week": 1830.4,
-  "last_week": 1706.3,
-  "avg_4w": 1855.7,
-  "change_pct": 7.3
+  "this_week": 67.1,
+  "last_week": 59.2,
+  "avg_4w": 62.3,
+  "change_pct": 13.4
  },
  {
   "keyword": "강화도 가볼만한곳",
-  "this_week": 153.7,
-  "last_week": 145.5,
-  "avg_4w": 165.7,
-  "change_pct": 5.6
+  "this_week": 156.6,
+  "last_week": 148.4,
+  "avg_4w": 169.8,
+  "change_pct": 5.5
  },
  {
-  "keyword": "바다노을캠핑장",
-  "this_week": 17.5,
-  "last_week": 17.3,
-  "avg_4w": 26.0,
-  "change_pct": 1.1
+  "keyword": "강화도 당일치기",
+  "this_week": 12.0,
+  "last_week": 11.5,
+  "avg_4w": 14.4,
+  "change_pct": 4.2
  },
  {
   "keyword": "강화 보헤미안펜션",
@@ -91,67 +70,88 @@
   "change_pct": 0
  },
  {
-  "keyword": "강화도 카페",
-  "this_week": 378.0,
-  "last_week": 382.2,
-  "avg_4w": 433.0,
-  "change_pct": -1.1
+  "keyword": "강화도 맛집",
+  "this_week": 1773.9,
+  "last_week": 1805.3,
+  "avg_4w": 1886.4,
+  "change_pct": -1.7
+ },
+ {
+  "keyword": "강화도 장어",
+  "this_week": 33.8,
+  "last_week": 34.5,
+  "avg_4w": 36.0,
+  "change_pct": -1.9
  },
  {
   "keyword": "강화도 순무",
-  "this_week": 64.8,
-  "last_week": 66.9,
-  "avg_4w": 61.1,
-  "change_pct": -3.1
- },
- {
-  "keyword": "강화도 여행",
-  "this_week": 94.3,
-  "last_week": 98.1,
-  "avg_4w": 112.3,
-  "change_pct": -3.9
+  "this_week": 63.6,
+  "last_week": 65.2,
+  "avg_4w": 62.1,
+  "change_pct": -2.5
  },
  {
   "keyword": "강화도 펜션",
-  "this_week": 664.9,
-  "last_week": 701.7,
-  "avg_4w": 737.5,
-  "change_pct": -5.2
+  "this_week": 660.3,
+  "last_week": 690.9,
+  "avg_4w": 734.9,
+  "change_pct": -4.4
+ },
+ {
+  "keyword": "강화도 여행",
+  "this_week": 92.0,
+  "last_week": 99.5,
+  "avg_4w": 111.2,
+  "change_pct": -7.5
+ },
+ {
+  "keyword": "강화도 카페",
+  "this_week": 359.8,
+  "last_week": 399.8,
+  "avg_4w": 437.5,
+  "change_pct": -10.0
  },
  {
   "keyword": "강화도 간장게장",
-  "this_week": 24.8,
-  "last_week": 26.5,
-  "avg_4w": 32.3,
-  "change_pct": -6.4
+  "this_week": 22.6,
+  "last_week": 26.3,
+  "avg_4w": 33.1,
+  "change_pct": -14.1
  },
  {
-  "keyword": "강화도 드라이브",
-  "this_week": 8.2,
-  "last_week": 8.9,
-  "avg_4w": 9.8,
-  "change_pct": -7.4
- },
- {
-  "keyword": "전등사 맛집",
-  "this_week": 80.9,
-  "last_week": 89.7,
-  "avg_4w": 95.5,
-  "change_pct": -9.8
+  "keyword": "바다노을캠핑장",
+  "this_week": 15.7,
+  "last_week": 19.2,
+  "avg_4w": 26.1,
+  "change_pct": -18.3
  },
  {
   "keyword": "전등사",
-  "this_week": 845.5,
-  "last_week": 981.7,
-  "avg_4w": 1137.6,
-  "change_pct": -13.9
+  "this_week": 741.1,
+  "last_week": 1004.5,
+  "avg_4w": 1157.0,
+  "change_pct": -26.2
  },
  {
   "keyword": "강화도 꽃게탕",
-  "this_week": 63.8,
-  "last_week": 88.4,
+  "this_week": 62.7,
+  "last_week": 86.3,
   "avg_4w": 90.9,
-  "change_pct": -27.8
+  "change_pct": -27.4
+ },
+ {
+  "keyword": "전등사 맛집",
+  "this_week": 64.0,
+  "last_week": 98.3,
+  "avg_4w": 99.9,
+  "change_pct": -34.9
+ },
+ {
+  "keyword": "강화도 드라이브",
+  "this_week": 5.2,
+  "last_week": 10.7,
+  "avg_4w": 10.4,
+  "change_pct": -50.9
  },
  {
   "keyword": "글로리바다펜션",

@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-24 15:19",
+ "checked": "2026-11-25 14:00",
  "queries": {
   "강화도 칼국수": {
    "place": [
@@ -8,16 +8,16 @@
      "id": "13113971",
      "category": "칼국수,만두",
      "area": "인천 강화군 화도면",
-     "visitor": 15125,
+     "visitor": 15142,
      "blog": 1601,
      "score": "4.88",
      "mine": false,
-     "search30": 1770,
-     "search7": 308,
-     "prev7": 353,
+     "search30": 1660,
+     "search7": 316,
+     "prev7": 357,
      "amb": false,
      "base": "배터지는집 동막손칼국수명가",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "강화손칼국수 본점",
@@ -25,63 +25,63 @@
      "category": "칼국수,만두",
      "area": "인천 강화군 양도면",
      "visitor": 4814,
-     "blog": 4182,
+     "blog": 4187,
      "score": "4.5",
      "mine": false,
-     "search30": 1910,
-     "search7": 414,
-     "prev7": 432,
+     "search30": 1850,
+     "search7": 432,
+     "prev7": 425,
      "amb": false,
      "base": "강화손칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "일년내내칼국수맛있는집 강화도본점",
      "id": "36833965",
      "category": "칼국수,만두",
      "area": "인천 강화군 화도면",
-     "visitor": 6405,
+     "visitor": 6404,
      "blog": 19020,
      "score": null,
      "mine": false,
-     "search30": 220,
+     "search30": 210,
      "search7": 15,
      "prev7": 24,
      "amb": false,
      "base": "일년내내칼국수맛있는집",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "도토리 바지락손칼국수",
      "id": "1511677705",
      "category": "칼국수,만두",
      "area": "인천 강화군 화도면",
-     "visitor": 4175,
+     "visitor": 4176,
      "blog": 1404,
      "score": "4.9",
      "mine": false,
-     "search30": 400,
-     "search7": 67,
-     "prev7": 94,
+     "search30": 390,
+     "search7": 58,
+     "prev7": 79,
      "amb": false,
      "base": "도토리 바지락손칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "수라전통육개장 본점",
      "id": "38757626",
      "category": "한식",
      "area": "인천 강화군 강화읍",
-     "visitor": 4425,
+     "visitor": 4426,
      "blog": 2776,
      "score": null,
      "mine": false,
-     "search30": 1500,
-     "search7": 227,
-     "prev7": 294,
+     "search30": 1450,
+     "search7": 248,
+     "prev7": 277,
      "amb": false,
      "base": "수라전통육개장",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "해남회조개구이 강화도 동막해수욕장점",
@@ -92,44 +92,60 @@
      "blog": 2411,
      "score": null,
      "mine": false,
-     "search30": 700,
-     "search7": 148,
-     "prev7": 133,
+     "search30": 660,
+     "search7": 140,
+     "prev7": 132,
      "amb": false,
      "base": "해남회조개구이",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "서해촌",
      "id": "37475143",
      "category": "생선회",
      "area": "인천 강화군 화도면",
-     "visitor": 2993,
+     "visitor": 2996,
      "blog": 1483,
      "score": null,
      "mine": false,
-     "search30": 1130,
-     "search7": 298,
-     "prev7": 294,
+     "search30": 1120,
+     "search7": 293,
+     "prev7": 307,
      "amb": true,
      "base": "서해촌",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "바다마을",
      "id": "16563856",
      "category": "해물,생선요리",
      "area": "인천 강화군 화도면",
-     "visitor": 1495,
+     "visitor": 1497,
      "blog": 1259,
      "score": null,
      "mine": false,
-     "search30": 2060,
-     "search7": 468,
-     "prev7": 512,
+     "search30": 2040,
+     "search7": 465,
+     "prev7": 500,
      "amb": true,
      "base": "바다마을",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
+    },
+    {
+     "name": "강화손칼국수 전등사점",
+     "id": "1645003773",
+     "category": "칼국수,만두",
+     "area": "인천 강화군 길상면",
+     "visitor": 978,
+     "blog": 414,
+     "score": "4.89",
+     "mine": false,
+     "search30": 1590,
+     "search7": 407,
+     "prev7": 368,
+     "amb": false,
+     "base": "강화손칼국수",
+     "to": "2026-11-24"
     },
     {
      "name": "충무칼국수보쌈 강화점",
@@ -140,28 +156,12 @@
      "blog": 262,
      "score": "4.52",
      "mine": false,
-     "search30": 1630,
-     "search7": 413,
-     "prev7": 333,
+     "search30": 1580,
+     "search7": 415,
+     "prev7": 325,
      "amb": false,
      "base": "충무칼국수보쌈",
-     "to": "2026-11-23"
-    },
-    {
-     "name": "강화손칼국수 전등사점",
-     "id": "1645003773",
-     "category": "칼국수,만두",
-     "area": "인천 강화군 길상면",
-     "visitor": 977,
-     "blog": 415,
-     "score": "4.89",
-     "mine": false,
-     "search30": 1630,
-     "search7": 376,
-     "prev7": 377,
-     "amb": false,
-     "base": "강화손칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -179,12 +179,12 @@
      "blog": 1625,
      "score": "4.87",
      "mine": false,
-     "search30": 2500,
-     "search7": 461,
-     "prev7": 541,
+     "search30": 2370,
+     "search7": 445,
+     "prev7": 525,
      "amb": false,
      "base": "일오삼간장게장",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "꽃새담 강화도점",
@@ -195,12 +195,12 @@
      "blog": 2783,
      "score": null,
      "mine": false,
-     "search30": 2140,
-     "search7": 470,
-     "prev7": 489,
+     "search30": 2080,
+     "search7": 467,
+     "prev7": 516,
      "amb": true,
      "base": "꽃새담",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "나룻터꽃게집",
@@ -211,12 +211,12 @@
      "blog": 13390,
      "score": null,
      "mine": false,
-     "search30": 560,
-     "search7": 38,
-     "prev7": 97,
+     "search30": 490,
+     "search7": 27,
+     "prev7": 101,
      "amb": false,
      "base": "나룻터꽃게집",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "진복호",
@@ -227,12 +227,12 @@
      "blog": 2513,
      "score": "4.51",
      "mine": false,
-     "search30": 3380,
-     "search7": 544,
-     "prev7": 693,
+     "search30": 3320,
+     "search7": 571,
+     "prev7": 667,
      "amb": true,
      "base": "진복호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -243,28 +243,28 @@
      "blog": 1447,
      "score": "4.59",
      "mine": true,
-     "search30": 290,
-     "search7": 108,
-     "prev7": 61,
+     "search30": 300,
+     "search7": 120,
+     "prev7": 69,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "바다향기",
      "id": "1602076514",
      "category": "게요리",
      "area": "인천 강화군 길상면",
-     "visitor": 734,
+     "visitor": 735,
      "blog": 218,
      "score": "4.89",
      "mine": false,
-     "search30": 5760,
-     "search7": 1279,
-     "prev7": 1434,
+     "search30": 5790,
+     "search7": 1258,
+     "prev7": 1446,
      "amb": true,
      "base": "바다향기",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "충남서산집",
@@ -275,12 +275,12 @@
      "blog": 1402,
      "score": null,
      "mine": false,
-     "search30": 4320,
-     "search7": 759,
-     "prev7": 903,
+     "search30": 4240,
+     "search7": 786,
+     "prev7": 875,
      "amb": false,
      "base": "충남서산집",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "꽃게향",
@@ -291,12 +291,28 @@
      "blog": 101,
      "score": "4.62",
      "mine": false,
-     "search30": 560,
-     "search7": 113,
-     "prev7": 119,
+     "search30": 530,
+     "search7": 115,
+     "prev7": 112,
      "amb": true,
      "base": "꽃게향",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
+    },
+    {
+     "name": "보광호",
+     "id": "16561600",
+     "category": "해물,생선요리",
+     "area": "인천 강화군 길상면",
+     "visitor": 4054,
+     "blog": 2800,
+     "score": "4.57",
+     "mine": false,
+     "search30": 2130,
+     "search7": 434,
+     "prev7": 480,
+     "amb": true,
+     "base": "보광호",
+     "to": "2026-11-24"
     },
     {
      "name": "서해꽃게전문",
@@ -307,28 +323,12 @@
      "blog": 145,
      "score": null,
      "mine": false,
-     "search30": 220,
-     "search7": 32,
-     "prev7": 41,
+     "search30": 190,
+     "search7": 31,
+     "prev7": 22,
      "amb": false,
      "base": "서해꽃게전문",
-     "to": "2026-11-23"
-    },
-    {
-     "name": "보광호",
-     "id": "16561600",
-     "category": "해물,생선요리",
-     "area": "인천 강화군 길상면",
-     "visitor": 4053,
-     "blog": 2800,
-     "score": "4.57",
-     "mine": false,
-     "search30": 2210,
-     "search7": 425,
-     "prev7": 493,
-     "amb": true,
-     "base": "보광호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -346,28 +346,28 @@
      "blog": 1625,
      "score": "4.87",
      "mine": false,
-     "search30": 2500,
-     "search7": 461,
-     "prev7": 541,
+     "search30": 2370,
+     "search7": 445,
+     "prev7": 525,
      "amb": false,
      "base": "일오삼간장게장",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "편가네된장",
      "id": "12760976",
      "category": "한식",
      "area": "인천 강화군 화도면",
-     "visitor": 2028,
+     "visitor": 2029,
      "blog": 1728,
      "score": null,
      "mine": false,
      "search30": 2890,
      "search7": 226,
-     "prev7": 955,
+     "prev7": 959,
      "amb": false,
      "base": "편가네된장",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -378,12 +378,12 @@
      "blog": 1447,
      "score": "4.59",
      "mine": true,
-     "search30": 290,
-     "search7": 108,
-     "prev7": 61,
+     "search30": 300,
+     "search7": 120,
+     "prev7": 69,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "나룻터꽃게집",
@@ -394,12 +394,12 @@
      "blog": 13390,
      "score": null,
      "mine": false,
-     "search30": 560,
-     "search7": 38,
-     "prev7": 97,
+     "search30": 490,
+     "search7": 27,
+     "prev7": 101,
      "amb": false,
      "base": "나룻터꽃게집",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "꽃새담 강화도점",
@@ -410,28 +410,28 @@
      "blog": 2783,
      "score": null,
      "mine": false,
-     "search30": 2140,
-     "search7": 470,
-     "prev7": 489,
+     "search30": 2080,
+     "search7": 467,
+     "prev7": 516,
      "amb": true,
      "base": "꽃새담",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "바다향기",
      "id": "1602076514",
      "category": "게요리",
      "area": "인천 강화군 길상면",
-     "visitor": 734,
+     "visitor": 735,
      "blog": 218,
      "score": "4.89",
      "mine": false,
-     "search30": 5760,
-     "search7": 1279,
-     "prev7": 1434,
+     "search30": 5790,
+     "search7": 1258,
+     "prev7": 1446,
      "amb": true,
      "base": "바다향기",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "충남서산집",
@@ -442,12 +442,12 @@
      "blog": 1402,
      "score": null,
      "mine": false,
-     "search30": 4320,
-     "search7": 759,
-     "prev7": 903,
+     "search30": 4240,
+     "search7": 786,
+     "prev7": 875,
      "amb": false,
      "base": "충남서산집",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "꽃게향",
@@ -458,12 +458,12 @@
      "blog": 101,
      "score": "4.62",
      "mine": false,
-     "search30": 560,
-     "search7": 113,
-     "prev7": 119,
+     "search30": 530,
+     "search7": 115,
+     "prev7": 112,
      "amb": true,
      "base": "꽃게향",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "서해꽃게전문",
@@ -474,12 +474,12 @@
      "blog": 145,
      "score": null,
      "mine": false,
-     "search30": 220,
-     "search7": 32,
-     "prev7": 41,
+     "search30": 190,
+     "search7": 31,
+     "prev7": 22,
      "amb": false,
      "base": "서해꽃게전문",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "강화 한정식 수라정",
@@ -490,12 +490,12 @@
      "blog": 473,
      "score": "4.6",
      "mine": false,
-     "search30": 810,
-     "search7": 62,
-     "prev7": 93,
+     "search30": 790,
+     "search7": 54,
+     "prev7": 91,
      "amb": false,
      "base": "강화 한정식 수라정",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -513,12 +513,12 @@
      "blog": 282,
      "score": "4.22",
      "mine": false,
-     "search30": 530,
-     "search7": 72,
-     "prev7": 109,
+     "search30": 520,
+     "search7": 52,
+     "prev7": 117,
      "amb": false,
      "base": "용흥궁식당",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "소반정",
@@ -529,12 +529,12 @@
      "blog": 49,
      "score": null,
      "mine": false,
-     "search30": 380,
-     "search7": 128,
-     "prev7": 72,
+     "search30": 370,
+     "search7": 100,
+     "prev7": 115,
      "amb": true,
      "base": "소반정",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "왕자정묵밥",
@@ -545,12 +545,12 @@
      "blog": 507,
      "score": null,
      "mine": false,
-     "search30": 520,
-     "search7": 104,
-     "prev7": 120,
+     "search30": 500,
+     "search7": 97,
+     "prev7": 121,
      "amb": false,
      "base": "왕자정묵밥",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "일억조식당",
@@ -561,12 +561,12 @@
      "blog": 260,
      "score": "4.03",
      "mine": false,
-     "search30": 750,
-     "search7": 142,
+     "search30": 730,
+     "search7": 138,
      "prev7": 167,
      "amb": false,
      "base": "일억조식당",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "빼애골 용흥궁식당",
@@ -577,12 +577,12 @@
      "blog": 6,
      "score": "4.99",
      "mine": false,
-     "search30": 90,
-     "search7": 0,
-     "prev7": 0,
+     "search30": 80,
+     "search7": null,
+     "prev7": null,
      "amb": false,
      "base": "빼애골 용흥궁식당",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "서내농원",
@@ -593,12 +593,12 @@
      "blog": 52,
      "score": null,
      "mine": false,
-     "search30": 550,
-     "search7": 99,
-     "prev7": 144,
+     "search30": 540,
+     "search7": 101,
+     "prev7": 138,
      "amb": true,
      "base": "서내농원",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "찬우정",
@@ -609,12 +609,12 @@
      "blog": 193,
      "score": "4.51",
      "mine": false,
-     "search30": 630,
-     "search7": 113,
-     "prev7": 126,
+     "search30": 620,
+     "search7": 105,
+     "prev7": 117,
      "amb": true,
      "base": "찬우정",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "하가돈",
@@ -625,44 +625,44 @@
      "blog": 1296,
      "score": null,
      "mine": false,
-     "search30": 290,
-     "search7": 86,
-     "prev7": 48,
+     "search30": 310,
+     "search7": 71,
+     "prev7": 68,
      "amb": true,
      "base": "하가돈",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "마니산단골식당",
      "id": "10985416",
      "category": "한식",
      "area": "인천 강화군 화도면",
-     "visitor": 1146,
+     "visitor": 1154,
      "blog": 861,
      "score": "4.82",
      "mine": false,
      "search30": 1190,
-     "search7": 212,
-     "prev7": 298,
+     "search7": 225,
+     "prev7": 305,
      "amb": false,
      "base": "마니산단골식당",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "전등사 남문식당",
      "id": "13381351",
      "category": "한식",
      "area": "인천 강화군 길상면",
-     "visitor": 1284,
+     "visitor": 1285,
      "blog": 558,
      "score": "4.37",
      "mine": false,
-     "search30": 600,
-     "search7": 98,
-     "prev7": 105,
+     "search30": 570,
+     "search7": 93,
+     "prev7": 109,
      "amb": false,
      "base": "전등사 남문식당",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -676,16 +676,16 @@
      "id": "37475143",
      "category": "생선회",
      "area": "인천 강화군 화도면",
-     "visitor": 2993,
+     "visitor": 2996,
      "blog": 1483,
      "score": null,
      "mine": false,
-     "search30": 1130,
-     "search7": 298,
-     "prev7": 294,
+     "search30": 1120,
+     "search7": 293,
+     "prev7": 307,
      "amb": true,
      "base": "서해촌",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "한글호",
@@ -696,12 +696,12 @@
      "blog": 95,
      "score": "4.28",
      "mine": false,
-     "search30": 190,
-     "search7": 16,
-     "prev7": 29,
+     "search30": 180,
+     "search7": 18,
+     "prev7": 32,
      "amb": true,
      "base": "한글호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "굴사냥조개사냥",
@@ -712,12 +712,12 @@
      "blog": 58,
      "score": "4.76",
      "mine": false,
-     "search30": 1200,
-     "search7": 354,
-     "prev7": 329,
+     "search30": 1230,
+     "search7": 361,
+     "prev7": 300,
      "amb": false,
      "base": "굴사냥조개사냥",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "대선정",
@@ -729,11 +729,11 @@
      "score": null,
      "mine": false,
      "search30": 270,
-     "search7": 20,
-     "prev7": 52,
+     "search7": 30,
+     "prev7": 48,
      "amb": true,
      "base": "대선정",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "반선",
@@ -744,28 +744,12 @@
      "blog": 28,
      "score": null,
      "mine": false,
-     "search30": 400,
+     "search30": 390,
      "search7": 41,
-     "prev7": 92,
+     "prev7": 78,
      "amb": true,
      "base": "반선",
-     "to": "2026-11-23"
-    },
-    {
-     "name": "대흥호",
-     "id": "1848554520",
-     "category": "생선회",
-     "area": "인천 강화군 양도면",
-     "visitor": 259,
-     "blog": 37,
-     "score": "4.88",
-     "mine": false,
-     "search30": 180,
-     "search7": 0,
-     "prev7": 0,
-     "amb": true,
-     "base": "대흥호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "쭈꾸미짱",
@@ -776,12 +760,28 @@
      "blog": 194,
      "score": "5",
      "mine": false,
-     "search30": 350,
-     "search7": 49,
-     "prev7": 117,
+     "search30": 340,
+     "search7": 52,
+     "prev7": 124,
      "amb": true,
      "base": "쭈꾸미짱",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
+    },
+    {
+     "name": "대흥호",
+     "id": "1848554520",
+     "category": "생선회",
+     "area": "인천 강화군 양도면",
+     "visitor": 259,
+     "blog": 37,
+     "score": "4.88",
+     "mine": false,
+     "search30": 160,
+     "search7": 0,
+     "prev7": 0,
+     "amb": true,
+     "base": "대흥호",
+     "to": "2026-11-24"
     },
     {
      "name": "만선꽃게랑낙지",
@@ -792,12 +792,12 @@
      "blog": 1447,
      "score": "4.59",
      "mine": true,
-     "search30": 290,
-     "search7": 108,
-     "prev7": 61,
+     "search30": 300,
+     "search7": 120,
+     "prev7": 69,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "오로라연어",
@@ -809,27 +809,27 @@
      "score": null,
      "mine": false,
      "search30": 530,
-     "search7": 127,
-     "prev7": 102,
+     "search7": 121,
+     "prev7": 96,
      "amb": false,
      "base": "오로라연어",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "보광호",
      "id": "16561600",
      "category": "해물,생선요리",
      "area": "인천 강화군 길상면",
-     "visitor": 4053,
+     "visitor": 4054,
      "blog": 2800,
      "score": "4.57",
      "mine": false,
-     "search30": 2210,
-     "search7": 425,
-     "prev7": 493,
+     "search30": 2130,
+     "search7": 434,
+     "prev7": 480,
      "amb": true,
      "base": "보광호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -847,12 +847,12 @@
      "blog": 1447,
      "score": "4.59",
      "mine": true,
-     "search30": 290,
-     "search7": 108,
-     "prev7": 61,
+     "search30": 300,
+     "search7": 120,
+     "prev7": 69,
      "amb": false,
      "base": "만선꽃게랑낙지",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "꽃게와낙지",
@@ -868,7 +868,7 @@
      "prev7": 25,
      "amb": false,
      "base": "꽃게와낙지",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "미리내바지락칼국수",
@@ -879,12 +879,12 @@
      "blog": 263,
      "score": null,
      "mine": false,
-     "search30": 120,
+     "search30": 110,
      "search7": 0,
-     "prev7": 27,
+     "prev7": 25,
      "amb": false,
      "base": "미리내바지락칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "대흥호",
@@ -895,12 +895,28 @@
      "blog": 37,
      "score": "4.88",
      "mine": false,
-     "search30": 180,
+     "search30": 160,
      "search7": 0,
      "prev7": 0,
      "amb": true,
      "base": "대흥호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
+    },
+    {
+     "name": "동광호",
+     "id": "1143495745",
+     "category": "직판장",
+     "area": "경기 김포시 대곶면",
+     "visitor": 16,
+     "blog": 1,
+     "score": null,
+     "mine": false,
+     "search30": 200,
+     "search7": 73,
+     "prev7": 30,
+     "amb": true,
+     "base": "동광호",
+     "to": "2026-11-24"
     },
     {
      "name": "강화해신탕",
@@ -911,28 +927,12 @@
      "blog": 140,
      "score": "4.47",
      "mine": false,
-     "search30": 290,
-     "search7": 64,
-     "prev7": 45,
+     "search30": 280,
+     "search7": 66,
+     "prev7": 37,
      "amb": false,
      "base": "강화해신탕",
-     "to": "2026-11-23"
-    },
-    {
-     "name": "소담칼국수",
-     "id": "1477511422",
-     "category": "국수",
-     "area": "인천 강화군 양도면",
-     "visitor": 200,
-     "blog": 38,
-     "score": null,
-     "mine": false,
-     "search30": 1820,
-     "search7": 362,
-     "prev7": 413,
-     "amb": false,
-     "base": "소담칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "원조 강화고구마묵밥 &칼국수",
@@ -948,7 +948,23 @@
      "prev7": null,
      "amb": false,
      "base": "원조 강화고구마묵밥 &칼국수",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
+    },
+    {
+     "name": "소담칼국수",
+     "id": "1477511422",
+     "category": "국수",
+     "area": "인천 강화군 양도면",
+     "visitor": 200,
+     "blog": 38,
+     "score": null,
+     "mine": false,
+     "search30": 1790,
+     "search7": 358,
+     "prev7": 396,
+     "amb": false,
+     "base": "소담칼국수",
+     "to": "2026-11-24"
     },
     {
      "name": "어객",
@@ -964,23 +980,7 @@
      "prev7": null,
      "amb": true,
      "base": "어객",
-     "to": "2026-11-23"
-    },
-    {
-     "name": "동광호",
-     "id": "1143495745",
-     "category": "직판장",
-     "area": "경기 김포시 대곶면",
-     "visitor": 16,
-     "blog": 1,
-     "score": null,
-     "mine": false,
-     "search30": 190,
-     "search7": 57,
-     "prev7": 31,
-     "amb": true,
-     "base": "동광호",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     },
     {
      "name": "서희호프",
@@ -996,7 +996,7 @@
      "prev7": 90,
      "amb": true,
      "base": "서희호프",
-     "to": "2026-11-23"
+     "to": "2026-11-24"
     }
    ],
    "api": [],
@@ -1934,12 +1934,74 @@
      "강화해신탕"
     ]
    }
+  },
+  "2026-11-25": {
+   "강화도 칼국수": {
+    "my_rank": null,
+    "top": [
+     "배터지는집 동막손칼국수명가",
+     "강화손칼국수 본점",
+     "일년내내칼국수맛있는집 강화도본점",
+     "도토리 바지락손칼국수",
+     "수라전통육개장 본점"
+    ]
+   },
+   "강화도 꽃게탕": {
+    "my_rank": 5,
+    "top": [
+     "일오삼간장게장 본점",
+     "꽃새담 강화도점",
+     "나룻터꽃게집",
+     "진복호",
+     "만선꽃게랑낙지"
+    ]
+   },
+   "강화도 간장게장": {
+    "my_rank": 3,
+    "top": [
+     "일오삼간장게장 본점",
+     "편가네된장",
+     "만선꽃게랑낙지",
+     "나룻터꽃게집",
+     "꽃새담 강화도점"
+    ]
+   },
+   "강화도 젓국갈비": {
+    "my_rank": null,
+    "top": [
+     "용흥궁식당",
+     "소반정",
+     "왕자정묵밥",
+     "일억조식당",
+     "빼애골 용흥궁식당"
+    ]
+   },
+   "강화도 연포탕": {
+    "my_rank": 8,
+    "top": [
+     "서해촌",
+     "한글호",
+     "굴사냥조개사냥",
+     "대선정",
+     "반선"
+    ]
+   },
+   "강화도 낙지": {
+    "my_rank": 1,
+    "top": [
+     "만선꽃게랑낙지",
+     "꽃게와낙지",
+     "미리내바지락칼국수",
+     "대흥호",
+     "동광호"
+    ]
+   }
   }
  },
  "note": "네이버 지도(플레이스)에서 강화 중심 좌표로 검색했을 때의 순서, 광고 제외, 상위 10곳.",
  "debug": {
   "probe": {
-   "len": 470348,
+   "len": 470298,
    "apollo": true,
    "parsed": true,
    "root": [

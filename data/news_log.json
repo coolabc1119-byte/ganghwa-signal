@@ -1,6 +1,13 @@
 {
  "items": [
   {
+   "date": "2026-11-26",
+   "title": "<20>  MBC예능 '놀면 뭐하니?' 속 강화 보문사",
+   "link": "http://www.ibulgyo.com/news/articleView.html?idxno=444559",
+   "query": "강화도 방송",
+   "tv": "MBC"
+  },
+  {
    "date": "2026-11-24",
    "title": "강화도 선착장서 발견된 오른손…이지혜 \"잔인하고 악랄해\" (스모킹건)",
    "link": "https://m.entertain.naver.com/article/311/0002083405",
@@ -162,6 +169,23 @@
    "tv": null
   }
  ],
- "upcoming": [],
- "upcoming_checked": "2026-11-26 13:18"
+ "upcoming": [
+  {
+   "air": "2026-11-29",
+   "pub": "2026-11-27",
+   "program": "1박 2일",
+   "title": "리센느, '1박 2일' 깜짝 출연…딘딘, 멤버들 뒤로 숨으며 당황",
+   "link": "https://www.stardailynews.co.kr/news/articleView.html?idxno=603294",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-27",
+   "program": "1박 2일",
+   "title": "리센느, ‘1박 2일’ 오프닝 예고 없이 등장…멤버들 깜짝",
+   "link": "https://enter.etoday.co.kr/news/view/305845",
+   "ours": false
+  }
+ ],
+ "upcoming_checked": "2026-11-27 13:28"
 }

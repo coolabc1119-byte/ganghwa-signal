@@ -1,7 +1,7 @@
 {
  "version": 4,
- "generated": "2026-11-27",
- "last_visitor_data": "2026-10-28",
+ "generated": "2026-11-28",
+ "last_visitor_data": "2026-10-29",
  "lag_days": 30,
  "weather_live": true,
  "summary": "토요일 보통 수준 · 일요일 보통 수준",
@@ -12,53 +12,8 @@
   "꽃게"
  ],
  "weekend_pct": 0,
- "weekday_pct": -4,
+ "weekday_pct": -2,
  "days": [
-  {
-   "date": "2026-11-27",
-   "wd": "금",
-   "type": "normal",
-   "type_label": "",
-   "holiday": null,
-   "est": 33272,
-   "lo": 27649,
-   "hi": 39394,
-   "normal": 35283,
-   "vs_normal_pct": -6,
-   "level": "normal",
-   "tags": [
-    "비 조금"
-   ],
-   "sat_x": null,
-   "wx_pct": -6,
-   "rain_level": 1,
-   "wx_applied": true,
-   "weather": {
-    "code": 2,
-    "text": "구름",
-    "tmax": 14.0,
-    "tmin": 7.8,
-    "rain": 0.0,
-    "pop": 86,
-    "wind": 19.9,
-    "src": "forecast"
-   },
-   "last_year": 36908,
-   "cmp": {
-    "prev_month": {
-     "base": 42440,
-     "n": 3,
-     "pct": -21.6,
-     "ym": "2026-10"
-    },
-    "yoy_month": {
-     "base": 43727,
-     "n": 4,
-     "pct": -23.9,
-     "ym": "2025-11"
-    }
-   }
-  },
   {
    "date": "2026-11-28",
    "wd": "토",
@@ -77,13 +32,13 @@
    "rain_level": 0,
    "wx_applied": true,
    "weather": {
-    "code": 2,
-    "text": "구름",
-    "tmax": 7.8,
-    "tmin": 0.6,
+    "code": 3,
+    "text": "흐림",
+    "tmax": 7.2,
+    "tmin": 0.1,
     "rain": 0.0,
-    "pop": 0,
-    "wind": 24.7,
+    "pop": 2,
+    "wind": 22.8,
     "src": "forecast"
    },
    "last_year": 64358,
@@ -122,11 +77,11 @@
    "weather": {
     "code": 2,
     "text": "구름",
-    "tmax": 9.0,
-    "tmin": -2.3,
+    "tmax": 8.8,
+    "tmin": -2.4,
     "rain": 0.0,
     "pop": 0,
-    "wind": 23.9,
+    "wind": 23.4,
     "src": "forecast"
    },
    "last_year": 56144,
@@ -151,10 +106,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 27512,
-   "lo": 22863,
-   "hi": 32575,
-   "normal": 27512,
+   "est": 27498,
+   "lo": 22851,
+   "hi": 32557,
+   "normal": 27498,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -163,13 +118,13 @@
    "rain_level": 0,
    "wx_applied": true,
    "weather": {
-    "code": 51,
-    "text": "이슬비",
-    "tmax": 13.4,
-    "tmin": 7.6,
-    "rain": 0.4,
-    "pop": 24,
-    "wind": 24.7,
+    "code": 1,
+    "text": "맑음",
+    "tmax": 13.2,
+    "tmin": 8.8,
+    "rain": 0.0,
+    "pop": 29,
+    "wind": 23.3,
     "src": "forecast"
    },
    "last_year": 25907,
@@ -183,7 +138,7 @@
     "yoy_month": {
      "base": 34235,
      "n": 4,
-     "pct": -19.6,
+     "pct": -19.7,
      "ym": "2025-11"
     }
    }
@@ -194,10 +149,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 26156,
-   "lo": 21735,
-   "hi": 30968,
-   "normal": 26156,
+   "est": 26142,
+   "lo": 21724,
+   "hi": 30952,
+   "normal": 26142,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -208,11 +163,11 @@
    "weather": {
     "code": 3,
     "text": "흐림",
-    "tmax": 10.3,
-    "tmin": -0.1,
+    "tmax": 10.4,
+    "tmin": 0.4,
     "rain": 0.0,
     "pop": 2,
-    "wind": 16.5,
+    "wind": 12.9,
     "src": "forecast"
    },
    "last_year": 27002,
@@ -237,10 +192,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24033,
-   "lo": 19971,
-   "hi": 28455,
-   "normal": 25485,
+   "est": 23995,
+   "lo": 19940,
+   "hi": 28410,
+   "normal": 25473,
    "vs_normal_pct": -6,
    "level": "normal",
    "tags": [
@@ -251,13 +206,13 @@
    "rain_level": 1,
    "wx_applied": true,
    "weather": {
-    "code": 53,
+    "code": 51,
     "text": "이슬비",
-    "tmax": 11.2,
+    "tmax": 12.7,
     "tmin": -0.6,
-    "rain": 3.7,
-    "pop": 41,
-    "wind": 7.3,
+    "rain": 0.2,
+    "pop": 48,
+    "wind": 9.1,
     "src": "forecast"
    },
    "last_year": 23048,
@@ -265,13 +220,13 @@
     "prev_month": {
      "base": 33511,
      "n": 4,
-     "pct": -28.3,
+     "pct": -28.4,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 31298,
      "n": 5,
-     "pct": -23.2,
+     "pct": -23.3,
      "ym": "2025-12"
     }
    }
@@ -282,10 +237,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24696,
-   "lo": 20522,
-   "hi": 29240,
-   "normal": 26189,
+   "est": 24657,
+   "lo": 20490,
+   "hi": 29193,
+   "normal": 26175,
    "vs_normal_pct": -6,
    "level": "normal",
    "tags": [
@@ -298,25 +253,25 @@
    "weather": {
     "code": 53,
     "text": "이슬비",
-    "tmax": 13.0,
-    "tmin": 8.1,
-    "rain": 3.3,
-    "pop": 43,
-    "wind": 9.7,
+    "tmax": 14.4,
+    "tmin": 4.5,
+    "rain": 2.5,
+    "pop": 55,
+    "wind": 10.4,
     "src": "forecast"
    },
    "last_year": 23314,
    "cmp": {
     "prev_month": {
-     "base": 34163,
-     "n": 3,
-     "pct": -27.7,
+     "base": 33651,
+     "n": 4,
+     "pct": -26.7,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 25543,
      "n": 3,
-     "pct": -3.3,
+     "pct": -3.5,
      "ym": "2025-12"
     }
    }
@@ -327,27 +282,25 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 30642,
-   "lo": 25464,
-   "hi": 36281,
-   "normal": 32495,
-   "vs_normal_pct": -6,
+   "est": 32477,
+   "lo": 26988,
+   "hi": 38453,
+   "normal": 32477,
+   "vs_normal_pct": 0,
    "level": "normal",
-   "tags": [
-    "비 조금"
-   ],
+   "tags": [],
    "sat_x": null,
-   "wx_pct": -6,
-   "rain_level": 1,
+   "wx_pct": 0,
+   "rain_level": 0,
    "wx_applied": true,
    "weather": {
-    "code": 53,
-    "text": "이슬비",
-    "tmax": 15.1,
-    "tmin": 5.6,
-    "rain": 2.2,
-    "pop": 29,
-    "wind": 11.4,
+    "code": 45,
+    "text": "안개",
+    "tmax": 10.6,
+    "tmin": 3.0,
+    "rain": 0.0,
+    "pop": 22,
+    "wind": 10.3,
     "src": "forecast"
    },
    "last_year": 26072,
@@ -355,13 +308,13 @@
     "prev_month": {
      "base": 42440,
      "n": 3,
-     "pct": -27.8,
+     "pct": -23.5,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 30535,
      "n": 3,
-     "pct": 0.4,
+     "pct": 6.4,
      "ym": "2025-12"
     }
    }
@@ -372,25 +325,27 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 57556,
-   "lo": 50131,
-   "hi": 63887,
-   "normal": 57556,
-   "vs_normal_pct": 0,
+   "est": 56597,
+   "lo": 49296,
+   "hi": 62822,
+   "normal": 59513,
+   "vs_normal_pct": -5,
    "level": "normal",
-   "tags": [],
+   "tags": [
+    "비 조금"
+   ],
    "sat_x": null,
-   "wx_pct": null,
-   "rain_level": 0,
-   "wx_applied": false,
+   "wx_pct": -5,
+   "rain_level": 1,
+   "wx_applied": true,
    "weather": {
-    "code": 53,
+    "code": 51,
     "text": "이슬비",
-    "tmax": 9.7,
-    "tmin": 6.6,
-    "rain": 4.6,
-    "pop": 27,
-    "wind": 12.0,
+    "tmax": 13.0,
+    "tmin": 8.5,
+    "rain": 3.2,
+    "pop": 45,
+    "wind": 14.9,
     "src": "forecast"
    },
    "last_year": 50732,
@@ -398,13 +353,13 @@
     "prev_month": {
      "base": 86184,
      "n": 2,
-     "pct": -33.2,
+     "pct": -34.3,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 51233,
      "n": 4,
-     "pct": 12.3,
+     "pct": 10.5,
      "ym": "2025-12"
     }
    }
@@ -427,13 +382,13 @@
    "rain_level": 0,
    "wx_applied": false,
    "weather": {
-    "code": 51,
-    "text": "이슬비",
-    "tmax": 9.4,
-    "tmin": 3.7,
-    "rain": 2.0,
-    "pop": 54,
-    "wind": 16.9,
+    "code": 80,
+    "text": "소나기",
+    "tmax": 10.3,
+    "tmin": 4.8,
+    "rain": 8.2,
+    "pop": 70,
+    "wind": 21.0,
     "src": "forecast"
    },
    "last_year": 53732,
@@ -458,10 +413,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 25842,
-   "lo": 21475,
-   "hi": 30597,
-   "normal": 25842,
+   "est": 25823,
+   "lo": 21459,
+   "hi": 30575,
+   "normal": 25823,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -470,13 +425,13 @@
    "rain_level": 0,
    "wx_applied": false,
    "weather": {
-    "code": 51,
-    "text": "이슬비",
-    "tmax": 7.9,
-    "tmin": 0.0,
-    "rain": 0.4,
-    "pop": 67,
-    "wind": 16.8,
+    "code": 80,
+    "text": "소나기",
+    "tmax": 7.3,
+    "tmin": 3.4,
+    "rain": 18.2,
+    "pop": 75,
+    "wind": 26.3,
     "src": "forecast"
    },
    "last_year": 26138,
@@ -490,7 +445,7 @@
     "yoy_month": {
      "base": 28645,
      "n": 5,
-     "pct": -9.8,
+     "pct": -9.9,
      "ym": "2025-12"
     }
    }
@@ -501,10 +456,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24895,
-   "lo": 20688,
-   "hi": 29476,
-   "normal": 24895,
+   "est": 24876,
+   "lo": 20672,
+   "hi": 29454,
+   "normal": 24876,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -515,11 +470,11 @@
    "weather": {
     "code": 51,
     "text": "이슬비",
-    "tmax": 11.4,
-    "tmin": -0.4,
-    "rain": 0.2,
-    "pop": 47,
-    "wind": 14.7,
+    "tmax": 3.7,
+    "tmin": -8.3,
+    "rain": 0.4,
+    "pop": 57,
+    "wind": 22.8,
     "src": "forecast"
    },
    "last_year": 26310,
@@ -533,7 +488,7 @@
     "yoy_month": {
      "base": 27787,
      "n": 5,
-     "pct": -10.4,
+     "pct": -10.5,
      "ym": "2025-12"
     }
    }
@@ -544,10 +499,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24039,
-   "lo": 19976,
-   "hi": 28462,
-   "normal": 24039,
+   "est": 24022,
+   "lo": 19962,
+   "hi": 28442,
+   "normal": 24022,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -556,13 +511,13 @@
    "rain_level": 0,
    "wx_applied": false,
    "weather": {
-    "code": 80,
-    "text": "소나기",
-    "tmax": 7.2,
-    "tmin": 3.8,
-    "rain": 23.8,
+    "code": 3,
+    "text": "흐림",
+    "tmax": -0.3,
+    "tmin": -9.2,
+    "rain": 0.0,
     "pop": 27,
-    "wind": 24.5,
+    "wind": 16.5,
     "src": "forecast"
    },
    "last_year": 26236,
@@ -587,10 +542,10 @@
    "type": "normal",
    "type_label": "",
    "holiday": null,
-   "est": 24489,
-   "lo": 20351,
-   "hi": 28995,
-   "normal": 24489,
+   "est": 24471,
+   "lo": 20335,
+   "hi": 28974,
+   "normal": 24471,
    "vs_normal_pct": 0,
    "level": "normal",
    "tags": [],
@@ -599,27 +554,70 @@
    "rain_level": 0,
    "wx_applied": false,
    "weather": {
-    "code": 80,
-    "text": "소나기",
-    "tmax": 6.1,
-    "tmin": 1.5,
-    "rain": 16.8,
-    "pop": 15,
-    "wind": 23.0,
+    "code": 3,
+    "text": "흐림",
+    "tmax": 2.7,
+    "tmin": -6.6,
+    "rain": 0.0,
+    "pop": 27,
+    "wind": 10.3,
     "src": "forecast"
    },
    "last_year": 25036,
    "cmp": {
     "prev_month": {
-     "base": 34163,
-     "n": 3,
-     "pct": -28.3,
+     "base": 33651,
+     "n": 4,
+     "pct": -27.3,
      "ym": "2026-10"
     },
     "yoy_month": {
      "base": 25543,
      "n": 3,
-     "pct": -4.1,
+     "pct": -4.2,
+     "ym": "2025-12"
+    }
+   }
+  },
+  {
+   "date": "2026-12-11",
+   "wd": "금",
+   "type": "normal",
+   "type_label": "",
+   "holiday": null,
+   "est": 29668,
+   "lo": 24654,
+   "hi": 35127,
+   "normal": 29668,
+   "vs_normal_pct": 0,
+   "level": "normal",
+   "tags": [],
+   "sat_x": null,
+   "wx_pct": null,
+   "rain_level": 0,
+   "wx_applied": false,
+   "weather": {
+    "code": 3,
+    "text": "흐림",
+    "tmax": 3.4,
+    "tmin": -4.1,
+    "rain": 0.0,
+    "pop": 12,
+    "wind": 8.8,
+    "src": "forecast"
+   },
+   "last_year": 32473,
+   "cmp": {
+    "prev_month": {
+     "base": 42440,
+     "n": 3,
+     "pct": -30.1,
+     "ym": "2026-10"
+    },
+    "yoy_month": {
+     "base": 30535,
+     "n": 3,
+     "pct": -2.8,
      "ym": "2025-12"
     }
    }
@@ -636,12 +634,12 @@
    "mixed": false,
    "cust_pct": 0,
    "share": {
-    "now": 4.54,
-    "usual": 6.34,
-    "pct": -28.4,
-    "per_day": 82.6,
-    "from": "2026-11-20",
-    "to": "2026-11-26"
+    "now": 4.49,
+    "usual": 6.27,
+    "pct": -28.3,
+    "per_day": 82.4,
+    "from": "2026-11-21",
+    "to": "2026-11-27"
    },
    "reasons": [
     "제철"
@@ -658,12 +656,12 @@
    "mixed": false,
    "cust_pct": 0,
    "share": {
-    "now": 3.59,
-    "usual": 3.31,
-    "pct": 8.8,
-    "per_day": 65.4,
-    "from": "2026-11-20",
-    "to": "2026-11-26"
+    "now": 3.29,
+    "usual": 3.36,
+    "pct": -2.1,
+    "per_day": 60.3,
+    "from": "2026-11-21",
+    "to": "2026-11-27"
    },
    "reasons": [],
    "note": "면·육수 재료. 추울수록 수요 ↑",
@@ -678,12 +676,12 @@
    "mixed": false,
    "cust_pct": 0,
    "share": {
-    "now": 6.72,
-    "usual": 3.13,
-    "pct": 114.9,
-    "per_day": 122.3,
-    "from": "2026-11-20",
-    "to": "2026-11-26"
+    "now": 4.52,
+    "usual": 3.59,
+    "pct": 26.0,
+    "per_day": 82.9,
+    "from": "2026-11-21",
+    "to": "2026-11-27"
    },
    "reasons": [],
    "note": "강화 향토음식. 계절 영향 적고 검색 수요 대비 업체 9곳으로 유입이 쉬움",
@@ -712,10 +710,10 @@
    "start": "2026-11-23",
    "end": "2026-11-29",
    "we": 61551,
-   "wk": 28531,
+   "wk": 28510,
    "ly_we": 60251,
    "ly_wk": 31628,
-   "week_total": 265756,
+   "week_total": 265652,
    "holidays": [],
    "current": true
   },
@@ -723,10 +721,10 @@
    "start": "2026-11-30",
    "end": "2026-12-06",
    "we": 55301,
-   "wk": 26589,
+   "wk": 26570,
    "ly_we": 52232,
    "ly_wk": 25069,
-   "week_total": 243546,
+   "week_total": 243450,
    "holidays": [],
    "current": false
   },
@@ -734,10 +732,10 @@
    "start": "2026-12-07",
    "end": "2026-12-13",
    "we": 51623,
-   "wk": 25791,
+   "wk": 25772,
    "ly_we": 45784,
    "ly_wk": 27239,
-   "week_total": 232200,
+   "week_total": 232106,
    "holidays": [],
    "current": false
   },
@@ -745,10 +743,10 @@
    "start": "2026-12-14",
    "end": "2026-12-20",
    "we": 49538,
-   "wk": 26567,
+   "wk": 26547,
    "ly_we": 52129,
    "ly_wk": 28334,
-   "week_total": 231908,
+   "week_total": 231810,
    "holidays": [],
    "current": false
   },
@@ -756,10 +754,10 @@
    "start": "2026-12-21",
    "end": "2026-12-27",
    "we": 59671,
-   "wk": 27243,
+   "wk": 27403,
    "ly_we": 52740,
    "ly_wk": 30834,
-   "week_total": 287983,
+   "week_total": 288625,
    "holidays": [
     "성탄절"
    ],
@@ -769,10 +767,10 @@
    "start": "2026-12-28",
    "end": "2027-01-03",
    "we": 62019,
-   "wk": 27335,
+   "wk": 27498,
    "ly_we": 62630,
    "ly_wk": 39279,
-   "week_total": 295396,
+   "week_total": 296049,
    "holidays": [
     "신정"
    ],
@@ -807,14 +805,14 @@
  ],
  "accuracy": {
   "lag": 30,
-  "from": "2025-10-29",
-  "to": "2026-10-28",
+  "from": "2025-10-30",
+  "to": "2026-10-29",
   "cats": {
    "all": {
     "n": 365,
     "mape": 11.3,
     "median": 8.3,
-    "bias": -0.1,
+    "bias": -0.0,
     "p10": -0.166,
     "p90": 0.174,
     "within10": 59,
@@ -823,7 +821,7 @@
    "weekday": {
     "n": 241,
     "mape": 12.4,
-    "median": 9.4,
+    "median": 9.6,
     "bias": -0.3,
     "p10": -0.169,
     "p90": 0.184,
@@ -862,12 +860,6 @@
    }
   },
   "recent": [
-   {
-    "date": "2026-09-03",
-    "act": 29586,
-    "est": 35017,
-    "type": "normal"
-   },
    {
     "date": "2026-09-04",
     "act": 37754,
@@ -1197,6 +1189,12 @@
     "act": 33856,
     "est": 32758,
     "type": "normal"
+   },
+   {
+    "date": "2026-10-29",
+    "act": 32116,
+    "est": 36628,
+    "type": "normal"
    }
   ]
  },
@@ -1267,7 +1265,7 @@
     "hi": 2.03
    },
    "eve_long": {
-    "x": 1.188,
+    "x": 1.217,
     "n": 7,
     "lo": 1.04,
     "hi": 1.39
@@ -1289,15 +1287,15 @@
   },
   "dry_boost": {
    "we": 1.034,
-   "wd": 1.0368
+   "wd": 1.037
   },
   "cold": {
    "factor": 0.909,
    "n": 44,
    "measured": true
   },
-  "recent_from": "2026-09-03",
-  "recent_to": "2026-10-28"
+  "recent_from": "2026-09-04",
+  "recent_to": "2026-10-29"
  },
  "weather_effect": {
   "we1": {
@@ -1316,8 +1314,8 @@
    "measured": true
   },
   "wd1": {
-   "factor": 0.943,
-   "n": 84,
+   "factor": 0.942,
+   "n": 85,
    "measured": true
   },
   "wd2": {

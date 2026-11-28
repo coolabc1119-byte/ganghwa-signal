@@ -160,13 +160,6 @@
    "link": "https://www.topstarnews.net/news/articleView.html?idxno=15873788",
    "query": "강화 젓국갈비",
    "tv": null
-  },
-  {
-   "date": "2025-10-23",
-   "title": "인천 강화도, 서해의 바람과 고즈넉한 사찰이 어우러진 여행지",
-   "link": "https://www.tournews21.com/news/articleView.html?idxno=118157",
-   "query": "전등사 맛집",
-   "tv": null
   }
  ],
  "upcoming": [
@@ -181,11 +174,35 @@
   {
    "air": null,
    "pub": "2026-11-27",
+   "program": "생방송 투데이",
+   "title": "살이 통통하게 오른 해산물…27일 '생방송 투데이' 맛불 작전",
+   "link": "https://www.wikitree.co.kr/articles/1178482",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-27",
+   "program": "생방송투데이",
+   "title": "'생방송투데이' 맛불 작전, 강화·강서구 맛집",
+   "link": "https://www.joongangenews.com/news/articleView.html?idxno=567292",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-27",
+   "program": "생방송 투데이",
+   "title": "'생방송 투데이' 추억의 분식·겨울철 맛집",
+   "link": "https://www.topstarnews.net/news/articleView.html?idxno=16288039",
+   "ours": false
+  },
+  {
+   "air": null,
+   "pub": "2026-11-27",
    "program": "1박 2일",
    "title": "리센느, ‘1박 2일’ 오프닝 예고 없이 등장…멤버들 깜짝",
    "link": "https://enter.etoday.co.kr/news/view/305845",
    "ours": false
   }
  ],
- "upcoming_checked": "2026-11-27 13:28"
+ "upcoming_checked": "2026-11-28 13:07"
 }
